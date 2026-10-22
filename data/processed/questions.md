@@ -155,7 +155,7 @@ Cancer answers are sensitive: write them gently. Figures from Scotland, Wales an
 ### How many people are waiting, and is it going down?
 - Source: RTT (rtt)
 - Grain: England, monthly
-- Example: 7,189,213 in August 2026, down from 7,345,544 a year earlier; 65.2% within 18 weeks (the aim is 92%).
+- Example: 7,158,164 in August 2026, down from 7,312,356 a year earlier; 65.2% within 18 weeks (the aim is 92%).
 
 ### Where's the biggest postcode lottery for an operation?
 - Source: RTT (rtt)

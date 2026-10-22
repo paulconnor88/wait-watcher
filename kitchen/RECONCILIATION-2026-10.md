@@ -50,8 +50,8 @@ Building a gate for every source found three more issues. Two were genuinely our
 ## How we stop this happening again
 
 1. **A gate on every run.**
-   - What it checks: `kitchen/reconcile.py` runs after the sources and before anything is published. It compares every England figure, every month, against the publisher's own: 559 checks across RTT, cancer, A&E, e-RS, ambulance, WLMDS, community services, GP appointments and population.
-   - What counts as a pass: a difference is allowed only if it's documented and computed from the data (NONC; three national-only community services), never a fixed tolerance. Anything else fails the whole run, so a wrong month can't reach the site, the Lab or a report.
+   - What it checks: `kitchen/reconcile.py` runs after the sources and before anything is published. It compares every England figure, every month, against the publisher's own: 2,739 checks across RTT, diagnostic waits (DM01), cancer, A&E, e-RS, ambulance, WLMDS, community services, GP appointments, winter sitreps and population.
+   - What counts as a pass: a difference is allowed only if it's documented and computed from the data (NONC for RTT and DM01; three national-only community services; the sitreps' Unknown handover row), never a fixed tolerance. Anything else fails the whole run, so a wrong month can't reach the site, the Lab or a report.
    - Proven: a one-patient error stops it.
 2. **Definitions in one place.** `kitchen/DEFINITIONS.md` says what each figure counts, which published series it matches, and which one Wait Watcher quotes.
 3. **Revisions handled automatically.** Raw files are re-downloaded when the publisher posts a new version, and each month comes from its latest publication.
@@ -59,9 +59,11 @@ Building a gate for every source found three more issues. Two were genuinely our
 5. **Before every post:** run the data-check skill. It reconciles to published totals, checks every figure two ways, and gets a human review.
 6. **When something doesn't match:** don't publish. Test explanations one at a time until one closes every figure exactly, record the answer in DEFINITIONS.md, and add it to the gate.
 
-## Still open
+## Decided and done (22 October 2026)
 
-- **Which England figure to quote (your decision).** Recommendation: the commissioner basis (7,158,164), so anyone can find the same number in NHS England's timeseries, naming the 7.37 million headline when the press uses it. Trust and area figures don't change.
-- **Diagnostic waits (DM01).** Not yet checked: NHS England's England series is only in an old-format `.xls` file, which needs one more library (`xlrd`). Needs your OK.
-- **Winter sitreps.** A check against the files' own ENGLAND rows is still to build.
-- **Leo's notes.** The leo-analyst notes (`nhs-waiting-data.md`) still describe 7.19 million as "the file total" against a 7.3 million headline. Worth updating to the three-figure table above.
+- **Which England figure to quote:** the commissioner basis (7,158,164 waiting, 109,936 over a year in August 2026). The 7,370,100 headline is named only when the press is using it. Trust and department figures stay on all rows. Recorded as the standing rule in `kitchen/DEFINITIONS.md`; findings, report-facts and the Lab now use it.
+- **Diagnostic waits (DM01):** checked. NHS England's England series leaves out NONC patients too (5,851 waiting in August 2026), so all rows minus NONC matches it to the unit for every test and month.
+- **Winter sitreps:** checked against the files' own ENGLAND rows. Beds match exactly; handovers match once the file's "Unknown" row (handovers not assigned to a trust) is counted as the gap.
+- **Leo's notes:** the leo-analyst reference and worked example, and the data-check skill's step 3, carry the three-figure table. Copies are now in the repo under `skills/`.
+
+The gate now runs 2,739 checks across 11 sources, all exact.

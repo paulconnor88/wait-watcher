@@ -12,7 +12,13 @@ What this script does, in plain English:
          one row per month + provider + test, for the 15 tests and the total.
          Then work out the total waiting and the share waiting 6 weeks or
          more (the NHS standard is that under 1% should) and 13 weeks or more.
+         England totals are also worked out on NHS England's basis: every row except
+         patients whose commissioner is NONC (not an English ICB - mostly people from
+         Wales at border hospitals). That matches NHS England's Monthly Diagnostics
+         Timeseries exactly (checked by kitchen/reconcile.py); provider figures use every row.
   WRITE  data/processed/dm01/dm01.csv
+         data/processed/dm01/england_basis.csv  (England by month and test: all rows, NONC,
+                                                 and NHS England's basis)
   REPORT A coverage summary.
 
 Run it with:   python kitchen/sources/dm01.py
@@ -78,8 +84,11 @@ def read_extract(path):
         name = next(n for n in archive.namelist() if n.lower().endswith(".csv"))
         header = pd.read_csv(archive.open(name), nrows=0).columns
         bands = [c for c in header if re.match(r"\d\d(\+| < \d\d) Weeks?$", c)]
-        table = pd.read_csv(archive.open(name), usecols=KEYS + bands + ["Total WL"], low_memory=False)
+        table = pd.read_csv(archive.open(name), usecols=KEYS + bands + ["Total WL", "Commissioner Org Code"],
+                            low_memory=False)
     table[bands + ["Total WL"]] = table[bands + ["Total WL"]].fillna(0)
+    six = [b for b in bands if b in SIX_WEEKS_OR_MORE]
+    england = england_basis(table, six)
     grouped = table.groupby(KEYS, as_index=False)[bands + ["Total WL"]].sum()
     total = grouped[bands].sum(axis=1)
     if (total - grouped["Total WL"]).abs().max() > 0:
@@ -92,9 +101,22 @@ def read_extract(path):
     for band in bands:
         out["wk_" + band.replace(" < ", "_").replace(" Weeks", "").replace(" Week", "").replace("+", "_plus")] = grouped[band].astype(int)
     out["total_waiting"] = total.astype(int)
-    six = [b for b in bands if b in SIX_WEEKS_OR_MORE]
     out["pct_6_weeks_plus"] = (grouped[six].sum(axis=1) / total * 100).round(1).where(total > 0)
     out["pct_13_weeks_plus"] = (grouped["13+ Weeks"] / total * 100).round(1).where(total > 0)
+    return out, england
+
+
+def england_basis(table, six):
+    """England by test: all rows, the NONC part, and NHS England's basis (all rows less NONC)."""
+    table = table.assign(six_plus=table[six].sum(axis=1), nonc=table["Commissioner Org Code"].eq("NONC"))
+    all_ = table.groupby(["Period", "Diagnostic Tests"])[["Total WL", "six_plus"]].sum()
+    nonc = table[table["nonc"]].groupby(["Period", "Diagnostic Tests"])[["Total WL", "six_plus"]].sum().reindex(all_.index, fill_value=0)
+    out = pd.DataFrame({"waiting_all": all_["Total WL"], "six_weeks_plus_all": all_["six_plus"],
+                        "waiting_nonc": nonc["Total WL"], "six_weeks_plus_nonc": nonc["six_plus"]}).reset_index()
+    out.insert(0, "month", out.pop("Period").map(lambda p: datetime.strptime(p.split("-", 1)[1], "%B-%Y").strftime("%Y-%m")))
+    out = out.rename(columns={"Diagnostic Tests": "test"})
+    out["waiting_nhs_england_basis"] = out["waiting_all"] - out["waiting_nonc"]
+    out["six_weeks_plus_nhs_england_basis"] = out["six_weeks_plus_all"] - out["six_weeks_plus_nonc"]
     return out
 
 
@@ -105,26 +127,30 @@ def main():
     paths = {month: download(url, RAW) for month, url in extracts.items()}
 
     print("CLEAN")
-    tables = []
+    tables, englands = [], []
     for month, path in paths.items():
-        table = read_extract(path)
+        table, england = read_extract(path)
         if set(table["month"]) != {month}:
             raise SystemExit(f"{path.name} doesn't contain {month}.")
         tables.append(table)
+        englands.append(england)
     dm01 = pd.concat(tables, ignore_index=True).sort_values(["provider_code", "test", "month"])
+    basis = pd.concat(englands, ignore_index=True).sort_values(["month", "test"])
+    for column in basis.columns[2:]:
+        basis[column] = basis[column].astype(int)
+    basis.to_csv(OUT / "england_basis.csv", index=False)
 
     dm01.to_csv(OUT / "dm01.csv", index=False)
     print(f"  saved data/processed/dm01/dm01.csv")
     update_registry("dm01", latest_month=dm01["month"].max())
 
-    latest = dm01[(dm01["month"] == dm01["month"].max()) & (dm01["test"] == "TOTAL")]
-    england = latest[[c for c in dm01.columns if c.startswith("wk_")]].sum()
-    six = england[[c for c in england.index if c in ("wk_06_07", "wk_07_08", "wk_08_09", "wk_09_10",
-                                                     "wk_10_11", "wk_11_12", "wk_12_13", "wk_13_plus")]].sum()
+    # England on NHS England's basis (the figure Wait Watcher quotes - kitchen/DEFINITIONS.md).
+    e = basis[(basis["month"] == basis["month"].max()) & (basis["test"] == "TOTAL")].iloc[0]
     coverage_summary("dm01", len(dm01), dm01["month"].unique(), dm01["provider_code"].unique(), notes=[
         f"tests:               {dm01['test'].nunique() - 1} plus TOTAL",
-        f"England, {dm01['month'].max()}: {int(england.sum()):,} waiting, "
-        f"{six / england.sum() * 100:.1f}% for 6+ weeks, {england['wk_13_plus'] / england.sum() * 100:.1f}% for 13+ weeks"])
+        f"England, {e['month']}: {e['waiting_nhs_england_basis']:,} waiting, "
+        f"{e['six_weeks_plus_nhs_england_basis'] / e['waiting_nhs_england_basis'] * 100:.1f}% for 6+ weeks "
+        f"(NHS England's basis; all rows {e['waiting_all']:,})"])
 
 
 if __name__ == "__main__":

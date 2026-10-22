@@ -3,17 +3,17 @@
  "compared_with": "2025-08",
  "england": {
   "waiting": {
-   "then": 7345544,
-   "now": 7189213
+   "then": 7312356,
+   "now": 7158164
   },
   "pct_within_18_weeks": {
-   "then": 60.9,
+   "then": 61.0,
    "now": 65.2,
    "change_points": 4.2
   },
   "over_52_weeks": {
-   "then": 192024,
-   "now": 112958
+   "then": 188702,
+   "now": 109936
   }
  },
  "most_improved_trusts": [

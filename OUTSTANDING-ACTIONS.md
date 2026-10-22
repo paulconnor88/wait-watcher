@@ -48,10 +48,8 @@ Until these are done, the data only refreshes when someone runs it by hand.
   - **Routine data refreshes deploy automatically:** new months of the same figures, through the reconciliation gate.
   - **Anything with new findings or new wording waits for your OK:** new findings, new datasets or changed text on either site.
 - [ ] **2.5 Deploys are paused pending a decision on a public site.** Decide whether Wait Watcher and the Lab go public under automation, then add the site IDs (1.2).
-- [ ] **2.6 Which England waiting-list figure to quote.** See `kitchen/DEFINITIONS.md`.
-  - Recommended: NHS England's commissioner basis (7,158,164 for August 2026), which anyone can check in NHS England's own timeseries.
-  - Today: all rows of the file (7,189,213).
-- [ ] **2.7 Allow `xlrd` (a fourth library)** so the gate can check diagnostic waits (DM01) against NHS England's `.xls` series.
+- [x] **2.6 Which England waiting-list figure to quote.** Decided 22 October 2026: every England total is on NHS England's commissioner basis (7,158,164 for August 2026); the headline with estimates (7,370,100) is named only when the press is using it; trusts and departments stay on all rows. The standing rule is in `kitchen/DEFINITIONS.md`.
+- [x] **2.7 Allow `xlrd` (a fourth library).** Approved and done 22 October 2026: the gate now checks diagnostic waits (DM01) against NHS England's `.xls` series.
 
 ## 3. Licences and permissions to chase
 
@@ -89,7 +87,7 @@ Each needs an email from you. Until a reply, the source stays out and the reason
 
 ## 5. Robustness work to ask Claude to build
 
-- [x] **5.1 Reconciliation gates.** Done 22 October 2026: `kitchen/reconcile.py` runs before anything is published and fails the run on any unexplained difference. 559 checks across 9 sources, all exact; see `kitchen/DEFINITIONS.md`.
+- [x] **5.1 Reconciliation gates.** Done 22 October 2026: `kitchen/reconcile.py` runs before anything is published and fails the run on any unexplained difference. 2,739 checks across 11 sources (DM01 and winter sitreps added), all exact; see `kitchen/DEFINITIONS.md`.
   - Still open: DM01 needs `xlrd` to read NHS England's `.xls` series (your OK), and the winter sitreps check against their ENGLAND rows.
   - Your decision: should England totals be quoted on NHS England's commissioner basis (7,158,164), not all rows (7,189,213)? See DEFINITIONS.md.
 - [ ] **5.2 Privacy gate.** `trials.py` refuses to save if any email address or phone number appears in research outputs. Today this is checked by hand.
@@ -119,7 +117,7 @@ Each needs an email from you. Until a reply, the source stays out and the reason
 
 1. ~~Put it on GitHub after slimming what gets committed (1.1, 1.3).~~ Done. Run the monthly action by hand and watch it (1.6).
 2. Back up `data/raw` (1.4).
-3. Decide on a public site (2.5), the England figure to quote (2.6) and `xlrd` (2.7).
+3. Decide on a public site (2.5). ~~The England figure (2.6) and `xlrd` (2.7)~~ are decided.
 4. Email Ipsos about the GP Patient Survey (3.1).
 5. Spend an hour hand-mapping trial sites (4.1).
-6. Ask Claude for the reconciliation and privacy gates (5.1, 5.2).
+6. Ask Claude for the privacy gate (5.2). ~~The reconciliation gate (5.1)~~ is done.

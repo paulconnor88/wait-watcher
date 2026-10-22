@@ -33,6 +33,9 @@ What this script does, in plain English:
 
 How the numbers are worked out:
   - "Waiting" means incomplete pathways (people still waiting).
+  - England totals are on NHS England's commissioner basis (its "reported only" figure): every row
+    except patients whose commissioner is NONC (not an English ICB - mostly people from Wales at
+    border hospitals). Trust and department figures use every row. See kitchen/DEFINITIONS.md.
   - "Within 18 weeks" is the share of people waiting 18 weeks or less.
   - "Over 52 weeks" counts people waiting more than 52 weeks.
   - The typical wait is the median, interpolated within the weekly band where
@@ -93,6 +96,7 @@ ICB_MAPPING_PATH = PROCESSED_DIR / "rtt" / "icb_mapping.json"
 WAITING = "Incomplete Pathways"
 OPERATION = "Completed Pathways For Admitted Patients"
 TOTAL = "C_999"                       # the "Total" treatment function
+NONC = "NONC"                         # commissioner code: not commissioned by an English ICB
 
 BIG_TRUST = 10_000                    # trusts with at least this many waiting
 MIN_OPERATIONS = 150                  # for the postcode lottery
@@ -154,11 +158,14 @@ def read_month(month, with_areas):
     table[bands] = table[bands].fillna(0).astype(np.int64)
 
     providers = table.groupby(["Provider Org Code", "Treatment Function Code", "RTT Part Description"])[bands].sum()
+    # England on NHS England's commissioner basis: every row except NONC (patients not commissioned by an
+    # English ICB). This is the England figure Wait Watcher quotes (kitchen/DEFINITIONS.md).
+    england = table[table["Commissioner Org Code"] != NONC].groupby(["Treatment Function Code", "RTT Part Description"])[bands].sum()
     areas = None
     if with_areas:
         rows = table[(table["RTT Part Description"] == WAITING) & (table["Treatment Function Code"] == TOTAL)]
         areas = rows.groupby(["Commissioner Org Code", "Commissioner Parent Name"])[bands].sum()
-    return providers, areas, bands
+    return providers, areas, bands, england
 
 
 # ---------------------------------------------------------------------------
@@ -374,34 +381,45 @@ def main():
     # The six months we need: the two Augusts (with areas) and the two
     # months before each.
     now_tables, then_tables = [], []
-    now_areas = then_areas = None
+    now_areas = then_areas = england_now_table = england_then_table = None
     for offset in (-2, -1, 0):
-        providers, areas, bands = read_month(add_months(latest, offset), with_areas=offset == 0)
+        providers, areas, bands, england = read_month(add_months(latest, offset), with_areas=offset == 0)
         now_tables.append(providers)
         if offset == 0:
-            now_areas = areas
-        providers, areas, bands = read_month(add_months(year_ago, offset), with_areas=offset == 0)
+            now_areas, england_now_table = areas, england
+        providers, areas, bands, england = read_month(add_months(year_ago, offset), with_areas=offset == 0)
         then_tables.append(providers)
         if offset == 0:
-            then_areas = areas
+            then_areas, england_then_table = areas, england
     UPPER = np.array([band_upper_weeks([b])[b] for b in bands])
     now, then = now_tables[-1], then_tables[-1]
     ops_now, ops_then = operation_counts(now_tables), operation_counts(then_tables)
     three_now = f"{month_name(add_months(latest, -2)).split()[0]} to {month_name(latest)}"
     three_then = f"{month_name(add_months(year_ago, -2)).split()[0]} to {month_name(year_ago)}"
 
-    # Check against history.csv: England's total waiting should match.
+    # England totals are on the commissioner basis (NHS England's reported-only figure). Two checks:
+    # all rows must match history.csv, and the commissioner basis must match rtt/england_basis.csv,
+    # which kitchen/reconcile.py has checked against NHS England's timeseries.
     history_full = pd.read_csv(HISTORY_PATH)
     check = history_full[(history_full["month"] == latest) & (history_full["rtt_part"] == WAITING)
                          & (history_full["treatment_function_code"] == TOTAL)]["total_patients"].sum()
     waiting_total_now = rows_of(now, WAITING, TOTAL)
-    england_now = measures(waiting_total_now.sum().values)
-    england_then = measures(rows_of(then, WAITING, TOTAL).sum().values)
-    if int(check) != england_now["waiting"]:
-        raise SystemExit(f"England total {england_now['waiting']} doesn't match history.csv ({int(check)}).")
+    all_rows_now = measures(waiting_total_now.sum().values)
+    england_now = measures(england_now_table.loc[(TOTAL, WAITING)].values)
+    england_then = measures(england_then_table.loc[(TOTAL, WAITING)].values)
+    if int(check) != all_rows_now["waiting"]:
+        raise SystemExit(f"England total {all_rows_now['waiting']} doesn't match history.csv ({int(check)}).")
+    basis = pd.read_csv(PROCESSED_DIR / "rtt" / "england_basis.csv").set_index("month")
+    for month, m in ((latest, england_now), (year_ago, england_then)):
+        expected = (basis.loc[month, "waiting_commissioner_basis"], basis.loc[month, "over_52_commissioner_basis"])
+        if (m["waiting"], m["over_52"]) != expected:
+            raise SystemExit(f"England {month} on the commissioner basis ({m['waiting']}, {m['over_52']}) doesn't match "
+                             f"rtt/england_basis.csv {expected}.")
 
     findings = {"month": latest, "year_ago": year_ago,
-                "england": then_now(england_then, england_now)}
+                "england": then_now(england_then, england_now),
+                "england_basis": "commissioner basis: NHS England's reported-only figure (all rows less NONC)",
+                "england_all_rows_now": {"waiting": all_rows_now["waiting"], "over_52": all_rows_now["over_52"]}}
 
     # Check before using: providers whose figures jump about.
     flags = provider_flags(history_full, latest)
@@ -456,8 +474,9 @@ def main():
         "icbs_now": int(now_areas.index.get_level_values(1).nunique()),
         "year_ago_people_not_matched": unmatched}
 
-    # 4. Year-long waits: where they are.
-    england_over_52 = england_now["over_52"]
+    # 4. Year-long waits: where they are. The England total quoted is the commissioner basis; trust and
+    # department shares are worked out on all rows, so they add up to 100%.
+    england_over_52 = all_rows_now["over_52"]
     long_trusts = []
     for code, counts in waiting_total_now.iterrows():
         if code.startswith("R"):
@@ -472,7 +491,7 @@ def main():
                  "share_of_england": r1(t["over_52_now"] / england_over_52 * 100)} for t in treatments]
     long_tfs.sort(key=lambda t: t["over_52_now"], reverse=True)
     findings["4_over_52_treatments"] = long_tfs[:5]
-    findings["4_england_over_52_now"] = england_over_52
+    findings["4_england_over_52_now"] = england_now["over_52"]
 
     # 5. League table: NHS trusts with 10,000+ waiting, by % within 18 weeks now.
     league = sorted(trusts, key=lambda t: t["pct_18_now"], reverse=True)
@@ -611,6 +630,10 @@ def to_markdown(f):
            "Typical wait = interpolated median. Points = percentage points.",
            "",
            "## England",
+           "",
+           "NHS England's reported-only figure (commissioner basis: every patient commissioned by an English ICB). "
+           f"All rows of the file, including {n(f['england_all_rows_now']['waiting'] - e['waiting_now'])} patients not "
+           f"commissioned by an English ICB, come to {n(f['england_all_rows_now']['waiting'])}.",
            "",
            f"- Waiting: {n(e['waiting_then'])} then, {n(e['waiting_now'])} now.",
            f"- Within 18 weeks: {p(e['pct_18_then'])}% then, {p(e['pct_18_now'])}% now ({p(e['change_points'], True)} points). The NHS aims for 92%.",

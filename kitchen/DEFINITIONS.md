@@ -24,12 +24,28 @@ Last updated 22 October 2026.
 
 **NHS England's headline** (7.37 million in August 2026) is a third figure: reported-only plus an estimate for trusts that didn't submit data (four in August 2026). It's in the same timeseries, "with estimates for missing data".
 
-**Which figure Wait Watcher quotes:**
-- **Trusts, departments and areas:** all rows of the file. A trust's list includes its NONC patients, as they really are waiting there.
-- **England totals, today:** all rows (7,189,213 in August 2026). This is 31,049 more than NHS England's reported-only figure and 180,887 fewer than its headline.
-- **Recommendation, awaiting Paul's decision:** quote England totals on the commissioner basis (7,158,164), so any reader can find the same number in NHS England's own timeseries. Name the headline-with-estimates figure (7.37 million) when the press uses it. Trust and area figures are unchanged either way.
+**Standing rule: which figure Wait Watcher quotes** (decided by Paul, 22 October 2026):
+- **Every England total is on the commissioner basis:** NHS England's reported-only figure, all rows minus NONC (7,158,164 waiting and 109,936 over a year in August 2026). Any reader can find the same number in NHS England's own timeseries.
+- **The headline with estimates** (7,370,100 and 113,339 in August 2026) is named only when the press is using it, and always labelled as including NHS England's estimates for trusts that didn't submit.
+- **Trusts, departments and areas stay on all rows of the file.** A trust's list includes its NONC patients, as they really are waiting there.
+- **Shares of England** (a trust's or department's share of everyone over a year, say) are worked out on all rows, so they add up to 100%.
+- **The same rule applies to DM01** (below): England totals on NHS England's basis, trusts on all rows.
 
-`data/processed/rtt/england_basis.csv` holds all three columns (all, NONC, commissioner basis) for every month.
+`kitchen/make_findings.py` takes England totals from the commissioner basis and checks them against `data/processed/rtt/england_basis.csv`, which holds all three columns (all, NONC, commissioner basis) for every month; the run stops if they differ. `report-facts` and the Lab read the same findings.
+
+## DM01: people waiting for a diagnostic test
+
+**What's counted.** People waiting at the end of the month for one of 13 key tests, from the DM01 Full CSV extract (provider × commissioner × test).
+
+**Same NONC exclusion as RTT.** NHS England's England series ("Monthly Diagnostics Time series", sheets "Total Waiting List" and "6+ Week Waits") leaves out NONC patients, although the file says "Basis: Provider".
+
+| Basis | August 2026 waiting | 6+ weeks |
+|---|---|---|
+| All rows of the Full CSV | 1,833,070 | 452,306 |
+| NONC | 5,851 | 1,298 |
+| **NHS England's England figure** (all rows minus NONC) | **1,827,219** | **451,008** |
+
+The gate checks every test and the total, every month since April 2024 (464 checks for each measure), all exact. `data/processed/dm01/england_basis.csv` holds the columns. The timeseries is a legacy `.xls` file, read with `xlrd` (approved by Paul, 22 October 2026).
 
 ## The other sources the gate checks
 
@@ -43,6 +59,9 @@ Last updated 22 October 2026.
 | Community services | Sum of providers, all services | The National row in each monthly file | Three services published for England only (adult safeguarding, children's safeguarding, looked after children teams) |
 | GP appointments | Sum of practices | NHS England's National Overview **from the publication the month was read from** | None. NHS England later revises national totals (April and May 2024 by about 1%) but never republishes practice-level data; the gate reports this. |
 | Population | Sum of council areas | ONS's ENGLAND row | None |
+| DM01 | Sum of all rows, each test and the total: waiting and 6+ weeks | NHS England's Monthly Diagnostics Time series | NONC (see above) |
+| Winter sitreps: beds | Sum of acute trusts: G&A beds open and occupied, each day | The file's own "ENGLAND (All Acute Trusts)" row | None |
+| Winter sitreps: ambulance handovers | Sum of trusts: handovers, over 30 minutes, over 60 minutes, each day | The file's own "ENGLAND (All Trusts)" row | Handovers on the file's "Unknown" row, which belong to no trust |
 
 **How each figure is taken:**
 - **Revised files:** every raw file records the address it came from (`_sources.json` in each raw folder). When a publisher posts a revision at a new address, it's downloaded again.
@@ -50,8 +69,6 @@ Last updated 22 October 2026.
 
 ## Not yet checked, and why
 
-- **DM01 (diagnostic waits):** NHS England's England series is only in a legacy `.xls` file. Reading it needs a fourth library (`xlrd`), which needs Paul's OK under the kitchen's library rule.
-- **Winter sitreps:** England totals are added up from trusts; a check against the files' own ENGLAND rows is still to build.
 - **Talking therapies and workforce:** England figures are taken from the publisher's England rows as published; nothing is re-added.
 - **Mental health, Friends and Family Test:** no England figure is quoted.
 - **Dental:** no monthly England headline is published (NHSBSA's official statistics are annual).

@@ -2,17 +2,22 @@
  "month": "2026-08",
  "year_ago": "2025-08",
  "england": {
-  "waiting_then": 7345544,
-  "waiting_now": 7189213,
-  "pct_18_then": 60.9,
+  "waiting_then": 7312356,
+  "waiting_now": 7158164,
+  "pct_18_then": 61.0,
   "pct_18_now": 65.2,
   "change_points": 4.2,
   "median_then": 13.5,
   "median_now": 12.2,
-  "over_52_then": 192024,
-  "over_52_now": 112958,
+  "over_52_then": 188702,
+  "over_52_now": 109936,
   "pct_over_52_then": 2.6,
-  "pct_over_52_now": 1.6
+  "pct_over_52_now": 1.5
+ },
+ "england_basis": "commissioner basis: NHS England's reported-only figure (all rows less NONC)",
+ "england_all_rows_now": {
+  "waiting": 7189213,
+  "over_52": 112958
  },
  "check_before_using": [
   {
@@ -1718,7 +1723,7 @@
    "share_of_england": 7.3
   }
  ],
- "4_england_over_52_now": 112958,
+ "4_england_over_52_now": 109936,
  "5_league_table": [
   {
    "code": "RP6",

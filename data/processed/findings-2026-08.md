@@ -5,10 +5,12 @@ Within 18 weeks = share of people still waiting who have waited 18 weeks or less
 
 ## England
 
-- Waiting: 7,345,544 then, 7,189,213 now.
-- Within 18 weeks: 60.9% then, 65.2% now (+4.2 points). The NHS aims for 92%.
+NHS England's reported-only figure (commissioner basis: every patient commissioned by an English ICB). All rows of the file, including 31,049 patients not commissioned by an English ICB, come to 7,189,213.
+
+- Waiting: 7,312,356 then, 7,158,164 now.
+- Within 18 weeks: 61.0% then, 65.2% now (+4.2 points). The NHS aims for 92%.
 - Typical wait: 13.5 weeks then, 12.2 weeks now.
-- Over 52 weeks: 192,024 then, 112,958 now.
+- Over 52 weeks: 188,702 then, 109,936 now.
 
 ## 1. Trusts: most and least improved
 
@@ -119,7 +121,7 @@ People waiting, by the ICB that commissions their care. There were 42 ICBs a yea
 
 ## 4. Year-long waits: where they are
 
-England: 112,958 people waiting over 52 weeks in August 2026.
+England: 109,936 people waiting over 52 weeks in August 2026.
 
 **Trusts with the most**
 

@@ -17,9 +17,11 @@ What it does, in plain English:
   "not checked", with the reason.
 
 The documented differences (see kitchen/DEFINITIONS.md):
-  RTT          NHS England's England series is on a commissioner basis: it leaves out patients at
-               English providers who aren't commissioned by an English ICB (commissioner code
-               "NONC" - mostly people from Wales at border hospitals). Our trust figures include them.
+  RTT, DM01    NHS England's England series leaves out patients at English providers who aren't
+               commissioned by an English ICB (commissioner code "NONC" - mostly people from Wales at
+               border hospitals). Our trust figures include them.
+  Sitreps      The ambulance handover sheets have an "Unknown" row (handovers not assigned to a
+               trust), counted in England's total but not under any trust.
   Community    Three services are published for England only, never by provider (adult
                safeguarding, children's safeguarding, looked after children teams).
 
@@ -34,6 +36,7 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import xlrd   # NHS England's DM01 timeseries is a legacy .xls file
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import PROCESSED_DIR, RAW_DIR, download, page_links, read_xlsx_rows, xlsx_sheet_names  # noqa: E402
@@ -44,6 +47,12 @@ STATS = "https://www.england.nhs.uk/statistics/statistical-work-areas/"
 RTT_PAGE = STATS + "rtt-waiting-times/rtt-data-{start}-{end:02d}/"
 CANCER_PAGE = STATS + "cancer-waiting-times/"
 GPAD_PAGE = "https://digital.nhs.uk/data-and-information/publications/statistical/appointments-in-general-practice/{month}"
+DM01_PAGE = STATS + ("diagnostics-waiting-times-and-activity/monthly-diagnostics-waiting-times-and-activity/"
+                     "monthly-diagnostics-data-{start}-{end:02d}/")
+# DM01 test codes in the order of the timeseries' "Diagnostic ID" (1-15).
+DM01_TESTS = ["MRI", "CT", "NON_OBSTETRIC_ULTRASOUND", "BARIUM_ENEMA", "DEXA_SCAN", "AUDIOLOGY_ASSESSMENTS",
+              "ECHOCARDIOGRAPHY", "ELECTROPHYSIOLOGY", "PERIPHERAL_NEUROPHYS", "SLEEP_STUDIES", "URODYNAMICS",
+              "COLONOSCOPY", "FLEXI_SIGMOIDOSCOPY", "CYSTOSCOPY", "GASTROSCOPY"]
 NATIONAL_ONLY_COMMUNITY = {"(A) Adult safeguarding", "(CYP) Safeguarding", "(CYP) Looked after children teams"}
 
 
@@ -278,24 +287,115 @@ def gpad():
 
 
 # ---------------------------------------------------------------------------
+# DM01: people waiting and 6+ week waits, every test, against the Monthly Diagnostics Timeseries
+# ---------------------------------------------------------------------------
+
+def dm01():
+    year = pd.Timestamp.today().year if pd.Timestamp.today().month >= 4 else pd.Timestamp.today().year - 1
+    pages = [DM01_PAGE.format(start=y, end=(y + 1) % 100) for y in (year, year - 1)]
+    _, url = newest_link(pages, r"^Monthly Diagnostics\W+Time series")
+    path = download(url, PUBLISHED)
+    book = xlrd.open_workbook(str(path))
+
+    def series(sheet_name):
+        sheet = book.sheet_by_name(sheet_name)
+        header = next(i for i in range(sheet.nrows) if sheet.row_values(i)[1] == "Diagnostic ID")
+        months = {j: (pd.Timestamp("1899-12-30") + pd.Timedelta(days=int(v))).strftime("%Y-%m")
+                  for j, v in enumerate(sheet.row_values(header)) if isinstance(v, float)}
+        out = {}
+        for i in range(header + 1, sheet.nrows):
+            r = sheet.row_values(i)
+            test = "TOTAL" if r[2] == "Total" else DM01_TESTS[int(r[1]) - 1] if isinstance(r[1], float) else None
+            if test:
+                out.update({(test, m): r[j] for j, m in months.items() if isinstance(r[j], float)})
+        return out
+
+    waiting, six = series("Total Waiting List"), series("6+ Week Waits")
+    ours = pd.read_csv(PROCESSED_DIR / "dm01" / "england_basis.csv")
+    reason = "NONC: patients not commissioned by an English ICB (NHS England's DM01 England series leaves them out)"
+    out = []
+    for r in ours.itertuples():
+        for measure, published, all_rows, nonc in (("people waiting", waiting, r.waiting_all, r.waiting_nonc),
+                                                   ("waiting 6+ weeks", six, r.six_weeks_plus_all, r.six_weeks_plus_nonc)):
+            label = f"{measure}" if r.test == "TOTAL" else f"{measure} ({r.test})"
+            if (r.test, r.month) not in published:
+                out.append({"source": "dm01", "measure": label, "period": r.month, "status": "NOT CHECKED",
+                            "reason": "month not in the published timeseries"})
+                continue
+            out.append(row("dm01", label, r.month, all_rows, round(published[(r.test, r.month)]), nonc, reason, path.name))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Winter sitreps: trusts' beds and ambulance handovers against each file's ENGLAND rows
+# ---------------------------------------------------------------------------
+
+def uec_sitreps():
+    module = source_module("uec_sitreps")
+    ours = pd.read_csv(PROCESSED_DIR / "uec_sitreps" / "trust_day.csv")
+    out = []
+    for winter in sorted(ours["winter"].unique()):
+        days = ours[ours["winter"] == winter].groupby("date").sum(numeric_only=True)
+        # Beds: "ENGLAND (All Acute Trusts)" in the Total G&A beds sheet.
+        path = RAW_DIR / "uec_sitreps" / f"sitrep-{winter}.xlsx"
+        rows = read_xlsx_rows(path, "Total G&A beds")
+        at = next(i for i, r in enumerate(rows) if len(r) > 4 and r[3] == "Code" and r[4] == "Name")
+        header = rows[at]
+        england = next(r for r in rows[at + 1:] if len(r) > 4 and str(r[4]).startswith("ENGLAND (All"))
+        for day, first, last in module.day_blocks(rows[at - 1], 5):
+            cols = {header[c]: c for c in range(first, last) if c < len(header) and header[c]}
+            open_col = next((c for h, c in cols.items() if h.startswith("Total G&A Beds Open")), None)
+            occ_col = next((c for h, c in cols.items() if "occ" in h.lower()), None)
+            if open_col is None or occ_col is None or day not in days.index:
+                continue
+            out.append(row("uec_sitreps", "G&A beds open", day, days.loc[day, "beds_open"], england[open_col],
+                           against=f"{path.name} (ENGLAND (All Acute Trusts) row)"))
+            out.append(row("uec_sitreps", "G&A beds occupied", day, days.loc[day, "beds_occupied"], england[occ_col],
+                           against=f"{path.name} (ENGLAND (All Acute Trusts) row)"))
+        # Handovers: "ENGLAND (All Trusts)"; the "Unknown" row is in England's total but under no trust.
+        path = RAW_DIR / "uec_sitreps" / f"ambulance-{winter}.xlsx"
+        sheet = next(sh for sh in xlsx_sheet_names(path) if "andovers" in sh)
+        rows = read_xlsx_rows(path, sheet)
+        at = next(i for i, r in enumerate(rows) if r and r[0] == "Region")
+        header = rows[at]
+        dates_row = next(r for r in rows[:at] if any(isinstance(x, (int, float)) for x in r[3:]))
+        england = next(r for r in rows if len(r) > 2 and str(r[2]).startswith("ENGLAND"))
+        unknown = next((r for r in rows[at + 1:] if len(r) > 2 and str(r[2]).strip() == "Unknown"), [])
+        for day, first, last in module.day_blocks(dates_row, 3):
+            cols = {}
+            for c in range(first, last):
+                if c < len(header) and header[c] and header[c] not in cols:
+                    cols[header[c]] = c
+            if day not in days.index:
+                continue
+            for heading, col in (("Handover time known", "handovers_known"), ("Over 30 minutes", "handovers_over_30"),
+                                 ("Over 60 minutes", "handovers_over_60")):
+                c = cols.get(heading)
+                if c is None or c >= len(england):
+                    continue
+                explained = unknown[c] if c < len(unknown) and isinstance(unknown[c], (int, float)) else 0
+                out.append(row("uec_sitreps", f"handovers: {heading.lower()}", day, days.loc[day, col], england[c],
+                               -explained, "the Unknown row: handovers not assigned to a trust",
+                               f"{path.name} (ENGLAND (All Trusts) row)"))
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Not checked, with the reason
 # ---------------------------------------------------------------------------
 
 NOT_CHECKED = {
-    "dm01": "NHS England's England series is only in a legacy .xls file, which the kitchen can't read without "
-            "adding a fourth library (xlrd) - awaiting a decision",
     "talking_therapies": "the England figures are NHS England's own England row, used as published (nothing re-added)",
     "mhsds": "no England figure is quoted; provider figures only",
     "fft": "no England figure is quoted",
     "dental": "no monthly England headline is published to check against (NHSBSA official statistics are annual)",
     "workforce": "England figures are read directly from the published tables",
-    "uec_sitreps": "England figures are added up from trusts each winter; checking against the ENGLAND rows is still to build",
     "trials": "no published England total exists for clinical studies",
 }
 
 
-CHECKS = {"rtt": rtt, "cancer": cancer, "ae": ae, "ers": ers, "ambulance": ambulance, "wlmds": wlmds,
-          "community": community, "gpad": gpad, "population": population}
+CHECKS = {"rtt": rtt, "dm01": dm01, "cancer": cancer, "ae": ae, "ers": ers, "ambulance": ambulance, "wlmds": wlmds,
+          "community": community, "gpad": gpad, "uec_sitreps": uec_sitreps, "population": population}
 
 
 def main():
@@ -316,9 +416,13 @@ def main():
     checked = table[table["status"].isin(["PASS", "FAIL"]) & table["measure"].ne("-")]
     lines = ["| Source | Measure | Periods | Exact | Latest | Ours | Published | Explained gap | Residual |",
              "|---|---|---|---|---|---|---|---|---|"]
-    for (source, measure), g in checked.groupby(["source", "measure"], sort=False):
-        latest = g.sort_values("period").iloc[-1]
-        lines.append(f"| {source} | {measure} | {len(g)} | {(g['status'] == 'PASS').sum()} | {latest['period']} | "
+    # Per-test DM01 lines are grouped under their measure; the latest line shown is the all-tests total.
+    checked = checked.assign(group=checked["measure"].str.replace(r" \(.*\)$", "", regex=True))
+    for (source, measure), g in checked.groupby(["source", "group"], sort=False):
+        headline = g[g["measure"] == measure] if (g["measure"] == measure).any() else g
+        latest = headline.sort_values("period").iloc[-1]
+        label = measure + (" (each test and the total)" if len(g) > len(headline) else "")
+        lines.append(f"| {source} | {label} | {len(g)} | {(g['status'] == 'PASS').sum()} | {latest['period']} | "
                      f"{latest['ours']:,.0f} | {latest['published']:,.0f} | {latest['explained']:+,.0f} | {latest['residual']:+,.0f} |")
     failures = table[table["status"] == "FAIL"]
     not_checked = table[(table["status"] == "NOT CHECKED") & table["measure"].eq("-")]
@@ -337,10 +441,13 @@ def main():
         report += [f"| {r.source} | {r.measure} | {r.period} | {r.ours:,.0f} | {r.note} |" for r in noted.itertuples()]
         report.append("")
     report += ["## Explained gaps", "",
-               "- RTT: " + "NONC - patients at English providers not commissioned by an English ICB. NHS England's England "
+               "- RTT: NONC - patients at English providers not commissioned by an English ICB. NHS England's England "
                "series is commissioner basis and leaves them out; our trust figures include them.",
+               "- DM01: the same NONC patients; NHS England's DM01 England series leaves them out too.",
                "- Community services: three services are published for England only (adult safeguarding, children's "
-               "safeguarding, looked after children teams).", "",
+               "safeguarding, looked after children teams).",
+               "- Winter sitreps: the handover sheets' Unknown row (handovers not assigned to a trust) is in England's "
+               "total but under no trust.", "",
                "## Not checked", ""] + [f"- {r.source}: {r.reason}" for r in not_checked.itertuples()]
     (PROCESSED_DIR / "reconciliation.md").write_text("\n".join(report) + "\n")
     print("\n".join(report))

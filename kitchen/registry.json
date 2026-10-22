@@ -95,7 +95,7 @@
       "licence": "Open Government Licence v3.0",
       "script": "kitchen/sources/dm01.py",
       "status": "ingested",
-      "last_fetched": "2026-10-22T10:19:43Z",
+      "last_fetched": "2026-10-22T10:31:51Z",
       "latest_month": "2026-08",
       "lag": "about 6 weeks after month end",
       "grain": "provider",

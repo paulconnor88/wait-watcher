@@ -1,11 +1,13 @@
 # Reconciliation
 
-559 checks: 559 exact, 0 failed.
+2,739 checks: 2,739 exact, 0 failed.
 
 | Source | Measure | Periods | Exact | Latest | Ours | Published | Explained gap | Residual |
 |---|---|---|---|---|---|---|---|---|
 | rtt | people waiting | 29 | 29 | 2026-08 | 7,189,213 | 7,158,164 | +31,049 | +0 |
 | rtt | waiting over 52 weeks | 29 | 29 | 2026-08 | 112,958 | 109,936 | +3,022 | +0 |
+| dm01 | people waiting (each test and the total) | 464 | 464 | 2026-08 | 1,833,070 | 1,827,219 | +5,851 | +0 |
+| dm01 | waiting 6+ weeks (each test and the total) | 464 | 464 | 2026-08 | 452,306 | 451,008 | +1,298 | +0 |
 | cancer | 31D patients | 29 | 29 | 2026-08 | 55,049 | 55,049 | +0 | +0 |
 | cancer | 31D within standard | 29 | 29 | 2026-08 | 50,701 | 50,701 | +0 | +0 |
 | cancer | 62D patients | 29 | 29 | 2026-08 | 27,909 | 27,909 | +0 | +0 |
@@ -23,6 +25,11 @@
 | wlmds | waiting over 52 weeks | 29 | 29 | 2026-08-30 | 116,365 | 116,365 | +0 | +0 |
 | community | people waiting, all services | 29 | 29 | 2026-08 | 1,249,906 | 1,251,534 | -1,628 | +0 |
 | gpad | appointments | 29 | 29 | 2026-08 | 28,848,524 | 28,848,524 | +0 | +0 |
+| uec_sitreps | G&A beds open | 250 | 250 | 2026-03-28 | 100,461 | 100,461 | +0 | +0 |
+| uec_sitreps | G&A beds occupied | 250 | 250 | 2026-03-28 | 92,951 | 92,951 | +0 | +0 |
+| uec_sitreps | handovers: handover time known | 252 | 252 | 2026-03-29 | 12,491 | 12,491 | +0 | +0 |
+| uec_sitreps | handovers: over 30 minutes | 250 | 250 | 2026-03-28 | 2,363 | 2,363 | +0 | +0 |
+| uec_sitreps | handovers: over 60 minutes | 250 | 250 | 2026-03-28 | 487 | 487 | +0 | +0 |
 | population | people, all council areas | 1 | 1 | latest | 58,834,812 | 58,834,812 | +0 | +0 |
 
 ## Later revisions by the publisher (reported, not failed)
@@ -100,15 +107,15 @@ These figures match the publication they came from exactly; the publisher has si
 ## Explained gaps
 
 - RTT: NONC - patients at English providers not commissioned by an English ICB. NHS England's England series is commissioner basis and leaves them out; our trust figures include them.
+- DM01: the same NONC patients; NHS England's DM01 England series leaves them out too.
 - Community services: three services are published for England only (adult safeguarding, children's safeguarding, looked after children teams).
+- Winter sitreps: the handover sheets' Unknown row (handovers not assigned to a trust) is in England's total but under no trust.
 
 ## Not checked
 
-- dm01: NHS England's England series is only in a legacy .xls file, which the kitchen can't read without adding a fourth library (xlrd) - awaiting a decision
 - talking_therapies: the England figures are NHS England's own England row, used as published (nothing re-added)
 - mhsds: no England figure is quoted; provider figures only
 - fft: no England figure is quoted
 - dental: no monthly England headline is published to check against (NHSBSA official statistics are annual)
 - workforce: England figures are read directly from the published tables
-- uec_sitreps: England figures are added up from trusts each winter; checking against the ENGLAND rows is still to build
 - trials: no published England total exists for clinical studies
