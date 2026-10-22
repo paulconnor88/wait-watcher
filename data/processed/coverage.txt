@@ -1,0 +1,303 @@
+----
+COVERAGE: rtt (providers)
+  rows:                325,899
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      566
+  matched to ours:     566 (of our 566)
+  unmatched:           0
+  area history rows:   26,309 (37 ICBs in 2026-08, all months under today's ICBs)
+  ICB mapping:         106 local commissioners, 11 older ICB names mapped
+  unmapped area rows:  696 (NHS England specialised commissioning and unknown commissioners)
+----
+COVERAGE: ods (locations)
+  rows:                16,296
+  months:              0
+  provider codes:      565
+  matched to ours:     565 (of our 566)
+  unmatched:           0
+  providers located:   565 (rows above are sites; ODS lists are current, not monthly)
+----
+COVERAGE: cqc
+  rows:                856
+  months:              0
+  provider codes:      441
+  matched to ours:     441 (of our 566)
+  unmatched:           0
+  trust-level ratings: 107 (by ODS provider code)
+  providers with a site rating: 438
+  NHS trusts with no match at all: 4
+----
+COVERAGE: fft
+  rows:                20,645
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      443
+  matched to ours:     418 (of our 566)
+  unmatched:           25  e.g. 8JE35, A9R4J, ACG, ADP, DFJ, DJH, H5A0F, NAM
+  by service, latest month: inpatient 334 providers, outpatient 234 providers, a_and_e 119 providers
+  files not published:  none
+  pct_positive = share answering 'very good' or 'good' (the FFT no longer asks 'would you recommend')
+----
+COVERAGE: staff_survey
+  rows:                238
+  months:              1 (2025 to 2025)
+  provider codes:      238
+  matched to ours:     158 (of our 566)
+  unmatched:           80  e.g. G6V2S, NAX, NQL, NQV, NR3, NTV, QE1, QF7
+  organisations in 2025: 238
+  with a 'place for treatment' figure: 238
+  England median, 2025: place for treatment 62.6%, place to work 58.4%
+  years are survey years, not months
+----
+COVERAGE: dm01
+  rows:                208,752
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      484
+  matched to ours:     401 (of our 566)
+  unmatched:           83  e.g. A84031, AAF, AC7, ADW, AGA, ALC, ALH, ATK
+  tests:               15 plus TOTAL
+  England, 2026-08: 1,833,070 waiting, 24.7% for 6+ weeks, 7.7% for 13+ weeks
+----
+COVERAGE: njr
+  not ingested - licence does not permit re-use (reason recorded in kitchen/registry.json)
+----
+COVERAGE: ers
+  rows:                9,080
+  months:              30 (2024-04 to 2026-09)
+  provider codes:      360
+  matched to ours:     189 (of our 566)
+  unmatched:           171  e.g. 01H, 06H, 07H, 11N, 15M, 15N, 92G, 99E
+  specialty rows:      96,803 (61 specialties)
+  months missing:      none
+  England, 2026-09: 366,174 ASIs for 1,000,214 bookings (36.6 per 100)
+  check before using:  41 providers (ASI rate moved 50+ points in a month)
+----
+COVERAGE: wlmds
+  rows:                17,567
+  months:              29 (2024-04-28 to 2026-08-30)
+  provider codes:      814
+  matched to ours:     504 (of our 566)
+  unmatched:           310  e.g. A0Q8L, A2K5I, A2X4I, A3Q5W, A3X2B, A3Y4I, ACG, ACG07
+  national weeks:      259 (2021-09-19 to 2026-08-30)
+  latest week:         7,122,072 waiting from 632 providers (63.9% within 18 weeks)
+  treatment functions: 166 in the latest week
+  check before using:  23 providers (4 listed by NHS England with data issues)
+----
+COVERAGE: cancer
+  rows:                12,376
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      191
+  matched to ours:     154 (of our 566)
+  unmatched:           37  e.g. AWH, DJQ, GEC, H8G6T, NAM, NDA, NO0, NQ7
+  by cancer type:      138,439 rows (31 types)
+  England, 2026-08: FDS 78.6%, 31D 92.1%, 62D 71.9%
+  trusts meeting it:   31D 61 of 131, 62D 10 of 125, FDS 103 of 135
+  check before using:  28 trusts
+  SENSITIVE:           gentle copy required
+----
+COVERAGE: gp_practices
+  rows:                8,187
+  periods:             1 (2026-10-22 to 2026-10-22)
+  keys:                8,187 (not provider codes, so not matched to ours)
+  active practices:    6,556
+  active and located:  6,555 (1 postcodes not found by postcodes.io)
+  with a sub-ICB:      8,187
+----
+COVERAGE: gpad
+  rows:                178,757
+  periods:             29 (2024-04 to 2026-08)
+  keys:                6,264 (not provider codes, so not matched to ours)
+  practices, latest:   6,106 (5 not in the practice list)
+  ICBs:                37
+  England, 2026-08: 28,848,524 appointments; 45.1% same day, 5.6% over 28 days, 4.4% DNA
+  check before using:  396 practices (same-day share moved 15+ points in a month)
+----
+COVERAGE: gpps
+  not ingested - the GP Patient Survey site (Ipsos, '© GP Patient Survey') doesn't state an open licence for the practice data. OGL is likely via NHS England but isn't stated - confirm with GPPatientSurvey@ipsos.com before ingesting.
+----
+COVERAGE: talking_therapies
+  rows:                3,924
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      154
+  matched to ours:     23 (of our 566)
+  unmatched:           131  e.g. 8EJ83, 8HX13, 8J724, 8J990, 8JJ53, 8JX60, 8KJ43, A0X6J
+  England, 2026-08: 137,214 referrals, 83.4% within 6 weeks, 50.3% recovered
+  second appointment:  103 providers with a 90-day figure (2026-08)
+  not on our list:     most talking therapies services are independent or community providers outside the RTT list
+  check before using:  12 providers
+----
+COVERAGE: mhsds
+  rows:                9,373
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      462
+  matched to ours:     54 (of our 566)
+  unmatched:           408  e.g. 108, 206, 209, 325, 417, 503, 509, 511
+  latest, providers:   234 with a CYP median, 107 with an adult median
+  no spells file:      2025-01
+  check before using:  31 providers
+----
+COVERAGE: community
+  rows:                61,230
+  months:              29 (2024-04 to 2026-08)
+  provider codes:      159
+  matched to ours:     118 (of our 566)
+  unmatched:           41  e.g. AXG, NAX, NAY, NDA, NDL, NEC, NMK, NNF
+  all rows:            102,636 (providers, ICBs, regions, England)
+  services:            47
+  England, 2026-08: 1,251,534 waiting; most over a year: (CYP) Community paediatric service (79,031)
+  months missing:      none
+  non-submitters:      6 at most in a month
+  check before using:  175 provider-service lines
+----
+COVERAGE: ae
+  rows:                5,905
+  months:              30 (2024-04 to 2026-09)
+  provider codes:      207
+  matched to ours:     143 (of our 566)
+  unmatched:           64  e.g. 8J094, A5D4Q, ACH01, AD913, AJN, AQM01, AQN04, ARN03
+  with type 1 A&E:     120 trusts in 2026-09
+  England, 2026-09: 74.4% within 4 hours (type 1 60.6%), 50,582 waited 12+ hours from decision to admit
+  months missing:      none
+  unmatched codes:     mostly walk-in centres and urgent treatment centres (5-6 character codes)
+  check before using:  7 trusts
+----
+COVERAGE: ambulance
+  rows:                330
+  months:              30 (2024-04 to 2026-09)
+  provider codes:      11
+  matched to ours:     1 (of our 566)
+  unmatched:           10  e.g. RRU, RX6, RX7, RX8, RX9, RYA, RYC, RYD
+  regions:             7
+  England, 2026-09: category 2 mean 31.3 min, category 1 mean 8.0 min
+  unmatched codes:     ambulance trusts aren't on the RTT list
+----
+COVERAGE: uec_sitreps
+  rows:                39,296
+  months:              252 (2024-11-25 to 2026-03-29)
+  provider codes:      156
+  matched to ours:     143 (of our 566)
+  unmatched:           13  e.g. RAT, RMY, RNU, RRP, RV5, RWK, RWR, RX2
+  winters:             2024-25, 2025-26
+  winter 2025-26:      bed occupancy 93.4%, 27.0% of handovers over 30 minutes
+----
+COVERAGE: workforce
+  rows:                7,550
+  months:              27 (2024-04 to 2026-06)
+  provider codes:      293
+  matched to ours:     162 (of our 566)
+  unmatched:           131  e.g. 0AR, 0CX, 0DE, 0DF, 8JX76, A6V4U, AQG, AWK
+  vacancy rows:        1,419 (8 regions incl. England, quarters to 2026-06)
+  England vacancy rate, 2026-06: 6.7%
+  sickness, 2026-06: median trust 5.1%
+----
+COVERAGE: fingertips
+  rows:                195
+  periods:             3 (2022 - 24 to 2025)
+  keys:                195 (not provider codes, so not matched to ours)
+  ICBs:                42 (42 with an ODS code)
+  local authorities:   153
+  indicators:          deprivation_score_imd2025 (2025), pct_aged_65_plus (2024), healthy_life_expectancy_birth (2022 - 24), healthy_life_expectancy_65 (2022 - 24)
+----
+COVERAGE: population
+  rows:                439
+  periods:             2 (Mid-2024 ICB 2024 to Mid-2025)
+  keys:                431 (not provider codes, so not matched to ours)
+  local authority rows: 333 (8 kinds of area), England 58,834,812
+  sub-ICBs:            106 -> 42 ICBs (Mid-2024 ICB 2024)
+----
+COVERAGE: dental
+  rows:                189,740
+  periods:             28 (2024-04 to 2026-07)
+  keys:                7,686 (not provider codes, so not matched to ours)
+  contracts, latest:   6,516 across 36 commissioners
+  England, 2026-07: 17,747,148 adults seen in 24 months, 6,938,163 children seen in 12 months
+----
+COVERAGE: phin
+  not ingested - PHIN's terms allow only private, research, study or non-commercial use and forbid making content available on a network without PHIN's prior written consent. Not an open licence; ask PHIN for written consent before ingesting.
+----
+COVERAGE: uk_nations
+  rows:                86
+  periods:             29 (2024-04 to 2026-08)
+  keys:                3 (not provider codes, so not matched to ours)
+  Northern Ireland, inpatient and day case (stage of treatment, quarterly), 2026-06: 81,223 waiting
+  Northern Ireland, outpatient (stage of treatment, quarterly), 2026-06: 493,797 waiting
+  Wales, patient pathways (referral to treatment), 2026-07: 709,687 waiting, 65.7% within 26 weeks
+  Scotland, new outpatient (stage of treatment), 2026-08: 506,512 waiting, 47.7% within 12 weeks
+  Scotland, inpatient/day case (stage of treatment), 2026-08: 157,485 waiting, 36.5% within 12 weeks
+  comparable_with_england: False on every row
+----
+COVERAGE: clinicaltrials
+  rows:                29,059
+  periods:             43 (1983 to 2027)
+  keys:                29,059 (not provider codes, so not matched to ours)
+  UK sites:            100,776 (24,229 facility names)
+  recruiting now:      2,822 studies
+  with an ISRCTN:      267; with an IRAS number: 561
+  sponsor classes:     INDUSTRY 14,820, OTHER 12,877, OTHER_GOV 1,000, NETWORK 306, NIH 47, INDIV 6, UNKNOWN 2, FED 1
+  fetch:               updates only; periods are study start years
+----
+COVERAGE: isrctn
+  rows:                15,082
+  periods:             50 (1966 to 2028)
+  keys:                15,082 (not provider codes, so not matched to ours)
+  UK centres:          44,114 (11,307 names, 100% with a postcode)
+  recruiting now:      1,178
+  with IRAS / NCT:     4,410 / 1,387
+  nations:             England 13,160, Scotland 1,651, Wales 1,145, Northern Ireland 566
+  attribution:         Contains information from the ISRCTN registry, licensed CC BY
+----
+COVERAGE: trials
+  rows:                42,795
+  months:              51 (1966 to 2028)
+  provider codes:      169
+  matched to ours:     169 (of our 566)
+  unmatched:           0
+  one registry only:   41,511 (ClinicalTrials.gov 27,760, ISRCTN 13,751)
+  in both registries:  1,284  (links: ISRCTN number 263, NCT number (in the ISRCTN record) 1,265, IRAS number 42)
+  recruiting now:      4,083
+  study-sites:         137,999
+  matched, by method:  override 0 (0.0%), exact 36,798 (26.7%), postcode 24,576 (17.8%), trust name 8,600 (6.2%), fuzzy 7,462 (5.4%)
+  not matched:         unmatched 33,544 (24.3%), unmatched: placeholder name 12,347 (8.9%), outside England 14,672 (10.6%), override: unmatched 0 (0.0%)
+  England match rate:  63% of study-sites not outside England
+  matched to ours:     71,509 study-sites at 169 of our providers
+  with a local authority: 80% of study-sites
+  conditions mapped:   71% of studies have a treatment function
+  30 most common unmatched facility names (for kitchen/trial_site_overrides.json):
+      284  UNIVERSITY COLLEGE LONDON  (London, W17EJ)
+      272  KINGS COLLEGE LONDON  (London, SE19RT)
+      221  UNIVERSITY OF OXFORD  (Oxford, OX37LF)
+      221  IMPERIAL COLLEGE LONDON  (London, W21PG)
+      137  MRC CLINICAL TRIALS UNIT  (London, NW12DA)
+      135  UNIVERSITY OF MANCHESTER  (Manchester, M139PT)
+      128  ST BARTHOLOMEWS HOSPITAL  (London, EC1A7DE)
+      128  UNIVERSITY OF NOTTINGHAM  (Nottingham, NG51PB)
+      128  UKCCCR REGISTER CO ORDINATOR  (London, NW12DA)
+      117  ROYAL LONDON HOSPITAL  (London, E11FR)
+      111  ROYAL BROMPTON HOSPITAL  (London, SW36JY)
+      108  UNIVERSITY OF BRISTOL  (Bristol, BS81TU)
+      104  UNIVERSITY OF EXETER  (Exeter, EX44QD)
+      100  QUOTIENT SCIENCES LIMITED  (Nottingham, NG116JS)
+       98  UNIVERSITY OF SHEFFIELD  (Sheffield, S14DA)
+       98  QUEEN ELIZABETH HOSPITAL  (Birmingham, B152WB)
+       96  QUOTIENT SCIENCES  (Nottingham, NG116JS)
+       93  UNIVERSITY OF LIVERPOOL  (Liverpool, L697ZA)
+       92  NATIONAL HOSPITAL FOR NEUROLOGY AND NEUROSURGERY  (London, WC1N3BG)
+       91  BRIGHTON AND SUSSEX UNIVERSITY HOSPITALS NHS TRUST  (Brighton, BN25BE)
+       91  BEATSON WEST OF SCOTLAND CANCER CENTRE  (Glasgow NO COUNTRY SPECIFIED, assuming England, no postcode)
+       88  QUEEN MARY UNIVERSITY OF LONDON  (London, EC1M6BQ)
+       87  NORTHUMBRIA UNIVERSITY  (Newcastle upon Tyne, NE18ST)
+       86  LONDON SCHOOL OF HYGIENE AND TROPICAL MEDICINE  (London, WC1E7HT)
+       85  NEWCASTLE UNIVERSITY  (Newcastle Upon Tyne, NE17RU)
+       84  ROYAL MARSDEN SURREY  (Sutton, SM25PT)
+       84  CHURCHILL HOSPITAL  (Oxford, OX39LJ)
+       83  NHS GREATER GLASGOW AND CLYDE  (Glasgow, no postcode)
+       82  BARTS AND THE LONDON NHS TRUST  (London, E11BB)
+       82  PAPWORTH HOSPITAL  (Cambridge, CB233RE)
+----
+COVERAGE: nihr_activity
+  not ingested - no open licence found (NIHR's site shows only '© NIHR'; on 21 Oct 2026 nihr.ac.uk couldn't be reached at all); no trust-level file found: the research activity league table hasn't been published since 2018/19; RDN portfolio data is by region and specialty only, and trust-level figures are only in NIHR's interactive Open Data Platform. Ask NIHR (RDN) for trust-level activity under the OGL.
+----
+COVERAGE: hra_summaries
+  not ingested - HRA copyright: free reproduction only 'for research or private study', not systematically reproduced for commercial gain - not the OGL or equivalent; no API or bulk download (~68,600 pages). Ask the HRA about OGL re-use before ingesting.
+----
+COVERAGE: bepartofresearch
+  links only - study-page URLs use an internal ID; search link checked

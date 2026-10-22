@@ -1,0 +1,125 @@
+# Monthly data refresh for Wait Watcher.
+#
+# NHS England publishes the waiting-time statistics on the second Thursday of each month. This runs
+# the whole kitchen (kitchen/run_all.py: every source, then the reconciliation gate, then the site,
+# findings and Lab data) and commits the refreshed data back to the repository.
+#
+# If the reconciliation gate finds any England figure that doesn't match NHS England's published one,
+# run_all.py stops, the job fails, and nothing is committed (GitHub emails you about failed runs).
+#
+# GitHub's schedule can't say "second Thursday" and runs on UTC, so it fires every Thursday at 09:30
+# and 10:30 UTC, and the first step only carries on when it's day 8-14 of the month and 10:30 in
+# London (right in both GMT and British Summer Time). "Run workflow" on the Actions tab runs it
+# straight away, skipping that check.
+#
+# Big files aren't committed: data/raw (downloads) and data/processed (rebuilt each run) live in the
+# GitHub Actions cache between runs, so only new months are downloaded.
+
+name: Monthly data refresh
+
+on:
+  schedule:
+    - cron: "30 9 * * 4"
+    - cron: "30 10 * * 4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kitchen          # shared with the weekly action, so they never run at once
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # The first run downloads about 4 GB; later runs only fetch new months.
+    timeout-minutes: 240
+    steps:
+      - name: Is it the second Thursday, 10:30 in London?
+        id: when
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"; echo "Manual run - going ahead."; exit 0
+          fi
+          day=$(TZ=Europe/London date +%-d)
+          hour=$(TZ=Europe/London date +%-H)
+          if [ "$day" -ge 8 ] && [ "$day" -le 14 ] && [ "$hour" -eq 10 ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"; echo "Second Thursday, 10:30 London time - going ahead."
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"; echo "Not the second Thursday at 10:30 London time (day $day, hour $hour) - nothing to do."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.when.outputs.go == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.when.outputs.go == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Restore downloads and processed data
+        if: steps.when.outputs.go == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw
+            data/processed
+          key: kitchen-${{ github.run_id }}
+          restore-keys: kitchen-
+
+      - name: Install
+        if: steps.when.outputs.go == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Run the kitchen (sources, reconciliation gate, site, findings, Lab)
+        if: steps.when.outputs.go == 'true'
+        run: python kitchen/run_all.py
+
+      # Saved even if the run failed, so a gate failure doesn't throw away hours of downloads.
+      - name: Save downloads and processed data
+        if: always() && steps.when.outputs.go == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/raw
+            data/processed
+          key: kitchen-${{ github.run_id }}
+
+      - name: Commit refreshed data
+        if: steps.when.outputs.go == 'true'
+        id: commit
+        run: |
+          git config user.name "wait-watcher-bot"
+          git config user.email "wait-watcher-bot@users.noreply.github.com"
+          # .gitignore keeps the big rebuildable files out; only what the sites and reports read is added.
+          git add data/processed site/data lab/data kitchen/registry.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "No data changed."
+          else
+            git commit -m "Monthly data refresh $(date +%Y-%m-%d)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ------------------------------------------------------------------------------------------
+      # DEPLOY PAUSED - site IDs to be added.
+      # Deploys are switched off (if: false) until there's a decision on a public site. To switch on:
+      # put each Netlify site ID below and change "if: false" to the condition in the comment.
+      # Uses the NETLIFY_AUTH_TOKEN repository secret (already set). Routine data refreshes deploy
+      # automatically once this is on; anything with new findings or wording waits for Paul's OK.
+      # ------------------------------------------------------------------------------------------
+      - name: Deploy the Wait Watcher site (paused)
+        if: false   # switch on: steps.when.outputs.go == 'true' && steps.commit.outputs.changed == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ""   # site ID to be added
+        run: npx --yes netlify-cli@17 deploy --prod --dir site --site "$NETLIFY_SITE_ID"
+
+      - name: Deploy Wait Watcher Lab (paused)
+        if: false   # switch on: steps.when.outputs.go == 'true' && steps.commit.outputs.changed == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ""   # site ID to be added
+        run: npx --yes netlify-cli@17 deploy --prod --dir lab --site "$NETLIFY_SITE_ID"

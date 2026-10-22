@@ -1,0 +1,3320 @@
+<!doctype html>
+<!--
+  NORTH STAR - design every screen against this:
+  "When Maureen opens Wait Watcher she should feel reassured, and armed with
+  reliable information, communicated to her in a kind and simple manner."
+-->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wait Watcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;1,400&display=swap">
+<meta name="description" content="Wait Watcher (beta): a free tool built on public NHS waiting-time data. See typical waits, faster hospitals nearby and trends.">
+<style>
+/* ==================================================================
+   Wait Watcher - a calm, independent second opinion on your wait.
+   Quiet, ruled, newspaper-plain. Not NHS (no NHS blue, no lozenges) and
+   not a deals site (no badges, bursts, gradients or shadows).
+
+   Each colour has one job only:
+     --ink      text and structure
+     --muted    supporting text
+     --paper    page background
+     --rule     hairlines and borders
+     --quicker  faster options and time saved only
+     --warn     the 18-week rule and the restart trap only (lines and
+                borders - it is too light for text, so labels stay in ink)
+     --you      the user's own wait only (a highlighter)
+   No red, no purple. Colour never carries meaning alone: there is always
+   a word or a shape too.
+
+   Contrast (WCAG AA, checked): ink 13.6:1, muted 6.8:1, quicker 4.9:1 on
+   paper. Form-field borders use --muted (6.8:1), not --rule.
+   ================================================================== */
+:root {
+  --ink: #1F2A33;
+  --muted: #4A5863;
+  --paper: #F6F7F5;
+  --rule: #D5D9D6;
+  --quicker: #0E7A6A;
+  --warn: #B5680A;
+  --you: #FFD84D;
+  --card: #FFFFFF;          /* only the GP box sits on white */
+  --on-ink: #F6F7F5;        /* text on ink buttons */
+  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F6F7F5; --muted: #C3CCD3; --paper: #1A232B; --rule: #3A4752;
+    --quicker: #4FC2AE; --warn: #F2A93B; --you: #FFD84D; --card: #222D36; --on-ink: #1A232B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #F6F7F5; --muted: #C3CCD3; --paper: #1A232B; --rule: #3A4752;
+  --quicker: #4FC2AE; --warn: #F2A93B; --you: #FFD84D; --card: #222D36; --on-ink: #1A232B;
+  color-scheme: dark;
+}
+
+/* ---- Base ---------------------------------------------------------- */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;   /* week counts line up */
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--font); font-weight: 500; line-height: 1.25; color: var(--ink); }
+h1 { font-size: 30px; margin: 0 0 16px; }
+h2 { font-size: 26px; margin: 0 0 12px; }
+h3 { font-size: 17px; margin: 0 0 8px; color: var(--muted); }
+p, li, label, .say, .footnote, figcaption { max-width: 65ch; }
+p { margin: 0 0 14px; }
+strong, b, th { font-weight: 500; }
+a, .link-button { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- Header -------------------------------------------------------- */
+.site-header { padding: 18px 0 12px; margin-bottom: 8px; border-bottom: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.brand { margin: 0; font-weight: 500; font-size: 24px; line-height: 1.2; white-space: nowrap; }
+.brand .dot, .wordmark .dot { color: var(--ink); }
+.brand .beta { font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 8px; vertical-align: 3px; }
+.brand-line { margin: 4px 0 0; color: var(--muted); font-size: 16px; }
+.theme-toggle {
+  flex: none; background: none; border: 1px solid var(--muted); color: var(--ink);
+  border-radius: 8px; padding: 6px 12px; min-height: 44px; font: inherit; font-size: 15px; cursor: pointer;
+}
+.step-nav { display: flex; justify-content: space-between; align-items: center; padding: 4px 0 12px; font-size: 17px; }
+.link-button { background: none; border: none; padding: 10px 0; font: inherit; cursor: pointer; min-height: 44px; text-align: left; }
+
+/* ---- Screens and text ------------------------------------------------ */
+.screen { padding: 8px 0 32px; }
+.screen h1:focus, .screen h2:focus { outline: none; }
+.playful { font-style: italic; color: var(--muted); }
+.hint { color: var(--muted); font-size: 16px; margin: 6px 0 0; }
+.say { font-weight: 500; font-size: 23px; line-height: 1.3; color: var(--ink); margin: 0 0 8px; }
+.footnote { font-size: 16px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; }
+.footnote-inline { font-size: 16px; color: var(--muted); }
+.small-note { font-size: 15px; color: var(--muted); }
+@media (min-width: 720px) { .say { font-size: 26px; } }
+
+/* Source and month, directly beneath every number */
+.source { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
+
+/* One plain sentence about what we can't know */
+
+/* "Show me more": the exact numbers, closed by default */
+details.more { margin-top: 10px; border-top: 1px solid var(--rule); padding-top: 4px; }
+details.more summary {
+  cursor: pointer; color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
+  font-weight: 500; min-height: 44px; display: flex; align-items: center; gap: 8px; list-style: none;
+}
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "+"; width: 14px; text-decoration: none; }
+details.more[open] summary::before { content: "-"; }
+.more-body p { font-size: 17px; }
+
+/* ---- Forms and buttons ------------------------------------------------ */
+label { display: block; font-weight: 500; margin-bottom: 6px; }
+select, input[type="text"], input[type="email"], input[type="number"], textarea {
+  width: 100%; font: inherit; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--muted); border-radius: 8px; padding: 8px 12px; min-height: 48px;
+}
+select:focus, input:focus, textarea:focus { outline: 3px solid var(--ink); outline-offset: 2px; }
+textarea { min-height: 120px; resize: vertical; }
+input[type="number"] { max-width: 180px; }
+.field { margin-bottom: 22px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > input { flex: 1 1 200px; min-width: 0; }
+
+.button {
+  font: inherit; font-weight: 500; border-radius: 8px; padding: 10px 20px; min-height: 48px; cursor: pointer;
+  background: var(--ink); color: var(--on-ink); border: 2px solid var(--ink);
+}
+.button.secondary { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.button:disabled { opacity: 0.45; cursor: default; }
+@media (max-width: 599px) {
+  .button { width: 100%; }
+  .row > .button { flex: 1 1 100%; }
+}
+
+/* Big choices */
+.choice-list { display: grid; gap: 10px; margin: 0 0 22px; }
+.choice {
+  text-align: left; font: inherit; font-weight: 500; padding: 12px 16px; min-height: 56px; border-radius: 8px;
+  border: 1px solid var(--muted); background: transparent; color: var(--ink); cursor: pointer;
+}
+.choice:hover { border-color: var(--ink); }
+.choice[aria-pressed="true"] { border: 2px solid var(--ink); padding: 11px 15px; }
+.choice[aria-pressed="true"]::after { content: " - chosen"; font-weight: 400; color: var(--muted); }
+
+/* All / NHS / Private */
+.segmented { display: inline-flex; border: 1px solid var(--muted); border-radius: 8px; overflow: hidden; }
+.segmented button { font: inherit; font-size: 16px; border: none; background: transparent; color: var(--ink); padding: 8px 14px; min-height: 46px; cursor: pointer; }
+.segmented button + button { border-left: 1px solid var(--muted); }
+.segmented button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); font-weight: 500; }
+.controls-row { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; margin-bottom: 18px; }
+.controls-row .control label { font-size: 16px; }
+.controls-row select { width: auto; min-width: 150px; }
+.inline-label { display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.thanks { border-left: 3px solid var(--ink); padding: 8px 14px; }
+
+/* Hospital search suggestions */
+.combo { position: relative; }
+.suggestions {
+  position: absolute; left: 0; right: 0; top: 100%; z-index: 5; margin: 4px 0 0; padding: 4px;
+  list-style: none; background: var(--paper); border: 1px solid var(--muted); border-radius: 8px;
+  max-height: 340px; overflow-y: auto;
+}
+.suggestions li { padding: 10px 12px; border-radius: 6px; cursor: pointer; min-height: 48px; max-width: none; }
+.suggestions li[aria-selected="true"], .suggestions li:hover { background: var(--rule); }
+.option-name { display: block; font-weight: 500; }
+.option-town { font-weight: 400; }
+.option-part { display: block; font-size: 15px; color: var(--muted); }
+
+/* Plain words instead of badges */
+.badge { display: inline-block; white-space: nowrap; font-size: 15px; font-weight: 400; color: var(--muted); margin-left: 6px; }
+.badge::before { content: "· "; }
+.caution { font-size: 15px; color: var(--muted); font-style: italic; }
+.pill, .pill-year, .pill-group { font-size: inherit; color: inherit; }
+.pill-year::before { content: " ("; }
+.pill-year::after { content: ")"; }
+
+/* ---- Sections ---------------------------------------------------------- */
+/* Results sit in quiet ruled sections, not boxes. Only the GP box is a card. */
+.card { border-top: 1px solid var(--rule); padding: 18px 0 6px; margin: 0 0 8px; }
+.card.highlight { border-top: 2px solid var(--ink); }
+.after-copy { margin-top: 14px; }
+
+/* The restart trap: amber left border, two sentences */
+.restart { border-left: 4px solid var(--warn); padding: 4px 0 4px 14px; margin: 18px 0 22px; }
+.restart p { margin: 0 0 6px; }
+.restart p:last-child { margin-bottom: 0; }
+
+/* What to say to your GP: the one white card */
+.gp-card { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 20px; margin: 18px 0 24px; }
+.gp-card h3 { color: var(--ink); font-size: 20px; }
+.copy-box { margin: 0 0 14px; }
+.copy-box p { font-size: 19px; line-height: 1.5; border-left: 3px solid var(--rule); padding-left: 14px; }
+.copy-status { display: block; margin-top: 8px; font-size: 16px; color: var(--muted); }
+.tip { border-left: 3px solid var(--rule); padding: 4px 0 4px 14px; margin-top: 10px; }
+.tip p:last-child { margin-bottom: 0; }
+
+/* ---- Pictures (quiet) -------------------------------------------------- */
+.people { margin: 10px 0 12px; }
+.people svg { display: block; width: 100%; max-width: 300px; height: auto; }
+.people .on { fill: var(--ink); }
+.people .off { fill: var(--rule); }
+.people figcaption { font-size: 17px; margin-top: 6px; }
+
+.bars { position: relative; margin: 6px 0 12px; padding-top: 26px; }
+.bar-row { margin-bottom: 10px; }
+.bar-row p { font-size: 17px; margin: 0 0 4px; }
+.track { height: 10px; background: transparent; border: 1px solid var(--muted); border-radius: 2px; overflow: hidden; }
+.fill { height: 100%; }
+.fill.then { background: var(--rule); }
+.fill.now { background: var(--ink); }
+.aim { position: absolute; top: 0; bottom: 10px; border-left: 2px dashed var(--warn); }
+.aim span { position: absolute; top: 0; right: 6px; white-space: nowrap; font-size: 15px; color: var(--ink); }
+
+/* ---- Welcome -------------------------------------------------------- */
+body[data-screen="welcome"] .site-header > div { visibility: hidden; }
+body[data-screen="welcome"] .site-header { border-bottom: 0; }
+.hero-wordmark { font-size: 44px; line-height: 1.1; margin: 6px 0 14px; }
+.promise { font-size: 22px; line-height: 1.4; margin-bottom: 8px; }
+.did-you-know { border-left: 4px solid var(--warn); padding: 6px 0 6px 16px; margin: 22px 0 28px; }
+.did-you-know h2 { font-size: 18px; margin: 0 0 4px; }
+.did-you-know p { margin: 0; font-size: 19px; }
+.how-title { font-size: 20px; margin: 0 0 12px; }
+.how-steps { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 12px; }
+.how-steps li { display: flex; gap: 14px; align-items: center; max-width: none; }
+.how-steps svg {
+  width: 40px; height: 40px; flex: none; padding: 7px; border: 1px solid var(--muted); border-radius: 50%;
+  fill: none; stroke: var(--ink); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ---- Questions ------------------------------------------------------ */
+.progress { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+#weeks-form .hint { margin-bottom: 18px; }
+fieldset.plain { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+fieldset.plain legend { font-weight: 500; padding: 0; margin-bottom: 10px; max-width: 65ch; }
+.choice-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+.choice-pair .choice { text-align: center; }
+.link-button.inline { display: inline-block; padding: 12px 0; margin: -12px 0; min-height: 0; vertical-align: baseline; }   /* a 44px tap area that doesn't push the line apart */
+#distance-choice { margin-top: 4px; }
+.playback { border-top: 2px solid var(--ink); padding-top: 14px; margin: 4px 0 22px; }
+.playback .say { font-size: 21px; }
+
+/* ---- Results parts --------------------------------------------------- */
+.independent-line { font-weight: 500; margin-bottom: 8px; }
+.part { border-top: 1px solid var(--rule); padding: 20px 0 8px; margin: 0 0 8px; }
+.part.hero { border-top: 2px solid var(--ink); }
+.part-title { font-size: 22px; color: var(--ink); margin: 0 0 12px; }
+h4 { font-size: 17px; font-weight: 500; line-height: 1.3; color: var(--muted); margin: 0 0 6px; }
+
+/* ---- The timeline: the hero ----------------------------------------- */
+.timeline { margin: 6px 0 10px; }
+.timeline svg { display: block; width: 100%; height: auto; overflow: visible; }
+.timeline text { font-family: var(--font); font-size: 14px; fill: var(--ink); }
+.timeline .strong { font-weight: 500; }
+.timeline .axis { stroke: var(--ink); stroke-width: 2; }
+.timeline .tick { stroke: var(--ink); stroke-width: 1; }
+.timeline .tick-label { fill: var(--muted); font-size: 13px; }
+.timeline .band { fill: var(--rule); stroke: var(--muted); stroke-width: 1; }
+.timeline .leader { stroke: var(--muted); stroke-width: 1; }
+.timeline .aim-line { stroke: var(--warn); stroke-width: 2.5; stroke-dasharray: 5 4; }
+.timeline .start-dot { fill: var(--ink); }
+.timeline .today-line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.timeline .today-box { fill: var(--you); stroke: #1F2A33; stroke-width: 1.5; }
+.timeline .today-label { fill: #1F2A33; font-weight: 500; }   /* always dark on the yellow */
+.timeline .label-back { fill: var(--paper); }
+.letter .timeline .label-back { fill: var(--card); }
+/* The one motion: the Today marker slides into place. */
+.timeline .today-marker { animation: you-slide 700ms ease-out both; }
+.timeline.still .today-marker { animation: none; }
+@keyframes you-slide { from { transform: translateX(var(--from, 0)); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .timeline .today-marker { animation: none; } }
+
+/* ---- How it compares: a schematic, not a map ------------------------- */
+.distance-picture { margin: 6px 0 12px; }
+.distance-picture svg { display: block; width: 100%; height: auto; }
+.distance-picture text { font-family: var(--font); font-size: 16px; fill: var(--ink); }
+.distance-picture .node-name { font-weight: 500; }
+.distance-picture .spine { stroke: var(--rule); stroke-width: 2; }
+.distance-picture .from-dot { fill: var(--ink); }
+.distance-picture .own-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.distance-picture .option-dot { fill: var(--quicker); }
+
+/* ---- Feedback: five big buttons, not a slider ------------------------ */
+.useful-scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-bottom: 18px; }
+.useful-option {
+  font: inherit; font-size: 15px; line-height: 1.2; min-height: 64px; padding: 6px 4px;
+  border: 1px solid var(--muted); border-radius: 8px; background: transparent; color: var(--ink); cursor: pointer;
+}
+.useful-option[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border: 2px solid var(--ink); font-weight: 500; }
+
+/* ---- Department icons and chips --------------------------------------- */
+.dept-icon { width: 26px; height: 26px; flex: none; }
+#results-title { display: flex; gap: 12px; align-items: center; }
+#results-title .dept-icon { width: 32px; height: 32px; color: var(--ink); }
+.dept-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.dept-chip {
+  display: inline-flex; align-items: center; gap: 8px; text-align: left; font: inherit; font-size: 17px; line-height: 1.25;
+  padding: 8px 14px 8px 10px; min-height: 48px; border: 1px solid var(--muted); border-radius: 8px;
+  background: transparent; color: var(--ink); cursor: pointer;
+}
+.dept-chip .dept-icon { width: 22px; height: 22px; color: var(--muted); }
+.dept-chip:hover { border-color: var(--ink); }
+.dept-chip[aria-pressed="true"] { border: 2px solid var(--ink); padding: 7px 13px 7px 9px; font-weight: 500; }
+.dept-chip[aria-pressed="true"] .dept-icon { color: var(--ink); }
+.dept-inline { display: inline-flex; align-items: center; gap: 6px; }
+.dept-inline .dept-icon, .footnote .dept-icon, .letter-sub .dept-icon { width: 22px; height: 22px; color: var(--ink); vertical-align: -5px; }
+.match-card { border-top: 1px solid var(--rule); padding-top: 14px; margin-bottom: 22px; }
+.match-card p { margin-bottom: 10px; }
+.match-card .row { margin-top: 14px; }
+
+/* ---- Other options nearby ----------------------------------------------- */
+.nearby { list-style: none; margin: 0 0 14px; padding: 0; }
+.nearby li.place { padding: 14px 0; border-top: 1px solid var(--rule); max-width: none; }
+.nearby li.place:first-child { border-top: none; padding-top: 4px; }
+.place-name { font-weight: 500; font-size: 19px; margin: 0 0 4px; }
+.place-meta { font-size: 16px; color: var(--muted); margin: 0; }
+.nearby .saved { font-weight: 500; font-size: 20px; color: var(--quicker); margin: 0 0 2px; }
+.place-type { font-size: 16px; color: var(--muted); margin: 0 0 8px; }
+.place-facts { margin: 0 0 6px; }
+.place-facts dt { font-size: 15px; color: var(--muted); margin-top: 8px; }
+.place-facts dd { margin: 0; }
+.private-note { border-left: 3px solid var(--rule); padding-left: 12px; }
+/* At a glance: three short lines with small line icons */
+.glance-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 14px; }
+.glance-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 19px; line-height: 1.45; max-width: none; }
+.glance-icon { width: 28px; height: 28px; flex: none; margin-top: 1px; fill: none; stroke: var(--ink);
+  stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.glance-list .link-button.inline { font-weight: 500; }
+.hospital-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.hospital-list li.place { padding: 4px 0 0; max-width: none; }
+.small-say { font-weight: 500; font-size: 18px; margin: 0 0 6px; }
+.letter-glance { margin: 0 0 6px; padding-left: 1.2em; }
+.letter-hospital { margin-bottom: 8px; }
+.letter-hospital p { margin: 0; }
+.filter-label { font-weight: 500; margin: 0 0 6px; }
+.cqc-link { display: inline-flex; align-items: center; min-height: 44px; }
+.place-wait { font-size: 18px; margin: 0 0 4px; }
+.ratings { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0 0 12px; }
+.ratings dt { color: var(--muted); }
+.ratings dd { margin: 0; }
+
+/* ---- Line charts (Show me more, Explore, summary) ------------------------ */
+.chart { position: relative; margin: 12px 0 4px; }
+.chart svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
+.chart text { fill: var(--muted); font-size: 12px; font-family: var(--font); }
+.chart .grid { stroke: var(--rule); stroke-width: 0.5; }
+.chart .target { stroke: var(--warn); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.chart .target-label { fill: var(--ink); }
+.chart .series { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.chart .series.main { stroke: var(--ink); stroke-width: 2.5; }
+.chart .series.muted { stroke: var(--muted); stroke-width: 1.25; stroke-opacity: 0.4; }
+.chart .end-dot { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.chart .end-label { fill: var(--ink); font-weight: 500; }
+.chart .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+.chart .crosshair { stroke: var(--muted); stroke-width: 0.5; }
+.chart-tip {
+  position: absolute; top: 0; pointer-events: none; background: var(--paper); color: var(--ink);
+  border: 1px solid var(--muted); border-radius: 6px; padding: 8px 10px; font-size: 13px; max-width: 240px; z-index: 3;
+}
+.chart-tip strong { display: block; margin-bottom: 2px; }
+.chart-caption { font-size: 14px; color: var(--muted); margin: 0; }
+.chart-source { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+
+/* ---- Explore: denser ----------------------------------------------------- */
+#screen-explore { font-size: 16px; }
+#screen-explore h3 { font-size: 17px; color: var(--ink); }
+#screen-explore label { font-size: 16px; }
+#screen-explore .footnote, #screen-explore .small-note { font-size: 14px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 13px; color: var(--muted); }
+td.num, th.num { text-align: right; }
+th button { background: none; border: none; padding: 0; font: inherit; font-weight: 500; color: var(--muted); cursor: pointer; text-align: inherit; }
+td .link-button { min-height: 0; padding: 0; }
+
+/* ---- Footer and dialogs ------------------------------------------------- */
+footer { color: var(--muted); font-size: 16px; padding: 16px 0 40px; border-top: 1px solid var(--rule); margin-top: 8px; }
+footer p { margin: 10px 0 0; }
+dialog {
+  max-width: 640px; width: calc(100% - 24px); border: 1px solid var(--muted); border-radius: 8px;
+  background: var(--paper); color: var(--ink); padding: 20px;
+}
+dialog::backdrop { background: rgba(31, 42, 51, 0.5); }
+dialog h3 { margin-top: 22px; color: var(--ink); }
+dialog ul { padding-left: 1.2em; margin: 0 0 12px; }
+
+/* ---- The printable summary --------------------------------------------- */
+.letter { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 28px; font-size: 15px; line-height: 1.5; }
+.letter p, .letter li { max-width: none; }
+.letter-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+.wordmark { font-weight: 500; font-size: 22px; margin: 0; }
+.letter-date { font-size: 13px; color: var(--muted); margin: 0; }
+.letter h1 { font-size: 26px; margin-bottom: 6px; }
+.letter-sub { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+.letter h2 { font-size: 17px; margin: 18px 0 8px; padding-top: 14px; border-top: 1px solid var(--rule); color: var(--ink); }
+.letter .say { font-size: 18px; margin-bottom: 2px; }
+.letter .footnote { font-size: 13px; margin-bottom: 10px; }
+.letter .small-note { font-size: 12px; }
+.letter table { font-size: 13px; }
+.letter .badge { font-size: 12px; }
+.letter .copy-box p { margin: 0; font-size: 15px; }
+.letter-foot { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); }
+.letter-foot p { margin: 0 0 6px; }
+
+@page { size: A4; margin: 14mm; }
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --ink: #000000; --muted: #333333; --paper: #FFFFFF; --rule: #BBBBBB;
+    --quicker: #0E7A6A; --warn: #B5680A; --you: #FFD84D; --card: #FFFFFF; --on-ink: #FFFFFF;
+    color-scheme: light;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff; font-size: 12px; }
+  .wrap { max-width: none; padding: 0; }
+  .site-header, .step-nav, footer, .no-print, #load-error, .screen:not(#screen-summary), .chart-tip, .crosshair { display: none !important; }
+  .letter { border: none; padding: 0; border-radius: 0; font-size: 11px; }
+  .letter-head { margin-bottom: 12px; }
+  .letter h1 { font-size: 22px; margin-bottom: 2px; }
+  .letter-sub { font-size: 12px; margin-bottom: 10px; }
+  .letter .say { font-size: 14px; margin-bottom: 1px; }
+  .letter .footnote { font-size: 11px; margin-bottom: 8px; }
+  .letter h2 { font-size: 14px; margin: 10px 0 6px; padding-top: 8px; break-after: avoid; }
+  .letter p { margin-bottom: 4px; }
+  .letter table { font-size: 11px; }
+  .letter th, .letter td { padding: 3px 6px; }
+  .letter .small-note, .letter .chart-source { font-size: 10px; }
+  .letter .copy-box p { font-size: 13px; }
+  .letter-foot { margin-top: 12px; padding-top: 8px; font-size: 10px; }
+  .letter-foot p { margin-bottom: 3px; }
+  .letter section, .copy-box, table { break-inside: avoid; }
+}
+</style>
+</head>
+<body data-screen="welcome">
+<div class="wrap">
+
+  <header class="site-header">
+    <div>
+      <p class="brand" aria-label="Wait Watcher, beta">Wait Watcher<span class="beta">beta</span></p>
+      <p class="brand-line">A free tool built on public NHS waiting-time data.</p>
+    </div>
+    <button type="button" class="theme-toggle" id="theme-toggle">Dark mode</button>
+  </header>
+
+  <!-- Back and Start again: shown on every screen after the welcome. -->
+  <nav class="step-nav" id="step-nav" aria-label="Steps" hidden>
+    <button type="button" class="link-button" id="back-button">← Back</button>
+    <button type="button" class="link-button" id="start-again">Start again</button>
+  </nav>
+
+  <div id="load-error" class="card" hidden></div>
+
+  <main>
+
+    <!-- Welcome -->
+    <section class="screen" id="screen-welcome" data-screen="welcome">
+      <h1 tabindex="-1" class="hero-wordmark">Wait Watcher</h1>
+      <p class="promise">We use public NHS data to help you make informed choices about your care.</p>
+      <p class="independent-line">Free and independent. Not part of the NHS.</p>
+      <aside class="did-you-know" aria-labelledby="did-you-know-title">
+        <h2 id="did-you-know-title">Did you know?</h2>
+        <p>After 18 weeks on a waiting list, you have the right to ask to be seen somewhere faster.</p>
+      </aside>
+      <h2 class="how-title">How it works</h2>
+      <ol class="how-steps">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H10l-6 4z"/></svg>
+          <span>Tell us about your treatment</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+          <span>We check the NHS waiting data</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>
+          <span>See your wait and your options</span>
+        </li>
+      </ol>
+      <p><button type="button" class="button" id="start-button">Get started</button></p>
+      <p class="hint">It's anonymous. We don't store your answers or personal details.</p>
+      <p><button type="button" class="link-button" data-open-about>About us and disclaimers</button></p>
+    </section>
+
+    <!-- Q1: What best describes your situation? -->
+    <section class="screen" id="screen-situation" data-screen="situation" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1">What best describes your situation right now?</h2>
+      <div class="choice-list">
+        <button type="button" class="choice" data-situation="waiting" aria-pressed="false">I've been referred and I'm waiting for treatment</button>
+        <button type="button" class="choice" data-situation="not-yet" aria-pressed="false">I haven't been referred yet, or I'm not on a waiting list</button>
+        <button type="button" class="choice" data-situation="else" aria-pressed="false">Something else</button>
+      </div>
+      <div id="something-else" hidden></div>
+    </section>
+
+    <!-- Q1, follow-up for people not on a list -->
+    <section class="screen" id="screen-expecting" data-screen="expecting" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1">Is this for treatment you're expecting, or are you just curious?</h2>
+      <div class="choice-list">
+        <button type="button" class="choice" data-expecting="expecting" aria-pressed="false">Treatment I'm expecting</button>
+        <button type="button" class="choice" data-expecting="curious" aria-pressed="false">I'm just curious about waits</button>
+      </div>
+    </section>
+
+    <!-- Q2: What's your treatment? -->
+    <section class="screen" id="screen-treatment" data-screen="treatment" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1">What's your treatment?</h2>
+      <p>Type your treatment and we'll find the NHS waiting data that covers it.</p>
+      <form id="problem-form" class="field">
+        <label for="problem">Your treatment or problem</label>
+        <div class="row">
+          <input type="text" id="problem" placeholder="e.g. knee surgery, cataracts, heart" autocomplete="off">
+          <button type="submit" class="button">Find my treatment</button>
+        </div>
+      </form>
+      <div id="treatment-match" aria-live="polite"></div>
+      <p class="footnote" id="department-grid-label">Or tap the one that fits best:</p>
+      <div id="department-grid" class="dept-grid" role="group" aria-labelledby="department-grid-label"></div>
+    </section>
+
+    <!-- Q3: operation or clinic (only where it matters) -->
+    <section class="screen" id="screen-pathway" data-screen="pathway" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1" id="pathway-question">Do you know if you'll need an operation or procedure?</h2>
+      <div class="choice-list">
+        <button type="button" class="choice" data-pathway="admitted" aria-pressed="false">Yes</button>
+        <button type="button" class="choice" data-pathway="clinic" aria-pressed="false">No</button>
+        <button type="button" class="choice" data-pathway="unsure" aria-pressed="false">Not sure</button>
+      </div>
+      <p class="hint">It's fine not to know. We'll use what is most common for this.</p>
+    </section>
+
+    <!-- Q4 (journey A): how long so far -->
+    <section class="screen" id="screen-weeks" data-screen="weeks" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1">Roughly how long have you been waiting?</h2>
+      <form id="weeks-form" class="field">
+        <label for="weeks-waited">Weeks waited</label>
+        <input type="number" id="weeks-waited" inputmode="numeric" min="0" max="250" step="1" placeholder="e.g. 20" aria-describedby="weeks-hint">
+        <p class="hint" id="weeks-hint">Count from when you were referred.</p>
+        <p><button type="submit" class="button" id="weeks-next" disabled>Next question</button></p>
+      </form>
+    </section>
+
+    <!-- Q5: Your area -->
+    <section class="screen" id="screen-area" data-screen="area" hidden>
+      <p class="progress" data-progress></p>
+      <h2 tabindex="-1">Your area</h2>
+      <div class="field combo" id="area-hospital">
+        <label for="hospital-a">Which hospital or trust is treating you?</label>
+        <p class="hint" id="hospital-a-hint">Type a hospital name, a trust or a town.</p>
+        <input type="text" id="hospital-a" aria-describedby="hospital-a-hint" autocomplete="off" placeholder="e.g. Winchester or Royal Free"
+               role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hospital-a-list">
+        <ul id="hospital-a-list" class="suggestions" role="listbox" hidden></ul>
+      </div>
+      <div id="area-playback" aria-live="polite"></div>
+      <div id="area-rest">
+        <div class="field">
+          <label for="postcode">What's your postcode?</label>
+          <input type="text" id="postcode" autocomplete="postal-code" placeholder="e.g. SE13 6LH or SE4" maxlength="8" aria-describedby="postcode-hint postcode-status">
+          <p class="hint" id="postcode-hint"></p>
+          <p class="hint" id="postcode-status" role="status"></p>
+        </div>
+        <div class="field">
+          <p id="distance-line">We'll compare waits at hospitals within <strong id="distance-value">25 miles</strong>.
+            <button type="button" class="link-button inline" id="distance-change" aria-expanded="false" aria-controls="distance-choice">Change distance</button></p>
+          <div class="segmented" role="group" aria-label="Distance" id="distance-choice" hidden>
+            <button type="button" data-radius="10" aria-pressed="false">10 miles</button>
+            <button type="button" data-radius="25" aria-pressed="true">25 miles</button>
+            <button type="button" data-radius="50" aria-pressed="false">50 miles</button>
+          </div>
+        </div>
+        <p><button type="button" class="button" id="area-next" disabled>Show my results</button></p>
+      </div>
+    </section>
+
+    <!-- Results (journeys A and B) -->
+    <section class="screen" id="screen-results" data-screen="results" hidden>
+      <h2 tabindex="-1" id="results-title">Your results</h2>
+      <p class="footnote" id="results-subtitle"></p>
+      <div id="results-body"></div>
+    </section>
+
+    <!-- Journey C: Explore -->
+    <section class="screen" id="screen-explore" data-screen="explore" hidden>
+      <h2 tabindex="-1">Explore waiting trends</h2>
+      <div class="card" id="explore-filters">
+        <div class="field">
+          <label for="explore-treatment">Treatment type</label>
+          <select id="explore-treatment"></select>
+        </div>
+        <div class="field combo">
+          <label for="hospital-c">Hospital <span class="hint">(optional)</span></label>
+          <div class="row">
+            <input type="text" id="hospital-c" autocomplete="off" placeholder="Any hospital"
+                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hospital-c-list">
+            <button type="button" class="button secondary" id="hospital-c-clear">Clear hospital</button>
+          </div>
+          <ul id="hospital-c-list" class="suggestions" role="listbox" hidden></ul>
+        </div>
+        <form class="field" id="explore-area">
+          <label for="postcode-c">Area <span class="hint">(optional postcode)</span></label>
+          <div class="row">
+            <input type="text" id="postcode-c" autocomplete="postal-code" placeholder="e.g. SE13 6LH" maxlength="8">
+            <button type="submit" class="button secondary">Use</button>
+          </div>
+          <p class="hint" id="postcode-c-status">Leave empty for all of England.</p>
+        </form>
+        <div class="controls-row">
+          <label class="inline-label" for="explore-radius">Within
+            <select id="explore-radius">
+              <option value="10">10 miles</option>
+              <option value="25" selected>25 miles</option>
+              <option value="50">50 miles</option>
+              <option value="100">100 miles</option>
+            </select>
+          </label>
+          <div class="segmented" role="group" aria-label="Type of provider" id="explore-type">
+            <button type="button" data-type="all" aria-pressed="true">All</button>
+            <button type="button" data-type="nhs" aria-pressed="false">NHS</button>
+            <button type="button" data-type="independent" aria-pressed="false">Private</button>
+          </div>
+        </div>
+      </div>
+      <div id="explore-body"></div>
+    </section>
+
+    <!-- Printable summary -->
+    <section class="screen" id="screen-summary" data-screen="summary" hidden>
+      <p class="no-print"><button type="button" class="button" id="print-button">Print or save as PDF</button></p>
+      <article id="summary-body" class="letter"></article>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>Not affiliated with or endorsed by the NHS.</strong> It uses public NHS data. It shows what the data suggests. It can't say what will happen to you.</p>
+    <p id="data-month"></p>
+    <p><button type="button" class="link-button" data-open-about>About this data</button></p>
+  </footer>
+</div>
+
+<!-- About panel -->
+<dialog id="about" aria-labelledby="about-title">
+  <h2 id="about-title" tabindex="-1" autofocus>About Wait Watcher</h2>
+  <h3>What this is</h3>
+  <ul>
+    <li>Built on NHS England's monthly referral to treatment (RTT) statistics.</li>
+    <li>England only.</li>
+    <li>Updated monthly, about six weeks behind.</li>
+    <li>Private providers doing NHS work are included.</li>
+    <li>Hospital ratings come from the Care Quality Commission (CQC). Contains CQC information. Ratings can be several years old - check the inspection date.</li>
+  </ul>
+  <h3>What it can't tell you</h3>
+  <ul>
+    <li>Your place in the queue, or whether your referral arrived.</li>
+    <li>Waits for an exact operation - the data is by treatment type.</li>
+    <li>Differences between sites within one trust.</li>
+    <li>Private-pay prices or waits.</li>
+  </ul>
+  <p>For your own referral, try the NHS App, Manage Your Referral, or the hospital's Patient Advice and Liaison Service (PALS).</p>
+  <p>Wait Watcher shows what the published data says. It can't know your individual case - your GP and hospital can.</p>
+  <h3>Your privacy</h3>
+  <ul>
+    <li>We don't store your answers.</li>
+    <li>Feedback is anonymous unless you add an email.</li>
+    <li>Emails are only used to reply about your feedback, never for marketing.</li>
+    <li>To ask us to delete anything, contact <a href="mailto:hello@waitwatcher.co.uk">hello@waitwatcher.co.uk</a>.</li>
+  </ul>
+  <p>Not affiliated with or endorsed by the NHS.</p>
+  <form method="dialog"><button class="button secondary">Close</button></form>
+</dialog>
+
+<!-- Hospital detail panel: filled in by openHospitalDetail(). -->
+<dialog id="hospital-detail" aria-labelledby="detail-title">
+  <div id="detail-body"></div>
+</dialog>
+
+<!-- A hidden copy of the feedback form so Netlify finds it when the site
+     is deployed. The forms people actually use are built in JavaScript and
+     send exactly these fields - nothing else. -->
+<form name="feedback" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="feedback">
+  <input type="text" name="bot-field">
+  <input type="hidden" name="journey">
+  <input type="hidden" name="usefulness">
+  <textarea name="message"></textarea>
+  <input type="email" name="email">
+</form>
+
+<script>
+/* ==================================================================
+   Wait Watcher (beta) - everything the page does.
+
+   Data files in site/data/ (made by the kitchen scripts):
+     summary.json               latest month, every hospital and treatment
+     locations.json             hospital code -> name, address and sites
+     lookup.json                codes -> names
+     keywords.json              everyday words -> treatment codes
+     departments.json           plain names, descriptions and icons
+     cqc.json                   CQC ratings for likely treatment sites
+     experience.json            Friends and Family Test and NHS Staff Survey
+     by_treatment/<code>.json   every month for one treatment, plus weekly
+                                counts of people waiting in the latest month
+
+   The journey (letters are what feedback records):
+     welcome -> Q1 situation
+       A  already waiting:  treatment -> (operation?) -> weeks -> area -> results
+       B  expecting one:    expecting -> treatment -> (operation?) -> area -> results
+       C  just curious:     expecting -> explore
+       D  something else:   a message, then back to Q1
+   ================================================================== */
+
+// ---- Settings ------------------------------------------------------
+
+// Department names, descriptions and icons come from data/departments.json.
+const ALL_TREATMENTS = "C_999";
+
+// The three kinds of figures, as named in the data.
+const STILL_WAITING = "Incomplete Pathways";
+const WITH_OPERATION = "Completed Pathways For Admitted Patients";
+const WITHOUT_OPERATION = "Completed Pathways For Non-Admitted Patients";
+
+// How the two treated groups are labelled depends on the department:
+// see pathLabel() and departments.json.
+
+const SMALL_NUMBERS = 30;          // below this, "small numbers - treat with care"
+const MIN_PEOPLE_FOR_NEARBY = 50;  // ignore tiny lists, whose figures jump around
+const MAX_CHART_LINES = 5;         // colours we have for one line per hospital
+
+const NHS_AIM = "The NHS aims for 92 in every 100 people waiting to have waited under 18 weeks.";
+const DISCLAIMER = "Not affiliated with or endorsed by the NHS. It uses public NHS data. It shows what the data suggests. It can't say what will happen to you.";
+const LINKEDIN_URL = "#";  // the monthly waiting-times report (to be added)
+
+
+// ---- Everything the person has chosen ---------------------------------
+
+function freshChoices() {
+  return {
+    journey: null,        // "A" waiting, "B" expecting a referral, "C" curious
+    treatment: "",        // e.g. "C_110"
+    hospital: "",         // journey A: the trust or provider treating them
+    site: null,           // the hospital they picked within it, if any
+    playbackSeen: false,  // they've read what a multi-hospital trust means
+    pathway: null,        // "admitted", "clinic", "unsure", or null if not asked
+    postcode: null,       // {postcode, latitude, longitude}
+    weeksWaited: null,    // journey A
+    radius: 25,           // 10, 25 or 50 miles
+    type: "all"           // "all" (private hospitals included), or "nhs" only
+  };
+}
+
+let choices = freshChoices();
+
+// Data, loaded once.
+const data = { summary: null, locations: null, lookup: null, keywords: null, departments: {}, cqc: null, experience: null, history: {} };
+let dataReady;  // a promise, set by start()
+
+
+// ---- Small helpers ---------------------------------------------------
+
+const $ = (selector) => document.querySelector(selector);
+
+// Make text safe to put inside HTML.
+function esc(text) {
+  return String(text).replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+  ));
+}
+
+function count(n) { return n.toLocaleString("en-GB"); }
+
+// "2026-08" -> "August 2026", or "Aug 26" when short.
+function formatMonth(month, short) {
+  const [year, number] = month.split("-").map(Number);
+  const date = new Date(year, number - 1, 1);
+  return short
+    ? date.toLocaleString("en-GB", { month: "short" }) + " " + String(year).slice(2)
+    : date.toLocaleString("en-GB", { month: "long", year: "numeric" });
+}
+
+// "2026-08" plus -2 -> "2026-06".
+function addMonths(month, n) {
+  const [year, number] = month.split("-").map(Number);
+  const date = new Date(year, number - 1 + n, 1);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+}
+
+// 14 -> "14 weeks". 105 means "over 104" (the last band in the data).
+function weeks(n) {
+  if (n >= 105) return "over 104 weeks";
+  return n === 1 ? "1 week" : `${n} weeks`;
+}
+
+// The latest three months, which "recently" means for treated figures.
+function recentMonths() {
+  const latest = data.summary.month;
+  return [addMonths(latest, -2), addMonths(latest, -1), latest];
+}
+
+// "June to August 2026"
+function recentLabel() {
+  const [first, , last] = recentMonths();
+  const sameYear = first.slice(0, 4) === last.slice(0, 4);
+  const firstName = new Date(Number(first.slice(0, 4)), Number(first.slice(5)) - 1, 1)
+    .toLocaleString("en-GB", { month: "long" });
+  return `${firstName}${sameYear ? "" : " " + first.slice(0, 4)} to ${formatMonth(last)}`;
+}
+
+// The data has names in capitals ("LEWISHAM AND GREENWICH NHS TRUST").
+// Turn them into "Lewisham and Greenwich NHS Trust".
+const KEEP_CAPITALS = new Set(["NHS", "UK", "MSK", "ENT", "BMI", "GP", "ACES", "CIC", "LLP", "PLC", "ICB", "BPAS", "CES", "HCA", "CHEC", "SMSK", "CDC", "LGT", "II", "III"]);
+const SMALL_WORDS = new Set(["and", "of", "the", "for", "in", "at", "on", "upon", "to", "with", "by"]);
+function niceName(name) {
+  return name.split(" ").map((word, i) => {
+    const bare = word.replace(/[^A-Za-z]/g, "");
+    if (KEEP_CAPITALS.has(bare) || /\d/.test(word)) return word;
+    const lower = word.toLowerCase();
+    if (i > 0 && SMALL_WORDS.has(lower)) return lower;
+    return lower.replace(/(^|[-(])([a-z])/g, (m, before, letter) => before + letter.toUpperCase());
+  }).join(" ");
+}
+
+function hospitalName(code) {
+  const name = data.lookup.providers[code];
+  return name ? niceName(name) : code;
+}
+
+// Department names, e.g. "Bones and joints" and "Trauma and Orthopaedics".
+function plainTreatmentName(code) {
+  const d = data.departments[code];
+  return d ? d.name : niceName(data.lookup.treatment_functions[code] || code);
+}
+
+function nhsTreatmentName(code) {
+  const d = data.departments[code];
+  return d ? d.nhs_name : niceName(data.lookup.treatment_functions[code] || code);
+}
+
+// The departments people can choose from, in screen order.
+function departmentList() {
+  return Object.values(data.departments).filter((d) => !d.explore_only);
+}
+
+// A department's line icon. The drawings come from our own departments.json.
+function departmentIcon(code) {
+  const d = data.departments[code];
+  return d ? `<svg class="dept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d.icon}</svg>` : "";
+}
+
+// "Trauma and Orthopaedic Service" -> "trauma and orthopaedic treatment".
+function treatmentInSentence(code) {
+  const name = (data.lookup.treatment_functions[code] || code)
+    .replace(/^Other - /, "").replace(/ Services?$/, "");
+  return `${name.toLowerCase()} treatment`;
+}
+
+function isIndependent(code) {
+  const place = data.locations[code];
+  return Boolean(place && place.source.startsWith("independent"));
+}
+
+function matchesType(code, type) {
+  if (type === "nhs") return !isIndependent(code);
+  if (type === "independent") return isIndependent(code);
+  return true;
+}
+
+// The latest month's figures for one group, or null if nobody was in it.
+function latestGroup(hospital, treatment, part) {
+  const forHospital = data.summary.providers[hospital];
+  const g = forHospital && forHospital[treatment] && forHospital[treatment][part];
+  return g && g.total_patients > 0 ? g : null;
+}
+
+// Treated figures for the last three months combined, from the history file:
+// {people, weeks, p80}. The typical wait (half of people) and the 8-in-10
+// wait are each month's figure weighted by how many people were treated that
+// month (the files don't keep the weekly counts for treated people, so an
+// exact combined figure isn't possible).
+function recentTreated(history, hospital, part) {
+  const months = recentMonths();
+  const rows = (history[hospital] || []).filter((row) =>
+    row.rtt_part === part && months.includes(row.month) && row.total_patients > 0 && row.median_weeks !== null);
+  const people = rows.reduce((sum, row) => sum + row.total_patients, 0);
+  if (!people) return null;
+  const weighted = rows.reduce((sum, row) => sum + row.median_weeks * row.total_patients, 0) / people;
+  const withP80 = rows.filter((row) => row.p80_weeks !== null && row.p80_weeks !== undefined);
+  const p80People = withP80.reduce((sum, row) => sum + row.total_patients, 0);
+  const p80 = p80People ? Math.round(withP80.reduce((sum, row) => sum + row.p80_weeks * row.total_patients, 0) / p80People) : null;
+  return { people, weeks: Math.round(weighted), p80 };
+}
+
+function cautionIfSmall(g) {
+  return g && g.people < SMALL_NUMBERS ? ` <span class="caution">small numbers - treat with care</span>` : "";
+}
+
+// Straight-line distance in miles between two points.
+function milesBetween(a, b) {
+  const toRadians = (degrees) => degrees * Math.PI / 180;
+  const dLat = toRadians(b.latitude - a.latitude);
+  const dLon = toRadians(b.longitude - a.longitude);
+  const h = Math.sin(dLat / 2) ** 2 +
+            Math.cos(toRadians(a.latitude)) * Math.cos(toRadians(b.latitude)) * Math.sin(dLon / 2) ** 2;
+  return 2 * 3958.8 * Math.asin(Math.sqrt(h));
+}
+
+// A provider's nearest likely treatment site, and its nearest other site
+// (e.g. a clinic), from a point. Treatment sites are worked out by
+// get_locations.py. Returns null if the provider has no sites.
+// Sites at any postcode in `skip` are ignored (e.g. ones shared with the
+// user's own trust).
+function nearestSites(code, from, skip = new Set()) {
+  const place = data.locations[code];
+  if (!place || !place.sites.length) return null;
+  let treatment = null, other = null;
+  for (const site of place.sites) {
+    if (skip.has(site.postcode)) continue;
+    const found = { miles: milesBetween(from, site), name: niceName(site.name), postcode: site.postcode,
+                    latitude: site.latitude, longitude: site.longitude };
+    if (site.treatment) {
+      if (!treatment || found.miles < treatment.miles) treatment = found;
+    } else if (!other || found.miles < other.miles) {
+      other = found;
+    }
+  }
+  return treatment ? { treatment, other } : null;
+}
+
+
+// ---- Loading the data -------------------------------------------------
+
+async function loadJson(path) {
+  // "no-cache" means check for a newer copy every time, so a data update
+  // shows straight away (unchanged files still come from the cache).
+  const response = await fetch(path, { cache: "no-cache" });
+  if (!response.ok) throw new Error(`${path}: ${response.status}`);
+  return response.json();
+}
+
+// The history file for one treatment, loaded once and then remembered.
+function loadHistory(treatment) {
+  if (!data.history[treatment]) {
+    data.history[treatment] = loadJson(`data/by_treatment/${treatment}.json`).catch((error) => {
+      delete data.history[treatment];  // let a later try load it again
+      throw error;
+    });
+  }
+  return data.history[treatment];
+}
+
+function start() {
+  dataReady = Promise.all([
+    loadJson("data/summary.json"),
+    loadJson("data/locations.json"),
+    loadJson("data/lookup.json"),
+    loadJson("data/keywords.json"),
+    loadJson("data/departments.json"),
+    loadJson("data/cqc.json").catch(() => null),         // ratings are a nice-to-have
+    loadJson("data/experience.json").catch(() => null)   // so are patient and staff views
+  ]).then(([summary, locations, lookup, keywords, departments, cqc, experience]) => {
+    const byCode = Object.fromEntries(departments.departments.map((d) => [d.code, d]));
+    Object.assign(data, { summary, locations, lookup, keywords, departments: byCode, cqc, experience });
+    $("#data-month").textContent =
+      `Latest data: ${formatMonth(summary.month)}. NHS England publishes each month's figures about six weeks after it ends.`;
+  }).catch((error) => {
+    const banner = $("#load-error");
+    banner.hidden = false;
+    banner.textContent = "Sorry, the waiting-time data couldn't be loaded. Please try again in a moment.";
+    console.error(error);
+    throw error;
+  });
+  history.replaceState({ screen: "welcome" }, "");
+}
+
+
+// ---- Moving between screens --------------------------------------------------
+
+// Shows one screen. Each move adds a browser history entry, so the phone's
+// own back button works as well as ours.
+function showScreen(name, addToHistory = true) {
+  document.querySelectorAll(".screen").forEach((screen) => {
+    screen.hidden = screen.dataset.screen !== name;
+  });
+  $("#step-nav").hidden = name === "welcome";
+  document.body.dataset.screen = name;
+  if (addToHistory) history.pushState({ screen: name }, "");
+  window.scrollTo(0, 0);
+  const heading = $(`.screen[data-screen="${name}"] h1, .screen[data-screen="${name}"] h2`);
+  if (heading) heading.focus({ preventScroll: true });
+  updateProgress(name);
+  if (name === "results") renderResults();
+  if (name === "treatment") dataReady.then(renderDepartmentGrid).catch(() => {});
+  if (name === "pathway") renderPathwayQuestion();
+  if (name === "area") { showRadius(); updateArea(); }
+  if (name === "explore") renderExplore();
+}
+
+window.addEventListener("popstate", (event) => {
+  showScreen((event.state && event.state.screen) || "welcome", false);
+});
+
+$("#back-button").addEventListener("click", () => history.back());
+
+$("#start-again").addEventListener("click", () => {
+  choices = freshChoices();
+  resetForms();
+  showScreen("welcome");
+});
+
+function resetForms() {
+  ["#problem", "#hospital-a", "#postcode", "#weeks-waited", "#hospital-c", "#postcode-c"]
+    .forEach((selector) => { $(selector).value = ""; });
+  $("#treatment-match").innerHTML = "";
+  if (data.departments && $("#department-grid").childElementCount) highlightChip(null);
+  $("#something-else").hidden = true;
+  document.querySelectorAll(".choice[aria-pressed]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+  $("#weeks-next").disabled = true;
+  $("#postcode-status").textContent = "";
+  $("#distance-choice").hidden = true;
+  $("#distance-change").setAttribute("aria-expanded", "false");
+  $("#postcode-c-status").textContent = "Leave empty for all of England.";
+}
+
+document.querySelectorAll("[data-open-about]").forEach((button) => {
+  button.addEventListener("click", () => $("#about").showModal());
+});
+
+
+// ---- The questions ------------------------------------------------------------------
+//
+// Each journey asks only what it needs. "Question X of Y" counts the
+// questions on this person's path, so Y can drop by one once we know the
+// treatment (the operation question is only asked where it matters).
+
+$("#start-button").addEventListener("click", () => showScreen("situation"));
+
+// The operation-or-clinic question only matters where the department's
+// "admitted" wait is an operation or a procedure (from departments.json).
+// Elsewhere it means a hospital stay, which few people need, so we don't ask
+// and use whichever kind of wait is most common.
+function pathwayMatters(code) {
+  const d = data.departments[code];
+  return Boolean(d && /operation|procedure/.test(d.admitted_label || ""));
+}
+
+// The question screens on this person's path, in order.
+function questionPath() {
+  const steps = ["situation"];
+  if (choices.journey === "B") steps.push("expecting");
+  steps.push("treatment");
+  if (!choices.treatment || pathwayMatters(choices.treatment)) steps.push("pathway");
+  if (choices.journey !== "B") steps.push("weeks");
+  steps.push("area");
+  return steps;
+}
+
+function updateProgress(name) {
+  const label = $(`.screen[data-screen="${name}"] [data-progress]`);
+  if (!label) return;
+  const steps = questionPath();
+  label.textContent = `Question ${steps.indexOf(name) + 1} of ${steps.length}`;
+}
+
+// Marks one button in a group as chosen.
+function pressOnly(button, selector) {
+  button.closest("section, fieldset").querySelectorAll(selector).forEach((b) => {
+    b.setAttribute("aria-pressed", b === button ? "true" : "false");
+  });
+}
+
+// Q1: "What best describes your situation right now?"
+document.querySelectorAll("#screen-situation [data-situation]").forEach((button) => {
+  button.addEventListener("click", () => {
+    pressOnly(button, "[data-situation]");
+    const situation = button.dataset.situation;
+    if (situation === "else") { showSomethingElse(); return; }
+    $("#something-else").hidden = true;
+    if (situation === "waiting") {
+      choices.journey = "A";
+      showScreen("treatment");
+    } else {
+      choices.journey = "B";   // until they tell us they're just curious
+      showScreen("expecting");
+    }
+  });
+});
+
+// Q1 follow-up: expecting treatment (journey B), or just curious (Explore).
+document.querySelectorAll("#screen-expecting [data-expecting]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    pressOnly(button, "[data-expecting]");
+    if (button.dataset.expecting === "expecting") {
+      choices.journey = "B";
+      showScreen("treatment");
+      return;
+    }
+    choices.journey = "C";
+    choices.type = "all";
+    try { await dataReady; } catch (error) { return; }
+    showScreen("explore");
+  });
+});
+
+// "Something else": a message box, sent as journey D, then back to Q1.
+function showSomethingElse() {
+  const box = $("#something-else");
+  box.hidden = false;
+  box.innerHTML = `
+    <form class="feedback-form card" data-journey="D"
+          data-thanks="Thanks - we're still building this and will consider it. You can choose another answer above.">
+      <label for="something-else-text">Tell us what you're looking for</label>
+      <textarea id="something-else-text" name="message" required></textarea>
+      <p class="hint">Please don't include personal details.</p>
+      ${honeypotField()}
+      <p><button type="submit" class="button">Send message</button></p>
+    </form>`;
+  $("#something-else-text").focus();
+}
+
+
+// ---- Q2: what's your treatment? -----------------------------------------------------
+//
+// The NHS counts waits by department, so we match what people type to a
+// department and show it with its icon. People can also just tap one.
+
+// The department code for what someone typed, or null. Picks the longest
+// matching phrase, so "heart bypass" beats "heart".
+function matchTreatment(text) {
+  const clean = " " + text.toLowerCase().replace(/[’`]/g, "'").replace(/[^a-z0-9' ]+/g, " ")
+    .replace(/\s+/g, " ").trim() + " ";
+  const longestMatch = (phrases) => {
+    let best = null;
+    for (const [phrase, code] of Object.entries(phrases)) {
+      if (clean.includes(` ${phrase} `) && (!best || phrase.length > best.phrase.length)) best = { phrase, code };
+    }
+    return best && best.code;
+  };
+  return longestMatch(data.keywords.phrases) || longestMatch(data.keywords.only_if_nothing_else);
+}
+
+// The grid of department chips under the text box. Built once.
+function renderDepartmentGrid() {
+  const grid = $("#department-grid");
+  if (grid.childElementCount) return;
+  grid.innerHTML = departmentList().map((d) => `
+    <button type="button" class="dept-chip" data-code="${d.code}" aria-pressed="false">
+      ${departmentIcon(d.code)}<span>${esc(d.name)}</span>
+    </button>`).join("");
+  grid.querySelectorAll("[data-code]").forEach((chip) => {
+    chip.addEventListener("click", () => chooseTreatment(chip.dataset.code));
+  });
+}
+
+function highlightChip(code) {
+  $("#department-grid").querySelectorAll("[data-code]").forEach((chip) => {
+    chip.setAttribute("aria-pressed", String(chip.dataset.code === code));
+  });
+}
+
+// "Hips, knees..." -> "hips, knees..." (but leave "IBS..." alone).
+function lowerFirst(text) {
+  return /^[A-Z][A-Z]/.test(text) ? text : text.charAt(0).toLowerCase() + text.slice(1);
+}
+
+// "Hips, knees, shoulders, backs, fractures" -> "hips, knees, shoulders,
+// backs and fractures".
+function describeList(description) {
+  const text = lowerFirst(description);
+  return / and /.test(text) ? text : text.replace(/, ([^,]+)$/, " and $1");
+}
+
+// Shows the match for what's in the box, with examples so people can see
+// it's the right one. `final` is true when they pressed the button; then
+// (or after a pause) a failed match says so.
+function showMatch(text, final) {
+  const box = $("#treatment-match");
+  const code = text.length >= 3 ? matchTreatment(text) : null;
+  highlightChip(code);
+  if (code) {
+    const d = data.departments[code];
+    // Short phrases read well in the sentence ("Knee surgery comes under...").
+    const what = text.split(/\s+/).length <= 4 ? capitalise(text) : "That";
+    box.innerHTML = `
+      <div class="match-card">
+        <p class="say"><span class="dept-inline">${departmentIcon(code)}</span> ${esc(what)} comes under ${esc(d.name)}.</p>
+        <p>This also covers ${esc(describeList(d.description))}.</p>
+        <p>The NHS calls it ${esc(d.nhs_name)}.</p>
+        <div class="row">
+          <button type="button" class="button" id="treatment-yes">Got it</button>
+          <button type="button" class="button secondary" id="treatment-other">Search again</button>
+        </div>
+      </div>`;
+    $("#treatment-yes").addEventListener("click", () => chooseTreatment(code));
+    $("#treatment-other").addEventListener("click", () => {
+      highlightChip(null);
+      box.innerHTML = "";
+      $("#problem").value = "";
+      $("#problem").focus();
+    });
+  } else if (text && (final || text.length >= 4)) {
+    box.innerHTML = `<p>We couldn't match that. Try different words, or tap the one that fits best below.</p>`;
+  } else {
+    box.innerHTML = "";
+  }
+}
+
+// Match as they type: straight away if there's a match, after a pause if not.
+let matchTimer;
+$("#problem").addEventListener("input", () => {
+  clearTimeout(matchTimer);
+  const text = $("#problem").value.trim();
+  matchTimer = setTimeout(async () => {
+    try { await dataReady; } catch (error) { return; }
+    if (text.length >= 3 && matchTreatment(text)) showMatch(text, false);
+    else matchTimer = setTimeout(() => showMatch(text, false), 900);
+  }, 250);
+});
+
+$("#problem-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  clearTimeout(matchTimer);
+  try { await dataReady; } catch (error) { return; }
+  showMatch($("#problem").value.trim(), true);
+});
+
+function chooseTreatment(code) {
+  choices.treatment = code;
+  choices.hospital = "";
+  choices.site = null;
+  choices.playbackSeen = false;
+  $("#hospital-a").value = "";
+  highlightChip(code);
+  if (pathwayMatters(code)) {
+    showScreen("pathway");
+  } else {
+    choices.pathway = null;   // not asked: we use what's most common
+    showScreen(afterPathway());
+  }
+}
+
+function afterPathway() {
+  return choices.journey === "A" ? "weeks" : "area";
+}
+
+
+// ---- Q3: operation or clinic ----------------------------------------------------------
+
+// The question in the department's own words, e.g. "Do you know if you'll
+// need a procedure such as an endoscopy?"
+function renderPathwayQuestion() {
+  const d = data.departments[choices.treatment] || {};
+  $("#pathway-question").textContent = `Do you know if you'll need ${d.admitted_noun || "an operation or procedure"}?`;
+}
+
+document.querySelectorAll("#screen-pathway [data-pathway]").forEach((button) => {
+  button.addEventListener("click", () => {
+    choices.pathway = button.dataset.pathway;   // "admitted", "clinic" or "unsure"
+    pressOnly(button, "[data-pathway]");
+    showScreen(afterPathway());
+  });
+});
+
+
+// ---- Q4 (journey A): how long so far ----------------------------------------------------
+
+$("#weeks-waited").addEventListener("input", (event) => {
+  const value = parseInt(event.target.value, 10);
+  choices.weeksWaited = Number.isFinite(value) && value >= 0 && value <= 250 ? value : null;
+  $("#weeks-next").disabled = choices.weeksWaited === null;
+});
+
+$("#weeks-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (choices.weeksWaited !== null) showScreen("area");
+});
+
+
+// ---- Hospital search boxes (journey A and Explore) ---------------------------------
+//
+// People search for the hospital they know ("Winchester", "Royal Berks",
+// "the Royal Free"), not the trust. The index has one entry per provider
+// plus one per hospital it runs (its likely treatment sites), each with its
+// town, so a hospital name, a town or a trust name all work.
+
+let searchIndex = null;
+
+// "St Thomas' Hospital" -> ["st", "saint", "thomas", "hospital"]
+const SKIP_WORDS = new Set(["the", "of", "and", "nhs", "trust", "foundation"]);
+function searchWords(text) {
+  const words = text.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, " ").trim().split(" ")
+    .filter((word) => word && !SKIP_WORDS.has(word));
+  return words.flatMap((word) => (word === "st" ? ["st", "saint"] : word === "saint" ? ["saint", "st"] : [word]));
+}
+
+// "Hampshire Hospitals NHS Foundation Trust" -> "Hampshire Hospitals"
+function shortTrustName(name) {
+  return name.replace(/ NHS Foundation Trust$| NHS Trust$| Foundation Trust$/i, "");
+}
+
+// A provider's hospitals: its likely treatment sites, one per postcode.
+function hospitalsOf(code) {
+  const place = data.locations[code];
+  return place ? place.sites.filter((site) => site.treatment) : [];
+}
+
+function buildSearchIndex() {
+  const index = [];
+  for (const code of Object.keys(data.summary.providers)) {
+    const trust = hospitalName(code);
+    const place = data.locations[code];
+    const town = place && place.town ? niceName(place.town) : "";
+    // The provider itself.
+    index.push({ code, site: null, label: trust, partOf: "",
+      nameWords: searchWords(trust), townWords: searchWords(town), trustWords: [] });
+    // Each hospital it runs, when that's a different name.
+    for (const site of hospitalsOf(code)) {
+      const siteName = niceName(site.name);
+      if (siteName === trust || /main site$/i.test(siteName)) continue;
+      index.push({ code, site, label: siteName, town: site.town ? niceName(site.town) : "", partOf: trust,
+        nameWords: searchWords(siteName), townWords: searchWords(site.town || ""), trustWords: searchWords(trust) });
+    }
+  }
+  return index;
+}
+
+// Every word typed must start some word of the entry. Matches on the
+// hospital's own name count most, then its town, then the trust's name.
+// Ties go to the provider with most people waiting for this treatment
+// (usually the main local hospital), then the shortest name.
+function searchHospitals(query, allowedCodes, treatment) {
+  if (!searchIndex) searchIndex = buildSearchIndex();
+  const typed = searchWords(query);
+  if (!typed.length) return [];
+  const allowed = new Set(allowedCodes);
+  const results = [];
+  for (const entry of searchIndex) {
+    if (!allowed.has(entry.code)) continue;
+    let score = 0;
+    const everyWordFound = typed.every((word) => {
+      const starts = (list) => list.some((w) => w.startsWith(word));
+      if (starts(entry.nameWords)) { score += 3; return true; }
+      if (starts(entry.townWords)) { score += 2; return true; }
+      if (starts(entry.trustWords)) { score += 1; return true; }
+      return false;
+    });
+    if (everyWordFound) results.push({ entry, score });
+  }
+  const size = (code) => {
+    const g = treatment && latestGroup(code, treatment, STILL_WAITING);
+    return g ? g.total_patients : 0;
+  };
+  results.sort((a, b) => b.score - a.score || size(b.entry.code) - size(a.entry.code)
+    || a.entry.label.length - b.entry.label.length);
+  return results.slice(0, 8).map((r) => r.entry);
+}
+
+// Turns an input and an empty list into a search box with suggestions.
+//   allowed()             which provider codes can be suggested right now
+//   treatment()           the treatment being searched for (for ranking)
+//   onChoose(code, site)  called when one is picked (site is null for a trust)
+//   onClear()             called when the person starts typing again
+function hospitalSearch(input, list, { allowed, treatment, onChoose, onClear }) {
+  let shown = [];
+  let highlighted = -1;
+
+  function hide() {
+    list.hidden = true;
+    input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant");
+  }
+
+  function show() {
+    if (input.value.trim().length < 2) return hide();
+    shown = searchHospitals(input.value, allowed(), treatment());
+    highlighted = -1;
+    list.innerHTML = shown.length
+      ? shown.map((h, i) => `
+          <li role="option" id="${list.id}-${i}" data-index="${i}" aria-selected="false">
+            <span class="option-name">${esc(h.label)}${h.town ? `<span class="option-town">, ${esc(h.town)}</span>` : ""}</span>
+            ${h.partOf ? `<span class="option-part">part of ${esc(h.partOf)}</span>` : ""}
+            ${isIndependent(h.code) ? '<span class="badge">Private</span>' : ""}
+          </li>`).join("")
+      : `<li aria-disabled="true">No matching hospitals for this treatment. Try a town or a shorter name.</li>`;
+    list.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+  }
+
+  function highlight(index) {
+    highlighted = index;
+    list.querySelectorAll("li[role=option]").forEach((li, i) => {
+      li.setAttribute("aria-selected", i === index ? "true" : "false");
+      if (i === index) li.scrollIntoView({ block: "nearest" });
+    });
+    input.setAttribute("aria-activedescendant", `${list.id}-${index}`);
+  }
+
+  function choose(h) {
+    input.value = h.partOf ? `${h.label} - part of ${h.partOf}` : h.label;
+    hide();
+    onChoose(h.code, h.site);
+  }
+
+  input.addEventListener("input", () => { onClear(); show(); });
+  input.addEventListener("blur", hide);
+  input.addEventListener("keydown", (event) => {
+    if (list.hidden || !shown.length) return;
+    if (event.key === "ArrowDown") { event.preventDefault(); highlight(Math.min(highlighted + 1, shown.length - 1)); }
+    else if (event.key === "ArrowUp") { event.preventDefault(); highlight(Math.max(highlighted - 1, 0)); }
+    else if (event.key === "Enter") { event.preventDefault(); choose(shown[Math.max(highlighted, 0)]); }
+    else if (event.key === "Escape") hide();
+  });
+  // mousedown (not click) so the choice happens before the box loses focus.
+  list.addEventListener("mousedown", (event) => {
+    const li = event.target.closest("li[role=option]");
+    if (!li) return;
+    event.preventDefault();
+    choose(shown[Number(li.dataset.index)]);
+  });
+}
+
+// Hospitals with figures for a treatment this month.
+function hospitalsFor(treatment) {
+  return Object.keys(data.summary.providers).filter((code) => data.summary.providers[code][treatment]);
+}
+
+hospitalSearch($("#hospital-c"), $("#hospital-c-list"), {
+  allowed: () => hospitalsFor($("#explore-treatment").value || ALL_TREATMENTS),
+  treatment: () => $("#explore-treatment").value || ALL_TREATMENTS,
+  onChoose: (code) => { choices.hospital = code; renderExplore(); },
+  onClear: () => { if (choices.hospital) { choices.hospital = ""; renderExplore(); } }
+});
+$("#hospital-c-clear").addEventListener("click", () => {
+  $("#hospital-c").value = "";
+  choices.hospital = "";
+  renderExplore();
+});
+
+
+// ---- Q5: your area ------------------------------------------------------------------
+//
+// Journey A picks the hospital treating them. If it's one hospital of a
+// trust that runs several, we play back what that means before going on.
+// Both journeys give a postcode (optional in journey A, where we can measure
+// from the hospital) and a distance. Private hospitals that treat NHS
+// patients are always included; the results can filter them out.
+
+// "Basingstoke and Andover", or hospital names if the towns don't tell them apart.
+function listInWords(items) {
+  return items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+function isMultiSite(code) {
+  return Boolean(code) && hospitalsOf(code).length > 1;
+}
+
+// "<Site> is part of <Trust>, which also runs <other sites>. The NHS counts
+// waits for the whole trust, so the figures cover all of them."
+function playbackText() {
+  const code = choices.hospital;
+  const trust = hospitalName(code);
+  const hospitals = hospitalsOf(code);
+  const chosen = choices.site;
+  const others = hospitals.filter((s) => !chosen || s.postcode !== chosen.postcode);
+  const towns = others.map((s) => niceName(s.town || ""));
+  const chosenTown = chosen ? niceName(chosen.town || "") : "";
+  const useTowns = towns.every(Boolean) && new Set(towns).size === towns.length && !towns.includes(chosenTown);
+  // Add the town only where the hospital's name doesn't already say it.
+  const otherNames = others.map((s) => {
+    const name = niceName(s.name), town = niceName(s.town || "");
+    return useTowns && !name.includes(town) ? `${name} in ${town}` : name;
+  });
+  if (chosen) {
+    return [`${niceName(chosen.name)} is part of ${trust}, which also runs ${listInWords(otherNames)}.`,
+            "The NHS counts waits for the whole trust, so the figures cover all of them."];
+  }
+  return [`${trust} runs ${NUMBER_WORDS[hospitals.length] || hospitals.length} hospitals.`,
+          `They are ${listInWords(hospitals.map((s) => niceName(s.name)))}. The NHS counts waits for the whole trust, so the figures cover all of them.`];
+}
+
+function renderAreaPlayback() {
+  const box = $("#area-playback");
+  if (choices.journey !== "A" || !isMultiSite(choices.hospital)) {
+    box.innerHTML = "";
+    return;
+  }
+  const [first, second] = playbackText();
+  box.innerHTML = `
+    <section class="playback" aria-label="About this hospital">
+      <p class="say">${esc(first)}</p>
+      <p>${esc(second)}</p>
+      <p class="footnote">Moving between hospitals in the same trust is usually easy and keeps your place.</p>
+      ${choices.playbackSeen ? "" : `<p><button type="button" class="button" id="playback-ok">Got it</button></p>`}
+    </section>`;
+  const ok = $("#playback-ok");
+  if (ok) {
+    ok.addEventListener("click", () => {
+      choices.playbackSeen = true;
+      updateArea();
+      $("#postcode").focus();
+    });
+  }
+}
+
+// Shows the right parts of the screen for where they've got to.
+function updateArea() {
+  const isA = choices.journey === "A";
+  $("#area-hospital").hidden = !isA;
+  $("#postcode-hint").textContent = isA
+    ? "Optional. We'll measure distances from here. Leave it blank to measure from your hospital."
+    : "We'll measure distances from here. It isn't stored.";
+  renderAreaPlayback();
+  const waitingForPlayback = isA && isMultiSite(choices.hospital) && !choices.playbackSeen;
+  $("#area-rest").hidden = isA && (!choices.hospital || waitingForPlayback);
+  $("#area-next").disabled = isA ? !choices.hospital : !$("#postcode").value.trim();
+}
+
+hospitalSearch($("#hospital-a"), $("#hospital-a-list"), {
+  allowed: () => hospitalsFor(choices.treatment),
+  treatment: () => choices.treatment,
+  onChoose: (code, site) => {
+    choices.hospital = code;
+    choices.site = site;
+    choices.playbackSeen = false;
+    updateArea();
+    if (!isMultiSite(code)) $("#postcode").focus();
+  },
+  onClear: () => {
+    if (!choices.hospital) return;
+    choices.hospital = "";
+    choices.site = null;
+    choices.playbackSeen = false;
+    updateArea();
+  }
+});
+
+$("#postcode").addEventListener("input", () => {
+  choices.postcode = null;
+  $("#postcode-status").textContent = "";
+  updateArea();
+});
+
+// Distance: 25 miles unless they change it.
+function showRadius() {
+  $("#distance-value").textContent = `${choices.radius} miles`;
+  $("#distance-choice").querySelectorAll("[data-radius]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(Number(b.dataset.radius) === choices.radius));
+  });
+}
+$("#distance-change").addEventListener("click", () => {
+  const choice = $("#distance-choice");
+  choice.hidden = !choice.hidden;
+  $("#distance-change").setAttribute("aria-expanded", String(!choice.hidden));
+  if (!choice.hidden) choice.querySelector("[aria-pressed=true]").focus();
+});
+$("#distance-choice").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-radius]");
+  if (!button) return;
+  choices.radius = Number(button.dataset.radius);
+  showRadius();
+});
+
+
+$("#area-next").addEventListener("click", async () => {
+  const status = $("#postcode-status");
+  const typed = $("#postcode").value.trim();
+  if (typed) {
+    status.textContent = "Looking up your postcode…";
+    try {
+      choices.postcode = await lookUpPostcode(typed);
+      status.textContent = "";
+    } catch (error) {
+      choices.postcode = null;
+      status.textContent = error.message;
+      return;
+    }
+  } else if (choices.journey === "B") {
+    status.textContent = "Please enter your postcode, or the first part of it.";
+    return;
+  } else {
+    choices.postcode = null;
+  }
+  showScreen("results");
+});
+
+
+// ---- Postcodes ---------------------------------------------------------------
+
+// Looks up a full postcode ("SE13 6LH") or just its first part ("SE4") with
+// postcodes.io. Returns {postcode, latitude, longitude}, or throws an Error
+// with a message to show.
+async function lookUpPostcode(text) {
+  const typed = text.trim().toUpperCase().replace(/\s+/g, " ");
+  const full = /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(typed);
+  const firstPart = /^[A-Z]{1,2}\d[A-Z\d]?$/.test(typed);
+  if (!full && !firstPart) {
+    throw new Error("That doesn't look like a UK postcode. Please check it and try again.");
+  }
+  const url = full
+    ? `https://api.postcodes.io/postcodes/${encodeURIComponent(typed)}`
+    : `https://api.postcodes.io/outcodes/${encodeURIComponent(typed)}`;
+  let answer;
+  try {
+    const response = await fetch(url);
+    answer = await response.json();
+  } catch (error) {
+    throw new Error("We couldn't reach the postcode service. Please try again in a moment.");
+  }
+  if (!answer.result || answer.result.latitude === null) {
+    throw new Error("We couldn't find that postcode. Please check it and try again.");
+  }
+  return { postcode: full ? answer.result.postcode : answer.result.outcode, latitude: answer.result.latitude, longitude: answer.result.longitude };
+}
+
+
+// ---- Results (journeys A and B) -------------------------------------------------------
+//
+// In this order, each a plain sentence first and its numbers underneath:
+//   (a) At a glance - three short lines.
+//   (b) Your wait - the timeline: where you are, or would be, against the
+//       NHS aim and the point where most people here are seen.
+//   (c) About your hospital - one hospital card.
+//   (d) Hospitals that could see you sooner - at most three, in the same
+//       hospital card, rated as well or better.
+//   (e) Your options - what to say to your GP, and the summary to download.
+//   (f) Feedback.
+// Journey A is about the hospital treating them. Journey B is about the
+// nearest NHS hospital that does this treatment.
+
+let current = null;  // the figures on screen, kept for the summary and the controls
+
+const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+
+// A wait as it reads in a sentence. Weeks are the only unit we use.
+function waitInWords(w) {
+  if (w >= 105) return "more than 104 weeks";
+  return `about ${weeks(w)}`;
+}
+
+// Short paragraphs for "Show me more".
+function moreText(...lines) {
+  return lines.filter(Boolean).map((line) => `<p>${line}</p>`).join("");
+}
+
+// Ten people in a row, `filled` of them dark, with the caption in words.
+function peoplePicture(filled, caption) {
+  const person = (i, on) => `
+    <g class="${on ? "on" : "off"}" transform="translate(${i * 38} 0)">
+      <circle cx="14" cy="8" r="7"/><path d="M3 31a11 11 0 0 1 22 0v11a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/>
+    </g>`;
+  return `
+    <figure class="people">
+      <svg viewBox="0 0 370 48" role="img" aria-label="${esc(caption)}">
+        ${Array.from({ length: 10 }, (_, i) => person(i, i < filled)).join("")}
+      </svg>
+      <figcaption>${esc(caption)}</figcaption>
+    </figure>`;
+}
+
+// Two bars: a year ago and now, out of 100, with the NHS aim (92) marked.
+function trendBars(thenValue, nowValue, thenLabel) {
+  const then = Math.round(thenValue), now = Math.round(nowValue);
+  return `
+    <div class="bars" role="img" aria-label="${esc(`${thenLabel}: ${then} in 100. Now: ${now} in 100. NHS aim: 92 in 100.`)}">
+      <span class="aim" style="left: 92%"><span>NHS aim</span></span>
+      <div class="bar-row"><p>${esc(thenLabel)}: ${then} in 100</p>
+        <div class="track"><div class="fill then" style="width: ${then}%"></div></div></div>
+      <div class="bar-row"><p>Now: ${now} in 100</p>
+        <div class="track"><div class="fill now" style="width: ${now}%"></div></div></div>
+    </div>`;
+}
+
+async function renderResults() {
+  const body = $("#results-body");
+  body.innerHTML = `<p class="hint">Loading…</p>`;
+  let history;
+  try {
+    await dataReady;
+    history = await loadHistory(choices.treatment);
+  } catch (error) {
+    body.innerHTML = `<p>Sorry, the figures couldn't be loaded. Please try again.</p>`;
+    return;
+  }
+
+  const { journey, treatment } = choices;
+  current = { history, from: startingPoint(), yours: null, mainCode: "", mainSitePostcode: "" };
+  if (journey === "A") {
+    current.mainCode = choices.hospital;
+    current.yours = figuresFor(history, choices.hospital);
+    current.mainSitePostcode = choices.site ? choices.site.postcode : mainSitePostcode(choices.hospital);
+  }
+  current.pathway = resolvePathway();
+  if (journey === "B") {
+    const local = nearestLocalTrust(history, current.from, current.pathway.part);
+    if (local) {
+      current.mainCode = local.code;
+      current.local = local;
+      current.yours = figuresFor(history, local.code);
+      current.mainSitePostcode = local.sitePostcode;
+    }
+  }
+  current.alternatives = alternatives();
+  current.placeName = journey === "A" && choices.site ? niceName(choices.site.name)
+                    : current.mainCode ? hospitalName(current.mainCode) : "";
+
+  // Header: the department icon and one plain line under the title.
+  const title = journey === "A" ? `Your wait at ${current.placeName}`
+                                : `Hospitals near you for ${lowerFirst(plainTreatmentName(treatment))}`;
+  $("#results-title").innerHTML = `${departmentIcon(treatment)}<span>${esc(title)}</span>`;
+  $("#results-subtitle").textContent = `${plainTreatmentName(treatment)}. Based on NHS figures for ${recentLabel()}.`;
+
+  computeTimeline();
+  const aboutTitle = journey === "A" ? "About your hospital" : `About ${shortTrustName(current.placeName)}`;
+
+  body.innerHTML = `
+    <section class="part hero glance" id="results-glance" aria-labelledby="glance-title"></section>
+    <section class="part" id="results-timeline" aria-labelledby="timeline-title"></section>
+    ${current.mainCode ? `
+    <section class="part" id="results-about" aria-labelledby="about-title">
+      <h3 class="part-title" id="about-title">${esc(aboutTitle)}</h3>
+      <ul class="hospital-list">${hospitalCard(current.mainCode, current.mainSitePostcode, { own: true })}</ul>
+    </section>` : ""}
+    <section class="part" id="results-compare" aria-labelledby="compare-title"></section>
+    <section class="part" id="results-options" aria-labelledby="options-title">
+      <h3 class="part-title" id="options-title" tabindex="-1">Your options</h3>
+      ${optionsHtml()}
+      ${current.alternatives.length || journey === "B" ? `
+      <section class="gp-card" aria-labelledby="gp-title">
+        <h3 id="gp-title">What to say to your GP</h3>
+        <p id="gp-intro">You can copy this, or read it out.</p>
+        <div class="copy-box"><p id="gp-sentence"></p></div>
+        <button type="button" class="button" id="copy-button">Copy for my GP</button>
+        <span class="copy-status" id="copy-status" role="status"></span>
+      </section>` : ""}
+      <p><button type="button" class="button secondary" id="summary-button">Download your summary</button></p>
+    </section>
+    ${feedbackSection(journey)}
+    <p><a href="${LINKEDIN_URL}">Follow the monthly waiting-times report on LinkedIn</a></p>`;
+
+  renderGlance();
+  renderTimeline();
+  renderCompare();
+  renderGpSentence();
+  if ($("#copy-button")) $("#copy-button").addEventListener("click", copyGpSentence);
+  $("#summary-button").addEventListener("click", showSummary);
+}
+
+
+// ---- (a) At a glance ----------------------------------------------------------------------
+//
+// Three short lines, each with a small line icon: where your wait is, whether
+// anywhere could see you sooner, and what you can do. "See how" jumps to
+// Your options.
+
+const GLANCE_ICONS = {
+  // A clock: your wait.
+  wait: `<circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/>`,
+  // A building with a cross: hospitals.
+  hospital: `<path d="M4 20V8l8-4 8 4v12z"/><path d="M12 10v6M9 13h6"/>`,
+  // An arrow in a circle: your options.
+  options: `<circle cx="12" cy="12" r="8"/><path d="M8.5 12h7M12.5 9l3 3-3 3"/>`
+};
+
+function glanceLines() {
+  const isA = choices.journey === "A";
+  const n = current.alternatives.length;
+  const sooner = !current.mainCode ? "We couldn't compare hospitals near you."
+    : n ? `${n} ${n === 1 ? "hospital" : "hospitals"} nearby could see you sooner.`
+    : isA ? "Your hospital looks like one of the best nearby."
+    : `${shortTrustName(current.placeName)} looks like one of the best nearby.`;
+  const options = !isA ? ["You can choose where you're referred.", true]
+    : choices.weeksWaited > 18 ? ["You can ask to move.", true]
+    : ["You can keep waiting, or talk to your GP.", false];
+  return [
+    { icon: "wait", text: current.timeline.sentence.split(". ")[0].replace(/\.?$/, ".") },
+    { icon: "hospital", text: sooner },
+    { icon: "options", text: options[0], seeHow: options[1] }
+  ];
+}
+
+function renderGlance() {
+  const lines = glanceLines();
+  current.glance = lines.map((l) => l.text);
+  $("#results-glance").innerHTML = `
+    <h3 class="part-title" id="glance-title">At a glance</h3>
+    <ul class="glance-list">
+      ${lines.map((l) => `
+        <li>
+          <svg class="glance-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${GLANCE_ICONS[l.icon]}</svg>
+          <span>${esc(l.text)}${l.seeHow ? ` <button type="button" class="link-button inline" data-see-how>See how</button>` : ""}</span>
+        </li>`).join("")}
+    </ul>`;
+  const seeHow = $("#results-glance [data-see-how]");
+  if (seeHow) {
+    seeHow.addEventListener("click", () => {
+      $("#results-options").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      $("#options-title").focus({ preventScroll: true });
+    });
+  }
+}
+
+
+// One hospital's figures for the chosen treatment.
+function figuresFor(history, code) {
+  return {
+    code,
+    name: hospitalName(code),
+    independent: isIndependent(code),
+    waiting: latestGroup(code, choices.treatment, STILL_WAITING),
+    operation: recentTreated(history, code, WITH_OPERATION),
+    outpatient: recentTreated(history, code, WITHOUT_OPERATION)
+  };
+}
+
+// The postcode of a provider's main treatment site (for its CQC rating).
+function mainSitePostcode(code) {
+  const place = data.locations[code];
+  const sites = place && place.latitude !== null ? nearestSites(code, place) : null;
+  return sites ? sites.treatment.postcode : "";
+}
+
+function smallNote(g) {
+  return g && g.people < SMALL_NUMBERS ? "This is based on only a few people, so treat it with care." : "";
+}
+
+// "NHS" or "Private", short (tables and Explore).
+function providerType(code) {
+  return isIndependent(code) ? "Private" : "NHS";
+}
+
+// The tag on a hospital card.
+function providerTag(code) {
+  return isIndependent(code) ? "Private hospital, free on the NHS" : "NHS hospital";
+}
+
+
+// ---- Department wording and which kind of wait to lead with ----------------------------
+
+// Each department describes its two kinds of completed wait in its own words
+// (from departments.json): e.g. "If you need an operation" for Bones and
+// joints, "If you need a procedure such as an endoscopy" for Stomach, bowel
+// and liver. `part` is "operation" (admitted) or "outpatient" (clinic).
+function pathLabel(part, treatment = choices.treatment) {
+  const d = data.departments[treatment] || {};
+  return part === "operation" ? (d.admitted_label || "If you need a hospital stay") : (d.clinic_label || "If you're seen in clinic");
+}
+function pathNoun(part, treatment = choices.treatment) {
+  const d = data.departments[treatment] || {};
+  return part === "operation" ? (d.admitted_noun || "a hospital stay") : (d.clinic_noun || "a clinic appointment");
+}
+// A short column heading: "Operation", "Procedure", "Hospital stay" or "Clinic".
+function pathShort(part, treatment = choices.treatment) {
+  if (part === "outpatient") return "Clinic";
+  const label = pathLabel(part, treatment);
+  return /operation/.test(label) ? "Operation" : /procedure/.test(label) ? "Procedure" : "Hospital stay";
+}
+function capitalise(text) { return text.charAt(0).toUpperCase() + text.slice(1); }
+
+// Which kind of wait to lead with and compare: what they told us, or if they
+// weren't sure (or weren't asked), whichever kind more people here had
+// recently (or across England, before we know the hospital).
+function resolvePathway() {
+  if (choices.pathway === "admitted") return { part: "operation", assumed: false };
+  if (choices.pathway === "clinic") return { part: "outpatient", assumed: false };
+  let admitted = 0, clinic = 0, where = "here";
+  if (current.yours) {
+    admitted = current.yours.operation ? current.yours.operation.people : 0;
+    clinic = current.yours.outpatient ? current.yours.outpatient.people : 0;
+  }
+  if (!admitted && !clinic) {
+    where = "across England";
+    for (const code of Object.keys(current.history)) {
+      const op = recentTreated(current.history, code, WITH_OPERATION);
+      const out = recentTreated(current.history, code, WITHOUT_OPERATION);
+      admitted += op ? op.people : 0;
+      clinic += out ? out.people : 0;
+    }
+  }
+  return { part: admitted > clinic ? "operation" : "outpatient", assumed: true, asked: Boolean(choices.pathway), where };
+}
+
+// "You weren't sure, so we've assumed clinic treatment. Most people here have that."
+function assumptionNote() {
+  const p = current.pathway;
+  if (!p.assumed) return "";
+  return `${p.asked ? "You weren't sure, so we've" : "We've"} assumed ${pathNoun(p.part)}. Most people ${p.where} have that.`;
+}
+
+
+// ---- (b) Your wait: the timeline -------------------------------------------------------------------
+//
+// One line in weeks from referral. It marks the NHS aim (18 weeks, amber),
+// the band where most people here are seen (from half of people to 8 in 10,
+// for this kind of wait) and, for someone already waiting, today. It never
+// gives a date someone will be seen.
+
+// "about March 2026": the month someone was referred, from weeks waited.
+function referredMonth(weeksAgo) {
+  const date = new Date();
+  date.setDate(date.getDate() - weeksAgo * 7);
+  return `about ${date.toLocaleString("en-GB", { month: "long", year: "numeric" })}`;
+}
+
+// The sentence above the timeline, from where today sits against the band.
+function timelineSentence(band, today) {
+  if (!band) return "We can't show when most people here are seen.";
+  if (today === null) {
+    if (band.eightInTen <= 18) return "Most people here are seen within the NHS aim.";
+    if (band.typical > 18) return "Most people here wait longer than the NHS aim.";
+    return "Some people here are seen within the NHS aim, but many wait longer.";
+  }
+  if (today < band.typical) return "You're earlier in your wait than most people here when they're seen.";
+  if (today <= band.eightInTen) return "You're at the point where most people here are seen.";
+  return "You've waited longer than most people here. You may be able to be seen sooner. Your options are below.";
+}
+
+// The picture itself, as SVG text. `width` is the space it has.
+function timelineSvg({ band, today, startLabel, width }) {
+  const furthest = Math.max(band ? band.eightInTen : 0, today || 0, 18);
+  const clamped = furthest > 104;
+  const maxWeeks = Math.min(104, Math.max(52, Math.ceil((furthest + 4) / 13) * 13));
+  const pad = 16;
+  const x = (w) => pad + (Math.min(w, maxWeeks) / maxWeeks) * (width - pad * 2);
+  const axisY = 58, bandTop = 44, bandBottom = 72;
+  const rowBand = 96, rowAim = 120, rowStart = 144, height = 156;
+  // Shapes first, then the words on top, so no line crosses a label.
+  let shapes = "", labels = "";
+  // The band where most people here are seen.
+  if (band) {
+    shapes += `<rect class="band" x="${x(band.typical)}" y="${bandTop}" width="${Math.max(4, x(band.eightInTen) - x(band.typical))}" height="${bandBottom - bandTop}" rx="3"/>`;
+    const mid = (x(band.typical) + x(band.eightInTen)) / 2;
+    const anchor = mid < 70 ? "start" : mid > width - 70 ? "end" : "middle";
+    const lx = anchor === "start" ? x(band.typical) : anchor === "end" ? x(band.eightInTen) : mid;
+    shapes += `<line class="leader" x1="${mid}" x2="${mid}" y1="${bandBottom}" y2="${rowBand - 12}"/>`;
+    labels += `<text class="mark-label strong backed" x="${lx}" y="${rowBand}" text-anchor="${anchor}">Most people seen</text>`;
+  }
+  // The line, with ticks every 13 weeks (about a quarter of a year).
+  shapes += `<line class="axis" x1="${x(0)}" x2="${x(maxWeeks)}" y1="${axisY}" y2="${axisY}"/>`;
+  for (let w = 13; w <= maxWeeks; w += 13) {
+    shapes += `<line class="tick" x1="${x(w)}" x2="${x(w)}" y1="${axisY - 4}" y2="${axisY + 4}"/>`;
+  }
+  labels += `<text class="tick-label backed" x="${x(maxWeeks)}" y="${bandTop - 10}" text-anchor="end">${maxWeeks}${clamped ? "+" : ""} weeks</text>`;
+  // The NHS aim: dashed amber line at 18 weeks, labelled in words. Labels
+  // sit to the right of their line on the left of the picture, and to the
+  // left of it further along, so they stay on screen.
+  shapes += `<line class="aim-line" x1="${x(18)}" x2="${x(18)}" y1="${bandTop - 8}" y2="${rowAim - 12}"/>`;
+  const aimAnchor = x(18) > width * 0.62 ? "end" : "start";
+  labels += `<text class="mark-label backed" x="${aimAnchor === "end" ? x(18) + 4 : x(18) - 4}" y="${rowAim}" text-anchor="${aimAnchor}">NHS aim: 18 weeks</text>`;
+  // Referral (or "if you were referred today") at the start.
+  shapes += `<circle class="start-dot" cx="${x(0)}" cy="${axisY}" r="6"/>`;
+  shapes += `<line class="leader" x1="${x(0)}" x2="${x(0)}" y1="${axisY + 6}" y2="${rowStart - 12}"/>`;
+  labels += `<text class="mark-label backed" x="${x(0) - 4}" y="${rowStart}">${esc(startLabel)}</text>`;
+  // Today: a dark marker that slides in from the start (the one motion).
+  let todayMarker = "";
+  if (today !== null) {
+    const tx = x(today);
+    const label = `Today · ${weeks(today)}`;
+    const anchor = tx > width * 0.62 ? "end" : tx < 60 ? "start" : "middle";
+    todayMarker = `<g class="today-marker" style="--from: ${(x(0) - tx).toFixed(1)}px">
+      <line class="today-line" x1="${tx}" x2="${tx}" y1="${bandTop - 12}" y2="${bandBottom + 4}"/>
+      <text class="today-label" x="${anchor === "end" ? tx + 2 : anchor === "start" ? tx - 2 : tx}" y="18" text-anchor="${anchor}">${esc(label)}</text>
+    </g>`;
+  }
+  return `<svg viewBox="0 0 ${width} ${height}" aria-hidden="true" focusable="false">${shapes}${todayMarker}${labels}</svg>`;
+}
+
+// Labels sit on a plain paper block, so lines never run through the words.
+// The Today label gets a yellow highlighter block instead.
+function backLabels(container) {
+  container.querySelectorAll("text.backed, text.today-label").forEach((label) => {
+    const b = label.getBBox();
+    const back = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    back.setAttribute("class", label.classList.contains("today-label") ? "today-box" : "label-back");
+    back.setAttribute("x", b.x - 5); back.setAttribute("y", b.y - 2);
+    back.setAttribute("width", b.width + 10); back.setAttribute("height", b.height + 4);
+    back.setAttribute("rx", 3);
+    label.before(back);
+  });
+}
+
+// Typical wait (half of people) and the 8-in-10 wait for one kind of wait,
+// the last three months combined. Null without figures.
+function bandFor(g) {
+  return g && g.p80 !== null ? { typical: g.weeks, eightInTen: Math.max(g.weeks, g.p80), people: g.people } : null;
+}
+
+// Works out the timeline's figures and words (the at-a-glance card and the
+// summary use them too).
+function computeTimeline() {
+  const part = current.pathway.part;
+  const isA = choices.journey === "A";
+  const g = current.yours && current.yours[part];
+  const band = bandFor(g);
+  const today = isA ? choices.weeksWaited : null;
+  const notes = [];
+  if (band) {
+    notes.push(`Half of people here were seen within ${weeks(band.typical)}. 8 in 10 within ${weeks(band.eightInTen)}.`);
+    notes.push("This is based on other people's waits, not your own records.");
+  } else if (current.mainCode) {
+    notes.push(`No one had ${pathNoun(part)} for this here recently, so there's nothing to compare with.`);
+  } else {
+    notes.push(`We couldn't find an NHS hospital doing this within reach of ${choices.postcode.postcode}.`);
+  }
+  if (isA && choices.site && isMultiSite(choices.hospital)) {
+    notes.push(`Figures are for the whole of ${hospitalName(choices.hospital)}.`);
+  }
+  if (!isA && current.local) {
+    notes.push(`${hospitalName(current.local.code)} is the nearest NHS hospital that does this, about ${Math.max(1, Math.round(current.local.miles))} miles from ${choices.postcode.postcode}.`);
+  }
+  if (assumptionNote()) notes.push(assumptionNote());
+  current.timeline = {
+    g, band, today, notes,
+    sentence: timelineSentence(band, today),
+    startLabel: isA ? `Referred, ${referredMonth(choices.weeksWaited)}` : "If you were referred today"
+  };
+}
+
+function renderTimeline() {
+  const box = $("#results-timeline");
+  const isA = choices.journey === "A";
+  const { g, band, today, notes, sentence, startLabel } = current.timeline;
+  const spoken = [
+    isA ? `You were referred ${referredMonth(choices.weeksWaited)}. Today you have waited ${weeks(today)}.` : "This starts from a referral made today.",
+    "The NHS aims to treat people within 18 weeks.",
+    band ? `Most people here are seen between ${weeks(band.typical)} and ${weeks(band.eightInTen)}.` : ""
+  ].filter(Boolean);
+  const people = isA && current.mainCode ? peopleMore() : "";
+
+  box.innerHTML = `
+    <h3 class="part-title" id="timeline-title">Your wait</h3>
+    <p class="say">${esc(sentence)}</p>
+    ${current.mainCode ? `<div class="timeline" id="timeline-picture"></div>
+    <ul class="visually-hidden">${spoken.map((line) => `<li>${esc(line)}</li>`).join("")}</ul>` : ""}
+    ${notes.map((line) => `<p class="footnote">${esc(line)}</p>`).join("")}
+    ${g && g.people < SMALL_NUMBERS ? `<p class="caution">${esc(smallNote(g))}</p>` : ""}
+    ${band ? `<p class="source">Source: NHS England RTT statistics, ${recentLabel()}, people who had ${esc(pathNoun(current.pathway.part))}.${isA ? " Your wait: what you told us." : ""}</p>` : ""}
+    ${people ? `<details class="more"><summary>Show me more</summary><div class="more-body">${people}</div></details>` : ""}`;
+  const picture = $("#timeline-picture");
+  if (picture) {
+    const width = Math.max(300, Math.min(680, picture.clientWidth || 340));
+    picture.innerHTML = timelineSvg({ band, today, startLabel, width });
+    backLabels(picture);
+  }
+}
+
+
+// ---- Everyone waiting here (inside the timeline's "Show me more") ----------------------
+
+// What share of people on this list have waited less than you, from the
+// weekly counts of people waiting in the latest month. Null if unknown.
+function shareWaitedLess(code, weeksWaited) {
+  const rows = current.history[code] || [];
+  const latest = rows.find((row) => row.month === data.summary.month && row.rtt_part === STILL_WAITING);
+  const weekly = latest && latest.waiting_by_week;
+  if (!weekly || !latest.total_patients) return null;
+  // weekly[i] = people who have waited more than i and up to i+1 weeks.
+  const waitedLess = weekly.reduce((sum, people, i) => (i + 1 <= weeksWaited ? sum + people : sum), 0);
+  return { share: waitedLess / latest.total_patients, total: latest.total_patients };
+}
+
+function inTen(share) {
+  if (share < 0.05) return "Fewer than 1 in 10";
+  if (share > 0.95) return "More than 9 in 10";
+  return `About ${Math.round(share * 10)} in 10`;
+}
+
+// Journey A: the ten-person picture of everyone waiting here.
+function peopleMore() {
+  const n = choices.weeksWaited;
+  const result = shareWaitedLess(current.mainCode, n);
+  if (!result) {
+    current.peoplePair = null;
+    return "";
+  }
+  const { share, total } = result;
+  const filled = share < 0.05 ? 0 : share > 0.95 ? 10 : Math.round(share * 10);
+  const headline = share > 0.6 ? "Most people waiting here have waited less time than you."
+                 : share < 0.4 ? "Most people waiting here have waited longer than you."
+                 : "You have waited about as long as most people here.";
+  const lead = share < 0.05 ? "Fewer than 1" : share > 0.95 ? "More than 9" : String(filled);
+  const caption = `${lead} in 10 people waiting here have waited less than you. They are the dark figures.`;
+  current.peoplePair = [headline, `${inTen(share)} of the ${count(total)} people waiting in ${formatMonth(data.summary.month)} had waited less than ${weeks(n)}.`];
+  return `
+    <p class="say small-say">${esc(headline)}</p>
+    ${peoplePicture(filled, caption)}
+    <p class="footnote">${esc(current.peoplePair[1])}</p>
+    <p class="source">Source: NHS England RTT statistics, ${formatMonth(data.summary.month)}.</p>`;
+}
+
+// CQC ratings in plain words: "Rated Good by inspectors (2023)".
+const UNRATED = new Set(["Not yet rated", "Insufficient evidence to rate", "Not applicable"]);
+function inspectorWords(r) {
+  if (!r) return "No inspection rating found";
+  const year = r.date ? ` (${r.date.slice(0, 4)})` : "";
+  if (/requires improvement/i.test(r.rating)) return `Rated "requires improvement" by inspectors${year}`;
+  if (/inadequate/i.test(r.rating)) return `Rated inadequate by inspectors${year}`;
+  return `Rated ${r.rating} by inspectors${year}`;
+}
+
+
+// ---- (d) Hospitals that could see you sooner -------------------------------------------------------------
+
+// The rules for what counts as a real alternative.
+const MIN_SAVING_WEEKS = 4;          // at least this much faster
+const ALTERNATIVES_SHOWN = 3;        // at most this many
+const MIN_NATIONAL_SHARE = 0.002;    // NHS providers with under 0.2% of this
+                                     // department's waits are left out (e.g.
+                                     // community trusts with incidental activity)
+const RATING_ORDER = { "Outstanding": 4, "Good": 3, "Requires improvement": 2, "Inadequate": 1 };
+
+// Where distances are measured from: the postcode if given, otherwise the
+// hospital they picked, otherwise the trust's main address.
+function startingPoint() {
+  if (choices.postcode) return { ...choices.postcode, label: choices.postcode.postcode, isPostcode: true };
+  if (choices.site) return { ...choices.site, label: niceName(choices.site.name), isPostcode: false };
+  const place = choices.hospital && data.locations[choices.hospital];
+  if (place && place.latitude !== null) return { ...place, label: hospitalName(choices.hospital), isPostcode: false };
+  return null;
+}
+
+// Every postcode where a trust has a site. Other providers' sites at these
+// addresses aren't real alternatives.
+function trustPostcodes(code) {
+  const place = code && data.locations[code];
+  return new Set(place ? place.sites.map((site) => site.postcode) : []);
+}
+
+function nationalWaiting(treatment) {
+  return Object.keys(data.summary.providers).reduce((sum, code) => {
+    const g = latestGroup(code, treatment, STILL_WAITING);
+    return sum + (g ? g.total_patients : 0);
+  }, 0);
+}
+
+// Places within the radius that have figures for this kind of wait,
+// shortest wait first. Leaves out `exclude` (their own trust) and tiny NHS
+// providers for this department.
+function findNearby(history, treatment, from, radius, type, exclude, part) {
+  const national = nationalWaiting(treatment) || 1;
+  const shared = trustPostcodes(exclude);
+  const places = [];
+  for (const code of hospitalsFor(treatment)) {
+    if (code === exclude || !matchesType(code, type)) continue;
+    const waiting = latestGroup(code, treatment, STILL_WAITING);
+    if (!waiting || waiting.total_patients < MIN_PEOPLE_FOR_NEARBY) continue;
+    if (!isIndependent(code) && waiting.total_patients / national < MIN_NATIONAL_SHARE) continue;
+    const sites = nearestSites(code, from, shared);
+    if (!sites || sites.treatment.miles > radius) continue;
+    const figures = figuresFor(history, code);
+    if (!figures[part]) continue;
+    // Only mention a nearer clinic if it's a genuinely different place.
+    const other = sites.other;
+    const clinicWorthMentioning = other && other.miles < sites.treatment.miles
+      && !(choices.site && other.postcode === choices.site.postcode)
+      && !shared.has(other.postcode)
+      && milesBetween(other, sites.treatment) > 0.5;
+    places.push({
+      ...figures,
+      miles: sites.treatment.miles,
+      siteName: sites.treatment.name,
+      sitePostcode: sites.treatment.postcode,
+      closerClinic: clinicWorthMentioning ? other : null
+    });
+  }
+  places.sort((a, b) => a[part].weeks - b[part].weeks || a.miles - b.miles);
+  return places;
+}
+
+// Journey B: the nearest NHS trust that does this treatment, with figures
+// for this kind of wait - the place a GP would most likely refer to.
+function nearestLocalTrust(history, from, part) {
+  if (!from) return null;
+  const national = nationalWaiting(choices.treatment) || 1;
+  let best = null;
+  for (const code of hospitalsFor(choices.treatment)) {
+    if (isIndependent(code)) continue;
+    const waiting = latestGroup(code, choices.treatment, STILL_WAITING);
+    if (!waiting || waiting.total_patients < MIN_PEOPLE_FOR_NEARBY) continue;
+    if (waiting.total_patients / national < MIN_NATIONAL_SHARE) continue;
+    if (!recentTreated(history, code, part === "operation" ? WITH_OPERATION : WITHOUT_OPERATION)) continue;
+    const sites = nearestSites(code, from);
+    if (!sites) continue;
+    if (!best || sites.treatment.miles < best.miles) {
+      best = { code, miles: sites.treatment.miles, siteName: sites.treatment.name, sitePostcode: sites.treatment.postcode };
+    }
+  }
+  return best;
+}
+
+// How a place compares with the main hospital, for the kind of wait we're
+// leading with. Null if either has no figures for it.
+function comparison(p) {
+  const yours = current.yours;
+  const part = current.pathway.part;
+  if (!yours || !p[part] || !yours[part]) return null;
+  return { part, difference: yours[part].weeks - p[part].weeks, theirs: p[part], ours: yours[part] };
+}
+
+// The rating to show for a provider: its trust-wide rating if CQC has one,
+// otherwise its rated hospital at this site, otherwise any rated hospital it
+// runs. Null only if CQC has no rating for it at all.
+function ratingFor(code, sitePostcode) {
+  const trust = data.cqc && data.cqc.trusts && data.cqc.trusts[code];
+  if (trust && !UNRATED.has(trust.rating)) {
+    return { rating: trust.rating, date: trust.date, scope: "trust", url: trust.url, name: trust.cqc_name };
+  }
+  const rated = ((data.cqc && data.cqc.providers[code]) || []).filter((e) => !UNRATED.has(e.overall.rating));
+  const entry = rated.find((e) => e.site_postcode === sitePostcode) || rated[0];
+  return entry ? { rating: entry.overall.rating, date: entry.overall.date, scope: "hospital", url: entry.url, name: entry.cqc_name } : null;
+}
+function cqcEntry(code, sitePostcode) {
+  const entries = (data.cqc && data.cqc.providers[code]) || [];
+  return entries.find((e) => e.site_postcode === sitePostcode) || entries[0] || null;
+}
+
+// A rating as plain text, with its year in brackets beside it (hospital
+// details panel). The words carry the meaning - no colour.
+function ratingPill(rating, isoDate) {
+  if (!rating || UNRATED.has(rating)) return `<span class="pill">No rating found</span>`;
+  return `<span class="pill-group"><span class="pill">${esc(rating)}</span>${isoDate ? `<span class="pill-year">${isoDate.slice(0, 4)}</span>` : ""}</span>`;
+}
+
+// A rating as a number for comparing (higher is better), or null if unrated.
+function ratingRank(code, sitePostcode) {
+  const r = ratingFor(code, sitePostcode);
+  return r ? (RATING_ORDER[r.rating] || null) : null;
+}
+
+// Real alternatives: a different trust, within the distance, at least 4
+// weeks faster for this kind of wait, rated no worse by inspectors (unrated
+// only if the main hospital is unrated too), and not based on small numbers.
+// Private hospitals unless they've filtered them out. Fastest first.
+function alternatives() {
+  const part = current.pathway.part;
+  if (!current.from || !current.yours || !current.yours[part]) return [];
+  const yourRank = ratingRank(current.mainCode, current.mainSitePostcode);
+  return findNearby(current.history, choices.treatment, current.from, choices.radius, choices.type, current.mainCode, part)
+    .filter((p) => {
+      const c = comparison(p);
+      if (!c || c.difference < MIN_SAVING_WEEKS) return false;
+      if (p[part].people < SMALL_NUMBERS) return false;
+      const rank = ratingRank(p.code, p.sitePostcode);
+      if (rank === null) return yourRank === null;
+      return yourRank === null || rank >= yourRank;
+    });
+}
+
+// A simple picture, not a map: where distances are measured from at the
+// top, then each option below it, spaced by distance. Just dots and short
+// names - the cards below carry the details.
+function distancePicture(list, width) {
+  const from = current.from;
+  const isA = choices.journey === "A";
+  const topLabel = from.isPostcode ? `You (${from.label})` : "Your hospital";
+  const fit = Math.floor((width - 40) / 8.6);   // characters that fit on one line
+  const nodes = list.map((p) => ({ kind: "option", miles: p.miles, name: rulerName(p.name, fit) }));
+  // Journey A with a postcode: show their own hospital on the line too.
+  if (isA && from.isPostcode) {
+    const own = nearestSites(current.mainCode, from);
+    if (own) nodes.push({ kind: "own", miles: own.treatment.miles, name: "Your hospital" });
+  }
+  nodes.sort((a, b) => a.miles - b.miles);
+  const furthest = Math.max(choices.radius, ...nodes.map((n) => n.miles));
+  const spineX = 18, top = 22, span = Math.max(120, nodes.length * 40);
+  let y = top, svg = "";
+  const placed = nodes.map((n) => {
+    y = Math.max(top + 36 + (n.miles / furthest) * span, y + 34);
+    return { ...n, y };
+  });
+  const bottom = placed.length ? placed[placed.length - 1].y : top + 40;
+  svg += `<line class="spine" x1="${spineX}" x2="${spineX}" y1="${top}" y2="${bottom}"/>`;
+  svg += `<circle class="from-dot" cx="${spineX}" cy="${top}" r="7"/>`;
+  svg += `<text class="node-name" x="${spineX + 16}" y="${top + 5}">${esc(topLabel)}</text>`;
+  for (const n of placed) {
+    svg += n.kind === "own"
+      ? `<circle class="own-dot" cx="${spineX}" cy="${n.y}" r="6"/>`
+      : `<circle class="option-dot" cx="${spineX}" cy="${n.y}" r="7"/>`;
+    svg += `<text class="node-name" x="${spineX + 16}" y="${n.y + 5}">${esc(n.name)}</text>`;
+  }
+  return `<svg viewBox="0 0 ${width} ${bottom + 14}" aria-hidden="true" focusable="false">${svg}</svg>`;
+}
+
+// "Practice Plus Group Hospital - Southampton" -> short enough for a label.
+function rulerName(name, fit = 34) {
+  const short = shortTrustName(name);
+  return short.length > fit ? `${short.slice(0, fit - 1).trim()}…` : short;
+}
+
+// "9 in 10", or "More than 9 in 10" for 95 in 100 and over.
+function inTenWords(share) {
+  if (share >= 0.95) return "More than 9 in 10";
+  if (share < 0.05) return "Fewer than 1 in 10";
+  return `${Math.round(share * 10)} in 10`;
+}
+
+// What patients say: the Friends and Family Test for the kind of care that
+// matches their wait (a hospital stay for an operation, otherwise outpatient
+// care), or the other kind if that's all there is. Null without figures.
+function patientsSay(code) {
+  const e = data.experience && data.experience.providers[code];
+  if (!e) return null;
+  const first = current.pathway.part === "operation" ? "inpatient" : "outpatient";
+  const other = first === "inpatient" ? "outpatient" : "inpatient";
+  const which = e[first] ? first : e[other] ? other : null;
+  if (!which) return null;
+  const what = which === "inpatient" ? "their hospital stay" : "their outpatient care";
+  return `${inTenWords(e[which].positive)} patients rated ${what} good or very good`;
+}
+
+// What staff say: NHS Staff Survey, NHS trusts only. Null without figures.
+function staffSay(code) {
+  const e = data.experience && data.experience.providers[code];
+  if (!e || !e.staff) return null;
+  return `${inTenWords(e.staff.agree)} staff would be happy for a friend or relative to be treated here`;
+}
+
+// The town of the hospital we measured to, e.g. "Sidcup".
+function siteTown(code, postcode) {
+  const place = data.locations[code];
+  if (!place) return "";
+  const site = place.sites.find((s) => s.postcode === postcode);
+  return niceName((site && site.town) || place.town || "");
+}
+
+// "Waits here are getting better", from the same year-on-year comparison
+// as the hospital details panel. Null without enough history.
+function waitsChanging(code) {
+  const d = direction(pctSeries(current.history, code));
+  if (!d) return null;
+  return d.change >= 2 ? "Waits here are getting better"
+       : d.change <= -2 ? "Waits here are getting worse"
+       : "Waits here are staying about the same";
+}
+
+// The two bars (a year ago and now) for a card's "Show me more".
+function trendMore(code) {
+  const points = pctSeries(current.history, code);
+  const d = direction(points);
+  if (!d) return "";
+  const [, exact] = trendPair(points, "here");
+  const thenLabel = d.earlier === addMonths(d.latest, -12) ? "A year ago" : formatMonth(d.earlier);
+  return `
+    <p class="small-say">Is it getting better?</p>
+    ${trendBars(points.get(d.earlier), points.get(d.latest), thenLabel)}
+    <p class="footnote">${esc(exact)}</p>
+    <p class="source">Source: NHS England RTT statistics, ${formatMonth(d.earlier)} and ${formatMonth(d.latest)}.</p>`;
+}
+
+// Everything a hospital card says, as plain text (the summary letter uses
+// it too). A line with no data is left out rather than saying "not found".
+//   headline   e.g. "About 33 weeks sooner" (none for their own hospital)
+//   miles      distance from where we measure, if we know it
+//   own        true for the hospital treating them (or, in journey B, the
+//              nearest NHS hospital)
+function hospitalFacts(code, sitePostcode, { headline = "", miles = null, own = false } = {}) {
+  let distance = miles;
+  if (own && distance === null) {
+    if (choices.journey === "B" && current.local) distance = current.local.miles;
+    else if (current.from && current.from.isPostcode) {
+      const sites = nearestSites(code, current.from);
+      distance = sites ? sites.treatment.miles : null;
+    }
+  }
+  const town = siteTown(code, sitePostcode);
+  const rounded = distance === null ? null : Math.max(1, Math.round(distance));
+  const where = [town, rounded === null ? "" : `${rounded} ${rounded === 1 ? "mile" : "miles"} away`].filter(Boolean).join(", ");
+  const rating = ratingFor(code, sitePostcode);
+  const entry = cqcEntry(code, sitePostcode);
+  return {
+    headline,
+    name: own ? current.placeName : hospitalName(code),
+    tag: providerTag(code),
+    url: (rating && rating.url) || (entry && entry.url) || "",
+    facts: [
+      ["Where it is", where],
+      ["What inspectors say", rating ? inspectorWords(rating) : null],
+      ["What patients say", patientsSay(code)],
+      ["What staff say", staffSay(code)],
+      ["Over the last year", waitsChanging(code)]
+    ].filter(([, value]) => value)
+  };
+}
+
+// One hospital card, the same for their own hospital and the alternatives.
+function hospitalCard(code, sitePostcode, options = {}) {
+  const f = hospitalFacts(code, sitePostcode, options);
+  if (options.own) current.ownFacts = f;
+  const more = trendMore(code);
+  return `
+    <li class="place">
+      ${f.headline ? `<p class="saved">${esc(f.headline)}</p>` : ""}
+      <p class="place-name">${esc(f.name)}</p>
+      <p class="place-type">${esc(f.tag)}</p>
+      <dl class="place-facts">${f.facts.map(([label, value]) => `<dt>${esc(label)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>
+      ${f.url ? `<p><a class="cqc-link" href="${esc(f.url)}" target="_blank" rel="noopener">More about this hospital<span class="visually-hidden"> (CQC website, opens in a new tab)</span></a></p>` : ""}
+      ${more ? `<details class="more"><summary>Show me more</summary><div class="more-body">${more}</div></details>` : ""}
+    </li>`;
+}
+
+
+function renderCompare() {
+  const box = $("#results-compare");
+  const isA = choices.journey === "A";
+  const list = current.alternatives;
+  const shown = list.slice(0, ALTERNATIVES_SHOWN);
+  const radius = choices.radius;
+  const wider = [10, 25, 50].find((r) => r > radius);
+  const title = isA ? "Hospitals that could see you sooner" : "Hospitals you could ask to be referred to";
+
+  let headline, footnote = "";
+  if (!current.mainCode) {
+    headline = "We couldn't compare hospitals near you.";
+  } else if (list.length) {
+    headline = `${list.length} ${list.length === 1 ? "hospital" : "hospitals"} nearby could see you sooner.`;
+    footnote = `Within ${radius} miles, and rated as well or better by inspectors.${list.length > ALTERNATIVES_SHOWN ? ` These are the ${ALTERNATIVES_SHOWN} with the shortest waits.` : ""}`;
+  } else {
+    headline = isA ? "Your hospital looks like one of the best nearby."
+                   : `${shortTrustName(current.placeName)} looks like one of the best nearby.`;
+    footnote = `We didn't find anywhere within ${radius} miles with clearly shorter waits and an equal or better rating.`;
+  }
+  current.compareIntro = [headline, footnote];
+
+  box.innerHTML = `
+    <h3 class="part-title" id="compare-title">${esc(title)}</h3>
+    <p class="say">${esc(headline)}</p>
+    ${footnote ? `<p class="footnote">${esc(footnote)}</p>` : ""}
+    ${shown.some((p) => p.independent) ? `<p class="private-note">${esc(PRIVATE_NOTE)}</p>` : ""}
+    ${shown.length ? `<div class="distance-picture" id="distance-picture"></div>
+      <ol class="nearby">${shown.map((p) => hospitalCard(p.code, p.sitePostcode,
+        { headline: `About ${weeks(comparison(p).difference)} sooner`, miles: p.miles })).join("")}</ol>` : ""}
+    ${current.mainCode && (list.length || choices.type === "nhs") ? `
+      <div class="field">
+        <p class="filter-label" id="compare-filter-label">Show</p>
+        <div class="segmented" role="group" aria-labelledby="compare-filter-label" id="compare-filter">
+          <button type="button" data-type="all" aria-pressed="${choices.type === "all"}">All</button>
+          <button type="button" data-type="nhs" aria-pressed="${choices.type === "nhs"}">NHS hospitals only</button>
+        </div>
+      </div>` : ""}
+    ${shown.length ? `<p class="source">Waits: NHS England RTT statistics, ${recentLabel()}. Ratings: Care Quality Commission.${data.experience ? ` Patients: NHS Friends and Family Test, ${data.experience.fft.label}. Staff: NHS Staff Survey ${data.experience.staff.year}.` : ""}</p>` : ""}
+    ${!list.length && wider && current.mainCode ? `<p><button type="button" class="button secondary" id="wider-button">Try a wider distance (${wider} miles)</button></p>` : ""}
+    ${current.mainCode ? `<details class="more"><summary>How we chose these</summary><div class="more-body">${moreText(
+      `We compared waits for ${esc(pathNoun(current.pathway.part))} over the last three months, ${recentLabel()}.`,
+      `We only list hospitals in a different trust, within ${radius} miles, at least ${MIN_SAVING_WEEKS} weeks faster, and rated as well or better by inspectors.`,
+      `We leave out figures based on fewer than ${SMALL_NUMBERS} people, and NHS providers that do very little of this.`,
+      choices.type === "all" ? "Private hospitals that treat NHS patients for free are included." : "Private hospitals are left out, as you chose.",
+      `Distances are in a straight line from ${current.from && current.from.isPostcode ? "your postcode" : "your hospital"}.`)}</div></details>` : ""}`;
+
+  const picture = $("#distance-picture");
+  if (picture) picture.innerHTML = distancePicture(shown, Math.max(300, Math.min(680, picture.clientWidth || 340)));
+  const filter = $("#compare-filter");
+  if (filter) {
+    filter.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-type]");
+      if (!button || button.dataset.type === choices.type) return;
+      choices.type = button.dataset.type;
+      await renderResults();
+      $("#results-compare").scrollIntoView();
+      $(`#compare-filter [data-type="${choices.type}"]`).focus({ preventScroll: true });
+    });
+  }
+  const widerButton = $("#wider-button");
+  if (widerButton) {
+    widerButton.addEventListener("click", async () => {
+      choices.radius = wider;
+      showRadius();
+      await renderResults();
+      $("#results-compare").scrollIntoView();
+      $("#compare-title").setAttribute("tabindex", "-1");
+      $("#compare-title").focus({ preventScroll: true });
+    });
+  }
+}
+
+
+// ---- (e) Your options ------------------------------------------------------------------
+
+const PRIVATE_NOTE = "Some of these are private hospitals that treat NHS patients for free. You don't pay. They often take simpler cases, so their waits can look shorter.";
+
+// The lines for "Your options", kept for the summary too.
+function optionLines() {
+  if (choices.journey === "B") {
+    return { lines: ["You have a legal right to choose which hospital you're referred to.",
+                     "You can use these figures when you talk to your GP."], restart: [] };
+  }
+  const past18 = choices.weeksWaited > 18;
+  return {
+    lines: ["You can keep waiting. You don't have to do anything.",
+            "You can speak to your GP or the hospital about moving.",
+            ...(past18 ? ["You have the right to ask your hospital to look for somewhere faster."] : [])],
+    restart: past18
+      ? ["A move arranged this way usually keeps your waiting time.", "A new referral from your GP usually starts the clock again."]
+      : ["A move arranged through your hospital usually keeps your waiting time.", "A new referral from your GP usually starts the clock again."],
+    last: "Some people can't move for medical reasons. Your consultant decides."
+  };
+}
+
+function optionsHtml() {
+  const o = optionLines();
+  return `
+    ${o.lines.map((line) => `<p>${esc(line)}</p>`).join("")}
+    ${o.restart.length ? `<aside class="restart" aria-label="Before you ask to move">${o.restart.map((line) => `<p>${esc(line)}</p>`).join("")}</aside>` : ""}
+    ${o.last ? `<p>${esc(o.last)}</p>` : ""}`;
+}
+
+
+// ---- Is it getting better? -------------------------------------------------------------
+
+// % of people waiting under 18 weeks, month by month, for one hospital.
+function pctSeries(history, code) {
+  const points = new Map();
+  for (const row of history[code] || []) {
+    if (row.rtt_part === STILL_WAITING && row.pct_within_18_weeks !== null) points.set(row.month, row.pct_within_18_weeks);
+  }
+  return points;
+}
+
+// The latest month compared with a year earlier (or the first month we have).
+function direction(points) {
+  const months = [...points.keys()].sort();
+  if (months.length < 2) return null;
+  const latest = months[months.length - 1];
+  const earlier = points.has(addMonths(latest, -12)) ? addMonths(latest, -12) : months[0];
+  return { latest, earlier, change: points.get(latest) - points.get(earlier) };
+}
+
+// Plain headline, and the exact figures for the summary and "Show me more".
+// More people waiting under 18 weeks means waits are getting better.
+function trendPair(points, where = "here") {
+  const d = direction(points);
+  if (!d) return [`There isn't enough history ${where} to see a direction.`, ""];
+  const headline = d.change >= 2 ? `Waits ${where} are getting better.`
+                 : d.change <= -2 ? `Waits ${where} are getting worse.`
+                 : `Waits ${where} have not changed much.`;
+  const now = Math.round(points.get(d.latest));
+  const then = Math.round(points.get(d.earlier));
+  const when = d.earlier === addMonths(d.latest, -12) ? "a year earlier" : `in ${formatMonth(d.earlier)}`;
+  return [headline, `${now} in every 100 people had waited under 18 weeks in ${formatMonth(d.latest)}, compared with ${then} ${when}. The NHS aims for 92.`];
+}
+
+// A headline and its footnote, as HTML (used by the summary letter).
+function sayPair(headline, footnote) {
+  return `<p class="say">${esc(headline)}</p>${footnote ? `<p class="footnote">${footnote}</p>` : ""}`;
+}
+
+// ---- Line chart: the house grammar (results, panel, Explore, summary) ----------------
+//
+//   - The highlighted hospital: dark, 2.5px, a dot on the last point and a
+//     label in words at the end of the line ("63 in 100, up from 47").
+//   - Other hospitals: grey, 1.5px, no labels.
+//   - The NHS aim: clay dashed line, labelled "NHS aim: 92 in 100".
+//   - Horizontal gridlines only; first and last month only on the axis.
+//   - No legend boxes. A source line always sits underneath.
+//
+//   series: [{ name, points: Map(month -> value), style: "main" | "muted" }]
+//   yMax:   top of the scale (or null to fit the data)
+//   target: optional aim line (92)
+//   unit:   "%" or " weeks"
+//   width, height: optional drawing size (e.g. inside the panel or the summary)
+// Hovering or dragging across the chart shows every line's value for that month.
+function lineChart({ series, yMax, target, unit, label, width: fixedWidth, height: fixedHeight }) {
+  const holder = document.createElement("div");
+  holder.className = "chart";
+
+  const months = [...new Set(series.flatMap((s) => [...s.points.keys()]))].sort();
+  const values = series.flatMap((s) => [...s.points.values()]);
+  const top = yMax || Math.max(10, Math.ceil(Math.max(...values) / 10) * 10);
+  const isPercent = unit === "%";
+
+  const width = fixedWidth || Math.max(280, Math.min(640, (document.querySelector("main").clientWidth || 340) - 42));
+  const height = fixedHeight || 220;
+  const pad = { left: 34, right: 12, top: 22, bottom: 26 };
+  const x = (i) => pad.left + (months.length === 1 ? 0 : (i * (width - pad.left - pad.right)) / (months.length - 1));
+  const y = (v) => pad.top + ((top - v) * (height - pad.top - pad.bottom)) / top;
+
+  let svg = "";
+  // Horizontal gridlines at quarters of the scale (0/25/50/75/100 for %).
+  for (let i = 0; i <= 4; i++) {
+    const v = (top / 4) * i;
+    svg += `<line class="grid" x1="${pad.left}" x2="${width - pad.right}" y1="${y(v)}" y2="${y(v)}"/>`;
+    svg += `<text x="${pad.left - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  // First and last month only.
+  if (months.length) {
+    svg += `<text x="${x(0)}" y="${height - 6}" text-anchor="start">${formatMonth(months[0], true)}</text>`;
+    svg += `<text x="${x(months.length - 1)}" y="${height - 6}" text-anchor="end">${formatMonth(months[months.length - 1], true)}</text>`;
+  }
+  if (target !== undefined) {
+    svg += `<line class="target" x1="${pad.left}" x2="${width - pad.right}" y1="${y(target)}" y2="${y(target)}"/>`;
+  }
+  // Paler lines first, then the dark one on top. Gaps in the data break
+  // the line rather than joining across them.
+  const order = [...series].sort((a, b) => (a.style === "main") - (b.style === "main"));
+  for (const s of order) {
+    let d = "", drawing = false;
+    months.forEach((month, i) => {
+      if (s.points.has(month)) {
+        d += `${drawing ? "L" : "M"}${x(i).toFixed(1)},${y(s.points.get(month)).toFixed(1)} `;
+        drawing = true;
+      } else {
+        drawing = false;
+      }
+    });
+    svg += `<path class="series ${s.style}" d="${d}"/>`;
+  }
+
+  // The highlighted line's last point: a dot and a label in words.
+  const main = series.find((s) => s.style === "main");
+  let mainLabelY = null;
+  if (main && main.points.size) {
+    const mainMonths = [...main.points.keys()].sort();
+    const last = mainMonths[mainMonths.length - 1];
+    const i = months.indexOf(last);
+    const value = main.points.get(last);
+    const earlier = main.points.has(addMonths(last, -12)) ? addMonths(last, -12) : mainMonths[0];
+    svg += `<circle class="end-dot" cx="${x(i)}" cy="${y(value)}" r="4"/>`;
+    // Above the dot, unless that would collide with the aim label or the top.
+    const nearAim = target !== undefined && Math.abs(y(value) - y(target)) < 20;
+    mainLabelY = y(value) - 10 < pad.top || nearAim ? y(value) + 18 : y(value) - 10;
+    svg += `<text class="end-label halo" x="${x(i) - 6}" y="${mainLabelY}" text-anchor="end">${esc(endLabel(value, main.points.get(earlier), unit, last !== earlier))}</text>`;
+  }
+  // The aim's label sits on top of everything so it stays readable.
+  if (target !== undefined) {
+    svg += `<text class="target-label halo" x="${width - pad.right}" y="${y(target) - 6}" text-anchor="end">NHS aim: ${target} in 100</text>`;
+  }
+  svg += `<line class="crosshair" x1="0" x2="0" y1="${pad.top}" y2="${height - pad.bottom}" visibility="hidden"/>`;
+  svg += `<rect class="hit" x="${pad.left}" y="0" width="${width - pad.left - pad.right}" height="${height}" fill="transparent"/>`;
+
+  holder.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(label)}">${svg}</svg>`;
+
+  // Hover readout: snap to the nearest month and list every line's value.
+  const svgEl = holder.querySelector("svg");
+  const crosshair = holder.querySelector(".crosshair");
+  const tip = document.createElement("div");
+  tip.className = "chart-tip";
+  tip.hidden = true;
+  holder.append(tip);
+  const showAt = (event) => {
+    const box = svgEl.getBoundingClientRect();
+    const px = ((event.clientX - box.left) / box.width) * width;
+    const i = Math.max(0, Math.min(months.length - 1,
+      Math.round(((px - pad.left) / (width - pad.left - pad.right)) * (months.length - 1))));
+    crosshair.setAttribute("x1", x(i));
+    crosshair.setAttribute("x2", x(i));
+    crosshair.setAttribute("visibility", "visible");
+    tip.replaceChildren();
+    const title = document.createElement("strong");
+    title.textContent = formatMonth(months[i]);
+    tip.append(title);
+    series
+      .filter((s) => s.points.has(months[i]))
+      .sort((a, b) => b.points.get(months[i]) - a.points.get(months[i]))
+      .forEach((s) => {
+        const line = document.createElement("div");
+        const v = Math.round(s.points.get(months[i]));
+        line.textContent = `${s.name}: ${isPercent ? `${v} in 100` : `${v} weeks`}`;
+        tip.append(line);
+      });
+    tip.hidden = false;
+    const left = (x(i) / width) * box.width;
+    tip.style.left = `${Math.min(Math.max(left + 10, 0), box.width - 200)}px`;
+  };
+  svgEl.addEventListener("pointermove", showAt);
+  svgEl.addEventListener("pointerdown", showAt);
+  svgEl.addEventListener("pointerleave", () => { tip.hidden = true; crosshair.setAttribute("visibility", "hidden"); });
+
+  const source = document.createElement("p");
+  source.className = "chart-source";
+  source.textContent = `Source: NHS England RTT statistics, ${formatMonth(data.summary.month)}.`;
+  holder.append(source);
+  return holder;
+}
+
+// "63 in 100, up from 47" / "49 weeks, down from 52" / "63 in 100, about the same".
+function endLabel(value, earlierValue, unit, hasEarlier) {
+  const now = Math.round(value);
+  const then = Math.round(earlierValue);
+  const words = unit === "%" ? `${now} in 100` : `${now} weeks`;
+  if (!hasEarlier) return words;
+  if (now === then) return `${words}, about the same`;
+  return `${words}, ${now > then ? "up" : "down"} from ${then}`;
+}
+
+
+// ---- What to say to your GP --------------------------------------------------------------
+//
+// Journey A only gets a script when at least one alternative qualified.
+// Journey B always gets one: asking to be referred to the best option.
+
+function renderGpSentence() {
+  current.gpSentence = "";
+  if (!$("#gp-sentence")) return;
+  const treatment = treatmentInSentence(choices.treatment);
+  const part = current.pathway.part;
+  const noun = pathNoun(part);
+  const best = current.alternatives[0];
+  const c = best ? comparison(best) : null;
+  const rated = best ? ratingFor(best.code, best.sitePostcode) : null;
+  const ratedLine = rated
+    ? ` Inspectors rate it ${/requires|inadequate/i.test(rated.rating) ? `"${rated.rating.toLowerCase()}"` : rated.rating}.` : "";
+  let sentence;
+  // Short sentences, so it is easy to read out.
+  if (choices.journey === "A") {
+    sentence = `I've been waiting about ${weeks(choices.weeksWaited)} for ${treatment} at ${current.yours.name}. NHS figures suggest ${best.name} has shorter waits. People there waited about ${weeks(c.theirs.weeks)} for ${noun}. Here it was about ${weeks(c.ours.weeks)}.${ratedLine} Could you or the hospital see if I can move? Only if it is right for me.`;
+  } else if (c) {
+    sentence = `I'd like to choose which hospital I'm referred to for ${treatment}. NHS figures suggest ${best.name} has shorter waits. People there waited about ${weeks(c.theirs.weeks)} for ${noun}. At ${current.yours.name} it was about ${weeks(c.ours.weeks)}.${ratedLine} Could you refer me there, if it is right for me?`;
+  } else if (current.yours && current.yours[part]) {
+    sentence = `I'd like to choose which hospital I'm referred to for ${treatment}. NHS figures suggest ${current.yours.name} is one of the better options near me. People there waited about ${weeks(current.yours[part].weeks)} for ${noun}. Could we talk about where to refer me?`;
+  } else {
+    sentence = `I'd like to choose which hospital I'm referred to for ${treatment}. Could we look at which hospitals near me have shorter waits?`;
+  }
+  $("#gp-sentence").textContent = `“${sentence}”`;
+  $("#copy-status").textContent = "";
+  current.gpSentence = sentence;
+}
+
+async function copyGpSentence() {
+  const status = $("#copy-status");
+  try {
+    await navigator.clipboard.writeText(current.gpSentence);
+    status.textContent = "Copied";
+  } catch (error) {
+    const range = document.createRange();
+    range.selectNodeContents($("#gp-sentence"));
+    getSelection().removeAllRanges();
+    getSelection().addRange(range);
+    status.textContent = "Selected. Now copy it with your device's copy command.";
+  }
+}
+
+
+// ---- Download your summary: a one-page letter ----------------------------------------------
+
+// The same order and words as the results - at a glance, your wait, about
+// your hospital, hospitals that could see you sooner, your options - laid
+// out as a letter someone could hand to their GP. Prints on one A4 page.
+function showSummary() {
+  const { treatment, journey } = choices;
+  const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const t = current.timeline;
+  const o = optionLines();
+  const shown = current.alternatives.slice(0, ALTERNATIVES_SHOWN);
+  const title = journey === "A" ? `Your wait at ${current.placeName}`
+                                : `Hospitals near you for ${lowerFirst(plainTreatmentName(treatment))}`;
+  // A hospital in a few lines: name and tag, then its facts on one line.
+  const hospitalBlock = (f) => `
+    <div class="letter-hospital">
+      <p><strong>${esc(f.name)}</strong> · ${esc(f.tag)}${f.headline ? ` · <strong>${esc(f.headline)}</strong>` : ""}</p>
+      <p class="footnote">${f.facts.map(([, value]) => esc(value)).join(" · ")}</p>
+    </div>`;
+
+  $("#summary-body").innerHTML = `
+    <header class="letter-head">
+      <p class="wordmark">Wait Watcher</p>
+      <p class="letter-date">${today}</p>
+    </header>
+    <h1 tabindex="-1">${esc(title)}</h1>
+    <p class="letter-sub">${departmentIcon(treatment)} ${esc(plainTreatmentName(treatment))}. Based on NHS figures for ${recentLabel()}.</p>
+
+    <section>
+      <h2>At a glance</h2>
+      <ul class="letter-glance">${current.glance.map((line) => `<li>${esc(line)}</li>`).join("")}</ul>
+    </section>
+
+    <section>
+      <h2>Your wait</h2>
+      ${sayPair(t.sentence, "")}
+      ${t.band ? `<div class="timeline" id="summary-timeline"></div>` : ""}
+      ${t.notes.map((line) => `<p class="footnote">${esc(line)}</p>`).join("")}
+      ${journey === "A" ? `<p class="small-note">You told us you have waited ${weeks(choices.weeksWaited)}.</p>` : ""}
+    </section>
+
+    ${current.ownFacts ? `<section>
+      <h2>${journey === "A" ? "About your hospital" : `About ${esc(shortTrustName(current.placeName))}`}</h2>
+      ${hospitalBlock(current.ownFacts)}
+    </section>` : ""}
+
+    <section>
+      <h2>${journey === "A" ? "Hospitals that could see you sooner" : "Hospitals you could ask to be referred to"}</h2>
+      ${sayPair(current.compareIntro[0], current.compareIntro[1] ? esc(current.compareIntro[1]) : "")}
+      ${shown.map((p) => hospitalBlock(hospitalFacts(p.code, p.sitePostcode,
+        { headline: `About ${weeks(comparison(p).difference)} sooner`, miles: p.miles }))).join("")}
+      ${shown.some((p) => p.independent) ? `<p class="small-note">${esc(PRIVATE_NOTE)}</p>` : ""}
+    </section>
+
+    <section>
+      <h2>Your options</h2>
+      ${[...o.lines, ...o.restart, ...(o.last ? [o.last] : [])].map((line) => `<p>${esc(line)}</p>`).join("")}
+      ${current.gpSentence ? `<p><strong>What to say to your GP</strong></p><div class="copy-box"><p>“${esc(current.gpSentence)}”</p></div>` : ""}
+    </section>
+
+    <footer class="letter-foot">
+      <p>Sources: NHS England referral to treatment (RTT) statistics, ${formatMonth(data.summary.month)}; treated waits for ${recentLabel()} combined.
+        Contains CQC information.${data.experience ? ` NHS Friends and Family Test, ${esc(data.experience.fft.label)}. NHS Staff Survey ${data.experience.staff.year}.` : ""}
+        Hospital sites from NHS England's Organisation Data Service.</p>
+      <p>${esc(DISCLAIMER.replace("Not affiliated with or endorsed by the NHS. ", ""))}</p>
+      <p>Not affiliated with or endorsed by the NHS.</p>
+    </footer>`;
+
+  showScreen("summary");
+
+  // The timeline, drawn once the page is showing (no motion here).
+  const picture = $("#summary-timeline");
+  if (picture) {
+    picture.innerHTML = timelineSvg({ band: t.band, today: t.today, startLabel: t.startLabel,
+      width: Math.min(640, picture.clientWidth || 600) });
+    picture.classList.add("still");
+    backLabels(picture);
+  }
+}
+
+// "about 8 weeks <span>small numbers</span>" -> "about 8 weeks small numbers"
+function stripTags(html) {
+  const holder = document.createElement("div");
+  holder.innerHTML = html;
+  return holder.textContent;
+}
+
+$("#print-button").addEventListener("click", () => window.print());
+
+
+// ---- Hospital detail panel ---------------------------------------------------------------
+
+// Treatment types where CQC's Surgery rating is the most relevant one.
+// For everything else we show Outpatients.
+const SURGICAL_TREATMENTS = new Set(["C_100", "C_101", "C_110", "C_120", "C_130", "C_140", "C_150", "C_160", "C_170", "C_502", "X05"]);
+
+// "2024-01-24" -> "January 2024"
+function reportMonth(isoDate) {
+  return isoDate ? formatMonth(isoDate.slice(0, 7)) : "date not given";
+}
+
+// Opens the panel for one hospital and treatment type. `sitePostcode` is the
+// likely treatment site shown on the card, so we pick that site's CQC rating.
+// Same style as the results: plain headlines, pictures, numbers behind
+// "Show me more".
+async function openHospitalDetail(code, treatment, sitePostcode) {
+  const dialog = $("#hospital-detail");
+  const body = $("#detail-body");
+  body.innerHTML = `<p class="hint">Loading…</p>`;
+  if (!dialog.open) dialog.showModal();
+
+  let history;
+  try {
+    history = await loadHistory(treatment);
+  } catch (error) {
+    body.innerHTML = `<p>Sorry, the figures couldn't be loaded.</p>`;
+    return;
+  }
+  const operation = recentTreated(history, code, WITH_OPERATION);
+  const outpatient = recentTreated(history, code, WITHOUT_OPERATION);
+
+  const entry = cqcEntry(code, sitePostcode);
+  const serviceName = SURGICAL_TREATMENTS.has(treatment) ? "Surgery" : "Outpatients";
+  let cqcHtml;
+  const trust = data.cqc && data.cqc.trusts && data.cqc.trusts[code];
+  const trustLine = trust && !UNRATED.has(trust.rating)
+    ? `<dl class="ratings"><dt>Whole trust</dt><dd>${ratingPill(trust.rating)}${trust.date ? ` <span class="footnote-inline">report from ${reportMonth(trust.date)}</span>` : ""}</dd></dl>
+       <p><a href="${esc(trust.url)}" target="_blank" rel="noopener">See this trust on the CQC website</a></p>` : "";
+  if (!data.cqc) {
+    cqcHtml = `<p>CQC ratings couldn't be loaded.</p>`;
+  } else if (!entry) {
+    cqcHtml = trustLine || `<p>We couldn't find this hospital in CQC's data.</p>`;
+  } else {
+    const service = entry.services[serviceName];
+    const serviceLine = service
+      ? `${ratingPill(service.rating)} <span class="footnote-inline">report from ${reportMonth(service.date)}</span>`
+      : data.cqc.core_services_available ? "No rating for this site." : "Not in this month's CQC data.";
+    cqcHtml = `${trustLine}
+      <p class="footnote">For ${esc(entry.cqc_name)}.</p>
+      <dl class="ratings">
+        <dt>Overall</dt>
+        <dd>${ratingPill(entry.overall.rating)}${entry.overall.date ? ` <span class="footnote-inline">report from ${reportMonth(entry.overall.date)}</span>` : ""}</dd>
+        <dt>${serviceName}</dt>
+        <dd>${serviceLine}</dd>
+      </dl>
+      <p><a href="${esc(entry.url)}" target="_blank" rel="noopener">See this hospital on the CQC website</a></p>`;
+  }
+
+  const waitBlock = (g, surgery) => {
+    const part = surgery ? "operation" : "outpatient";
+    if (!g) return `<p class="say">No one had ${esc(pathNoun(part, treatment))} for this here recently.</p>`;
+    return `<p class="say">${esc(pathLabel(part, treatment))}, the wait here is usually ${waitInWords(g.weeks)}.</p>
+      <details class="more"><summary>Show me more</summary><div class="more-body">${moreText(
+        `About ${weeks(g.weeks)} in total, from ${count(g.people)} ${g.people === 1 ? "person" : "people"}, ${recentLabel()}.`,
+        smallNote(g))}</div></details>`;
+  };
+
+  const points = pctSeries(history, code);
+  const d = direction(points);
+  const [trendHeadline, trendExact] = trendPair(points, "here");
+
+  body.innerHTML = `
+    <h2 id="detail-title" tabindex="-1">${esc(hospitalName(code))}${isIndependent(code) ? '<span class="badge">Private</span>' : ""}</h2>
+    <p class="footnote">${departmentIcon(treatment)} ${esc(plainTreatmentName(treatment))}. The NHS calls this ${esc(nhsTreatmentName(treatment))}.</p>
+    <h3>CQC rating</h3>
+    ${cqcHtml}
+    <p class="footnote">Contains CQC information. Ratings can be several years old. Check the date.</p>
+    <h3>Typical waits</h3>
+    ${waitBlock(operation, true)}
+    ${waitBlock(outpatient, false)}
+    <h3>Is it getting better?</h3>
+    <p class="say">${esc(trendHeadline)}</p>
+    ${d ? trendBars(points.get(d.earlier), points.get(d.latest), d.earlier === addMonths(d.latest, -12) ? "A year ago" : formatMonth(d.earlier)) : ""}
+    ${d ? `<details class="more"><summary>Show me more</summary><div class="more-body">${moreText(esc(trendExact))}<div id="detail-chart"></div></div></details>` : ""}
+    <form method="dialog"><button class="button secondary">Close</button></form>`;
+
+  if (d) {
+    $("#detail-chart").append(lineChart({
+      series: [{ name: hospitalName(code), points, style: "main" }],
+      yMax: 100, target: 92, unit: "%", width: Math.min(560, window.innerWidth - 72),
+      label: "Percentage of people waiting under 18 weeks"
+    }));
+  }
+  $("#detail-title").focus();
+}
+
+// Any element with data-detail opens the panel: nearby cards, the "your
+// hospital" button and hospital names in the Explore table.
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-detail]");
+  if (!trigger) return;
+  openHospitalDetail(trigger.dataset.detail, trigger.dataset.treatment, trigger.dataset.site || "");
+});
+
+
+// ---- Journey C: Explore ---------------------------------------------------------------
+
+let exploreSort = { key: "waiting", descending: true };
+let exploreRequest = 0;
+
+// Fill the treatment list once the data has loaded.
+function fillExploreTreatments() {
+  const select = $("#explore-treatment");
+  if (select.options.length) return;
+  const codes = [ALL_TREATMENTS, ...departmentList().map((d) => d.code)];
+  for (const code of codes) {
+    const option = document.createElement("option");
+    option.value = code;
+    option.textContent = code === ALL_TREATMENTS ? plainTreatmentName(code) : `${plainTreatmentName(code)} (${nhsTreatmentName(code)})`;
+    select.append(option);
+  }
+}
+
+$("#explore-treatment").addEventListener("change", () => {
+  // A chosen hospital might not do the new treatment.
+  if (choices.hospital && !data.summary.providers[choices.hospital][$("#explore-treatment").value]) {
+    choices.hospital = "";
+    $("#hospital-c").value = "";
+  }
+  renderExplore();
+});
+$("#explore-radius").addEventListener("change", (event) => { choices.radius = Number(event.target.value); renderExplore(); });
+$("#explore-type").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-type]");
+  if (!button) return;
+  choices.type = button.dataset.type;
+  $("#explore-type").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+  renderExplore();
+});
+$("#explore-area").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const status = $("#postcode-c-status");
+  if (!$("#postcode-c").value.trim()) {
+    choices.postcode = null;
+    status.textContent = "Leave empty for all of England.";
+    renderExplore();
+    return;
+  }
+  status.textContent = "Looking up your postcode…";
+  try {
+    choices.postcode = await lookUpPostcode($("#postcode-c").value);
+    status.textContent = `Showing hospitals near ${choices.postcode.postcode}.`;
+  } catch (error) {
+    choices.postcode = null;
+    status.textContent = error.message;
+  }
+  renderExplore();
+});
+
+async function renderExplore() {
+  const body = $("#explore-body");
+  const thisRequest = ++exploreRequest;
+  try { await dataReady; } catch (error) { return; }
+  fillExploreTreatments();
+  const treatment = $("#explore-treatment").value || ALL_TREATMENTS;
+  body.innerHTML = `<p class="hint">Loading…</p>`;
+  let history;
+  try {
+    history = await loadHistory(treatment);
+  } catch (error) {
+    body.innerHTML = `<p>Sorry, the figures couldn't be loaded.</p>`;
+    return;
+  }
+  if (thisRequest !== exploreRequest) return;
+
+  // Which hospitals match the filters.
+  const rows = [];
+  for (const code of hospitalsFor(treatment)) {
+    if (!matchesType(code, choices.type)) continue;
+    let miles = null, sitePostcode = "";
+    if (choices.postcode) {
+      const sites = nearestSites(code, choices.postcode);
+      if (!sites || sites.treatment.miles > choices.radius) {
+        if (code !== choices.hospital) continue;
+      } else {
+        miles = sites.treatment.miles;
+        sitePostcode = sites.treatment.postcode;
+      }
+    } else if (choices.hospital && code !== choices.hospital) {
+      continue;
+    }
+    const waiting = latestGroup(code, treatment, STILL_WAITING);
+    const op = recentTreated(history, code, WITH_OPERATION);
+    const out = recentTreated(history, code, WITHOUT_OPERATION);
+    rows.push({
+      code, name: hospitalName(code), type: providerType(code), miles, sitePostcode,
+      waiting: waiting ? waiting.total_patients : 0,
+      sofar: waiting ? waiting.median_weeks : null,
+      pct: waiting ? waiting.pct_within_18_weeks : null,
+      op: op ? op.weeks : null, opPeople: op ? op.people : 0,
+      out: out ? out.weeks : null, outPeople: out ? out.people : 0
+    });
+  }
+  current = { exploreRows: rows, exploreHistory: history, exploreTreatment: treatment };
+
+  if (!rows.length) {
+    body.innerHTML = `<p>No hospitals match these filters.</p>${feedbackSection("C")}${linkedInLink()}`;
+    return;
+  }
+
+  // Charts show the hospitals with the most people waiting (up to 5).
+  const charted = [...rows].sort((a, b) => b.waiting - a.waiting).slice(0, MAX_CHART_LINES);
+  const highlighted = charted.find((r) => r.code === choices.hospital) || charted[0];
+  const styleFor = (r) => (r === highlighted ? "main" : "muted");
+  const pctLines = charted.map((r) => ({ name: r.name, points: pctSeries(history, r.code), style: styleFor(r) }));
+  const opLines = charted.map((r) => ({ name: r.name, points: treatedSeries(history, r.code, WITH_OPERATION), style: styleFor(r) }))
+    .filter((s) => s.points.size);
+
+  body.innerHTML = `
+    <p>${count(rows.length)} ${rows.length === 1 ? "hospital matches" : "hospitals match"}.
+      ${rows.length > MAX_CHART_LINES ? `The charts show the ${MAX_CHART_LINES} with the most people waiting; the table has them all.` : ""}</p>
+    <section class="card"><h3>People waiting under 18 weeks</h3>
+      <p class="chart-caption">Dark line: ${esc(highlighted.name)}.${charted.length > 1 ? " Paler lines: the other hospitals with the most people waiting." : ""} ${NHS_AIM}</p>
+      <div id="explore-chart-pct"></div></section>
+    <section class="card"><h3>Typical wait: ${esc(pathLabel("operation", treatment).replace(/^If you /, "if you "))}</h3>
+      <p class="chart-caption">Dark line: ${esc(highlighted.name)}. Month by month - months with few patients jump around.</p><div id="explore-chart-op"></div></section>
+    <section class="card"><h3>Latest figures</h3>
+      <div class="table-wrap" id="explore-table"></div>
+      <p class="small-note">Waiting figures are for ${formatMonth(data.summary.month)}; treated figures for ${recentLabel()} combined.</p>
+      <p><button type="button" class="button secondary" id="explore-csv">Download as CSV</button></p>
+    </section>
+    ${feedbackSection("C")}
+    ${linkedInLink()}`;
+
+  $("#explore-chart-pct").append(lineChart({ series: pctLines, yMax: 100, target: 92, unit: "%", label: "Percentage of people waiting under 18 weeks, by hospital" }));
+  if (opLines.length) {
+    $("#explore-chart-op").append(lineChart({ series: opLines, yMax: null, unit: " weeks", label: `Typical wait in weeks, ${pathLabel("operation", treatment).toLowerCase()}, by hospital` }));
+  } else {
+    $("#explore-chart-op").innerHTML = `<p class="small-note">No ${esc(pathNoun("operation", treatment))} recorded for these hospitals.</p>`;
+  }
+  renderExploreTable();
+  $("#explore-csv").addEventListener("click", downloadCsv);
+}
+
+// Typical treated wait, month by month, for one hospital.
+function treatedSeries(history, code, part) {
+  const points = new Map();
+  for (const row of history[code] || []) {
+    if (row.rtt_part === part && row.total_patients > 0 && row.median_weeks !== null) points.set(row.month, row.median_weeks);
+  }
+  return points;
+}
+
+const EXPLORE_COLUMNS = [
+  { key: "name", label: "Hospital" },
+  { key: "type", label: "Type" },
+  { key: "miles", label: "Miles", number: true, onlyWithArea: true },
+  { key: "waiting", label: "People waiting", number: true },
+  { key: "sofar", label: "Typical wait so far (weeks)", number: true },
+  { key: "pct", label: "% under 18 weeks", number: true },
+  { key: "op", label: "operation", number: true },     // labels come from the department
+  { key: "out", label: "outpatient", number: true }
+];
+
+// Column headings; the two treated waits use the department's own words.
+function columnLabel(c) {
+  if (c.key === "op" || c.key === "out") return `${pathShort(c.label, current.exploreTreatment)} wait (weeks)`;
+  return c.label;
+}
+
+function renderExploreTable() {
+  const columns = EXPLORE_COLUMNS.filter((c) => !c.onlyWithArea || choices.postcode);
+  const { key, descending } = exploreSort;
+  const rows = [...current.exploreRows].sort((a, b) => {
+    const av = a[key], bv = b[key];
+    if (av === null) return 1;   // blanks always last
+    if (bv === null) return -1;
+    const order = typeof av === "string" ? av.localeCompare(bv) : av - bv;
+    return descending ? -order : order;
+  });
+  const cell = (row, c) => {
+    const value = row[c.key];
+    if (value === null) return "–";
+    if (c.key === "name") {
+      return `<button type="button" class="link-button" data-detail="${row.code}" data-treatment="${current.exploreTreatment}" data-site="${esc(row.sitePostcode)}">${esc(value)}</button>`;
+    }
+    if (c.key === "miles") return value.toFixed(1);
+    if (c.key === "waiting") return count(value);
+    if (c.key === "op" && row.opPeople < SMALL_NUMBERS) return `${value}*`;
+    if (c.key === "out" && row.outPeople < SMALL_NUMBERS) return `${value}*`;
+    return esc(value);
+  };
+  $("#explore-table").innerHTML = `
+    <table>
+      <thead><tr>${columns.map((c) => `
+        <th class="${c.number ? "num" : ""}" aria-sort="${c.key === key ? (descending ? "descending" : "ascending") : "none"}">
+          <button type="button" data-sort="${c.key}">${columnLabel(c)}${c.key === key ? (descending ? " ↓" : " ↑") : ""}</button>
+        </th>`).join("")}</tr></thead>
+      <tbody>${rows.map((row) => `<tr>${columns.map((c) => `<td class="${c.number ? "num" : ""}">${cell(row, c)}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table>
+    <p class="small-note">* small numbers - treat with care (fewer than ${SMALL_NUMBERS} people treated).</p>`;
+  $("#explore-table").querySelectorAll("[data-sort]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const next = button.dataset.sort;
+      exploreSort = { key: next, descending: exploreSort.key === next ? !exploreSort.descending : next !== "name" && next !== "type" };
+      renderExploreTable();
+    });
+  });
+}
+
+// Every month's figures for the hospitals in the table, as a CSV file.
+function downloadCsv() {
+  const { exploreRows, exploreHistory, exploreTreatment } = current;
+  const groupNames = { [STILL_WAITING]: "Still waiting", [WITH_OPERATION]: "Treated - admitted (operation, procedure or stay)", [WITHOUT_OPERATION]: "Treated - in clinic (not admitted)" };
+  const header = ["month", "hospital_code", "hospital", "type", "treatment_code", "treatment", "group", "people",
+    "typical_weeks", "weeks_for_8_in_10", "weeks_for_92_in_100", "percent_under_18_weeks", "over_52_weeks"];
+  const quote = (v) => (v === null || v === undefined ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+  const lines = [header.join(",")];
+  for (const r of exploreRows) {
+    for (const row of exploreHistory[r.code] || []) {
+      lines.push([row.month, r.code, r.name, r.type, exploreTreatment, nhsTreatmentName(exploreTreatment), groupNames[row.rtt_part] || row.rtt_part,
+        row.total_patients, row.median_weeks, row.p80_weeks, row.p92_weeks, row.pct_within_18_weeks, row.over_52_weeks].map(quote).join(","));
+    }
+  }
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" }));
+  link.download = `wait-watcher-${exploreTreatment}-${data.summary.month}.csv`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+}
+
+function linkedInLink() {
+  return `<p><a href="${LINKEDIN_URL}">Follow the monthly waiting-times report on LinkedIn</a></p>`;
+}
+
+
+// ---- Feedback (Netlify Forms) --------------------------------------------------------------
+
+// A hidden field that people can't see but spam bots fill in.
+function honeypotField() {
+  // display:none (via hidden) keeps it away from people and screen readers,
+  // but it's still part of the form, so a bot that fills it gets caught.
+  return `<p hidden><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>`;
+}
+
+// "Was this useful to you?" - five big buttons, not a slider.
+const USEFUL_LABELS = ["Not at all", "Not much", "A bit", "Quite", "Very much"];
+
+function feedbackSection(journey) {
+  return `
+    <form class="feedback-form part" data-journey="${journey}" data-thanks="Thank you. We read every response.">
+      <h3 class="part-title">We're a beta service and we want to improve.</h3>
+      <fieldset class="plain">
+        <legend>Was this useful to you?</legend>
+        <div class="useful-scale">
+          ${USEFUL_LABELS.map((label, i) => `
+            <button type="button" class="useful-option" data-useful="${i + 1}" aria-pressed="false">${label}</button>`).join("")}
+        </div>
+        <input type="hidden" name="usefulness" value="">
+      </fieldset>
+      <label for="feedback-${journey}">How can we improve?</label>
+      <textarea id="feedback-${journey}" name="message"></textarea>
+      <p class="hint">Please don't include health details. Don't include anything that says who you are.</p>
+      <p class="hint">Your feedback is anonymous unless you add your email.</p>
+      <div class="field">
+        <label for="feedback-email-${journey}">Your email (optional)</label>
+        <input type="email" id="feedback-email-${journey}" name="email" autocomplete="email">
+        <p class="hint">Only add this if you're happy for us to reply.</p>
+      </div>
+      ${honeypotField()}
+      <p><button type="submit" class="button secondary">Send feedback</button></p>
+    </form>`;
+}
+
+// Tapping a usefulness button chooses it (and only it).
+document.addEventListener("click", (event) => {
+  const option = event.target.closest(".useful-option");
+  if (!option) return;
+  const form = option.closest("form");
+  form.querySelectorAll(".useful-option").forEach((b) => b.setAttribute("aria-pressed", String(b === option)));
+  form.elements.usefulness.value = option.dataset.useful;
+});
+
+// Sends feedback to Netlify Forms. ONLY these fields are ever sent: the
+// form name, the journey letter, how useful it was (1-5), the message, the
+// optional email and the spam trap. Never the treatment, hospital, postcode
+// or weeks waited.
+function sendFeedback({ journey, usefulness, message, email, botField }) {
+  const body = new URLSearchParams({
+    "form-name": "feedback",
+    "journey": journey,
+    "usefulness": usefulness,
+    "message": message,
+    "email": email,
+    "bot-field": botField
+  });
+  return fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString()
+  });
+}
+
+function showFormNote(form, text) {
+  let note = form.querySelector(".send-error");
+  if (!note) {
+    note = document.createElement("p");
+    note.className = "hint send-error";
+    note.setAttribute("role", "status");
+    form.append(note);
+  }
+  note.textContent = text;
+}
+
+document.addEventListener("submit", async (event) => {
+  const form = event.target.closest(".feedback-form");
+  if (!form) return;
+  event.preventDefault();
+  const usefulness = form.elements.usefulness ? form.elements.usefulness.value : "";
+  const message = form.elements.message.value.trim();
+  if (!usefulness && !message) {
+    showFormNote(form, form.elements.usefulness ? "Tap how useful this was, or write a message." : "Please write a message first.");
+    return;
+  }
+  const button = form.querySelector("button[type=submit]");
+  button.disabled = true;
+  try {
+    const response = await sendFeedback({
+      journey: form.dataset.journey,
+      usefulness,
+      message,
+      email: form.elements.email ? form.elements.email.value.trim() : "",
+      botField: form.elements["bot-field"].value
+    });
+    if (!response.ok) throw new Error(response.status);
+    form.innerHTML = `<p class="thanks" role="status">${esc(form.dataset.thanks)}</p>`;
+    if (form.dataset.journey === "D") {
+      // Back to Q1, with the thanks still showing.
+      $("#screen-situation [data-situation=else]").setAttribute("aria-pressed", "false");
+    }
+  } catch (error) {
+    button.disabled = false;
+    showFormNote(form, "Sorry, that didn't send. Please try again in a moment.");
+  }
+});
+
+
+// ---- Light / dark mode toggle -----------------------------------------------------
+
+function currentTheme() {
+  const forced = document.documentElement.dataset.theme;
+  if (forced) return forced;
+  return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function updateThemeButton() {
+  $("#theme-toggle").textContent = currentTheme() === "dark" ? "Switch to light mode" : "Switch to dark mode";
+}
+try {
+  const saved = localStorage.getItem("theme");
+  if (saved) document.documentElement.dataset.theme = saved;
+} catch (error) { /* storage blocked - use the device setting */ }
+updateThemeButton();
+$("#theme-toggle").addEventListener("click", () => {
+  const next = currentTheme() === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (error) { /* ignore */ }
+  updateThemeButton();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateThemeButton);
+
+
+// ---- Go! -------------------------------------------------------------------------
+
+start();
+</script>
+</body>
+</html>

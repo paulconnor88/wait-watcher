@@ -1,0 +1,270 @@
+{
+  "_about": "The NHS counts waits by hospital department (treatment function). Each department has a plain name, a one-line description, a friendlier version of its NHS name and a line icon. 'icon' is the inside of a 24x24 SVG drawn with strokes (no fill); the page wraps it in <svg viewBox='0 0 24 24'>. Departments are listed in the order shown on screen. C_999 is only used on the Explore screen. admitted_label/clinic_label are how this department's two kinds of completed wait are described (admitted = with a hospital stay or procedure; clinic = non-admitted). admitted_noun/clinic_noun are the same in the middle of a sentence.",
+  "departments": [
+    {
+      "code": "C_110",
+      "name": "Bones and joints",
+      "nhs_name": "Trauma and Orthopaedics",
+      "description": "Hips, knees, shoulders, backs, fractures",
+      "icon": "<path d='M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_130",
+      "name": "Eyes",
+      "nhs_name": "Ophthalmology",
+      "description": "Cataracts, glaucoma, retina and vision problems",
+      "icon": "<path d='M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z'/><circle cx='12' cy='12' r='3'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_120",
+      "name": "Ear, nose and throat",
+      "nhs_name": "Ear, Nose and Throat (ENT)",
+      "description": "Hearing, tonsils, sinuses, grommets",
+      "icon": "<path d='M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0'/><path d='M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_100",
+      "name": "General surgery",
+      "nhs_name": "General Surgery",
+      "description": "Hernias, gallbladder, appendix, lumps and bumps",
+      "icon": "<path d='M3 21l7.5-7.5'/><path d='M10.5 13.5 19 5c1.5 1.5 1.5 4-.5 6L13 16.5Z'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_330",
+      "name": "Skin",
+      "nhs_name": "Dermatology",
+      "description": "Moles, rashes, eczema, psoriasis",
+      "icon": "<rect x='3.5' y='3.5' width='17' height='17' rx='4'/><circle cx='9' cy='9.5' r='1.5'/><circle cx='15' cy='14.5' r='2.2'/><path d='M8 16h.01'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_320",
+      "name": "Heart",
+      "nhs_name": "Cardiology",
+      "description": "Chest pain, palpitations, heart failure",
+      "icon": "<path d='M12 20.5 4.6 13.2A5 5 0 0 1 12 6.5a5 5 0 0 1 7.4 6.7Z'/>",
+      "admitted_label": "If you need a procedure such as a stent or pacemaker",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "a procedure such as a stent or pacemaker",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_301",
+      "name": "Stomach, bowel and liver",
+      "nhs_name": "Gastroenterology",
+      "description": "Reflux, IBS, Crohn's, colitis, endoscopies",
+      "icon": "<path d='M10 3v4c0 1.5-1.5 2.5-3 3.5S4 13.5 4 16.5C4 19.5 6.5 21 9 21c3.5 0 4.5-2.5 7.5-2.5S20 16.5 20 14c0-4-3-6.5-6.5-6.5H13V3'/>",
+      "admitted_label": "If you need a procedure such as an endoscopy",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "a procedure such as an endoscopy",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_502",
+      "name": "Women's health",
+      "nhs_name": "Gynaecology",
+      "description": "Periods, fibroids, endometriosis, menopause",
+      "icon": "<circle cx='12' cy='9' r='5.5'/><path d='M12 14.5V21M9 18h6'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_101",
+      "name": "Bladder, kidney and prostate",
+      "nhs_name": "Urology",
+      "description": "Bladder, prostate, kidney stones, urinary problems",
+      "icon": "<path d='M14 3.5c-3 0-5 2.5-5 5 0 1.5 1 2 1 3.5s-1 2-1 3.5c0 2.5 2 5 5 5s6-3.5 6-8.5-3-8.5-6-8.5Z'/><path d='M10 12H6.5v8.5'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_340",
+      "name": "Breathing and lungs",
+      "nhs_name": "Respiratory Medicine",
+      "description": "Asthma, COPD, coughs, sleep apnoea",
+      "icon": "<path d='M12 3v8'/><path d='M12 9.5 9.5 12M12 9.5l2.5 2.5'/><path d='M9.5 7C6.5 7.5 3.5 11.5 3.5 17c0 2 1 3 2.5 3 2.5 0 3.5-1.5 3.5-3.5Z'/><path d='M14.5 7c3 .5 6 4.5 6 10 0 2-1 3-2.5 3-2.5 0-3.5-1.5-3.5-3.5Z'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_400",
+      "name": "Brain and nerves",
+      "nhs_name": "Neurology",
+      "description": "Headaches, epilepsy, MS, Parkinson's",
+      "icon": "<path d='M12 5.5a3 3 0 0 0-5.6-1.4A3 3 0 0 0 4 7.8a3.5 3.5 0 0 0 .4 5.4A3.5 3.5 0 0 0 8 19a3 3 0 0 0 4 1.5Z'/><path d='M12 5.5a3 3 0 0 1 5.6-1.4A3 3 0 0 1 20 7.8a3.5 3.5 0 0 1-.4 5.4A3.5 3.5 0 0 1 16 19a3 3 0 0 1-4 1.5'/><path d='M12 5.5v15'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_140",
+      "name": "Mouth, jaw and teeth",
+      "nhs_name": "Oral Surgery",
+      "description": "Wisdom teeth, jaw problems, oral surgery",
+      "icon": "<path d='M7.5 3C5.3 3 4 4.7 4 7c0 3 1.5 4 2 7 .4 2.5.9 7 2.6 7s1.7-4 2.3-6c.3-1 .5-1.5 1.1-1.5s.8.5 1.1 1.5c.6 2 .6 6 2.3 6s2.2-4.5 2.6-7c.5-3 2-4 2-7 0-2.3-1.3-4-3.5-4-2 0-2.8 1-4.5 1s-2.5-1-4.5-1Z'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_410",
+      "name": "Arthritis and joint inflammation",
+      "nhs_name": "Rheumatology",
+      "description": "Rheumatoid arthritis, lupus, gout",
+      "icon": "<path d='M4.5 19.5 9.8 14.2'/><circle cx='12' cy='12' r='3'/><path d='M14.2 9.8 19.5 4.5'/><path d='M17.5 14.5l2 .8M15.5 17l.8 2M18 17.5l1.5 1.5'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_170",
+      "name": "Heart and lung surgery",
+      "nhs_name": "Cardiothoracic Surgery",
+      "description": "Bypass, heart valves and lung operations",
+      "icon": "<path d='M12 20.5 4.6 13.2A5 5 0 0 1 12 6.5a5 5 0 0 1 7.4 6.7Z'/><path d='M3.5 12.5H9l1.5-2.5 2 4.5 1.5-2h6.5'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_150",
+      "name": "Brain and spine surgery",
+      "nhs_name": "Neurosurgery",
+      "description": "Operations on the brain, spine and nerves",
+      "icon": "<rect x='8.5' y='2.5' width='7' height='4.5' rx='1.5'/><rect x='8.5' y='9.75' width='7' height='4.5' rx='1.5'/><rect x='8.5' y='17' width='7' height='4.5' rx='1.5'/><path d='M12 7v2.75M12 14.25V17'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_160",
+      "name": "Plastic surgery",
+      "nhs_name": "Plastic Surgery",
+      "description": "Reconstruction, skin grafts, scars and burns",
+      "icon": "<circle cx='11' cy='13' r='7.5'/><path d='M8.5 11.5h.01M13.5 11.5h.01'/><path d='M8.5 15.5c1.4 1 3.6 1 5 0'/><path d='M19.5 2v4M17.5 4h4'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "C_430",
+      "name": "Care for older people",
+      "nhs_name": "Elderly Medicine",
+      "description": "Falls, frailty, memory problems",
+      "icon": "<circle cx='9' cy='4.5' r='2'/><path d='M9 7.5v6l-2 7.5'/><path d='M9 13.5l2.5 7.5'/><path d='M9 9.5l4 2.5'/><path d='M13 12h2.5v9'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "X04",
+      "name": "Children's care",
+      "nhs_name": "Paediatrics (other paediatric services)",
+      "description": "Hospital care for babies and children",
+      "icon": "<circle cx='12' cy='7' r='4'/><path d='M10.5 6.5h.01M13.5 6.5h.01'/><path d='M6 21v-2a6 6 0 0 1 12 0v2'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "X03",
+      "name": "Mental health",
+      "nhs_name": "Mental health (other mental health services)",
+      "description": "Anxiety, depression, ADHD assessments",
+      "icon": "<path d='M9 21v-3.5A7 7 0 1 1 18.5 12l1.5 3.5h-2.5V18a2 2 0 0 1-2 2h-1.5'/><path d='M12.5 8.3c.6-.8 2-.8 2.4.2.3.8-.4 1.6-2.4 2.9-2-1.3-2.7-2.1-2.4-2.9.4-1 1.8-1 2.4-.2Z'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_300",
+      "name": "General medicine",
+      "nhs_name": "General Internal Medicine",
+      "description": "Conditions that don't fit one specialty",
+      "icon": "<path d='M5 3H4a1.5 1.5 0 0 0-1.5 1.5V9a5.5 5.5 0 0 0 11 0V4.5A1.5 1.5 0 0 0 12 3h-1'/><path d='M8 14.5v1a5.5 5.5 0 0 0 11 0V12'/><circle cx='19' cy='10' r='2'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "X02",
+      "name": "Other medical care",
+      "nhs_name": "Other medical services",
+      "description": "Diabetes, thyroid, kidneys, allergies",
+      "icon": "<path d='M9 2.5h6M10 2.5v3M14 2.5v3'/><rect x='6.5' y='5.5' width='11' height='16' rx='2.5'/><path d='M12 10.5v6M9 13.5h6'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "X05",
+      "name": "Other surgery",
+      "nhs_name": "Other surgical services",
+      "description": "Varicose veins, vascular and weight-loss surgery",
+      "icon": "<rect x='2.5' y='8' width='19' height='8' rx='4' transform='rotate(-45 12 12)'/><path d='M10.5 10.5h.01M13.5 13.5h.01M10.5 13.5h.01M13.5 10.5h.01'/>",
+      "admitted_label": "If you need an operation",
+      "clinic_label": "If you're treated in clinic",
+      "admitted_noun": "an operation",
+      "clinic_noun": "clinic treatment"
+    },
+    {
+      "code": "X06",
+      "name": "Anything else",
+      "nhs_name": "Other services",
+      "description": "Pain clinics and other services",
+      "icon": "<circle cx='12' cy='12' r='9'/><path d='M12 8v8M8 12h8'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    },
+    {
+      "code": "C_999",
+      "name": "All departments",
+      "nhs_name": "All treatment functions",
+      "description": "Every department added together",
+      "explore_only": true,
+      "icon": "<rect x='4' y='4' width='6.5' height='6.5' rx='1.5'/><rect x='13.5' y='4' width='6.5' height='6.5' rx='1.5'/><rect x='4' y='13.5' width='6.5' height='6.5' rx='1.5'/><rect x='13.5' y='13.5' width='6.5' height='6.5' rx='1.5'/>",
+      "admitted_label": "If you need treatment that requires a hospital stay",
+      "clinic_label": "If you're seen in clinic",
+      "admitted_noun": "treatment that needs a hospital stay",
+      "clinic_noun": "a clinic appointment"
+    }
+  ]
+}

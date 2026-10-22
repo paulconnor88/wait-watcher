@@ -1,0 +1,868 @@
+{
+ "processed": {
+  "clinicaltrials": "2026-10-21",
+  "isrctn": "2026-10-21"
+ },
+ "macro": {
+  "studies": 42795,
+  "recruiting": 4083,
+  "sources": {
+   "clinicaltrials.gov": 27760,
+   "isrctn": 13751,
+   "clinicaltrials.gov; isrctn": 1284
+  },
+  "status": {
+   "completed": 29166,
+   "recruiting": 4083,
+   "stopped": 3578,
+   "unknown": 3034,
+   "active, not recruiting": 2487,
+   "not yet recruiting": 447
+  },
+  "starts_by_year": {
+   "2012.0": 1572,
+   "2013.0": 1660,
+   "2014.0": 1898,
+   "2015.0": 2000,
+   "2016.0": 1984,
+   "2017.0": 2236,
+   "2018.0": 2239,
+   "2019.0": 2278,
+   "2020.0": 1910,
+   "2021.0": 2443,
+   "2022.0": 2283,
+   "2023.0": 2167,
+   "2024.0": 2063,
+   "2025.0": 1987,
+   "2026.0": 1529
+  },
+  "study_sites": 137997,
+  "recruiting_study_sites_england": 13631,
+  "recruiting_sites_with_postcode_pct": 83.6,
+  "match_rate_england_pct": 62.8,
+  "recruiting_but_started_before_2010": 31,
+  "largest_enrolment_target": [
+   {
+    "study_id": "ISRCTN38602189",
+    "e": 64596800.0,
+    "title": "Evaluation of legislation to reduce the drink drive limit in Scotland"
+   }
+  ]
+ },
+ "finding_1": {
+  "rtt_month": "2026-08",
+  "sites_placed": 13631,
+  "recruiting_sites_without_postcode": 3107,
+  "recruiting_sites_all": 18965,
+  "essex": {
+   "waiting": 283275,
+   "over_52": 14297,
+   "recruiting_studies": 115,
+   "waiting_per_study": 2463
+  },
+  "north_east_london": {
+   "waiting": 249427,
+   "over_52": 2773,
+   "recruiting_studies": 455,
+   "waiting_per_study": 548
+  },
+  "ratio": 4.5,
+  "mid_and_south_essex_sites": {
+   "matched": 108,
+   "with_postcode": 99
+  },
+  "essex_rank_of_36": 2,
+  "median_icb_waiting_per_study": 745,
+  "all_icbs": [
+   {
+    "icb": "NHS HEREFORDSHIRE AND WORCESTERSHIRE INTEGRATED CARE BOARD",
+    "waiting": 97654,
+    "recruiting_studies": 36,
+    "waiting_per_study": 2713
+   },
+   {
+    "icb": "NHS ESSEX INTEGRATED CARE BOARD",
+    "waiting": 283275,
+    "recruiting_studies": 115,
+    "waiting_per_study": 2463
+   },
+   {
+    "icb": "NHS LINCOLNSHIRE INTEGRATED CARE BOARD",
+    "waiting": 109727,
+    "recruiting_studies": 56,
+    "waiting_per_study": 1959
+   },
+   {
+    "icb": "NHS SHROPSHIRE, TELFORD AND WREKIN INTEGRATED CARE BOARD",
+    "waiting": 68115,
+    "recruiting_studies": 38,
+    "waiting_per_study": 1792
+   },
+   {
+    "icb": "NHS KENT AND MEDWAY INTEGRATED CARE BOARD",
+    "waiting": 247693,
+    "recruiting_studies": 146,
+    "waiting_per_study": 1697
+   },
+   {
+    "icb": "NHS SURREY AND SUSSEX INTEGRATED CARE BOARD",
+    "waiting": 414102,
+    "recruiting_studies": 257,
+    "waiting_per_study": 1611
+   },
+   {
+    "icb": "NHS LANCASHIRE AND SOUTH CUMBRIA INTEGRATED CARE BOARD",
+    "waiting": 231851,
+    "recruiting_studies": 179,
+    "waiting_per_study": 1295
+   },
+   {
+    "icb": "NHS GLOUCESTERSHIRE INTEGRATED CARE BOARD",
+    "waiting": 73901,
+    "recruiting_studies": 58,
+    "waiting_per_study": 1274
+   },
+   {
+    "icb": "NHS STAFFORDSHIRE AND STOKE-ON-TRENT INTEGRATED CARE BOARD",
+    "waiting": 149128,
+    "recruiting_studies": 118,
+    "waiting_per_study": 1264
+   },
+   {
+    "icb": "NHS BLACK COUNTRY INTEGRATED CARE BOARD",
+    "waiting": 172245,
+    "recruiting_studies": 141,
+    "waiting_per_study": 1222
+   },
+   {
+    "icb": "NHS DERBY AND DERBYSHIRE INTEGRATED CARE BOARD",
+    "waiting": 116650,
+    "recruiting_studies": 96,
+    "waiting_per_study": 1215
+   },
+   {
+    "icb": "NHS HUMBER AND NORTH YORKSHIRE INTEGRATED CARE BOARD",
+    "waiting": 227338,
+    "recruiting_studies": 194,
+    "waiting_per_study": 1172
+   },
+   {
+    "icb": "NHS NORFOLK AND SUFFOLK INTEGRATED CARE BOARD",
+    "waiting": 212871,
+    "recruiting_studies": 196,
+    "waiting_per_study": 1086
+   },
+   {
+    "icb": "NHS COVENTRY AND WARWICKSHIRE INTEGRATED CARE BOARD",
+    "waiting": 120555,
+    "recruiting_studies": 121,
+    "waiting_per_study": 996
+   },
+   {
+    "icb": "NHS DORSET INTEGRATED CARE BOARD",
+    "waiting": 98174,
+    "recruiting_studies": 101,
+    "waiting_per_study": 972
+   },
+   {
+    "icb": "NHS CENTRAL EAST INTEGRATED CARE BOARD",
+    "waiting": 410252,
+    "recruiting_studies": 491,
+    "waiting_per_study": 836
+   },
+   {
+    "icb": "NHS BATH AND NORTH EAST SOMERSET, SWINDON AND WILTSHIRE INTEGRATED CARE BOARD",
+    "waiting": 115531,
+    "recruiting_studies": 139,
+    "waiting_per_study": 831
+   },
+   {
+    "icb": "NHS NORTHAMPTONSHIRE INTEGRATED CARE BOARD",
+    "waiting": 56358,
+    "recruiting_studies": 75,
+    "waiting_per_study": 751
+   },
+   {
+    "icb": "NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD",
+    "waiting": 340941,
+    "recruiting_studies": 462,
+    "waiting_per_study": 738
+   },
+   {
+    "icb": "NHS NORTH EAST AND NORTH CUMBRIA INTEGRATED CARE BOARD",
+    "waiting": 375486,
+    "recruiting_studies": 519,
+    "waiting_per_study": 723
+   },
+   {
+    "icb": "NHS SOMERSET INTEGRATED CARE BOARD",
+    "waiting": 68105,
+    "recruiting_studies": 107,
+    "waiting_per_study": 636
+   },
+   {
+    "icb": "NHS HAMPSHIRE AND ISLE OF WIGHT INTEGRATED CARE BOARD",
+    "waiting": 212432,
+    "recruiting_studies": 374,
+    "waiting_per_study": 568
+   },
+   {
+    "icb": "NHS WEST YORKSHIRE INTEGRATED CARE BOARD",
+    "waiting": 250052,
+    "recruiting_studies": 447,
+    "waiting_per_study": 559
+   },
+   {
+    "icb": "NHS NORTH EAST LONDON INTEGRATED CARE BOARD",
+    "waiting": 249427,
+    "recruiting_studies": 455,
+    "waiting_per_study": 548
+   },
+   {
+    "icb": "NHS GREATER MANCHESTER INTEGRATED CARE BOARD",
+    "waiting": 411464,
+    "recruiting_studies": 754,
+    "waiting_per_study": 546
+   },
+   {
+    "icb": "NHS SOUTH WEST LONDON INTEGRATED CARE BOARD",
+    "waiting": 215557,
+    "recruiting_studies": 398,
+    "waiting_per_study": 542
+   },
+   {
+    "icb": "NHS LEICESTER, LEICESTERSHIRE AND RUTLAND INTEGRATED CARE BOARD",
+    "waiting": 131898,
+    "recruiting_studies": 294,
+    "waiting_per_study": 449
+   },
+   {
+    "icb": "NHS CORNWALL AND THE ISLES OF SCILLY INTEGRATED CARE BOARD",
+    "waiting": 54352,
+    "recruiting_studies": 129,
+    "waiting_per_study": 421
+   },
+   {
+    "icb": "NHS NOTTINGHAM AND NOTTINGHAMSHIRE INTEGRATED CARE BOARD",
+    "waiting": 127125,
+    "recruiting_studies": 308,
+    "waiting_per_study": 413
+   },
+   {
+    "icb": "NHS THAMES VALLEY INTEGRATED CARE BOARD",
+    "waiting": 226010,
+    "recruiting_studies": 550,
+    "waiting_per_study": 411
+   },
+   {
+    "icb": "NHS WEST AND NORTH LONDON INTEGRATED CARE BOARD",
+    "waiting": 490660,
+    "recruiting_studies": 1324,
+    "waiting_per_study": 371
+   },
+   {
+    "icb": "NHS BIRMINGHAM AND SOLIHULL INTEGRATED CARE BOARD",
+    "waiting": 161173,
+    "recruiting_studies": 454,
+    "waiting_per_study": 355
+   },
+   {
+    "icb": "NHS SOUTH EAST LONDON INTEGRATED CARE BOARD",
+    "waiting": 223705,
+    "recruiting_studies": 681,
+    "waiting_per_study": 328
+   },
+   {
+    "icb": "NHS SOUTH YORKSHIRE INTEGRATED CARE BOARD",
+    "waiting": 110297,
+    "recruiting_studies": 351,
+    "waiting_per_study": 314
+   },
+   {
+    "icb": "NHS BRISTOL, NORTH SOMERSET AND SOUTH GLOUCESTERSHIRE INTEGRATED CARE BOARD",
+    "waiting": 94894,
+    "recruiting_studies": 337,
+    "waiting_per_study": 282
+   },
+   {
+    "icb": "NHS DEVON INTEGRATED CARE BOARD",
+    "waiting": 78994,
+    "recruiting_studies": 282,
+    "waiting_per_study": 280
+   }
+  ]
+ },
+ "finding_2": {
+  "departments": [
+   {
+    "code": "C_100",
+    "name": "General Surgery",
+    "waiting": 384914,
+    "typical_wait_weeks": 12.8,
+    "recruiting_studies": 11,
+    "per_10k_waiting": 0.3
+   },
+   {
+    "code": "C_160",
+    "name": "Plastic Surgery",
+    "waiting": 109605,
+    "typical_wait_weeks": 14.0,
+    "recruiting_studies": 4,
+    "per_10k_waiting": 0.4
+   },
+   {
+    "code": "C_140",
+    "name": "Oral Surgery",
+    "waiting": 316357,
+    "typical_wait_weeks": 16.4,
+    "recruiting_studies": 29,
+    "per_10k_waiting": 0.9
+   },
+   {
+    "code": "C_120",
+    "name": "Ear Nose and Throat",
+    "waiting": 590233,
+    "typical_wait_weeks": 15.4,
+    "recruiting_studies": 69,
+    "per_10k_waiting": 1.2
+   },
+   {
+    "code": "C_110",
+    "name": "Trauma and Orthopaedic",
+    "waiting": 851183,
+    "typical_wait_weeks": 13.9,
+    "recruiting_studies": 127,
+    "per_10k_waiting": 1.5
+   },
+   {
+    "code": "C_130",
+    "name": "Ophthalmology",
+    "waiting": 625063,
+    "typical_wait_weeks": 10.4,
+    "recruiting_studies": 104,
+    "per_10k_waiting": 1.7
+   },
+   {
+    "code": "C_502",
+    "name": "Gynaecology",
+    "waiting": 586582,
+    "typical_wait_weeks": 14.2,
+    "recruiting_studies": 109,
+    "per_10k_waiting": 1.9
+   },
+   {
+    "code": "X05",
+    "name": "Other surgical",
+    "waiting": 474806,
+    "typical_wait_weeks": 11.4,
+    "recruiting_studies": 118,
+    "per_10k_waiting": 2.5
+   },
+   {
+    "code": "C_330",
+    "name": "Dermatology",
+    "waiting": 423217,
+    "typical_wait_weeks": 10.5,
+    "recruiting_studies": 115,
+    "per_10k_waiting": 2.7
+   },
+   {
+    "code": "C_101",
+    "name": "Urology",
+    "waiting": 367027,
+    "typical_wait_weeks": 12.2,
+    "recruiting_studies": 191,
+    "per_10k_waiting": 5.2
+   },
+   {
+    "code": "X02",
+    "name": "Other medical",
+    "waiting": 622434,
+    "typical_wait_weeks": 10.7,
+    "recruiting_studies": 436,
+    "per_10k_waiting": 7.0
+   },
+   {
+    "code": "C_430",
+    "name": "Elderly Medicine",
+    "waiting": 27431,
+    "typical_wait_weeks": 7.6,
+    "recruiting_studies": 20,
+    "per_10k_waiting": 7.3
+   },
+   {
+    "code": "C_410",
+    "name": "Rheumatology",
+    "waiting": 118397,
+    "typical_wait_weeks": 10.9,
+    "recruiting_studies": 91,
+    "per_10k_waiting": 7.7
+   },
+   {
+    "code": "C_301",
+    "name": "Gastroenterology",
+    "waiting": 358127,
+    "typical_wait_weeks": 11.0,
+    "recruiting_studies": 343,
+    "per_10k_waiting": 9.6
+   },
+   {
+    "code": "C_320",
+    "name": "Cardiology",
+    "waiting": 362143,
+    "typical_wait_weeks": 11.9,
+    "recruiting_studies": 476,
+    "per_10k_waiting": 13.1
+   },
+   {
+    "code": "C_150",
+    "name": "Neurosurgical",
+    "waiting": 54748,
+    "typical_wait_weeks": 13.4,
+    "recruiting_studies": 89,
+    "per_10k_waiting": 16.3
+   },
+   {
+    "code": "C_400",
+    "name": "Neurology",
+    "waiting": 208030,
+    "typical_wait_weeks": 13.2,
+    "recruiting_studies": 384,
+    "per_10k_waiting": 18.5
+   },
+   {
+    "code": "C_340",
+    "name": "Respiratory Medicine",
+    "waiting": 182914,
+    "typical_wait_weeks": 10.4,
+    "recruiting_studies": 428,
+    "per_10k_waiting": 23.4
+   },
+   {
+    "code": "C_170",
+    "name": "Cardiothoracic Surgery",
+    "waiting": 8798,
+    "typical_wait_weeks": 9.6,
+    "recruiting_studies": 26,
+    "per_10k_waiting": 29.6
+   }
+  ],
+  "bones_and_joints": {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "waiting": 851183,
+   "typical_wait_weeks": 13.9,
+   "recruiting_studies": 127,
+   "per_10k_waiting": 1.5
+  },
+  "lungs": {
+   "code": "C_340",
+   "name": "Respiratory Medicine",
+   "waiting": 182914,
+   "typical_wait_weeks": 10.4,
+   "recruiting_studies": 428,
+   "per_10k_waiting": 23.4
+  },
+  "eyes": {
+   "code": "C_130",
+   "name": "Ophthalmology",
+   "waiting": 625063,
+   "typical_wait_weeks": 10.4,
+   "recruiting_studies": 104,
+   "per_10k_waiting": 1.7
+  },
+  "mouth": {
+   "code": "C_140",
+   "name": "Oral Surgery",
+   "waiting": 316357,
+   "typical_wait_weeks": 16.4,
+   "recruiting_studies": 29,
+   "per_10k_waiting": 0.9
+  },
+  "ratio_lungs_to_bones": 16
+ },
+ "finding_3": {
+  "rtt": {
+   "trusts": 113,
+   "month": "2026-08",
+   "correlation": -0.06,
+   "quarters": [
+    {
+     "quarter": "fewest",
+     "trusts": 29,
+     "studies_from": 2,
+     "studies_to": 17,
+     "median": 65.3
+    },
+    {
+     "quarter": "second",
+     "trusts": 28,
+     "studies_from": 17,
+     "studies_to": 30,
+     "median": 65.4
+    },
+    {
+     "quarter": "third",
+     "trusts": 28,
+     "studies_from": 33,
+     "studies_to": 99,
+     "median": 64.7
+    },
+    {
+     "quarter": "most",
+     "trusts": 28,
+     "studies_from": 99,
+     "studies_to": 389,
+     "median": 64.0
+    }
+   ]
+  },
+  "cancer": {
+   "months": "2026-06 to 2026-08",
+   "62D": {
+    "trusts": 118,
+    "correlation": -0.04,
+    "quarters": [
+     {
+      "quarter": "fewest",
+      "trusts": 30,
+      "studies_from": 0,
+      "studies_to": 3,
+      "median": 73.3
+     },
+     {
+      "quarter": "second",
+      "trusts": 29,
+      "studies_from": 4,
+      "studies_to": 11,
+      "median": 73.1
+     },
+     {
+      "quarter": "third",
+      "trusts": 29,
+      "studies_from": 11,
+      "studies_to": 32,
+      "median": 69.5
+     },
+     {
+      "quarter": "most",
+      "trusts": 30,
+      "studies_from": 32,
+      "studies_to": 161,
+      "median": 71.1
+     }
+    ]
+   },
+   "FDS": {
+    "trusts": 118,
+    "correlation": 0.16,
+    "quarters": [
+     {
+      "quarter": "fewest",
+      "trusts": 30,
+      "studies_from": 0,
+      "studies_to": 3,
+      "median": 80.7
+     },
+     {
+      "quarter": "second",
+      "trusts": 29,
+      "studies_from": 4,
+      "studies_to": 11,
+      "median": 79.0
+     },
+     {
+      "quarter": "third",
+      "trusts": 29,
+      "studies_from": 11,
+      "studies_to": 32,
+      "median": 79.3
+     },
+     {
+      "quarter": "most",
+      "trusts": 30,
+      "studies_from": 32,
+      "studies_to": 161,
+      "median": 81.4
+     }
+    ]
+   }
+  },
+  "slot_issues": {
+   "trusts": 91,
+   "month": "2026-09",
+   "correlation": -0.02
+  }
+ },
+ "finding_4": {
+  "per_year": {
+   "academic and other|2017-19": 1022,
+   "academic and other|2020-21": 792,
+   "academic and other|2022-24": 874,
+   "industry|2017-19": 725,
+   "industry|2020-21": 700,
+   "industry|2022-24": 703
+  },
+  "academic_change_pct": -14,
+  "industry_change_pct": -3,
+  "departments": [
+   {
+    "code": "C_160",
+    "name": "Plastic Surgery",
+    "per_year_2017_19": 6,
+    "per_year_2022_24": 2,
+    "change_pct": -59
+   },
+   {
+    "code": "C_100",
+    "name": "General Surgery",
+    "per_year_2017_19": 5,
+    "per_year_2022_24": 3,
+    "change_pct": -47
+   },
+   {
+    "code": "C_301",
+    "name": "Gastroenterology",
+    "per_year_2017_19": 138,
+    "per_year_2022_24": 109,
+    "change_pct": -21
+   },
+   {
+    "code": "C_110",
+    "name": "Trauma and Orthopaedic",
+    "per_year_2017_19": 63,
+    "per_year_2022_24": 50,
+    "change_pct": -20
+   },
+   {
+    "code": "C_130",
+    "name": "Ophthalmology",
+    "per_year_2017_19": 50,
+    "per_year_2022_24": 40,
+    "change_pct": -20
+   },
+   {
+    "code": "C_140",
+    "name": "Oral Surgery",
+    "per_year_2017_19": 15,
+    "per_year_2022_24": 12,
+    "change_pct": -18
+   },
+   {
+    "code": "X02",
+    "name": "Other - Medical",
+    "per_year_2017_19": 178,
+    "per_year_2022_24": 148,
+    "change_pct": -17
+   },
+   {
+    "code": "C_120",
+    "name": "Ear Nose and Throat",
+    "per_year_2017_19": 28,
+    "per_year_2022_24": 24,
+    "change_pct": -15
+   },
+   {
+    "code": "C_502",
+    "name": "Gynaecology",
+    "per_year_2017_19": 30,
+    "per_year_2022_24": 27,
+    "change_pct": -12
+   },
+   {
+    "code": "C_320",
+    "name": "Cardiology",
+    "per_year_2017_19": 144,
+    "per_year_2022_24": 130,
+    "change_pct": -10
+   },
+   {
+    "code": "C_430",
+    "name": "Elderly Medicine",
+    "per_year_2017_19": 11,
+    "per_year_2022_24": 10,
+    "change_pct": -9
+   },
+   {
+    "code": "C_101",
+    "name": "Urology",
+    "per_year_2017_19": 56,
+    "per_year_2022_24": 52,
+    "change_pct": -7
+   },
+   {
+    "code": "C_410",
+    "name": "Rheumatology",
+    "per_year_2017_19": 35,
+    "per_year_2022_24": 32,
+    "change_pct": -7
+   },
+   {
+    "code": "X05",
+    "name": "Other - Surgical",
+    "per_year_2017_19": 41,
+    "per_year_2022_24": 39,
+    "change_pct": -6
+   },
+   {
+    "code": "C_400",
+    "name": "Neurology",
+    "per_year_2017_19": 139,
+    "per_year_2022_24": 140,
+    "change_pct": 1
+   },
+   {
+    "code": "X03",
+    "name": "Other - Mental Health",
+    "per_year_2017_19": 141,
+    "per_year_2022_24": 142,
+    "change_pct": 1
+   },
+   {
+    "code": "C_340",
+    "name": "Respiratory Medicine",
+    "per_year_2017_19": 159,
+    "per_year_2022_24": 165,
+    "change_pct": 3
+   },
+   {
+    "code": "C_330",
+    "name": "Dermatology",
+    "per_year_2017_19": 64,
+    "per_year_2022_24": 70,
+    "change_pct": 9
+   },
+   {
+    "code": "C_150",
+    "name": "Neurosurgical",
+    "per_year_2017_19": 20,
+    "per_year_2022_24": 25,
+    "change_pct": 21
+   },
+   {
+    "code": "C_170",
+    "name": "Cardiothoracic Surgery",
+    "per_year_2017_19": 3,
+    "per_year_2022_24": 5,
+    "change_pct": 75
+   }
+  ],
+  "yearly": {
+   "2012": {
+    "academic and other": 763,
+    "industry": 554
+   },
+   "2013": {
+    "academic and other": 776,
+    "industry": 604
+   },
+   "2014": {
+    "academic and other": 898,
+    "industry": 664
+   },
+   "2015": {
+    "academic and other": 907,
+    "industry": 694
+   },
+   "2016": {
+    "academic and other": 934,
+    "industry": 646
+   },
+   "2017": {
+    "academic and other": 1051,
+    "industry": 733
+   },
+   "2018": {
+    "academic and other": 1015,
+    "industry": 748
+   },
+   "2019": {
+    "academic and other": 999,
+    "industry": 694
+   },
+   "2020": {
+    "academic and other": 640,
+    "industry": 602
+   },
+   "2021": {
+    "academic and other": 943,
+    "industry": 799
+   },
+   "2022": {
+    "academic and other": 930,
+    "industry": 749
+   },
+   "2023": {
+    "academic and other": 854,
+    "industry": 673
+   },
+   "2024": {
+    "academic and other": 837,
+    "industry": 687
+   },
+   "2025": {
+    "academic and other": 780,
+    "industry": 694
+   }
+  },
+  "registration_lag": {
+   "academic_2019_pct_posted_late": 11.3,
+   "industry_2019_pct_posted_late": 3.0,
+   "academic_2023_pct_posted_late": 8.0,
+   "industry_2023_pct_posted_late": 1.8
+  }
+ },
+ "sponsors": {
+  "recruiting_by_sponsor_kind_pct": {
+   "university": 42.8,
+   "industry": 38.7,
+   "NHS": 12.4,
+   "other": 6.1
+  },
+  "isrctn_style_phase_1_by_start_year": {
+   "2018.0": 3,
+   "2019.0": 6,
+   "2020.0": 11,
+   "2021.0": 27,
+   "2022.0": 70,
+   "2023.0": 55,
+   "2024.0": 54,
+   "2025.0": 63
+  },
+  "top_recruiting_sponsors": {
+   "Imperial College London": 145,
+   "University of Oxford": 124,
+   "AstraZeneca": 100,
+   "King's College London": 78,
+   "University of Birmingham": 73,
+   "Queen Mary University of London": 71,
+   "University College, London": 69,
+   "University of Nottingham": 63,
+   "University of Edinburgh": 62,
+   "Merck Sharp & Dohme LLC": 60
+  },
+  "industry_share_recruiting_pct": 38.7,
+  "industry_share_by_department": {
+   "Elderly Medicine Service": 0.0,
+   "General Surgery Service": 9.0,
+   "Other - Mental Health Services": 16.0,
+   "Neurosurgical Service": 22.0,
+   "Oral Surgery Service": 24.0,
+   "Plastic Surgery Service": 25.0,
+   "Cardiology Service": 33.0,
+   "Trauma and Orthopaedic Service": 34.0,
+   "Cardiothoracic Surgery Service": 35.0,
+   "Neurology Service": 42.0,
+   "Ear Nose and Throat Service": 43.0,
+   "Respiratory Medicine Service": 46.0,
+   "Ophthalmology Service": 47.0,
+   "Gastroenterology Service": 50.0,
+   "Urology Service": 51.0,
+   "Gynaecology Service": 51.0,
+   "Rheumatology Service": 54.0,
+   "Other - Medical Services": 55.0,
+   "Other - Surgical Services": 55.0,
+   "Dermatology Service": 60.0
+  }
+ }
+}

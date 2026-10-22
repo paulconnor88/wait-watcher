@@ -1,0 +1,7749 @@
+{
+ "month": "2026-08",
+ "year_ago": "2025-08",
+ "england": {
+  "waiting_then": 7345544,
+  "waiting_now": 7189213,
+  "pct_18_then": 60.9,
+  "pct_18_now": 65.2,
+  "change_points": 4.2,
+  "median_then": 13.5,
+  "median_now": 12.2,
+  "over_52_then": 192024,
+  "over_52_now": 112958,
+  "pct_over_52_then": 2.6,
+  "pct_over_52_now": 1.6
+ },
+ "check_before_using": [
+  {
+   "code": "A4Y8X",
+   "name": "Aces Nottingham",
+   "reason": "% within 18 weeks moved 67 points in a month (to December 2025)"
+  },
+  {
+   "code": "ACG39",
+   "name": "Newmedica - Swindon",
+   "reason": "% within 18 weeks moved 26 points in a month (to December 2025)"
+  },
+  {
+   "code": "AVQ03",
+   "name": "One Hatfield Hospital",
+   "reason": "% within 18 weeks moved 38 points in a month (to November 2025)"
+  },
+  {
+   "code": "C5Y9L",
+   "name": "Newmedica - Berkshire - Bracknell",
+   "reason": "% within 18 weeks moved 25 points in a month (to July 2026)"
+  },
+  {
+   "code": "D0Y2J",
+   "name": "Optegra at Havant Health Centre (Havant)",
+   "reason": "% within 18 weeks moved 50 points in a month (to August 2026)"
+  },
+  {
+   "code": "D1V5N",
+   "name": "Aces Bolton",
+   "reason": "% within 18 weeks moved 100 points in a month (to May 2026)"
+  },
+  {
+   "code": "D3R0C",
+   "name": "Aces Carlisle",
+   "reason": "% within 18 weeks moved 100 points in a month (to July 2026)"
+  },
+  {
+   "code": "DJH01",
+   "name": "The Royal Buckinghamshire Hospital Ltd",
+   "reason": "% within 18 weeks moved 22 points in a month (to September 2025)"
+  },
+  {
+   "code": "DXN",
+   "name": "Modality Llp",
+   "reason": "% within 18 weeks moved 31 points in a month (to August 2026)"
+  },
+  {
+   "code": "E6F9I",
+   "name": "Aces Bradford",
+   "reason": "% within 18 weeks moved 33 points in a month (to July 2026)"
+  },
+  {
+   "code": "F2C9F",
+   "name": "Aces Harley Street",
+   "reason": "% within 18 weeks moved 100 points in a month (to July 2026)"
+  },
+  {
+   "code": "F7B2B",
+   "name": "Anglia Community Eye Service - Bury St Edmunds",
+   "reason": "% within 18 weeks moved 33 points in a month (to January 2026)"
+  },
+  {
+   "code": "F7F6D",
+   "name": "Newmedica - Hertforshire - Welwyn Garden City",
+   "reason": "% within 18 weeks moved 19 points in a month (to March 2026)"
+  },
+  {
+   "code": "I7G8X",
+   "name": "Aces Newcastle",
+   "reason": "% within 18 weeks moved 30 points in a month (to January 2026)"
+  },
+  {
+   "code": "K3V9U",
+   "name": "Spamedica Stevenage Community Diagnostic & Treatment Centre",
+   "reason": "% within 18 weeks moved 25 points in a month (to May 2026)"
+  },
+  {
+   "code": "K7J9E",
+   "name": "Anglia Community Eye Service - Norwich",
+   "reason": "% within 18 weeks moved 18 points in a month (to April 2026)"
+  },
+  {
+   "code": "N8Z8E",
+   "name": "Aces Torquay",
+   "reason": "% within 18 weeks moved 67 points in a month (to May 2026)"
+  },
+  {
+   "code": "NEY",
+   "name": "Pioneer Healthcare Limited",
+   "reason": "% within 18 weeks moved 49 points in a month (to April 2026)"
+  },
+  {
+   "code": "NHW",
+   "name": "Standard Health Ltd",
+   "reason": "% within 18 weeks moved 26 points in a month (to June 2026)"
+  },
+  {
+   "code": "NLG",
+   "name": "Communitas Clinics",
+   "reason": "% within 18 weeks moved 22 points in a month (to November 2025)"
+  },
+  {
+   "code": "NLX",
+   "name": "Sirona Care & Health",
+   "reason": "% within 18 weeks moved 26 points in a month (to July 2026)"
+  },
+  {
+   "code": "NP9",
+   "name": "Bespoke Healthcare Ltd",
+   "reason": "% within 18 weeks moved 24 points in a month (to January 2026)"
+  },
+  {
+   "code": "NQT5K",
+   "name": "St Martins Hospital",
+   "reason": "% within 18 weeks moved 28 points in a month (to July 2026)"
+  },
+  {
+   "code": "NT204",
+   "name": "Nuffield Health, Brentwood Hospital",
+   "reason": "% within 18 weeks moved 35 points in a month (to January 2026)"
+  },
+  {
+   "code": "NT209",
+   "name": "Nuffield Health, Cambridge Hospital",
+   "reason": "% within 18 weeks moved 18 points in a month (to July 2026)"
+  },
+  {
+   "code": "NT211",
+   "name": "Nuffield Health, Cheltenham Hospital",
+   "reason": "% within 18 weeks moved 31 points in a month (to August 2026)"
+  },
+  {
+   "code": "NT214",
+   "name": "Nuffield Health, Wessex Hospital",
+   "reason": "% within 18 weeks moved 15 points in a month (to May 2026)"
+  },
+  {
+   "code": "NT216",
+   "name": "Nuffield Health, Guildford Hospital",
+   "reason": "% within 18 weeks moved 24 points in a month (to January 2026)"
+  },
+  {
+   "code": "NT218",
+   "name": "Nuffield Health, Haywards Heath Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to December 2025)"
+  },
+  {
+   "code": "NT239",
+   "name": "Nuffield Health, Tunbridge Wells Hospital",
+   "reason": "% within 18 weeks moved 20 points in a month (to March 2026)"
+  },
+  {
+   "code": "NT244",
+   "name": "Nuffield Hospital Oxford (The Manor)",
+   "reason": "% within 18 weeks moved 16 points in a month (to December 2025)"
+  },
+  {
+   "code": "NT304",
+   "name": "Spire Southampton Hospital",
+   "reason": "% within 18 weeks moved 26 points in a month (to May 2026)"
+  },
+  {
+   "code": "NT318",
+   "name": "Spire Norwich Hospital",
+   "reason": "% within 18 weeks moved 17 points in a month (to March 2026)"
+  },
+  {
+   "code": "NT322",
+   "name": "Spire Leicester Hospital",
+   "reason": "% within 18 weeks moved 30 points in a month (to July 2026)"
+  },
+  {
+   "code": "NT327",
+   "name": "Spire Manchester Hospital",
+   "reason": "% within 18 weeks moved 20 points in a month (to April 2026)"
+  },
+  {
+   "code": "NT345",
+   "name": "Spire Clare Park Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to January 2026)"
+  },
+  {
+   "code": "NT347",
+   "name": "Spire Fylde Coast Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to March 2026)"
+  },
+  {
+   "code": "NT418",
+   "name": "Hampshire Clinic",
+   "reason": "% within 18 weeks moved 16 points in a month (to January 2026)"
+  },
+  {
+   "code": "NT419",
+   "name": "Harbour Hospital",
+   "reason": "% within 18 weeks moved 18 points in a month (to October 2025)"
+  },
+  {
+   "code": "NT435",
+   "name": "Shelburne Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to August 2026)"
+  },
+  {
+   "code": "NT446",
+   "name": "St Edmunds Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to June 2026)"
+  },
+  {
+   "code": "NT490",
+   "name": "Southend Private Hospital",
+   "reason": "% within 18 weeks moved 16 points in a month (to March 2026)"
+  },
+  {
+   "code": "NTPAE",
+   "name": "Practice Plus Group Ophthalmology - North West",
+   "reason": "% within 18 weeks moved 39 points in a month (to November 2025)"
+  },
+  {
+   "code": "NX505",
+   "name": "Anglia Community Eye Service - Fakenham Medical Practice",
+   "reason": "% within 18 weeks moved 42 points in a month (to June 2026)"
+  },
+  {
+   "code": "NX507",
+   "name": "Anglia Community Eye Service - Thetford Healthy Living Centre",
+   "reason": "% within 18 weeks moved 20 points in a month (to December 2025)"
+  },
+  {
+   "code": "O1B1P",
+   "name": "Aces Plymouth",
+   "reason": "% within 18 weeks moved 50 points in a month (to March 2026)"
+  },
+  {
+   "code": "P1G3N",
+   "name": "Aces Leeds White Rose",
+   "reason": "% within 18 weeks moved 52 points in a month (to May 2026)"
+  },
+  {
+   "code": "Q4W9A",
+   "name": "Aces Southampton",
+   "reason": "% within 18 weeks moved 24 points in a month (to January 2026)"
+  },
+  {
+   "code": "R0F4N",
+   "name": "Nuffield Health Parkside Hospital",
+   "reason": "% within 18 weeks moved 29 points in a month (to February 2026)"
+  },
+  {
+   "code": "R1A",
+   "name": "Herefordshire and Worcestershire Health and Care NHS Trust",
+   "reason": "% within 18 weeks moved 18 points in a month (to March 2026)"
+  },
+  {
+   "code": "R5J3Z",
+   "name": "Border Health Alliance Limited",
+   "reason": "% within 18 weeks moved 19 points in a month (to October 2025)"
+  },
+  {
+   "code": "R6B6E",
+   "name": "Aces Darlington",
+   "reason": "% within 18 weeks moved 100 points in a month (to August 2026)"
+  },
+  {
+   "code": "RPG",
+   "name": "Oxleas NHS Foundation Trust",
+   "reason": "% within 18 weeks moved 34 points in a month (to June 2026)"
+  },
+  {
+   "code": "RT1",
+   "name": "Cambridgeshire and Peterborough NHS Foundation Trust",
+   "reason": "% within 18 weeks moved 32 points in a month (to October 2025)"
+  },
+  {
+   "code": "S0L9O",
+   "name": "Aces Birmingham",
+   "reason": "% within 18 weeks moved 100 points in a month (to December 2025)"
+  },
+  {
+   "code": "S8O6A",
+   "name": "Aces Manchester Trafford",
+   "reason": "% within 18 weeks moved 67 points in a month (to April 2026)"
+  },
+  {
+   "code": "T1I9W",
+   "name": "Aces Lincoln",
+   "reason": "% within 18 weeks moved 20 points in a month (to April 2026)"
+  },
+  {
+   "code": "T1T4S",
+   "name": "Aces Bristol",
+   "reason": "% within 18 weeks moved 18 points in a month (to December 2025)"
+  },
+  {
+   "code": "U6A5N",
+   "name": "Aces Chiswick",
+   "reason": "% within 18 weeks moved 33 points in a month (to December 2025)"
+  },
+  {
+   "code": "V3J9W",
+   "name": "Pastel Health",
+   "reason": "% within 18 weeks moved 45 points in a month (to April 2026)"
+  },
+  {
+   "code": "W7J4C",
+   "name": "Aces Manchester",
+   "reason": "% within 18 weeks moved 33 points in a month (to December 2025)"
+  },
+  {
+   "code": "X0R3Y",
+   "name": "Aces Leeds King Street",
+   "reason": "% within 18 weeks moved 23 points in a month (to May 2026)"
+  },
+  {
+   "code": "X1M4L",
+   "name": "Aces Maidstone",
+   "reason": "% within 18 weeks moved 80 points in a month (to April 2026)"
+  },
+  {
+   "code": "X7M7U",
+   "name": "Aces Lakeside",
+   "reason": "% within 18 weeks moved 29 points in a month (to March 2026)"
+  },
+  {
+   "code": "X7Y2H",
+   "name": "Aces Wilmslow",
+   "reason": "% within 18 weeks moved 58 points in a month (to January 2026)"
+  },
+  {
+   "code": "Y7W8F",
+   "name": "Aces Southampton - East St",
+   "reason": "% within 18 weeks moved 29 points in a month (to January 2026)"
+  }
+ ],
+ "1_trusts_most_improved": [
+  {
+   "code": "RJR",
+   "name": "Countess of Chester Hospital NHS Foundation Trust",
+   "waiting_then": 38056,
+   "waiting_now": 31910,
+   "pct_18_then": 48.8,
+   "pct_18_now": 68.4,
+   "change_points": 19.5,
+   "median_then": 18.8,
+   "median_now": 11.4,
+   "over_52_then": 3366,
+   "over_52_now": 205,
+   "pct_over_52_then": 8.8,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 31,
+   "meets_aim": false
+  },
+  {
+   "code": "RBT",
+   "name": "Mid Cheshire Hospitals NHS Foundation Trust",
+   "waiting_then": 44351,
+   "waiting_now": 30270,
+   "pct_18_then": 54.8,
+   "pct_18_now": 70.6,
+   "change_points": 15.7,
+   "median_then": 15.7,
+   "median_now": 10.6,
+   "over_52_then": 2051,
+   "over_52_now": 247,
+   "pct_over_52_then": 4.6,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 17,
+   "meets_aim": false
+  },
+  {
+   "code": "REP",
+   "name": "Liverpool Women's NHS Foundation Trust",
+   "waiting_then": 16831,
+   "waiting_now": 11052,
+   "pct_18_then": 46.0,
+   "pct_18_now": 61.3,
+   "change_points": 15.3,
+   "median_then": 20.3,
+   "median_now": 13.2,
+   "over_52_then": 1407,
+   "over_52_now": 129,
+   "pct_over_52_then": 8.4,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 93,
+   "meets_aim": false
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "waiting_then": 44367,
+   "waiting_now": 40233,
+   "pct_18_then": 52.8,
+   "pct_18_now": 67.1,
+   "change_points": 14.4,
+   "median_then": 16.8,
+   "median_now": 12.3,
+   "over_52_then": 2449,
+   "over_52_now": 411,
+   "pct_over_52_then": 5.5,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 42,
+   "meets_aim": false
+  },
+  {
+   "code": "RXR",
+   "name": "East Lancashire Hospitals NHS Trust",
+   "waiting_then": 57217,
+   "waiting_now": 46343,
+   "pct_18_then": 60.1,
+   "pct_18_now": 72.1,
+   "change_points": 12.0,
+   "median_then": 13.3,
+   "median_now": 9.4,
+   "over_52_then": 2083,
+   "over_52_now": 171,
+   "pct_over_52_then": 3.6,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 13,
+   "meets_aim": false
+  },
+  {
+   "code": "RD1",
+   "name": "Royal United Hospitals Bath NHS Foundation Trust",
+   "waiting_then": 39349,
+   "waiting_now": 43165,
+   "pct_18_then": 58.2,
+   "pct_18_now": 70.1,
+   "change_points": 11.9,
+   "median_then": 14.5,
+   "median_now": 11.6,
+   "over_52_then": 761,
+   "over_52_now": 154,
+   "pct_over_52_then": 1.9,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 19,
+   "meets_aim": false
+  },
+  {
+   "code": "RM1",
+   "name": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+   "waiting_then": 82575,
+   "waiting_now": 66059,
+   "pct_18_then": 51.9,
+   "pct_18_now": 63.5,
+   "change_points": 11.7,
+   "median_then": 17.2,
+   "median_now": 13.2,
+   "over_52_then": 4155,
+   "over_52_now": 1803,
+   "pct_over_52_then": 5.0,
+   "pct_over_52_now": 2.7,
+   "check_before_using": false,
+   "rank_now": 76,
+   "meets_aim": false
+  },
+  {
+   "code": "RNN",
+   "name": "North Cumbria Integrated Care NHS Foundation Trust",
+   "waiting_then": 35253,
+   "waiting_now": 35297,
+   "pct_18_then": 53.8,
+   "pct_18_now": 65.4,
+   "change_points": 11.6,
+   "median_then": 16.1,
+   "median_now": 12.3,
+   "over_52_then": 1376,
+   "over_52_now": 360,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 57,
+   "meets_aim": false
+  },
+  {
+   "code": "R0A",
+   "name": "Manchester University NHS Foundation Trust",
+   "waiting_then": 188681,
+   "waiting_now": 167907,
+   "pct_18_then": 52.7,
+   "pct_18_now": 63.9,
+   "change_points": 11.2,
+   "median_then": 16.7,
+   "median_now": 12.8,
+   "over_52_then": 7210,
+   "over_52_now": 1337,
+   "pct_over_52_then": 3.8,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 71,
+   "meets_aim": false
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "waiting_then": 98099,
+   "waiting_now": 96303,
+   "pct_18_then": 55.7,
+   "pct_18_now": 66.6,
+   "change_points": 10.9,
+   "median_then": 15.1,
+   "median_now": 11.7,
+   "over_52_then": 4236,
+   "over_52_now": 175,
+   "pct_over_52_then": 4.3,
+   "pct_over_52_now": 0.2,
+   "check_before_using": false,
+   "rank_now": 44,
+   "meets_aim": false
+  }
+ ],
+ "1_trusts_least_improved": [
+  {
+   "code": "RXP",
+   "name": "County Durham and Darlington NHS Foundation Trust",
+   "waiting_then": 41465,
+   "waiting_now": 54410,
+   "pct_18_then": 68.7,
+   "pct_18_now": 64.2,
+   "change_points": -4.5,
+   "median_then": 11.1,
+   "median_now": 12.3,
+   "over_52_then": 479,
+   "over_52_now": 1410,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 2.6,
+   "check_before_using": false,
+   "rank_now": 66,
+   "meets_aim": false
+  },
+  {
+   "code": "RF4",
+   "name": "Barking, Havering and Redbridge University Hospitals NHS Trust",
+   "waiting_then": 57944,
+   "waiting_now": 65760,
+   "pct_18_then": 71.6,
+   "pct_18_now": 68.2,
+   "change_points": -3.3,
+   "median_then": 10.4,
+   "median_now": 11.8,
+   "over_52_then": 565,
+   "over_52_now": 1257,
+   "pct_over_52_then": 1.0,
+   "pct_over_52_now": 1.9,
+   "check_before_using": false,
+   "rank_now": 35,
+   "meets_aim": false
+  },
+  {
+   "code": "RVW",
+   "name": "North Tees and Hartlepool NHS Foundation Trust",
+   "waiting_then": 20922,
+   "waiting_now": 24063,
+   "pct_18_then": 72.7,
+   "pct_18_now": 69.6,
+   "change_points": -3.1,
+   "median_then": 10.1,
+   "median_now": 11.1,
+   "over_52_then": 157,
+   "over_52_now": 225,
+   "pct_over_52_then": 0.8,
+   "pct_over_52_now": 0.9,
+   "check_before_using": false,
+   "rank_now": 22,
+   "meets_aim": false
+  },
+  {
+   "code": "RJE",
+   "name": "University Hospitals of North Midlands NHS Trust",
+   "waiting_then": 66524,
+   "waiting_now": 75543,
+   "pct_18_then": 62.9,
+   "pct_18_now": 60.0,
+   "change_points": -2.9,
+   "median_then": 12.7,
+   "median_now": 13.8,
+   "over_52_then": 1385,
+   "over_52_now": 1737,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 108,
+   "meets_aim": false
+  },
+  {
+   "code": "RN3",
+   "name": "Great Western Hospitals NHS Foundation Trust",
+   "waiting_then": 40133,
+   "waiting_now": 42540,
+   "pct_18_then": 60.5,
+   "pct_18_now": 57.7,
+   "change_points": -2.8,
+   "median_then": 13.9,
+   "median_now": 15.0,
+   "over_52_then": 646,
+   "over_52_now": 970,
+   "pct_over_52_then": 1.6,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 116,
+   "meets_aim": false
+  },
+  {
+   "code": "RPC",
+   "name": "Queen Victoria Hospital NHS Foundation Trust",
+   "waiting_then": 19018,
+   "waiting_now": 22255,
+   "pct_18_then": 62.4,
+   "pct_18_now": 60.9,
+   "change_points": -1.5,
+   "median_then": 13.6,
+   "median_now": 14.3,
+   "over_52_then": 374,
+   "over_52_now": 228,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 97,
+   "meets_aim": false
+  },
+  {
+   "code": "RWA",
+   "name": "Hull University Teaching Hospitals NHS Trust",
+   "waiting_then": 80655,
+   "waiting_now": 86732,
+   "pct_18_then": 56.7,
+   "pct_18_now": 55.4,
+   "change_points": -1.3,
+   "median_then": 15.0,
+   "median_now": 15.6,
+   "over_52_then": 3261,
+   "over_52_now": 3500,
+   "pct_over_52_then": 4.0,
+   "pct_over_52_now": 4.0,
+   "check_before_using": false,
+   "rank_now": 119,
+   "meets_aim": false
+  },
+  {
+   "code": "RCD",
+   "name": "Harrogate and District NHS Foundation Trust",
+   "waiting_then": 20159,
+   "waiting_now": 21733,
+   "pct_18_then": 71.5,
+   "pct_18_now": 70.8,
+   "change_points": -0.7,
+   "median_then": 10.3,
+   "median_now": 10.6,
+   "over_52_then": 7,
+   "over_52_now": 12,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 16,
+   "meets_aim": false
+  },
+  {
+   "code": "RJL",
+   "name": "Northern Lincolnshire and Goole NHS Foundation Trust",
+   "waiting_then": 39698,
+   "waiting_now": 43139,
+   "pct_18_then": 59.1,
+   "pct_18_now": 58.6,
+   "change_points": -0.5,
+   "median_then": 14.1,
+   "median_now": 14.3,
+   "over_52_then": 1025,
+   "over_52_now": 1584,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 3.7,
+   "check_before_using": false,
+   "rank_now": 114,
+   "meets_aim": false
+  },
+  {
+   "code": "RNA",
+   "name": "The Dudley Group NHS Foundation Trust",
+   "waiting_then": 46398,
+   "waiting_now": 48892,
+   "pct_18_then": 63.3,
+   "pct_18_now": 63.0,
+   "change_points": -0.3,
+   "median_then": 12.4,
+   "median_now": 12.9,
+   "over_52_then": 206,
+   "over_52_now": 21,
+   "pct_over_52_then": 0.4,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 83,
+   "meets_aim": false
+  }
+ ],
+ "2_treatments": [
+  {
+   "code": "X03",
+   "name": "Other mental health",
+   "waiting_then": 2762,
+   "waiting_now": 3361,
+   "pct_18_then": 70.8,
+   "pct_18_now": 82.0,
+   "change_points": 11.2,
+   "median_then": 10.8,
+   "median_now": 8.4,
+   "over_52_then": 2,
+   "over_52_now": 6,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.2,
+   "operation_median_then": 7.2,
+   "operation_median_now": 8.0
+  },
+  {
+   "code": "C_340",
+   "name": "Respiratory Medicine",
+   "waiting_then": 197085,
+   "waiting_now": 182914,
+   "pct_18_then": 65.6,
+   "pct_18_now": 74.1,
+   "change_points": 8.4,
+   "median_then": 12.2,
+   "median_now": 10.4,
+   "over_52_then": 2639,
+   "over_52_now": 669,
+   "pct_over_52_then": 1.3,
+   "pct_over_52_now": 0.4,
+   "operation_median_then": 6.2,
+   "operation_median_now": 5.3
+  },
+  {
+   "code": "C_320",
+   "name": "Cardiology",
+   "waiting_then": 388137,
+   "waiting_now": 362143,
+   "pct_18_then": 61.1,
+   "pct_18_now": 67.9,
+   "change_points": 6.8,
+   "median_then": 13.6,
+   "median_now": 11.9,
+   "over_52_then": 6979,
+   "over_52_now": 2790,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 0.8,
+   "operation_median_then": 11.6,
+   "operation_median_now": 11.6
+  },
+  {
+   "code": "C_120",
+   "name": "Ear Nose and Throat",
+   "waiting_then": 625167,
+   "waiting_now": 590233,
+   "pct_18_then": 50.2,
+   "pct_18_now": 56.8,
+   "change_points": 6.6,
+   "median_then": 17.9,
+   "median_now": 15.4,
+   "over_52_then": 26232,
+   "over_52_now": 12031,
+   "pct_over_52_then": 4.2,
+   "pct_over_52_now": 2.0,
+   "operation_median_then": 27.5,
+   "operation_median_now": 24.8
+  },
+  {
+   "code": "C_400",
+   "name": "Neurology",
+   "waiting_then": 222355,
+   "waiting_now": 208030,
+   "pct_18_then": 55.9,
+   "pct_18_now": 62.3,
+   "change_points": 6.3,
+   "median_then": 15.4,
+   "median_now": 13.2,
+   "over_52_then": 6874,
+   "over_52_now": 2078,
+   "pct_over_52_then": 3.1,
+   "pct_over_52_now": 1.0,
+   "operation_median_then": 5.9,
+   "operation_median_now": 5.0
+  },
+  {
+   "code": "C_301",
+   "name": "Gastroenterology",
+   "waiting_then": 378334,
+   "waiting_now": 358127,
+   "pct_18_then": 64.0,
+   "pct_18_now": 69.7,
+   "change_points": 5.7,
+   "median_then": 12.4,
+   "median_now": 11.0,
+   "over_52_then": 6975,
+   "over_52_now": 3640,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 1.0,
+   "operation_median_then": 4.3,
+   "operation_median_now": 4.7
+  },
+  {
+   "code": "X04",
+   "name": "Other paediatric",
+   "waiting_then": 329500,
+   "waiting_now": 322905,
+   "pct_18_then": 60.6,
+   "pct_18_now": 66.0,
+   "change_points": 5.3,
+   "median_then": 14.0,
+   "median_now": 12.3,
+   "over_52_then": 8242,
+   "over_52_now": 3931,
+   "pct_over_52_then": 2.5,
+   "pct_over_52_now": 1.2,
+   "operation_median_then": 17.4,
+   "operation_median_now": 15.8
+  },
+  {
+   "code": "C_101",
+   "name": "Urology",
+   "waiting_then": 388076,
+   "waiting_now": 367027,
+   "pct_18_then": 59.9,
+   "pct_18_now": 64.8,
+   "change_points": 4.9,
+   "median_then": 13.8,
+   "median_now": 12.2,
+   "over_52_then": 9856,
+   "over_52_now": 5222,
+   "pct_over_52_then": 2.5,
+   "pct_over_52_now": 1.4,
+   "operation_median_then": 10.6,
+   "operation_median_now": 10.9
+  },
+  {
+   "code": "C_300",
+   "name": "General Internal Medicine",
+   "waiting_then": 34683,
+   "waiting_now": 31589,
+   "pct_18_then": 67.5,
+   "pct_18_now": 72.3,
+   "change_points": 4.8,
+   "median_then": 11.3,
+   "median_now": 10.2,
+   "over_52_then": 360,
+   "over_52_now": 222,
+   "pct_over_52_then": 1.0,
+   "pct_over_52_now": 0.7,
+   "operation_median_then": 2.8,
+   "operation_median_now": 2.8
+  },
+  {
+   "code": "C_330",
+   "name": "Dermatology",
+   "waiting_then": 440465,
+   "waiting_now": 423217,
+   "pct_18_then": 64.2,
+   "pct_18_now": 69.0,
+   "change_points": 4.8,
+   "median_then": 12.0,
+   "median_now": 10.5,
+   "over_52_then": 10520,
+   "over_52_now": 5256,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.2,
+   "operation_median_then": 6.3,
+   "operation_median_now": 6.4
+  },
+  {
+   "code": "C_170",
+   "name": "Cardiothoracic Surgery",
+   "waiting_then": 9321,
+   "waiting_now": 8798,
+   "pct_18_then": 69.2,
+   "pct_18_now": 73.6,
+   "change_points": 4.4,
+   "median_then": 10.9,
+   "median_now": 9.6,
+   "over_52_then": 160,
+   "over_52_now": 106,
+   "pct_over_52_then": 1.7,
+   "pct_over_52_now": 1.2,
+   "operation_median_then": 9.7,
+   "operation_median_now": 10.0
+  },
+  {
+   "code": "X05",
+   "name": "Other surgical",
+   "waiting_then": 476402,
+   "waiting_now": 474806,
+   "pct_18_then": 62.6,
+   "pct_18_now": 66.9,
+   "change_points": 4.3,
+   "median_then": 12.5,
+   "median_now": 11.4,
+   "over_52_then": 12703,
+   "over_52_now": 8197,
+   "pct_over_52_then": 2.7,
+   "pct_over_52_now": 1.7,
+   "operation_median_then": 9.8,
+   "operation_median_now": 10.3
+  },
+  {
+   "code": "X02",
+   "name": "Other medical",
+   "waiting_then": 641459,
+   "waiting_now": 622434,
+   "pct_18_then": 66.2,
+   "pct_18_now": 70.1,
+   "change_points": 3.9,
+   "median_then": 11.7,
+   "median_now": 10.7,
+   "over_52_then": 10769,
+   "over_52_now": 6134,
+   "pct_over_52_then": 1.7,
+   "pct_over_52_now": 1.0,
+   "operation_median_then": 6.0,
+   "operation_median_now": 6.3
+  },
+  {
+   "code": "C_140",
+   "name": "Oral Surgery",
+   "waiting_then": 321708,
+   "waiting_now": 316357,
+   "pct_18_then": 50.5,
+   "pct_18_now": 53.8,
+   "change_points": 3.3,
+   "median_then": 17.8,
+   "median_now": 16.4,
+   "over_52_then": 13132,
+   "over_52_now": 7544,
+   "pct_over_52_then": 4.1,
+   "pct_over_52_now": 2.4,
+   "operation_median_then": 23.5,
+   "operation_median_now": 24.5
+  },
+  {
+   "code": "C_410",
+   "name": "Rheumatology",
+   "waiting_then": 124196,
+   "waiting_now": 118397,
+   "pct_18_then": 67.1,
+   "pct_18_now": 70.4,
+   "change_points": 3.3,
+   "median_then": 11.7,
+   "median_now": 10.9,
+   "over_52_then": 1410,
+   "over_52_now": 1070,
+   "pct_over_52_then": 1.1,
+   "pct_over_52_now": 0.9,
+   "operation_median_then": 5.8,
+   "operation_median_now": 5.6
+  },
+  {
+   "code": "C_502",
+   "name": "Gynaecology",
+   "waiting_then": 576774,
+   "waiting_now": 586582,
+   "pct_18_then": 56.3,
+   "pct_18_now": 59.6,
+   "change_points": 3.3,
+   "median_then": 15.3,
+   "median_now": 14.2,
+   "over_52_then": 18400,
+   "over_52_now": 12885,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 2.2,
+   "operation_median_then": 16.6,
+   "operation_median_now": 17.4
+  },
+  {
+   "code": "C_130",
+   "name": "Ophthalmology",
+   "waiting_then": 589527,
+   "waiting_now": 625063,
+   "pct_18_then": 69.8,
+   "pct_18_now": 72.2,
+   "change_points": 2.5,
+   "median_then": 10.6,
+   "median_now": 10.4,
+   "over_52_then": 8137,
+   "over_52_now": 5022,
+   "pct_over_52_then": 1.4,
+   "pct_over_52_now": 0.8,
+   "operation_median_then": 7.1,
+   "operation_median_now": 12.4
+  },
+  {
+   "code": "C_150",
+   "name": "Neurosurgical",
+   "waiting_then": 58447,
+   "waiting_now": 54748,
+   "pct_18_then": 59.5,
+   "pct_18_now": 62.0,
+   "change_points": 2.5,
+   "median_then": 14.3,
+   "median_now": 13.4,
+   "over_52_then": 1496,
+   "over_52_now": 806,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 1.5,
+   "operation_median_then": 13.5,
+   "operation_median_now": 16.7
+  },
+  {
+   "code": "X06",
+   "name": "Other",
+   "waiting_then": 150631,
+   "waiting_now": 159349,
+   "pct_18_then": 74.1,
+   "pct_18_now": 76.5,
+   "change_points": 2.4,
+   "median_then": 9.2,
+   "median_now": 8.7,
+   "over_52_then": 2264,
+   "over_52_now": 1428,
+   "pct_over_52_then": 1.5,
+   "pct_over_52_now": 0.9,
+   "operation_median_then": 6.6,
+   "operation_median_now": 6.8
+  },
+  {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "waiting_then": 865083,
+   "waiting_now": 851183,
+   "pct_18_then": 58.6,
+   "pct_18_now": 60.9,
+   "change_points": 2.3,
+   "median_then": 14.5,
+   "median_now": 13.9,
+   "over_52_then": 29176,
+   "over_52_now": 22043,
+   "pct_over_52_then": 3.4,
+   "pct_over_52_now": 2.6,
+   "operation_median_then": 21.6,
+   "operation_median_now": 23.6
+  },
+  {
+   "code": "C_100",
+   "name": "General Surgery",
+   "waiting_then": 396097,
+   "waiting_now": 384914,
+   "pct_18_then": 61.1,
+   "pct_18_now": 63.2,
+   "change_points": 2.1,
+   "median_then": 13.4,
+   "median_now": 12.8,
+   "over_52_then": 11402,
+   "over_52_now": 8213,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 2.1,
+   "operation_median_then": 14.7,
+   "operation_median_now": 16.8
+  },
+  {
+   "code": "C_160",
+   "name": "Plastic Surgery",
+   "waiting_then": 103364,
+   "waiting_now": 109605,
+   "pct_18_then": 57.9,
+   "pct_18_now": 59.4,
+   "change_points": 1.5,
+   "median_then": 14.5,
+   "median_now": 14.0,
+   "over_52_then": 4259,
+   "over_52_now": 3575,
+   "pct_over_52_then": 4.1,
+   "pct_over_52_now": 3.3,
+   "operation_median_then": 8.4,
+   "operation_median_now": 8.3
+  },
+  {
+   "code": "C_430",
+   "name": "Elderly Medicine",
+   "waiting_then": 25971,
+   "waiting_now": 27431,
+   "pct_18_then": 83.6,
+   "pct_18_now": 84.3,
+   "change_points": 0.8,
+   "median_then": 7.6,
+   "median_now": 7.6,
+   "over_52_then": 37,
+   "over_52_now": 90,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.3,
+   "operation_median_then": 2.2,
+   "operation_median_now": 2.8
+  }
+ ],
+ "3_areas": [
+  {
+   "name": "Shropshire, Telford and Wrekin",
+   "waiting_then": 64454,
+   "waiting_now": 68115,
+   "pct_18_then": 59.2,
+   "pct_18_now": 69.4,
+   "change_points": 10.2,
+   "median_then": 14.5,
+   "median_now": 11.9,
+   "over_52_then": 1361,
+   "over_52_now": 291,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 0.4
+  },
+  {
+   "name": "Birmingham and Solihull",
+   "waiting_then": 163583,
+   "waiting_now": 161173,
+   "pct_18_then": 58.5,
+   "pct_18_now": 67.3,
+   "change_points": 8.8,
+   "median_then": 14.4,
+   "median_now": 11.7,
+   "over_52_then": 4590,
+   "over_52_now": 534,
+   "pct_over_52_then": 2.8,
+   "pct_over_52_now": 0.3
+  },
+  {
+   "name": "Norfolk and Suffolk",
+   "waiting_then": 238564,
+   "waiting_now": 212871,
+   "pct_18_then": 56.6,
+   "pct_18_now": 64.3,
+   "change_points": 7.7,
+   "median_then": 15.0,
+   "median_now": 12.5,
+   "over_52_then": 9148,
+   "over_52_now": 3747,
+   "pct_over_52_then": 3.8,
+   "pct_over_52_now": 1.8
+  },
+  {
+   "name": "Cheshire and Merseyside",
+   "waiting_then": 365564,
+   "waiting_now": 340941,
+   "pct_18_then": 58.4,
+   "pct_18_now": 65.9,
+   "change_points": 7.6,
+   "median_then": 14.4,
+   "median_now": 12.0,
+   "over_52_then": 14273,
+   "over_52_now": 4266,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.3
+  },
+  {
+   "name": "West and North London",
+   "waiting_then": 504488,
+   "waiting_now": 490660,
+   "pct_18_then": 60.4,
+   "pct_18_now": 67.9,
+   "change_points": 7.5,
+   "median_then": 13.9,
+   "median_now": 11.6,
+   "over_52_then": 9887,
+   "over_52_now": 3429,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 0.7
+  },
+  {
+   "name": "Greater Manchester",
+   "waiting_then": 426679,
+   "waiting_now": 411464,
+   "pct_18_then": 55.8,
+   "pct_18_now": 63.0,
+   "change_points": 7.2,
+   "median_then": 15.3,
+   "median_now": 12.8,
+   "over_52_then": 13407,
+   "over_52_now": 6361,
+   "pct_over_52_then": 3.1,
+   "pct_over_52_now": 1.5
+  },
+  {
+   "name": "Leicester, Leicestershire and Rutland",
+   "waiting_then": 125587,
+   "waiting_now": 131898,
+   "pct_18_then": 54.0,
+   "pct_18_now": 61.1,
+   "change_points": 7.2,
+   "median_then": 16.5,
+   "median_now": 13.6,
+   "over_52_then": 3488,
+   "over_52_now": 2933,
+   "pct_over_52_then": 2.8,
+   "pct_over_52_now": 2.2
+  },
+  {
+   "name": "Lincolnshire",
+   "waiting_then": 108844,
+   "waiting_now": 109727,
+   "pct_18_then": 55.9,
+   "pct_18_now": 62.4,
+   "change_points": 6.5,
+   "median_then": 15.4,
+   "median_now": 13.2,
+   "over_52_then": 2783,
+   "over_52_now": 1738,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 1.6
+  },
+  {
+   "name": "South East London",
+   "waiting_then": 225615,
+   "waiting_now": 223705,
+   "pct_18_then": 61.1,
+   "pct_18_now": 66.7,
+   "change_points": 5.5,
+   "median_then": 13.3,
+   "median_now": 12.1,
+   "over_52_then": 6425,
+   "over_52_now": 3389,
+   "pct_over_52_then": 2.8,
+   "pct_over_52_now": 1.5
+  },
+  {
+   "name": "North East London",
+   "waiting_then": 257245,
+   "waiting_now": 249427,
+   "pct_18_then": 62.8,
+   "pct_18_now": 68.0,
+   "change_points": 5.2,
+   "median_then": 12.8,
+   "median_now": 11.4,
+   "over_52_then": 5919,
+   "over_52_now": 2773,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 1.1
+  },
+  {
+   "name": "Lancashire and South Cumbria",
+   "waiting_then": 249324,
+   "waiting_now": 231851,
+   "pct_18_then": 60.7,
+   "pct_18_now": 65.8,
+   "change_points": 5.1,
+   "median_then": 13.3,
+   "median_now": 11.7,
+   "over_52_then": 7565,
+   "over_52_now": 2694,
+   "pct_over_52_then": 3.0,
+   "pct_over_52_now": 1.2
+  },
+  {
+   "name": "Black Country",
+   "waiting_then": 172278,
+   "waiting_now": 172245,
+   "pct_18_then": 60.4,
+   "pct_18_now": 64.8,
+   "change_points": 4.4,
+   "median_then": 13.8,
+   "median_now": 12.5,
+   "over_52_then": 2456,
+   "over_52_now": 1151,
+   "pct_over_52_then": 1.4,
+   "pct_over_52_now": 0.7
+  },
+  {
+   "name": "Northamptonshire",
+   "waiting_then": 91187,
+   "waiting_now": 56358,
+   "pct_18_then": 62.3,
+   "pct_18_now": 66.4,
+   "change_points": 4.0,
+   "median_then": 13.3,
+   "median_now": 12.2,
+   "over_52_then": 1577,
+   "over_52_now": 390,
+   "pct_over_52_then": 1.7,
+   "pct_over_52_now": 0.7
+  },
+  {
+   "name": "Central East",
+   "waiting_then": 404075,
+   "waiting_now": 410252,
+   "pct_18_then": 59.5,
+   "pct_18_now": 63.4,
+   "change_points": 3.9,
+   "median_then": 14.1,
+   "median_now": 12.8,
+   "over_52_then": 10099,
+   "over_52_now": 5178,
+   "pct_over_52_then": 2.5,
+   "pct_over_52_now": 1.3
+  },
+  {
+   "name": "South West London",
+   "waiting_then": 207343,
+   "waiting_now": 215557,
+   "pct_18_then": 64.3,
+   "pct_18_now": 67.9,
+   "change_points": 3.7,
+   "median_then": 12.5,
+   "median_now": 11.7,
+   "over_52_then": 3685,
+   "over_52_now": 2115,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 1.0
+  },
+  {
+   "name": "West Yorkshire",
+   "waiting_then": 247414,
+   "waiting_now": 250052,
+   "pct_18_then": 67.2,
+   "pct_18_now": 70.5,
+   "change_points": 3.3,
+   "median_then": 11.3,
+   "median_now": 10.5,
+   "over_52_then": 2945,
+   "over_52_now": 1855,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 0.7
+  },
+  {
+   "name": "Surrey and Sussex",
+   "waiting_then": 405880,
+   "waiting_now": 414102,
+   "pct_18_then": 59.8,
+   "pct_18_now": 63.1,
+   "change_points": 3.2,
+   "median_then": 13.9,
+   "median_now": 12.8,
+   "over_52_then": 10569,
+   "over_52_now": 9732,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 2.4
+  },
+  {
+   "name": "Bristol, North Somerset and South Gloucestershire",
+   "waiting_then": 91685,
+   "waiting_now": 94894,
+   "pct_18_then": 68.0,
+   "pct_18_now": 71.2,
+   "change_points": 3.1,
+   "median_then": 11.4,
+   "median_now": 10.5,
+   "over_52_then": 614,
+   "over_52_now": 490,
+   "pct_over_52_then": 0.7,
+   "pct_over_52_now": 0.5
+  },
+  {
+   "name": "Bath and North East Somerset, Swindon and Wiltshire",
+   "waiting_then": 108918,
+   "waiting_now": 115531,
+   "pct_18_then": 62.7,
+   "pct_18_now": 65.7,
+   "change_points": 2.9,
+   "median_then": 12.9,
+   "median_now": 12.4,
+   "over_52_then": 1558,
+   "over_52_now": 1430,
+   "pct_over_52_then": 1.4,
+   "pct_over_52_now": 1.2
+  },
+  {
+   "name": "Cornwall and the Isles of Scilly",
+   "waiting_then": 53240,
+   "waiting_now": 54352,
+   "pct_18_then": 70.5,
+   "pct_18_now": 73.4,
+   "change_points": 2.9,
+   "median_then": 10.1,
+   "median_now": 9.6,
+   "over_52_then": 679,
+   "over_52_now": 568,
+   "pct_over_52_then": 1.3,
+   "pct_over_52_now": 1.0
+  },
+  {
+   "name": "Gloucestershire",
+   "waiting_then": 66881,
+   "waiting_now": 73901,
+   "pct_18_then": 67.3,
+   "pct_18_now": 70.3,
+   "change_points": 2.9,
+   "median_then": 10.7,
+   "median_now": 10.7,
+   "over_52_then": 135,
+   "over_52_now": 142,
+   "pct_over_52_then": 0.2,
+   "pct_over_52_now": 0.2
+  },
+  {
+   "name": "Derby and Derbyshire",
+   "waiting_then": 117281,
+   "waiting_now": 116650,
+   "pct_18_then": 61.0,
+   "pct_18_now": 63.7,
+   "change_points": 2.7,
+   "median_then": 13.6,
+   "median_now": 12.5,
+   "over_52_then": 2449,
+   "over_52_now": 1955,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 1.7
+  },
+  {
+   "name": "Dorset",
+   "waiting_then": 92488,
+   "waiting_now": 98174,
+   "pct_18_then": 62.7,
+   "pct_18_now": 65.3,
+   "change_points": 2.6,
+   "median_then": 12.9,
+   "median_now": 12.5,
+   "over_52_then": 2265,
+   "over_52_now": 1113,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.1
+  },
+  {
+   "name": "South Yorkshire",
+   "waiting_then": 117753,
+   "waiting_now": 110297,
+   "pct_18_then": 65.9,
+   "pct_18_now": 68.5,
+   "change_points": 2.6,
+   "median_then": 11.9,
+   "median_now": 11.2,
+   "over_52_then": 2274,
+   "over_52_now": 1726,
+   "pct_over_52_then": 1.9,
+   "pct_over_52_now": 1.6
+  },
+  {
+   "name": "Herefordshire and Worcestershire",
+   "waiting_then": 94383,
+   "waiting_now": 97654,
+   "pct_18_then": 60.5,
+   "pct_18_now": 63.0,
+   "change_points": 2.5,
+   "median_then": 13.7,
+   "median_now": 13.0,
+   "over_52_then": 1989,
+   "over_52_now": 878,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 0.9
+  },
+  {
+   "name": "Somerset",
+   "waiting_then": 68113,
+   "waiting_now": 68105,
+   "pct_18_then": 62.9,
+   "pct_18_now": 65.4,
+   "change_points": 2.5,
+   "median_then": 12.8,
+   "median_now": 11.8,
+   "over_52_then": 1822,
+   "over_52_now": 1688,
+   "pct_over_52_then": 2.7,
+   "pct_over_52_now": 2.5
+  },
+  {
+   "name": "Essex",
+   "waiting_then": 295464,
+   "waiting_now": 283275,
+   "pct_18_then": 53.5,
+   "pct_18_now": 55.9,
+   "change_points": 2.3,
+   "median_then": 16.2,
+   "median_now": 15.3,
+   "over_52_then": 18412,
+   "over_52_now": 14297,
+   "pct_over_52_then": 6.2,
+   "pct_over_52_now": 5.0
+  },
+  {
+   "name": "Thames Valley",
+   "waiting_then": 185695,
+   "waiting_now": 226010,
+   "pct_18_then": 64.0,
+   "pct_18_now": 65.9,
+   "change_points": 1.9,
+   "median_then": 12.6,
+   "median_now": 12.3,
+   "over_52_then": 4172,
+   "over_52_now": 2363,
+   "pct_over_52_then": 2.2,
+   "pct_over_52_now": 1.0
+  },
+  {
+   "name": "Kent and Medway",
+   "waiting_then": 238641,
+   "waiting_now": 247693,
+   "pct_18_then": 61.6,
+   "pct_18_now": 63.4,
+   "change_points": 1.8,
+   "median_then": 13.3,
+   "median_now": 12.8,
+   "over_52_then": 5845,
+   "over_52_now": 4707,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.9
+  },
+  {
+   "name": "Coventry and Warwickshire",
+   "waiting_then": 128840,
+   "waiting_now": 120555,
+   "pct_18_then": 61.6,
+   "pct_18_now": 63.1,
+   "change_points": 1.5,
+   "median_then": 13.7,
+   "median_now": 12.8,
+   "over_52_then": 2580,
+   "over_52_now": 2528,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 2.1
+  },
+  {
+   "name": "North East and North Cumbria",
+   "waiting_then": 347750,
+   "waiting_now": 375486,
+   "pct_18_then": 70.2,
+   "pct_18_now": 71.7,
+   "change_points": 1.5,
+   "median_then": 10.8,
+   "median_now": 10.6,
+   "over_52_then": 4722,
+   "over_52_now": 3342,
+   "pct_over_52_then": 1.4,
+   "pct_over_52_now": 0.9
+  },
+  {
+   "name": "Nottingham and Nottinghamshire",
+   "waiting_then": 124194,
+   "waiting_now": 127125,
+   "pct_18_then": 62.7,
+   "pct_18_now": 63.9,
+   "change_points": 1.3,
+   "median_then": 12.9,
+   "median_now": 12.5,
+   "over_52_then": 2524,
+   "over_52_now": 2967,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 2.3
+  },
+  {
+   "name": "Hampshire and Isle of Wight",
+   "waiting_then": 193103,
+   "waiting_now": 212432,
+   "pct_18_then": 62.0,
+   "pct_18_now": 63.1,
+   "change_points": 1.1,
+   "median_then": 12.9,
+   "median_now": 12.8,
+   "over_52_then": 6114,
+   "over_52_now": 4850,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 2.3
+  },
+  {
+   "name": "Devon",
+   "waiting_then": 157604,
+   "waiting_now": 78994,
+   "pct_18_then": 62.1,
+   "pct_18_now": 62.8,
+   "change_points": 0.6,
+   "median_then": 12.5,
+   "median_now": 12.7,
+   "over_52_then": 4644,
+   "over_52_now": 1745,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 2.2
+  },
+  {
+   "name": "Staffordshire and Stoke-On-Trent",
+   "waiting_then": 139016,
+   "waiting_now": 149128,
+   "pct_18_then": 63.2,
+   "pct_18_now": 63.6,
+   "change_points": 0.4,
+   "median_then": 12.5,
+   "median_now": 12.4,
+   "over_52_then": 2827,
+   "over_52_now": 2761,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.9
+  },
+  {
+   "name": "Humber and North Yorkshire",
+   "waiting_then": 217003,
+   "waiting_now": 227338,
+   "pct_18_then": 60.6,
+   "pct_18_now": 60.5,
+   "change_points": -0.1,
+   "median_then": 13.4,
+   "median_now": 13.7,
+   "over_52_then": 6592,
+   "over_52_now": 6114,
+   "pct_over_52_then": 3.0,
+   "pct_over_52_now": 2.7
+  }
+ ],
+ "3_areas_note": {
+  "icbs_then": 42,
+  "icbs_now": 36,
+  "year_ago_people_not_matched": 75579
+ },
+ "4_over_52_trusts": [
+  {
+   "code": "RAJ",
+   "name": "Mid and South Essex NHS Foundation Trust",
+   "over_52_now": 13427,
+   "waiting_now": 165277,
+   "share_of_england": 11.9
+  },
+  {
+   "code": "RYR",
+   "name": "University Hospitals Sussex NHS Foundation Trust",
+   "over_52_now": 5634,
+   "waiting_now": 118148,
+   "share_of_england": 5.0
+  },
+  {
+   "code": "RM3",
+   "name": "Northern Care Alliance NHS Foundation Trust",
+   "over_52_now": 3932,
+   "waiting_now": 136973,
+   "share_of_england": 3.5
+  },
+  {
+   "code": "RWA",
+   "name": "Hull University Teaching Hospitals NHS Trust",
+   "over_52_now": 3500,
+   "waiting_now": 86732,
+   "share_of_england": 3.1
+  },
+  {
+   "code": "RVV",
+   "name": "East Kent Hospitals University NHS Foundation Trust",
+   "over_52_now": 2623,
+   "waiting_now": 85395,
+   "share_of_england": 2.3
+  },
+  {
+   "code": "RWE",
+   "name": "University Hospitals of Leicester NHS Trust",
+   "over_52_now": 2455,
+   "waiting_now": 114889,
+   "share_of_england": 2.2
+  },
+  {
+   "code": "RX1",
+   "name": "Nottingham University Hospitals NHS Trust",
+   "over_52_now": 2404,
+   "waiting_now": 86339,
+   "share_of_england": 2.1
+  },
+  {
+   "code": "RL1",
+   "name": "The Robert Jones and Agnes Hunt Orthopaedic Hospital NHS Foundation Trust",
+   "over_52_now": 2378,
+   "waiting_now": 22655,
+   "share_of_england": 2.1
+  },
+  {
+   "code": "RTG",
+   "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+   "over_52_now": 2176,
+   "waiting_now": 100816,
+   "share_of_england": 1.9
+  },
+  {
+   "code": "RKB",
+   "name": "University Hospitals Coventry and Warwickshire NHS Trust",
+   "over_52_now": 2173,
+   "waiting_now": 66684,
+   "share_of_england": 1.9
+  }
+ ],
+ "4_over_52_treatments": [
+  {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "over_52_now": 22043,
+   "share_of_england": 19.5
+  },
+  {
+   "code": "C_502",
+   "name": "Gynaecology",
+   "over_52_now": 12885,
+   "share_of_england": 11.4
+  },
+  {
+   "code": "C_120",
+   "name": "Ear Nose and Throat",
+   "over_52_now": 12031,
+   "share_of_england": 10.7
+  },
+  {
+   "code": "C_100",
+   "name": "General Surgery",
+   "over_52_now": 8213,
+   "share_of_england": 7.3
+  },
+  {
+   "code": "X05",
+   "name": "Other surgical",
+   "over_52_now": 8197,
+   "share_of_england": 7.3
+  }
+ ],
+ "4_england_over_52_now": 112958,
+ "5_league_table": [
+  {
+   "code": "RP6",
+   "name": "Moorfields Eye Hospital NHS Foundation Trust",
+   "waiting_then": 34900,
+   "waiting_now": 42168,
+   "pct_18_then": 80.5,
+   "pct_18_now": 84.6,
+   "change_points": 4.1,
+   "median_then": 8.5,
+   "median_now": 7.7,
+   "over_52_then": 31,
+   "over_52_now": 19,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 1,
+   "meets_aim": false
+  },
+  {
+   "code": "RTF",
+   "name": "Northumbria Healthcare NHS Foundation Trust",
+   "waiting_then": 36391,
+   "waiting_now": 39301,
+   "pct_18_then": 82.0,
+   "pct_18_now": 83.6,
+   "change_points": 1.6,
+   "median_then": 9.9,
+   "median_now": 9.7,
+   "over_52_then": 5,
+   "over_52_now": 0,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 2,
+   "meets_aim": false
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "waiting_then": 35016,
+   "waiting_now": 34597,
+   "pct_18_then": 79.7,
+   "pct_18_now": 80.7,
+   "change_points": 1.0,
+   "median_then": 10.2,
+   "median_now": 10.1,
+   "over_52_then": 23,
+   "over_52_now": 35,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 3,
+   "meets_aim": false
+  },
+  {
+   "code": "RMP",
+   "name": "Tameside and Glossop Integrated Care NHS Foundation Trust",
+   "waiting_then": 17099,
+   "waiting_now": 16489,
+   "pct_18_then": 70.4,
+   "pct_18_now": 78.5,
+   "change_points": 8.2,
+   "median_then": 10.9,
+   "median_now": 8.9,
+   "over_52_then": 0,
+   "over_52_now": 0,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 4,
+   "meets_aim": false
+  },
+  {
+   "code": "RWY",
+   "name": "Calderdale and Huddersfield NHS Foundation Trust",
+   "waiting_then": 36738,
+   "waiting_now": 35543,
+   "pct_18_then": 68.7,
+   "pct_18_now": 76.3,
+   "change_points": 7.6,
+   "median_then": 11.0,
+   "median_now": 9.6,
+   "over_52_then": 48,
+   "over_52_now": 9,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 5,
+   "meets_aim": false
+  },
+  {
+   "code": "RR7",
+   "name": "Gateshead Health NHS Foundation Trust",
+   "waiting_then": 13533,
+   "waiting_now": 11753,
+   "pct_18_then": 67.4,
+   "pct_18_now": 75.5,
+   "change_points": 8.1,
+   "median_then": 10.9,
+   "median_now": 9.3,
+   "over_52_then": 55,
+   "over_52_now": 8,
+   "pct_over_52_then": 0.4,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 6,
+   "meets_aim": false
+  },
+  {
+   "code": "R0B",
+   "name": "South Tyneside and Sunderland NHS Foundation Trust",
+   "waiting_then": 59265,
+   "waiting_now": 61738,
+   "pct_18_then": 74.4,
+   "pct_18_now": 74.9,
+   "change_points": 0.4,
+   "median_then": 9.8,
+   "median_now": 9.6,
+   "over_52_then": 26,
+   "over_52_now": 0,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 7,
+   "meets_aim": false
+  },
+  {
+   "code": "RQX",
+   "name": "Homerton Healthcare NHS Foundation Trust",
+   "waiting_then": 34340,
+   "waiting_now": 25725,
+   "pct_18_then": 65.3,
+   "pct_18_now": 73.2,
+   "change_points": 7.9,
+   "median_then": 12.3,
+   "median_now": 9.7,
+   "over_52_then": 413,
+   "over_52_now": 116,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 0.5,
+   "check_before_using": false,
+   "rank_now": 8,
+   "meets_aim": false
+  },
+  {
+   "code": "REF",
+   "name": "Royal Cornwall Hospitals NHS Trust",
+   "waiting_then": 41254,
+   "waiting_now": 45002,
+   "pct_18_then": 71.1,
+   "pct_18_now": 73.1,
+   "change_points": 2.0,
+   "median_then": 10.0,
+   "median_now": 9.7,
+   "over_52_then": 433,
+   "over_52_now": 446,
+   "pct_over_52_then": 1.0,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 9,
+   "meets_aim": false
+  },
+  {
+   "code": "RJ6",
+   "name": "Croydon Health Services NHS Trust",
+   "waiting_then": 36892,
+   "waiting_now": 36350,
+   "pct_18_then": 68.5,
+   "pct_18_now": 72.8,
+   "change_points": 4.4,
+   "median_then": 11.6,
+   "median_now": 10.7,
+   "over_52_then": 734,
+   "over_52_now": 637,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.8,
+   "check_before_using": false,
+   "rank_now": 10,
+   "meets_aim": false
+  },
+  {
+   "code": "RBK",
+   "name": "Walsall Healthcare NHS Trust",
+   "waiting_then": 28355,
+   "waiting_now": 28492,
+   "pct_18_then": 70.5,
+   "pct_18_now": 72.8,
+   "change_points": 2.3,
+   "median_then": 10.8,
+   "median_now": 10.3,
+   "over_52_then": 11,
+   "over_52_now": 11,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 11,
+   "meets_aim": false
+  },
+  {
+   "code": "RTD",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "waiting_then": 88675,
+   "waiting_now": 88112,
+   "pct_18_then": 72.7,
+   "pct_18_now": 72.6,
+   "change_points": -0.1,
+   "median_then": 10.1,
+   "median_now": 10.3,
+   "over_52_then": 1245,
+   "over_52_now": 722,
+   "pct_over_52_then": 1.4,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 12,
+   "meets_aim": false
+  },
+  {
+   "code": "RXR",
+   "name": "East Lancashire Hospitals NHS Trust",
+   "waiting_then": 57217,
+   "waiting_now": 46343,
+   "pct_18_then": 60.1,
+   "pct_18_now": 72.1,
+   "change_points": 12.0,
+   "median_then": 13.3,
+   "median_now": 9.4,
+   "over_52_then": 2083,
+   "over_52_now": 171,
+   "pct_over_52_then": 3.6,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 13,
+   "meets_aim": false
+  },
+  {
+   "code": "RCU",
+   "name": "Sheffield Children's NHS Foundation Trust",
+   "waiting_then": 12272,
+   "waiting_now": 11708,
+   "pct_18_then": 65.3,
+   "pct_18_now": 71.3,
+   "change_points": 6.0,
+   "median_then": 11.8,
+   "median_now": 10.3,
+   "over_52_then": 321,
+   "over_52_now": 122,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 14,
+   "meets_aim": false
+  },
+  {
+   "code": "RCF",
+   "name": "Airedale NHS Foundation Trust",
+   "waiting_then": 14032,
+   "waiting_now": 14971,
+   "pct_18_then": 71.1,
+   "pct_18_now": 71.0,
+   "change_points": -0.0,
+   "median_then": 10.6,
+   "median_now": 10.4,
+   "over_52_then": 53,
+   "over_52_now": 40,
+   "pct_over_52_then": 0.4,
+   "pct_over_52_now": 0.3,
+   "check_before_using": false,
+   "rank_now": 15,
+   "meets_aim": false
+  },
+  {
+   "code": "RCD",
+   "name": "Harrogate and District NHS Foundation Trust",
+   "waiting_then": 20159,
+   "waiting_now": 21733,
+   "pct_18_then": 71.5,
+   "pct_18_now": 70.8,
+   "change_points": -0.7,
+   "median_then": 10.3,
+   "median_now": 10.6,
+   "over_52_then": 7,
+   "over_52_now": 12,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 16,
+   "meets_aim": false
+  },
+  {
+   "code": "RBT",
+   "name": "Mid Cheshire Hospitals NHS Foundation Trust",
+   "waiting_then": 44351,
+   "waiting_now": 30270,
+   "pct_18_then": 54.8,
+   "pct_18_now": 70.6,
+   "change_points": 15.7,
+   "median_then": 15.7,
+   "median_now": 10.6,
+   "over_52_then": 2051,
+   "over_52_now": 247,
+   "pct_over_52_then": 4.6,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 17,
+   "meets_aim": false
+  },
+  {
+   "code": "RYJ",
+   "name": "Imperial College Healthcare NHS Trust",
+   "waiting_then": 91122,
+   "waiting_now": 84392,
+   "pct_18_then": 60.7,
+   "pct_18_now": 70.4,
+   "change_points": 9.7,
+   "median_then": 13.5,
+   "median_now": 10.8,
+   "over_52_then": 1341,
+   "over_52_now": 22,
+   "pct_over_52_then": 1.5,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 18,
+   "meets_aim": false
+  },
+  {
+   "code": "RD1",
+   "name": "Royal United Hospitals Bath NHS Foundation Trust",
+   "waiting_then": 39349,
+   "waiting_now": 43165,
+   "pct_18_then": 58.2,
+   "pct_18_now": 70.1,
+   "change_points": 11.9,
+   "median_then": 14.5,
+   "median_now": 11.6,
+   "over_52_then": 761,
+   "over_52_now": 154,
+   "pct_over_52_then": 1.9,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 19,
+   "meets_aim": false
+  },
+  {
+   "code": "RTE",
+   "name": "Gloucestershire Hospitals NHS Foundation Trust",
+   "waiting_then": 60358,
+   "waiting_now": 66529,
+   "pct_18_then": 67.3,
+   "pct_18_now": 70.0,
+   "change_points": 2.8,
+   "median_then": 10.7,
+   "median_now": 10.9,
+   "over_52_then": 37,
+   "over_52_now": 34,
+   "pct_over_52_then": 0.1,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 20,
+   "meets_aim": false
+  },
+  {
+   "code": "RWF",
+   "name": "Maidstone and Tunbridge Wells NHS Trust",
+   "waiting_then": 48851,
+   "waiting_now": 50987,
+   "pct_18_then": 69.0,
+   "pct_18_now": 70.0,
+   "change_points": 1.0,
+   "median_then": 11.2,
+   "median_now": 11.5,
+   "over_52_then": 0,
+   "over_52_now": 4,
+   "pct_over_52_then": 0.0,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 21,
+   "meets_aim": false
+  },
+  {
+   "code": "RVW",
+   "name": "North Tees and Hartlepool NHS Foundation Trust",
+   "waiting_then": 20922,
+   "waiting_now": 24063,
+   "pct_18_then": 72.7,
+   "pct_18_now": 69.6,
+   "change_points": -3.1,
+   "median_then": 10.1,
+   "median_now": 11.1,
+   "over_52_then": 157,
+   "over_52_now": 225,
+   "pct_over_52_then": 0.8,
+   "pct_over_52_now": 0.9,
+   "check_before_using": false,
+   "rank_now": 22,
+   "meets_aim": false
+  },
+  {
+   "code": "RNZ",
+   "name": "Salisbury NHS Foundation Trust",
+   "waiting_then": 30062,
+   "waiting_now": 31024,
+   "pct_18_then": 66.0,
+   "pct_18_now": 69.5,
+   "change_points": 3.5,
+   "median_then": 12.1,
+   "median_now": 11.7,
+   "over_52_then": 209,
+   "over_52_now": 126,
+   "pct_over_52_then": 0.7,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 23,
+   "meets_aim": false
+  },
+  {
+   "code": "RFF",
+   "name": "Barnsley Hospital NHS Foundation Trust",
+   "waiting_then": 26332,
+   "waiting_now": 21616,
+   "pct_18_then": 66.3,
+   "pct_18_now": 69.5,
+   "change_points": 3.2,
+   "median_then": 12.1,
+   "median_now": 11.2,
+   "over_52_then": 199,
+   "over_52_now": 148,
+   "pct_over_52_then": 0.8,
+   "pct_over_52_now": 0.7,
+   "check_before_using": false,
+   "rank_now": 24,
+   "meets_aim": false
+  },
+  {
+   "code": "RQM",
+   "name": "Chelsea and Westminster Hospital NHS Foundation Trust",
+   "waiting_then": 72327,
+   "waiting_now": 72142,
+   "pct_18_then": 60.0,
+   "pct_18_now": 69.3,
+   "change_points": 9.3,
+   "median_then": 14.0,
+   "median_now": 11.9,
+   "over_52_then": 1337,
+   "over_52_now": 846,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 25,
+   "meets_aim": false
+  },
+  {
+   "code": "RWG",
+   "name": "West Hertfordshire Teaching Hospitals NHS Trust",
+   "waiting_then": 46952,
+   "waiting_now": 44408,
+   "pct_18_then": 63.8,
+   "pct_18_now": 69.1,
+   "change_points": 5.3,
+   "median_then": 13.2,
+   "median_now": 12.0,
+   "over_52_then": 827,
+   "over_52_now": 393,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 0.9,
+   "check_before_using": false,
+   "rank_now": 26,
+   "meets_aim": false
+  },
+  {
+   "code": "RA7",
+   "name": "Bristol NHS Foundation Trust",
+   "waiting_then": 54268,
+   "waiting_now": 96608,
+   "pct_18_then": 64.6,
+   "pct_18_now": 69.1,
+   "change_points": 4.4,
+   "median_then": 12.1,
+   "median_now": 11.1,
+   "over_52_then": 794,
+   "over_52_now": 525,
+   "pct_over_52_then": 1.5,
+   "pct_over_52_now": 0.5,
+   "check_before_using": false,
+   "rank_now": 27,
+   "meets_aim": false
+  },
+  {
+   "code": "RXC",
+   "name": "East Sussex Healthcare NHS Trust",
+   "waiting_then": 62249,
+   "waiting_now": 55478,
+   "pct_18_then": 63.5,
+   "pct_18_now": 69.0,
+   "change_points": 5.6,
+   "median_then": 12.4,
+   "median_now": 11.3,
+   "over_52_then": 834,
+   "over_52_now": 338,
+   "pct_over_52_then": 1.3,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 28,
+   "meets_aim": false
+  },
+  {
+   "code": "RAE",
+   "name": "Bradford Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 33728,
+   "waiting_now": 31756,
+   "pct_18_then": 65.6,
+   "pct_18_now": 68.9,
+   "change_points": 3.3,
+   "median_then": 12.3,
+   "median_now": 11.4,
+   "over_52_then": 238,
+   "over_52_now": 40,
+   "pct_over_52_then": 0.7,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 29,
+   "meets_aim": false
+  },
+  {
+   "code": "RTX",
+   "name": "University Hospitals of Morecambe Bay NHS Foundation Trust",
+   "waiting_then": 34468,
+   "waiting_now": 36391,
+   "pct_18_then": 67.4,
+   "pct_18_now": 68.5,
+   "change_points": 1.1,
+   "median_then": 11.3,
+   "median_now": 10.8,
+   "over_52_then": 465,
+   "over_52_now": 584,
+   "pct_over_52_then": 1.3,
+   "pct_over_52_now": 1.6,
+   "check_before_using": false,
+   "rank_now": 30,
+   "meets_aim": false
+  },
+  {
+   "code": "RJR",
+   "name": "Countess of Chester Hospital NHS Foundation Trust",
+   "waiting_then": 38056,
+   "waiting_now": 31910,
+   "pct_18_then": 48.8,
+   "pct_18_now": 68.4,
+   "change_points": 19.5,
+   "median_then": 18.8,
+   "median_now": 11.4,
+   "over_52_then": 3366,
+   "over_52_now": 205,
+   "pct_over_52_then": 8.8,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 31,
+   "meets_aim": false
+  },
+  {
+   "code": "RFR",
+   "name": "The Rotherham NHS Foundation Trust",
+   "waiting_then": 31707,
+   "waiting_now": 29815,
+   "pct_18_then": 64.6,
+   "pct_18_now": 68.3,
+   "change_points": 3.7,
+   "median_then": 12.5,
+   "median_now": 11.6,
+   "over_52_then": 647,
+   "over_52_now": 376,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.3,
+   "check_before_using": false,
+   "rank_now": 32,
+   "meets_aim": false
+  },
+  {
+   "code": "RXW",
+   "name": "The Shrewsbury and Telford Hospital NHS Trust",
+   "waiting_then": 32670,
+   "waiting_now": 38312,
+   "pct_18_then": 58.8,
+   "pct_18_now": 68.2,
+   "change_points": 9.4,
+   "median_then": 14.9,
+   "median_now": 12.1,
+   "over_52_then": 305,
+   "over_52_now": 0,
+   "pct_over_52_then": 0.9,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 33,
+   "meets_aim": false
+  },
+  {
+   "code": "RNQ",
+   "name": "Kettering General Hospital NHS Foundation Trust",
+   "waiting_then": 25619,
+   "waiting_now": 32045,
+   "pct_18_then": 61.6,
+   "pct_18_now": 68.2,
+   "change_points": 6.6,
+   "median_then": 13.5,
+   "median_now": 11.9,
+   "over_52_then": 281,
+   "over_52_now": 89,
+   "pct_over_52_then": 1.1,
+   "pct_over_52_now": 0.3,
+   "check_before_using": false,
+   "rank_now": 34,
+   "meets_aim": false
+  },
+  {
+   "code": "RF4",
+   "name": "Barking, Havering and Redbridge University Hospitals NHS Trust",
+   "waiting_then": 57944,
+   "waiting_now": 65760,
+   "pct_18_then": 71.6,
+   "pct_18_now": 68.2,
+   "change_points": -3.3,
+   "median_then": 10.4,
+   "median_now": 11.8,
+   "over_52_then": 565,
+   "over_52_now": 1257,
+   "pct_over_52_then": 1.0,
+   "pct_over_52_now": 1.9,
+   "check_before_using": false,
+   "rank_now": 35,
+   "meets_aim": false
+  },
+  {
+   "code": "RAX",
+   "name": "Kingston and Richmond NHS Foundation Trust",
+   "waiting_then": 42937,
+   "waiting_now": 38311,
+   "pct_18_then": 63.1,
+   "pct_18_now": 68.1,
+   "change_points": 5.1,
+   "median_then": 13.1,
+   "median_now": 12.2,
+   "over_52_then": 260,
+   "over_52_now": 58,
+   "pct_over_52_then": 0.6,
+   "pct_over_52_now": 0.2,
+   "check_before_using": false,
+   "rank_now": 36,
+   "meets_aim": false
+  },
+  {
+   "code": "RJ1",
+   "name": "Guy's and St Thomas' NHS Foundation Trust",
+   "waiting_then": 112391,
+   "waiting_now": 109320,
+   "pct_18_then": 64.8,
+   "pct_18_now": 67.7,
+   "change_points": 2.9,
+   "median_then": 12.2,
+   "median_now": 11.3,
+   "over_52_then": 2680,
+   "over_52_now": 916,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 37,
+   "meets_aim": false
+  },
+  {
+   "code": "RKE",
+   "name": "Whittington Health NHS Trust",
+   "waiting_then": 26978,
+   "waiting_now": 22760,
+   "pct_18_then": 63.2,
+   "pct_18_now": 67.5,
+   "change_points": 4.2,
+   "median_then": 12.7,
+   "median_now": 11.6,
+   "over_52_then": 539,
+   "over_52_now": 101,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 38,
+   "meets_aim": false
+  },
+  {
+   "code": "RR8",
+   "name": "Leeds Teaching Hospitals NHS Trust",
+   "waiting_then": 88367,
+   "waiting_now": 89330,
+   "pct_18_then": 66.2,
+   "pct_18_now": 67.5,
+   "change_points": 1.3,
+   "median_then": 11.2,
+   "median_now": 11.0,
+   "over_52_then": 1814,
+   "over_52_now": 1485,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 1.7,
+   "check_before_using": false,
+   "rank_now": 39,
+   "meets_aim": false
+  },
+  {
+   "code": "RJC",
+   "name": "South Warwickshire University NHS Foundation Trust",
+   "waiting_then": 33099,
+   "waiting_now": 31997,
+   "pct_18_then": 65.0,
+   "pct_18_now": 67.3,
+   "change_points": 2.3,
+   "median_then": 12.1,
+   "median_now": 11.9,
+   "over_52_then": 759,
+   "over_52_now": 398,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 40,
+   "meets_aim": false
+  },
+  {
+   "code": "R1K",
+   "name": "London North West University Healthcare NHS Trust",
+   "waiting_then": 86396,
+   "waiting_now": 81540,
+   "pct_18_then": 58.2,
+   "pct_18_now": 67.2,
+   "change_points": 9.0,
+   "median_then": 14.8,
+   "median_now": 11.9,
+   "over_52_then": 2026,
+   "over_52_now": 581,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 0.7,
+   "check_before_using": false,
+   "rank_now": 41,
+   "meets_aim": false
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "waiting_then": 44367,
+   "waiting_now": 40233,
+   "pct_18_then": 52.8,
+   "pct_18_now": 67.1,
+   "change_points": 14.4,
+   "median_then": 16.8,
+   "median_now": 12.3,
+   "over_52_then": 2449,
+   "over_52_now": 411,
+   "pct_over_52_then": 5.5,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 42,
+   "meets_aim": false
+  },
+  {
+   "code": "RVR",
+   "name": "Epsom and St Helier University Hospitals NHS Trust",
+   "waiting_then": 59726,
+   "waiting_now": 56723,
+   "pct_18_then": 63.7,
+   "pct_18_now": 66.9,
+   "change_points": 3.2,
+   "median_then": 12.8,
+   "median_now": 11.9,
+   "over_52_then": 1091,
+   "over_52_now": 500,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 0.9,
+   "check_before_using": false,
+   "rank_now": 43,
+   "meets_aim": false
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "waiting_then": 98099,
+   "waiting_now": 96303,
+   "pct_18_then": 55.7,
+   "pct_18_now": 66.6,
+   "change_points": 10.9,
+   "median_then": 15.1,
+   "median_now": 11.7,
+   "over_52_then": 4236,
+   "over_52_now": 175,
+   "pct_over_52_then": 4.3,
+   "pct_over_52_now": 0.2,
+   "check_before_using": false,
+   "rank_now": 44,
+   "meets_aim": false
+  },
+  {
+   "code": "RRJ",
+   "name": "The Royal Orthopaedic Hospital NHS Foundation Trust",
+   "waiting_then": 13502,
+   "waiting_now": 13473,
+   "pct_18_then": 61.6,
+   "pct_18_now": 66.5,
+   "change_points": 4.9,
+   "median_then": 13.5,
+   "median_now": 12.2,
+   "over_52_then": 427,
+   "over_52_now": 69,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 0.5,
+   "check_before_using": false,
+   "rank_now": 45,
+   "meets_aim": false
+  },
+  {
+   "code": "RBS",
+   "name": "Alder Hey Children's NHS Foundation Trust",
+   "waiting_then": 18760,
+   "waiting_now": 17520,
+   "pct_18_then": 59.8,
+   "pct_18_now": 66.3,
+   "change_points": 6.5,
+   "median_then": 14.3,
+   "median_now": 12.4,
+   "over_52_then": 428,
+   "over_52_now": 167,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 46,
+   "meets_aim": false
+  },
+  {
+   "code": "RJZ",
+   "name": "King's College Hospital NHS Foundation Trust",
+   "waiting_then": 79638,
+   "waiting_now": 91102,
+   "pct_18_then": 60.1,
+   "pct_18_now": 66.2,
+   "change_points": 6.2,
+   "median_then": 13.8,
+   "median_now": 12.3,
+   "over_52_then": 1900,
+   "over_52_now": 2004,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 2.2,
+   "check_before_using": false,
+   "rank_now": 47,
+   "meets_aim": false
+  },
+  {
+   "code": "RTR",
+   "name": "South Tees Hospitals NHS Foundation Trust",
+   "waiting_then": 57473,
+   "waiting_now": 58458,
+   "pct_18_then": 61.1,
+   "pct_18_now": 66.1,
+   "change_points": 5.0,
+   "median_then": 13.6,
+   "median_now": 12.2,
+   "over_52_then": 1679,
+   "over_52_now": 730,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 48,
+   "meets_aim": false
+  },
+  {
+   "code": "R0D",
+   "name": "University Hospitals Dorset NHS Foundation Trust",
+   "waiting_then": 63172,
+   "waiting_now": 67260,
+   "pct_18_then": 63.3,
+   "pct_18_now": 66.0,
+   "change_points": 2.7,
+   "median_then": 12.8,
+   "median_now": 12.4,
+   "over_52_then": 1832,
+   "over_52_now": 657,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 49,
+   "meets_aim": false
+  },
+  {
+   "code": "RJ2",
+   "name": "Lewisham and Greenwich NHS Trust",
+   "waiting_then": 53550,
+   "waiting_now": 55440,
+   "pct_18_then": 59.1,
+   "pct_18_now": 65.9,
+   "change_points": 6.8,
+   "median_then": 14.0,
+   "median_now": 12.5,
+   "over_52_then": 1745,
+   "over_52_now": 772,
+   "pct_over_52_then": 3.3,
+   "pct_over_52_now": 1.4,
+   "check_before_using": false,
+   "rank_now": 50,
+   "meets_aim": false
+  },
+  {
+   "code": "RET",
+   "name": "The Walton Centre NHS Foundation Trust",
+   "waiting_then": 18469,
+   "waiting_now": 14722,
+   "pct_18_then": 61.2,
+   "pct_18_now": 65.9,
+   "change_points": 4.6,
+   "median_then": 13.5,
+   "median_now": 11.6,
+   "over_52_then": 301,
+   "over_52_now": 226,
+   "pct_over_52_then": 1.6,
+   "pct_over_52_now": 1.5,
+   "check_before_using": false,
+   "rank_now": 51,
+   "meets_aim": false
+  },
+  {
+   "code": "R1F",
+   "name": "Isle of Wight NHS Trust",
+   "waiting_then": 13899,
+   "waiting_now": 12463,
+   "pct_18_then": 62.7,
+   "pct_18_now": 65.8,
+   "change_points": 3.1,
+   "median_then": 12.8,
+   "median_now": 11.9,
+   "over_52_then": 121,
+   "over_52_now": 80,
+   "pct_over_52_then": 0.9,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 52,
+   "meets_aim": false
+  },
+  {
+   "code": "RXF",
+   "name": "Mid Yorkshire Teaching NHS Trust",
+   "waiting_then": 56521,
+   "waiting_now": 57958,
+   "pct_18_then": 61.3,
+   "pct_18_now": 65.7,
+   "change_points": 4.4,
+   "median_then": 13.2,
+   "median_now": 11.7,
+   "over_52_then": 297,
+   "over_52_now": 337,
+   "pct_over_52_then": 0.5,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 53,
+   "meets_aim": false
+  },
+  {
+   "code": "RQ3",
+   "name": "Birmingham Women's and Children's NHS Foundation Trust",
+   "waiting_then": 25197,
+   "waiting_now": 23360,
+   "pct_18_then": 56.3,
+   "pct_18_now": 65.6,
+   "change_points": 9.3,
+   "median_then": 15.6,
+   "median_now": 12.2,
+   "over_52_then": 293,
+   "over_52_now": 142,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 54,
+   "meets_aim": false
+  },
+  {
+   "code": "RGT",
+   "name": "Cambridge University Hospitals NHS Foundation Trust",
+   "waiting_then": 66120,
+   "waiting_now": 60401,
+   "pct_18_then": 57.8,
+   "pct_18_now": 65.6,
+   "change_points": 7.8,
+   "median_then": 14.4,
+   "median_now": 11.7,
+   "over_52_then": 2571,
+   "over_52_now": 724,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 55,
+   "meets_aim": false
+  },
+  {
+   "code": "RRV",
+   "name": "University College London Hospitals NHS Foundation Trust",
+   "waiting_then": 73758,
+   "waiting_now": 80143,
+   "pct_18_then": 57.9,
+   "pct_18_now": 65.5,
+   "change_points": 7.6,
+   "median_then": 14.8,
+   "median_now": 12.0,
+   "over_52_then": 1336,
+   "over_52_now": 850,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 1.1,
+   "check_before_using": false,
+   "rank_now": 56,
+   "meets_aim": false
+  },
+  {
+   "code": "RNN",
+   "name": "North Cumbria Integrated Care NHS Foundation Trust",
+   "waiting_then": 35253,
+   "waiting_now": 35297,
+   "pct_18_then": 53.8,
+   "pct_18_now": 65.4,
+   "change_points": 11.6,
+   "median_then": 16.1,
+   "median_now": 12.3,
+   "over_52_then": 1376,
+   "over_52_now": 360,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 57,
+   "meets_aim": false
+  },
+  {
+   "code": "RBL",
+   "name": "Wirral University Teaching Hospital NHS Foundation Trust",
+   "waiting_then": 47463,
+   "waiting_now": 43368,
+   "pct_18_then": 60.6,
+   "pct_18_now": 65.4,
+   "change_points": 4.7,
+   "median_then": 13.6,
+   "median_now": 12.0,
+   "over_52_then": 1343,
+   "over_52_now": 276,
+   "pct_over_52_then": 2.8,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 58,
+   "meets_aim": false
+  },
+  {
+   "code": "RWW",
+   "name": "North Cheshire and Mersey NHS Foundation Trust",
+   "waiting_then": 32519,
+   "waiting_now": 35458,
+   "pct_18_then": 57.0,
+   "pct_18_now": 65.3,
+   "change_points": 8.3,
+   "median_then": 14.8,
+   "median_now": 12.5,
+   "over_52_then": 1497,
+   "over_52_now": 321,
+   "pct_over_52_then": 4.6,
+   "pct_over_52_now": 0.9,
+   "check_before_using": false,
+   "rank_now": 59,
+   "meets_aim": false
+  },
+  {
+   "code": "RWH",
+   "name": "East and North Hertfordshire Teaching NHS Trust",
+   "waiting_then": 50875,
+   "waiting_now": 57636,
+   "pct_18_then": 61.2,
+   "pct_18_now": 65.2,
+   "change_points": 4.0,
+   "median_then": 13.4,
+   "median_now": 12.1,
+   "over_52_then": 781,
+   "over_52_now": 853,
+   "pct_over_52_then": 1.5,
+   "pct_over_52_now": 1.5,
+   "check_before_using": false,
+   "rank_now": 60,
+   "meets_aim": false
+  },
+  {
+   "code": "RBN",
+   "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+   "waiting_then": 76887,
+   "waiting_now": 84572,
+   "pct_18_then": 63.5,
+   "pct_18_now": 64.9,
+   "change_points": 1.4,
+   "median_then": 12.1,
+   "median_now": 12.1,
+   "over_52_then": 1955,
+   "over_52_now": 1809,
+   "pct_over_52_then": 2.5,
+   "pct_over_52_now": 2.1,
+   "check_before_using": false,
+   "rank_now": 61,
+   "meets_aim": false
+  },
+  {
+   "code": "RA2",
+   "name": "Royal Surrey NHS Foundation Trust",
+   "waiting_then": 30267,
+   "waiting_now": 31720,
+   "pct_18_then": 57.7,
+   "pct_18_now": 64.7,
+   "change_points": 7.0,
+   "median_then": 14.5,
+   "median_now": 12.5,
+   "over_52_then": 1195,
+   "over_52_now": 379,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 62,
+   "meets_aim": false
+  },
+  {
+   "code": "RCX",
+   "name": "The Queen Elizabeth Hospital, King's Lynn, NHS Foundation Trust",
+   "waiting_then": 28493,
+   "waiting_now": 23666,
+   "pct_18_then": 58.1,
+   "pct_18_now": 64.7,
+   "change_points": 6.7,
+   "median_then": 14.1,
+   "median_now": 12.0,
+   "over_52_then": 560,
+   "over_52_now": 259,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.1,
+   "check_before_using": false,
+   "rank_now": 63,
+   "meets_aim": false
+  },
+  {
+   "code": "RGR",
+   "name": "West Suffolk NHS Foundation Trust",
+   "waiting_then": 33671,
+   "waiting_now": 32866,
+   "pct_18_then": 58.4,
+   "pct_18_now": 64.6,
+   "change_points": 6.2,
+   "median_then": 14.6,
+   "median_now": 12.3,
+   "over_52_then": 1430,
+   "over_52_now": 613,
+   "pct_over_52_then": 4.2,
+   "pct_over_52_now": 1.9,
+   "check_before_using": false,
+   "rank_now": 64,
+   "meets_aim": false
+  },
+  {
+   "code": "RLT",
+   "name": "George Eliot Hospital NHS Trust",
+   "waiting_then": 20217,
+   "waiting_now": 19075,
+   "pct_18_then": 63.0,
+   "pct_18_now": 64.3,
+   "change_points": 1.3,
+   "median_then": 13.1,
+   "median_now": 12.5,
+   "over_52_then": 170,
+   "over_52_now": 87,
+   "pct_over_52_then": 0.8,
+   "pct_over_52_now": 0.5,
+   "check_before_using": false,
+   "rank_now": 65,
+   "meets_aim": false
+  },
+  {
+   "code": "RXP",
+   "name": "County Durham and Darlington NHS Foundation Trust",
+   "waiting_then": 41465,
+   "waiting_now": 54410,
+   "pct_18_then": 68.7,
+   "pct_18_now": 64.2,
+   "change_points": -4.5,
+   "median_then": 11.1,
+   "median_now": 12.3,
+   "over_52_then": 479,
+   "over_52_now": 1410,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 2.6,
+   "check_before_using": false,
+   "rank_now": 66,
+   "meets_aim": false
+  },
+  {
+   "code": "R1H",
+   "name": "Barts Health NHS Trust",
+   "waiting_then": 134064,
+   "waiting_now": 122536,
+   "pct_18_then": 56.2,
+   "pct_18_now": 64.1,
+   "change_points": 7.9,
+   "median_then": 15.4,
+   "median_now": 12.5,
+   "over_52_then": 4509,
+   "over_52_now": 1012,
+   "pct_over_52_then": 3.4,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 67,
+   "meets_aim": false
+  },
+  {
+   "code": "RH5",
+   "name": "Somerset NHS Foundation Trust",
+   "waiting_then": 57715,
+   "waiting_now": 55401,
+   "pct_18_then": 62.2,
+   "pct_18_now": 64.1,
+   "change_points": 1.9,
+   "median_then": 13.1,
+   "median_now": 12.0,
+   "over_52_then": 1826,
+   "over_52_now": 1702,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 3.1,
+   "check_before_using": false,
+   "rank_now": 68,
+   "meets_aim": false
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "waiting_then": 50457,
+   "waiting_now": 51587,
+   "pct_18_then": 57.3,
+   "pct_18_now": 64.0,
+   "change_points": 6.7,
+   "median_then": 15.2,
+   "median_now": 12.6,
+   "over_52_then": 905,
+   "over_52_now": 1304,
+   "pct_over_52_then": 1.8,
+   "pct_over_52_now": 2.5,
+   "check_before_using": false,
+   "rank_now": 69,
+   "meets_aim": false
+  },
+  {
+   "code": "RHM",
+   "name": "University Hospital Southampton NHS Foundation Trust",
+   "waiting_then": 63018,
+   "waiting_now": 64769,
+   "pct_18_then": 61.8,
+   "pct_18_now": 64.0,
+   "change_points": 2.2,
+   "median_then": 13.1,
+   "median_now": 12.4,
+   "over_52_then": 1855,
+   "over_52_now": 1542,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 2.4,
+   "check_before_using": false,
+   "rank_now": 70,
+   "meets_aim": false
+  },
+  {
+   "code": "R0A",
+   "name": "Manchester University NHS Foundation Trust",
+   "waiting_then": 188681,
+   "waiting_now": 167907,
+   "pct_18_then": 52.7,
+   "pct_18_now": 63.9,
+   "change_points": 11.2,
+   "median_then": 16.7,
+   "median_now": 12.8,
+   "over_52_then": 7210,
+   "over_52_now": 1337,
+   "pct_over_52_then": 3.8,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 71,
+   "meets_aim": false
+  },
+  {
+   "code": "RL4",
+   "name": "The Royal Wolverhampton NHS Trust",
+   "waiting_then": 77368,
+   "waiting_now": 71216,
+   "pct_18_then": 54.7,
+   "pct_18_now": 63.9,
+   "change_points": 9.2,
+   "median_then": 16.0,
+   "median_now": 12.8,
+   "over_52_then": 1883,
+   "over_52_now": 1059,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.5,
+   "check_before_using": false,
+   "rank_now": 72,
+   "meets_aim": false
+  },
+  {
+   "code": "RAS",
+   "name": "The Hillingdon Hospitals NHS Foundation Trust",
+   "waiting_then": 34621,
+   "waiting_now": 32558,
+   "pct_18_then": 55.0,
+   "pct_18_now": 63.9,
+   "change_points": 9.0,
+   "median_then": 15.8,
+   "median_now": 12.6,
+   "over_52_then": 965,
+   "over_52_now": 96,
+   "pct_over_52_then": 2.8,
+   "pct_over_52_now": 0.3,
+   "check_before_using": false,
+   "rank_now": 73,
+   "meets_aim": false
+  },
+  {
+   "code": "RJ7",
+   "name": "St George's University Hospitals NHS Foundation Trust",
+   "waiting_then": 71216,
+   "waiting_now": 70983,
+   "pct_18_then": 60.5,
+   "pct_18_now": 63.9,
+   "change_points": 3.3,
+   "median_then": 13.8,
+   "median_now": 12.6,
+   "over_52_then": 1812,
+   "over_52_now": 805,
+   "pct_over_52_then": 2.5,
+   "pct_over_52_now": 1.1,
+   "check_before_using": false,
+   "rank_now": 74,
+   "meets_aim": false
+  },
+  {
+   "code": "RK5",
+   "name": "Sherwood Forest Hospitals NHS Foundation Trust",
+   "waiting_then": 36134,
+   "waiting_now": 33435,
+   "pct_18_then": 61.3,
+   "pct_18_now": 63.8,
+   "change_points": 2.5,
+   "median_then": 13.6,
+   "median_now": 12.4,
+   "over_52_then": 349,
+   "over_52_now": 468,
+   "pct_over_52_then": 1.0,
+   "pct_over_52_now": 1.4,
+   "check_before_using": false,
+   "rank_now": 75,
+   "meets_aim": false
+  },
+  {
+   "code": "RM1",
+   "name": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+   "waiting_then": 82575,
+   "waiting_now": 66059,
+   "pct_18_then": 51.9,
+   "pct_18_now": 63.5,
+   "change_points": 11.7,
+   "median_then": 17.2,
+   "median_now": 13.2,
+   "over_52_then": 4155,
+   "over_52_now": 1803,
+   "pct_over_52_then": 5.0,
+   "pct_over_52_now": 2.7,
+   "check_before_using": false,
+   "rank_now": 76,
+   "meets_aim": false
+  },
+  {
+   "code": "RFS",
+   "name": "Chesterfield Royal Hospital NHS Foundation Trust",
+   "waiting_then": 32396,
+   "waiting_now": 26728,
+   "pct_18_then": 58.5,
+   "pct_18_now": 63.5,
+   "change_points": 5.0,
+   "median_then": 14.7,
+   "median_now": 12.6,
+   "over_52_then": 1068,
+   "over_52_now": 492,
+   "pct_over_52_then": 3.3,
+   "pct_over_52_now": 1.8,
+   "check_before_using": false,
+   "rank_now": 77,
+   "meets_aim": false
+  },
+  {
+   "code": "RXQ",
+   "name": "Buckinghamshire Healthcare NHS Trust",
+   "waiting_then": 50258,
+   "waiting_now": 47950,
+   "pct_18_then": 58.7,
+   "pct_18_now": 63.5,
+   "change_points": 4.8,
+   "median_then": 14.6,
+   "median_now": 13.5,
+   "over_52_then": 1382,
+   "over_52_now": 55,
+   "pct_over_52_then": 2.7,
+   "pct_over_52_now": 0.1,
+   "check_before_using": false,
+   "rank_now": 78,
+   "meets_aim": false
+  },
+  {
+   "code": "RN5",
+   "name": "Hampshire Hospitals NHS Foundation Trust",
+   "waiting_then": 50866,
+   "waiting_now": 49635,
+   "pct_18_then": 59.1,
+   "pct_18_now": 63.5,
+   "change_points": 4.4,
+   "median_then": 14.1,
+   "median_now": 12.8,
+   "over_52_then": 2048,
+   "over_52_now": 1188,
+   "pct_over_52_then": 4.0,
+   "pct_over_52_now": 2.4,
+   "check_before_using": false,
+   "rank_now": 79,
+   "meets_aim": false
+  },
+  {
+   "code": "RP5",
+   "name": "Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 57223,
+   "waiting_now": 55386,
+   "pct_18_then": 60.7,
+   "pct_18_now": 63.5,
+   "change_points": 2.8,
+   "median_then": 13.6,
+   "median_now": 12.4,
+   "over_52_then": 1735,
+   "over_52_now": 1553,
+   "pct_over_52_then": 3.0,
+   "pct_over_52_now": 2.8,
+   "check_before_using": false,
+   "rank_now": 80,
+   "meets_aim": false
+  },
+  {
+   "code": "RLQ",
+   "name": "Wye Valley NHS Trust",
+   "waiting_then": 27294,
+   "waiting_now": 27934,
+   "pct_18_then": 59.8,
+   "pct_18_now": 63.1,
+   "change_points": 3.3,
+   "median_then": 13.9,
+   "median_now": 13.0,
+   "over_52_then": 973,
+   "over_52_now": 799,
+   "pct_over_52_then": 3.6,
+   "pct_over_52_now": 2.9,
+   "check_before_using": false,
+   "rank_now": 81,
+   "meets_aim": false
+  },
+  {
+   "code": "RWD",
+   "name": "United Lincolnshire Teaching Hospitals NHS Trust",
+   "waiting_then": 69630,
+   "waiting_now": 69989,
+   "pct_18_then": 53.6,
+   "pct_18_now": 63.0,
+   "change_points": 9.4,
+   "median_then": 16.5,
+   "median_now": 13.0,
+   "over_52_then": 2012,
+   "over_52_now": 1089,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 1.6,
+   "check_before_using": false,
+   "rank_now": 82,
+   "meets_aim": false
+  },
+  {
+   "code": "RNA",
+   "name": "The Dudley Group NHS Foundation Trust",
+   "waiting_then": 46398,
+   "waiting_now": 48892,
+   "pct_18_then": 63.3,
+   "pct_18_now": 63.0,
+   "change_points": -0.3,
+   "median_then": 12.4,
+   "median_now": 12.9,
+   "over_52_then": 206,
+   "over_52_now": 21,
+   "pct_over_52_then": 0.4,
+   "pct_over_52_now": 0.0,
+   "check_before_using": false,
+   "rank_now": 83,
+   "meets_aim": false
+  },
+  {
+   "code": "RH8",
+   "name": "Royal Devon University Healthcare NHS Foundation Trust",
+   "waiting_then": 75951,
+   "waiting_now": 74526,
+   "pct_18_then": 59.1,
+   "pct_18_now": 62.8,
+   "change_points": 3.7,
+   "median_then": 14.0,
+   "median_now": 12.7,
+   "over_52_then": 2310,
+   "over_52_now": 1684,
+   "pct_over_52_then": 3.0,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 84,
+   "meets_aim": false
+  },
+  {
+   "code": "REM",
+   "name": "Liverpool University Hospitals NHS Foundation Trust",
+   "waiting_then": 67595,
+   "waiting_now": 66322,
+   "pct_18_then": 56.1,
+   "pct_18_now": 62.7,
+   "change_points": 6.7,
+   "median_then": 15.4,
+   "median_now": 12.9,
+   "over_52_then": 2349,
+   "over_52_now": 827,
+   "pct_over_52_then": 3.5,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 85,
+   "meets_aim": false
+  },
+  {
+   "code": "RAL",
+   "name": "Royal Free London NHS Foundation Trust",
+   "waiting_then": 140331,
+   "waiting_now": 137947,
+   "pct_18_then": 58.6,
+   "pct_18_now": 62.7,
+   "change_points": 4.1,
+   "median_then": 14.6,
+   "median_now": 13.2,
+   "over_52_then": 3186,
+   "over_52_now": 1334,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 86,
+   "meets_aim": false
+  },
+  {
+   "code": "RWJ",
+   "name": "Stockport NHS Foundation Trust",
+   "waiting_then": 35246,
+   "waiting_now": 34942,
+   "pct_18_then": 56.0,
+   "pct_18_now": 62.3,
+   "change_points": 6.3,
+   "median_then": 15.4,
+   "median_now": 12.9,
+   "over_52_then": 833,
+   "over_52_now": 155,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 87,
+   "meets_aim": false
+  },
+  {
+   "code": "RTH",
+   "name": "Oxford University Hospitals NHS Foundation Trust",
+   "waiting_then": 86320,
+   "waiting_now": 89940,
+   "pct_18_then": 58.8,
+   "pct_18_now": 62.2,
+   "change_points": 3.4,
+   "median_then": 14.3,
+   "median_now": 13.3,
+   "over_52_then": 2722,
+   "over_52_now": 1519,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 1.7,
+   "check_before_using": false,
+   "rank_now": 88,
+   "meets_aim": false
+  },
+  {
+   "code": "RX1",
+   "name": "Nottingham University Hospitals NHS Trust",
+   "waiting_then": 83003,
+   "waiting_now": 86339,
+   "pct_18_then": 61.8,
+   "pct_18_now": 62.1,
+   "change_points": 0.4,
+   "median_then": 13.6,
+   "median_now": 13.3,
+   "over_52_then": 1962,
+   "over_52_now": 2404,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 2.8,
+   "check_before_using": false,
+   "rank_now": 89,
+   "meets_aim": false
+  },
+  {
+   "code": "RJN",
+   "name": "East Cheshire NHS Trust",
+   "waiting_then": 18248,
+   "waiting_now": 15700,
+   "pct_18_then": 59.1,
+   "pct_18_now": 61.7,
+   "change_points": 2.7,
+   "median_then": 14.1,
+   "median_now": 13.4,
+   "over_52_then": 435,
+   "over_52_now": 284,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.8,
+   "check_before_using": false,
+   "rank_now": 90,
+   "meets_aim": false
+  },
+  {
+   "code": "RMC",
+   "name": "Bolton NHS Foundation Trust",
+   "waiting_then": 37521,
+   "waiting_now": 36998,
+   "pct_18_then": 58.0,
+   "pct_18_now": 61.6,
+   "change_points": 3.6,
+   "median_then": 14.5,
+   "median_now": 13.3,
+   "over_52_then": 1153,
+   "over_52_now": 509,
+   "pct_over_52_then": 3.1,
+   "pct_over_52_now": 1.4,
+   "check_before_using": false,
+   "rank_now": 91,
+   "meets_aim": false
+  },
+  {
+   "code": "RGP",
+   "name": "James Paget University Hospitals NHS Foundation Trust",
+   "waiting_then": 35421,
+   "waiting_now": 31209,
+   "pct_18_then": 51.3,
+   "pct_18_now": 61.5,
+   "change_points": 10.2,
+   "median_then": 17.5,
+   "median_now": 13.6,
+   "over_52_then": 1819,
+   "over_52_now": 802,
+   "pct_over_52_then": 5.1,
+   "pct_over_52_now": 2.6,
+   "check_before_using": false,
+   "rank_now": 92,
+   "meets_aim": false
+  },
+  {
+   "code": "REP",
+   "name": "Liverpool Women's NHS Foundation Trust",
+   "waiting_then": 16831,
+   "waiting_now": 11052,
+   "pct_18_then": 46.0,
+   "pct_18_now": 61.3,
+   "change_points": 15.3,
+   "median_then": 20.3,
+   "median_now": 13.2,
+   "over_52_then": 1407,
+   "over_52_now": 129,
+   "pct_over_52_then": 8.4,
+   "pct_over_52_now": 1.2,
+   "check_before_using": false,
+   "rank_now": 93,
+   "meets_aim": false
+  },
+  {
+   "code": "RTK",
+   "name": "Ashford and St Peter's Hospitals NHS Foundation Trust",
+   "waiting_then": 55235,
+   "waiting_now": 54829,
+   "pct_18_then": 57.2,
+   "pct_18_now": 61.2,
+   "change_points": 4.0,
+   "median_then": 15.0,
+   "median_now": 13.9,
+   "over_52_then": 1092,
+   "over_52_now": 1028,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.9,
+   "check_before_using": false,
+   "rank_now": 94,
+   "meets_aim": false
+  },
+  {
+   "code": "RDU",
+   "name": "Frimley Health NHS Foundation Trust",
+   "waiting_then": 71038,
+   "waiting_now": 66684,
+   "pct_18_then": 55.3,
+   "pct_18_now": 61.1,
+   "change_points": 5.8,
+   "median_then": 15.5,
+   "median_now": 13.2,
+   "over_52_then": 1713,
+   "over_52_now": 1078,
+   "pct_over_52_then": 2.4,
+   "pct_over_52_now": 1.6,
+   "check_before_using": false,
+   "rank_now": 95,
+   "meets_aim": false
+  },
+  {
+   "code": "RN7",
+   "name": "Dartford and Gravesham NHS Trust",
+   "waiting_then": 32695,
+   "waiting_now": 30107,
+   "pct_18_then": 60.4,
+   "pct_18_now": 61.0,
+   "change_points": 0.7,
+   "median_then": 13.8,
+   "median_now": 13.5,
+   "over_52_then": 1219,
+   "over_52_now": 882,
+   "pct_over_52_then": 3.7,
+   "pct_over_52_now": 2.9,
+   "check_before_using": false,
+   "rank_now": 96,
+   "meets_aim": false
+  },
+  {
+   "code": "RPC",
+   "name": "Queen Victoria Hospital NHS Foundation Trust",
+   "waiting_then": 19018,
+   "waiting_now": 22255,
+   "pct_18_then": 62.4,
+   "pct_18_now": 60.9,
+   "change_points": -1.5,
+   "median_then": 13.6,
+   "median_now": 14.3,
+   "over_52_then": 374,
+   "over_52_now": 228,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 97,
+   "meets_aim": false
+  },
+  {
+   "code": "RTG",
+   "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+   "waiting_then": 95660,
+   "waiting_now": 100816,
+   "pct_18_then": 58.9,
+   "pct_18_now": 60.8,
+   "change_points": 1.9,
+   "median_then": 14.4,
+   "median_now": 13.6,
+   "over_52_then": 1881,
+   "over_52_now": 2176,
+   "pct_over_52_then": 2.0,
+   "pct_over_52_now": 2.2,
+   "check_before_using": false,
+   "rank_now": 98,
+   "meets_aim": false
+  },
+  {
+   "code": "RHU",
+   "name": "Portsmouth Hospitals University NHS Trust",
+   "waiting_then": 58262,
+   "waiting_now": 57587,
+   "pct_18_then": 57.5,
+   "pct_18_now": 60.6,
+   "change_points": 3.2,
+   "median_then": 14.5,
+   "median_now": 13.5,
+   "over_52_then": 2263,
+   "over_52_now": 1863,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 3.2,
+   "check_before_using": false,
+   "rank_now": 99,
+   "meets_aim": false
+  },
+  {
+   "code": "RWP",
+   "name": "Worcestershire Acute Hospitals NHS Trust",
+   "waiting_then": 56632,
+   "waiting_now": 59589,
+   "pct_18_then": 58.5,
+   "pct_18_now": 60.6,
+   "change_points": 2.1,
+   "median_then": 14.5,
+   "median_now": 13.8,
+   "over_52_then": 891,
+   "over_52_now": 593,
+   "pct_over_52_then": 1.6,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 100,
+   "meets_aim": false
+  },
+  {
+   "code": "RRF",
+   "name": "Wrightington, Wigan and Leigh Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 49364,
+   "waiting_now": 46323,
+   "pct_18_then": 56.5,
+   "pct_18_now": 60.5,
+   "change_points": 4.0,
+   "median_then": 15.2,
+   "median_now": 13.6,
+   "over_52_then": 1883,
+   "over_52_now": 1108,
+   "pct_over_52_then": 3.8,
+   "pct_over_52_now": 2.4,
+   "check_before_using": false,
+   "rank_now": 101,
+   "meets_aim": false
+  },
+  {
+   "code": "RDE",
+   "name": "East Suffolk and North Essex NHS Foundation Trust",
+   "waiting_then": 93276,
+   "waiting_now": 95346,
+   "pct_18_then": 56.6,
+   "pct_18_now": 60.5,
+   "change_points": 3.9,
+   "median_then": 15.0,
+   "median_now": 13.5,
+   "over_52_then": 2976,
+   "over_52_now": 410,
+   "pct_over_52_then": 3.2,
+   "pct_over_52_now": 0.4,
+   "check_before_using": false,
+   "rank_now": 102,
+   "meets_aim": false
+  },
+  {
+   "code": "RWE",
+   "name": "University Hospitals of Leicester NHS Trust",
+   "waiting_then": 110728,
+   "waiting_now": 114889,
+   "pct_18_then": 51.9,
+   "pct_18_now": 60.3,
+   "change_points": 8.3,
+   "median_then": 17.3,
+   "median_now": 14.0,
+   "over_52_then": 3402,
+   "over_52_now": 2455,
+   "pct_over_52_then": 3.1,
+   "pct_over_52_now": 2.1,
+   "check_before_using": false,
+   "rank_now": 103,
+   "meets_aim": false
+  },
+  {
+   "code": "RBD",
+   "name": "Dorset County Hospital NHS Foundation Trust",
+   "waiting_then": 22300,
+   "waiting_now": 23100,
+   "pct_18_then": 58.7,
+   "pct_18_now": 60.3,
+   "change_points": 1.6,
+   "median_then": 14.2,
+   "median_now": 14.1,
+   "over_52_then": 365,
+   "over_52_now": 370,
+   "pct_over_52_then": 1.6,
+   "pct_over_52_now": 1.6,
+   "check_before_using": false,
+   "rank_now": 104,
+   "meets_aim": false
+  },
+  {
+   "code": "RGN",
+   "name": "North West Anglia NHS Foundation Trust",
+   "waiting_then": 78012,
+   "waiting_now": 75563,
+   "pct_18_then": 56.3,
+   "pct_18_now": 60.2,
+   "change_points": 3.9,
+   "median_then": 15.1,
+   "median_now": 13.9,
+   "over_52_then": 1336,
+   "over_52_now": 450,
+   "pct_over_52_then": 1.7,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 105,
+   "meets_aim": false
+  },
+  {
+   "code": "RXK",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+   "waiting_then": 65604,
+   "waiting_now": 67228,
+   "pct_18_then": 57.5,
+   "pct_18_now": 60.1,
+   "change_points": 2.5,
+   "median_then": 15.0,
+   "median_now": 14.4,
+   "over_52_then": 956,
+   "over_52_now": 461,
+   "pct_over_52_then": 1.5,
+   "pct_over_52_now": 0.7,
+   "check_before_using": false,
+   "rank_now": 106,
+   "meets_aim": false
+  },
+  {
+   "code": "RXN",
+   "name": "Lancashire Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 65337,
+   "waiting_now": 62317,
+   "pct_18_then": 53.3,
+   "pct_18_now": 60.0,
+   "change_points": 6.7,
+   "median_then": 16.6,
+   "median_now": 14.2,
+   "over_52_then": 2158,
+   "over_52_now": 364,
+   "pct_over_52_then": 3.3,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 107,
+   "meets_aim": false
+  },
+  {
+   "code": "RJE",
+   "name": "University Hospitals of North Midlands NHS Trust",
+   "waiting_then": 66524,
+   "waiting_now": 75543,
+   "pct_18_then": 62.9,
+   "pct_18_now": 60.0,
+   "change_points": -2.9,
+   "median_then": 12.7,
+   "median_now": 13.8,
+   "over_52_then": 1385,
+   "over_52_now": 1737,
+   "pct_over_52_then": 2.1,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 108,
+   "meets_aim": false
+  },
+  {
+   "code": "RC9",
+   "name": "Bedfordshire Hospitals NHS Foundation Trust",
+   "waiting_then": 87232,
+   "waiting_now": 86990,
+   "pct_18_then": 59.2,
+   "pct_18_now": 59.7,
+   "change_points": 0.5,
+   "median_then": 14.3,
+   "median_now": 14.4,
+   "over_52_then": 1948,
+   "over_52_now": 1215,
+   "pct_over_52_then": 2.2,
+   "pct_over_52_now": 1.4,
+   "check_before_using": false,
+   "rank_now": 109,
+   "meets_aim": false
+  },
+  {
+   "code": "RD8",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust",
+   "waiting_then": 37620,
+   "waiting_now": 38530,
+   "pct_18_then": 50.6,
+   "pct_18_now": 59.3,
+   "change_points": 8.7,
+   "median_then": 17.7,
+   "median_now": 14.4,
+   "over_52_then": 2146,
+   "over_52_now": 882,
+   "pct_over_52_then": 5.7,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 110,
+   "meets_aim": false
+  },
+  {
+   "code": "RKB",
+   "name": "University Hospitals Coventry and Warwickshire NHS Trust",
+   "waiting_then": 75490,
+   "waiting_now": 66684,
+   "pct_18_then": 58.5,
+   "pct_18_now": 58.8,
+   "change_points": 0.2,
+   "median_then": 14.9,
+   "median_now": 14.4,
+   "over_52_then": 1710,
+   "over_52_now": 2173,
+   "pct_over_52_then": 2.3,
+   "pct_over_52_now": 3.3,
+   "check_before_using": false,
+   "rank_now": 111,
+   "meets_aim": false
+  },
+  {
+   "code": "RXL",
+   "name": "Blackpool Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 42610,
+   "waiting_now": 41106,
+   "pct_18_then": 55.4,
+   "pct_18_now": 58.6,
+   "change_points": 3.3,
+   "median_then": 15.5,
+   "median_now": 14.5,
+   "over_52_then": 2010,
+   "over_52_now": 1110,
+   "pct_over_52_then": 4.7,
+   "pct_over_52_now": 2.7,
+   "check_before_using": false,
+   "rank_now": 112,
+   "meets_aim": false
+  },
+  {
+   "code": "RCB",
+   "name": "York and Scarborough Teaching Hospitals NHS Foundation Trust",
+   "waiting_then": 56815,
+   "waiting_now": 57612,
+   "pct_18_then": 56.9,
+   "pct_18_now": 58.6,
+   "change_points": 1.7,
+   "median_then": 14.8,
+   "median_now": 14.5,
+   "over_52_then": 1988,
+   "over_52_now": 1257,
+   "pct_over_52_then": 3.5,
+   "pct_over_52_now": 2.2,
+   "check_before_using": false,
+   "rank_now": 113,
+   "meets_aim": false
+  },
+  {
+   "code": "RJL",
+   "name": "Northern Lincolnshire and Goole NHS Foundation Trust",
+   "waiting_then": 39698,
+   "waiting_now": 43139,
+   "pct_18_then": 59.1,
+   "pct_18_now": 58.6,
+   "change_points": -0.5,
+   "median_then": 14.1,
+   "median_now": 14.3,
+   "over_52_then": 1025,
+   "over_52_now": 1584,
+   "pct_over_52_then": 2.6,
+   "pct_over_52_now": 3.7,
+   "check_before_using": false,
+   "rank_now": 114,
+   "meets_aim": false
+  },
+  {
+   "code": "RPA",
+   "name": "Medway NHS Foundation Trust",
+   "waiting_then": 39907,
+   "waiting_now": 35806,
+   "pct_18_then": 52.8,
+   "pct_18_now": 58.2,
+   "change_points": 5.4,
+   "median_then": 16.8,
+   "median_now": 14.8,
+   "over_52_then": 2053,
+   "over_52_now": 716,
+   "pct_over_52_then": 5.1,
+   "pct_over_52_now": 2.0,
+   "check_before_using": false,
+   "rank_now": 115,
+   "meets_aim": false
+  },
+  {
+   "code": "RN3",
+   "name": "Great Western Hospitals NHS Foundation Trust",
+   "waiting_then": 40133,
+   "waiting_now": 42540,
+   "pct_18_then": 60.5,
+   "pct_18_now": 57.7,
+   "change_points": -2.8,
+   "median_then": 13.9,
+   "median_now": 15.0,
+   "over_52_then": 646,
+   "over_52_now": 970,
+   "pct_over_52_then": 1.6,
+   "pct_over_52_now": 2.3,
+   "check_before_using": false,
+   "rank_now": 116,
+   "meets_aim": false
+  },
+  {
+   "code": "RM3",
+   "name": "Northern Care Alliance NHS Foundation Trust",
+   "waiting_then": 139204,
+   "waiting_now": 136973,
+   "pct_18_then": 52.7,
+   "pct_18_now": 55.8,
+   "change_points": 3.1,
+   "median_then": 16.8,
+   "median_now": 15.5,
+   "over_52_then": 5194,
+   "over_52_now": 3932,
+   "pct_over_52_then": 3.7,
+   "pct_over_52_now": 2.9,
+   "check_before_using": false,
+   "rank_now": 117,
+   "meets_aim": false
+  },
+  {
+   "code": "RVV",
+   "name": "East Kent Hospitals University NHS Foundation Trust",
+   "waiting_then": 80064,
+   "waiting_now": 85395,
+   "pct_18_then": 54.7,
+   "pct_18_now": 55.4,
+   "change_points": 0.8,
+   "median_then": 15.9,
+   "median_now": 15.7,
+   "over_52_then": 2320,
+   "over_52_now": 2623,
+   "pct_over_52_then": 2.9,
+   "pct_over_52_now": 3.1,
+   "check_before_using": false,
+   "rank_now": 118,
+   "meets_aim": false
+  },
+  {
+   "code": "RWA",
+   "name": "Hull University Teaching Hospitals NHS Trust",
+   "waiting_then": 80655,
+   "waiting_now": 86732,
+   "pct_18_then": 56.7,
+   "pct_18_now": 55.4,
+   "change_points": -1.3,
+   "median_then": 15.0,
+   "median_now": 15.6,
+   "over_52_then": 3261,
+   "over_52_now": 3500,
+   "pct_over_52_then": 4.0,
+   "pct_over_52_now": 4.0,
+   "check_before_using": false,
+   "rank_now": 119,
+   "meets_aim": false
+  },
+  {
+   "code": "RL1",
+   "name": "The Robert Jones and Agnes Hunt Orthopaedic Hospital NHS Foundation Trust",
+   "waiting_then": 27030,
+   "waiting_now": 22655,
+   "pct_18_then": 44.5,
+   "pct_18_now": 53.8,
+   "change_points": 9.3,
+   "median_then": 21.1,
+   "median_now": 16.0,
+   "over_52_then": 3616,
+   "over_52_now": 2378,
+   "pct_over_52_then": 13.4,
+   "pct_over_52_now": 10.5,
+   "check_before_using": false,
+   "rank_now": 120,
+   "meets_aim": false
+  },
+  {
+   "code": "RYR",
+   "name": "University Hospitals Sussex NHS Foundation Trust",
+   "waiting_then": 114712,
+   "waiting_now": 118148,
+   "pct_18_then": 50.8,
+   "pct_18_now": 52.6,
+   "change_points": 1.8,
+   "median_then": 17.6,
+   "median_now": 16.9,
+   "over_52_then": 5629,
+   "over_52_now": 5634,
+   "pct_over_52_then": 4.9,
+   "pct_over_52_now": 4.8,
+   "check_before_using": false,
+   "rank_now": 121,
+   "meets_aim": false
+  },
+  {
+   "code": "RAJ",
+   "name": "Mid and South Essex NHS Foundation Trust",
+   "waiting_then": 176763,
+   "waiting_now": 165277,
+   "pct_18_then": 50.6,
+   "pct_18_now": 50.4,
+   "change_points": -0.2,
+   "median_then": 17.7,
+   "median_now": 17.8,
+   "over_52_then": 13784,
+   "over_52_now": 13427,
+   "pct_over_52_then": 7.8,
+   "pct_over_52_now": 8.1,
+   "check_before_using": false,
+   "rank_now": 122,
+   "meets_aim": false
+  }
+ ],
+ "6_operation_waits": [
+  {
+   "code": "C_130",
+   "name": "Ophthalmology",
+   "operations_now": 169576,
+   "median_then": 7.1,
+   "median_now": 12.4,
+   "change_weeks": 5.3
+  },
+  {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "operations_now": 139854,
+   "median_then": 21.6,
+   "median_now": 23.6,
+   "change_weeks": 2.0
+  },
+  {
+   "code": "C_100",
+   "name": "General Surgery",
+   "operations_now": 77687,
+   "median_then": 14.7,
+   "median_now": 16.8,
+   "change_weeks": 2.1
+  },
+  {
+   "code": "C_101",
+   "name": "Urology",
+   "operations_now": 58389,
+   "median_then": 10.6,
+   "median_now": 10.9,
+   "change_weeks": 0.3
+  },
+  {
+   "code": "C_502",
+   "name": "Gynaecology",
+   "operations_now": 48641,
+   "median_then": 16.6,
+   "median_now": 17.4,
+   "change_weeks": 0.8
+  },
+  {
+   "code": "C_140",
+   "name": "Oral Surgery",
+   "operations_now": 42309,
+   "median_then": 23.5,
+   "median_now": 24.5,
+   "change_weeks": 1.0
+  }
+ ],
+ "check_before_using_by_treatment": [
+  {
+   "code": "RD8",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust",
+   "weeks": 4.7,
+   "treatment": "General Surgery",
+   "reason": "typical operation wait 4.7 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 5.0,
+   "treatment": "General Surgery",
+   "reason": null
+  },
+  {
+   "code": "RMP",
+   "name": "Tameside and Glossop Integrated Care NHS Foundation Trust",
+   "weeks": 3.3,
+   "treatment": "General Surgery",
+   "reason": "typical operation wait 3.3 weeks"
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "weeks": 4.0,
+   "treatment": "General Surgery",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "R1F",
+   "name": "Isle of Wight NHS Trust",
+   "weeks": 2.8,
+   "treatment": "Urology",
+   "reason": "typical operation wait 2.8 weeks"
+  },
+  {
+   "code": "RCD",
+   "name": "Harrogate and District NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Urology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 3.9,
+   "treatment": "Urology",
+   "reason": "typical operation wait 3.9 weeks"
+  },
+  {
+   "code": "RJR",
+   "name": "Countess of Chester Hospital NHS Foundation Trust",
+   "weeks": 3.8,
+   "treatment": "Urology",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 4.6,
+   "treatment": "Urology",
+   "reason": "typical operation wait 4.6 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 3.8,
+   "treatment": "Trauma and Orthopaedic",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 3.8,
+   "treatment": "Ear Nose and Throat",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "R5J3Z",
+   "name": "Border Health Alliance Limited",
+   "weeks": 26.7,
+   "treatment": "Ophthalmology",
+   "reason": "% within 18 weeks moved 19 points in a month (to October 2025)"
+  },
+  {
+   "code": "RBD",
+   "name": "Dorset County Hospital NHS Foundation Trust",
+   "weeks": 3.4,
+   "treatment": "Ophthalmology",
+   "reason": "typical operation wait 3.4 weeks"
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "weeks": 2.1,
+   "treatment": "Ophthalmology",
+   "reason": "typical operation wait 2.1 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 4.5,
+   "treatment": "Ophthalmology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "R1H",
+   "name": "Barts Health NHS Trust",
+   "weeks": 3.8,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RBN",
+   "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+   "weeks": 5.0,
+   "treatment": "Plastic Surgery",
+   "reason": null
+  },
+  {
+   "code": "RBV",
+   "name": "The Christie NHS Foundation Trust",
+   "weeks": 4.6,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 4.6 weeks"
+  },
+  {
+   "code": "RC9",
+   "name": "Bedfordshire Hospitals NHS Foundation Trust",
+   "weeks": 4.3,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "RJE",
+   "name": "University Hospitals of North Midlands NHS Trust",
+   "weeks": 3.6,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 3.6 weeks"
+  },
+  {
+   "code": "RJR",
+   "name": "Countess of Chester Hospital NHS Foundation Trust",
+   "weeks": 3.9,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 3.9 weeks"
+  },
+  {
+   "code": "RLQ",
+   "name": "Wye Valley NHS Trust",
+   "weeks": 4.8,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RTH",
+   "name": "Oxford University Hospitals NHS Foundation Trust",
+   "weeks": 2.4,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 2.4 weeks"
+  },
+  {
+   "code": "RXF",
+   "name": "Mid Yorkshire Teaching NHS Trust",
+   "weeks": 1.0,
+   "treatment": "Plastic Surgery",
+   "reason": "typical operation wait 1.0 weeks"
+  },
+  {
+   "code": "RWE",
+   "name": "University Hospitals of Leicester NHS Trust",
+   "weeks": 1.5,
+   "treatment": "General Internal Medicine",
+   "reason": "typical operation wait 1.5 weeks"
+  },
+  {
+   "code": "RXW",
+   "name": "The Shrewsbury and Telford Hospital NHS Trust",
+   "weeks": 3.3,
+   "treatment": "General Internal Medicine",
+   "reason": "typical operation wait 3.3 weeks"
+  },
+  {
+   "code": "R0B",
+   "name": "South Tyneside and Sunderland NHS Foundation Trust",
+   "weeks": 2.9,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.9 weeks"
+  },
+  {
+   "code": "R0D",
+   "name": "University Hospitals Dorset NHS Foundation Trust",
+   "weeks": 4.3,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "R1K",
+   "name": "London North West University Healthcare NHS Trust",
+   "weeks": 4.9,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "RAJ",
+   "name": "Mid and South Essex NHS Foundation Trust",
+   "weeks": 4.3,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "RAX",
+   "name": "Kingston and Richmond NHS Foundation Trust",
+   "weeks": 3.0,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.0 weeks"
+  },
+  {
+   "code": "RBD",
+   "name": "Dorset County Hospital NHS Foundation Trust",
+   "weeks": 3.3,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.3 weeks"
+  },
+  {
+   "code": "RC9",
+   "name": "Bedfordshire Hospitals NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RD8",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust",
+   "weeks": 3.2,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.2 weeks"
+  },
+  {
+   "code": "RDU",
+   "name": "Frimley Health NHS Foundation Trust",
+   "weeks": 2.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.7 weeks"
+  },
+  {
+   "code": "REF",
+   "name": "Royal Cornwall Hospitals NHS Trust",
+   "weeks": 4.4,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "RFF",
+   "name": "Barnsley Hospital NHS Foundation Trust",
+   "weeks": 2.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.7 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 4.2,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.2 weeks"
+  },
+  {
+   "code": "RJ7",
+   "name": "St George's University Hospitals NHS Foundation Trust",
+   "weeks": 4.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.7 weeks"
+  },
+  {
+   "code": "RKB",
+   "name": "University Hospitals Coventry and Warwickshire NHS Trust",
+   "weeks": 0.8,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 0.8 weeks"
+  },
+  {
+   "code": "RLT",
+   "name": "George Eliot Hospital NHS Trust",
+   "weeks": 4.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.7 weeks"
+  },
+  {
+   "code": "RMP",
+   "name": "Tameside and Glossop Integrated Care NHS Foundation Trust",
+   "weeks": 3.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RN5",
+   "name": "Hampshire Hospitals NHS Foundation Trust",
+   "weeks": 3.7,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "weeks": 4.5,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "RRF",
+   "name": "Wrightington, Wigan and Leigh Teaching Hospitals NHS Foundation Trust",
+   "weeks": 4.6,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.6 weeks"
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "weeks": 1.6,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 1.6 weeks"
+  },
+  {
+   "code": "RTF",
+   "name": "Northumbria Healthcare NHS Foundation Trust",
+   "weeks": 4.4,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "RTH",
+   "name": "Oxford University Hospitals NHS Foundation Trust",
+   "weeks": 3.0,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.0 weeks"
+  },
+  {
+   "code": "RTR",
+   "name": "South Tees Hospitals NHS Foundation Trust",
+   "weeks": 2.6,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.6 weeks"
+  },
+  {
+   "code": "RW1",
+   "name": "Hampshire and Isle of Wight Healthcare NHS Foundation Trust",
+   "weeks": 1.8,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 1.8 weeks"
+  },
+  {
+   "code": "RWA",
+   "name": "Hull University Teaching Hospitals NHS Trust",
+   "weeks": 4.8,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RWD",
+   "name": "United Lincolnshire Teaching Hospitals NHS Trust",
+   "weeks": 2.3,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.3 weeks"
+  },
+  {
+   "code": "RWE",
+   "name": "University Hospitals of Leicester NHS Trust",
+   "weeks": 3.1,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.1 weeks"
+  },
+  {
+   "code": "RWG",
+   "name": "West Hertfordshire Teaching Hospitals NHS Trust",
+   "weeks": 3.9,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.9 weeks"
+  },
+  {
+   "code": "RWP",
+   "name": "Worcestershire Acute Hospitals NHS Trust",
+   "weeks": 2.5,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.5 weeks"
+  },
+  {
+   "code": "RWY",
+   "name": "Calderdale and Huddersfield NHS Foundation Trust",
+   "weeks": 4.5,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "RXF",
+   "name": "Mid Yorkshire Teaching NHS Trust",
+   "weeks": 3.4,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.4 weeks"
+  },
+  {
+   "code": "RXP",
+   "name": "County Durham and Darlington NHS Foundation Trust",
+   "weeks": 2.6,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 2.6 weeks"
+  },
+  {
+   "code": "RXQ",
+   "name": "Buckinghamshire Healthcare NHS Trust",
+   "weeks": 3.3,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 3.3 weeks"
+  },
+  {
+   "code": "RXW",
+   "name": "The Shrewsbury and Telford Hospital NHS Trust",
+   "weeks": 0.9,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 0.9 weeks"
+  },
+  {
+   "code": "RYR",
+   "name": "University Hospitals Sussex NHS Foundation Trust",
+   "weeks": 4.2,
+   "treatment": "Gastroenterology",
+   "reason": "typical operation wait 4.2 weeks"
+  },
+  {
+   "code": "RDU",
+   "name": "Frimley Health NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 4.6,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 4.6 weeks"
+  },
+  {
+   "code": "RJC",
+   "name": "South Warwickshire University NHS Foundation Trust",
+   "weeks": 1.8,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 1.8 weeks"
+  },
+  {
+   "code": "RN3",
+   "name": "Great Western Hospitals NHS Foundation Trust",
+   "weeks": 4.5,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "RNZ",
+   "name": "Salisbury NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 4.2,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 4.2 weeks"
+  },
+  {
+   "code": "RVW",
+   "name": "North Tees and Hartlepool NHS Foundation Trust",
+   "weeks": 3.8,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RWH",
+   "name": "East and North Hertfordshire Teaching NHS Trust",
+   "weeks": 3.6,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 3.6 weeks"
+  },
+  {
+   "code": "RXK",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+   "weeks": 3.8,
+   "treatment": "Cardiology",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RBK",
+   "name": "Walsall Healthcare NHS Trust",
+   "weeks": 3.1,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 3.1 weeks"
+  },
+  {
+   "code": "RD8",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust",
+   "weeks": 3.6,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 3.6 weeks"
+  },
+  {
+   "code": "RDU",
+   "name": "Frimley Health NHS Foundation Trust",
+   "weeks": 4.9,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "REF",
+   "name": "Royal Cornwall Hospitals NHS Trust",
+   "weeks": 4.4,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "RGP",
+   "name": "James Paget University Hospitals NHS Foundation Trust",
+   "weeks": 4.6,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.6 weeks"
+  },
+  {
+   "code": "RJ6",
+   "name": "Croydon Health Services NHS Trust",
+   "weeks": 4.9,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "RJZ",
+   "name": "King's College Hospital NHS Foundation Trust",
+   "weeks": 4.4,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "RK9",
+   "name": "University Hospitals Plymouth NHS Trust",
+   "weeks": 4.9,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "RKB",
+   "name": "University Hospitals Coventry and Warwickshire NHS Trust",
+   "weeks": 4.3,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "RLQ",
+   "name": "Wye Valley NHS Trust",
+   "weeks": 4.5,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RTG",
+   "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+   "weeks": 4.5,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.5 weeks"
+  },
+  {
+   "code": "RXK",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+   "weeks": 4.4,
+   "treatment": "Dermatology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "RJ1",
+   "name": "Guy's and St Thomas' NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Respiratory Medicine",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RJE",
+   "name": "University Hospitals of North Midlands NHS Trust",
+   "weeks": 2.0,
+   "treatment": "Respiratory Medicine",
+   "reason": "typical operation wait 2.0 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 3.7,
+   "treatment": "Respiratory Medicine",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RVW",
+   "name": "North Tees and Hartlepool NHS Foundation Trust",
+   "weeks": 2.4,
+   "treatment": "Respiratory Medicine",
+   "reason": "typical operation wait 2.4 weeks"
+  },
+  {
+   "code": "RTD",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "weeks": 3.7,
+   "treatment": "Neurology",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 4.0,
+   "treatment": "Neurology",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "R1F",
+   "name": "Isle of Wight NHS Trust",
+   "weeks": 3.7,
+   "treatment": "Rheumatology",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RTR",
+   "name": "South Tees Hospitals NHS Foundation Trust",
+   "weeks": 0.9,
+   "treatment": "Rheumatology",
+   "reason": "typical operation wait 0.9 weeks"
+  },
+  {
+   "code": "RTD",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "weeks": 4.4,
+   "treatment": "Gynaecology",
+   "reason": "typical operation wait 4.4 weeks"
+  },
+  {
+   "code": "R0D",
+   "name": "University Hospitals Dorset NHS Foundation Trust",
+   "weeks": 0.6,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.6 weeks"
+  },
+  {
+   "code": "R1F",
+   "name": "Isle of Wight NHS Trust",
+   "weeks": 0.9,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.9 weeks"
+  },
+  {
+   "code": "R1H",
+   "name": "Barts Health NHS Trust",
+   "weeks": 4.2,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.2 weeks"
+  },
+  {
+   "code": "R1K",
+   "name": "London North West University Healthcare NHS Trust",
+   "weeks": 2.3,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 2.3 weeks"
+  },
+  {
+   "code": "RCD",
+   "name": "Harrogate and District NHS Foundation Trust",
+   "weeks": 4.3,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "REF",
+   "name": "Royal Cornwall Hospitals NHS Trust",
+   "weeks": 2.3,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 2.3 weeks"
+  },
+  {
+   "code": "RGP",
+   "name": "James Paget University Hospitals NHS Foundation Trust",
+   "weeks": 0.8,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.8 weeks"
+  },
+  {
+   "code": "RGT",
+   "name": "Cambridge University Hospitals NHS Foundation Trust",
+   "weeks": 4.3,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.3 weeks"
+  },
+  {
+   "code": "RHW",
+   "name": "Royal Berkshire NHS Foundation Trust",
+   "weeks": 4.0,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "RJL",
+   "name": "Northern Lincolnshire and Goole NHS Foundation Trust",
+   "weeks": 3.6,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.6 weeks"
+  },
+  {
+   "code": "RJZ",
+   "name": "King's College Hospital NHS Foundation Trust",
+   "weeks": 2.7,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 2.7 weeks"
+  },
+  {
+   "code": "RK9",
+   "name": "University Hospitals Plymouth NHS Trust",
+   "weeks": 0.8,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.8 weeks"
+  },
+  {
+   "code": "RLQ",
+   "name": "Wye Valley NHS Trust",
+   "weeks": 3.2,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.2 weeks"
+  },
+  {
+   "code": "RN5",
+   "name": "Hampshire Hospitals NHS Foundation Trust",
+   "weeks": 1.6,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 1.6 weeks"
+  },
+  {
+   "code": "RN7",
+   "name": "Dartford and Gravesham NHS Trust",
+   "weeks": 0.6,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.6 weeks"
+  },
+  {
+   "code": "RNZ",
+   "name": "Salisbury NHS Foundation Trust",
+   "weeks": 2.7,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 2.7 weeks"
+  },
+  {
+   "code": "RPY",
+   "name": "The Royal Marsden NHS Foundation Trust",
+   "weeks": 4.0,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "RR8",
+   "name": "Leeds Teaching Hospitals NHS Trust",
+   "weeks": 1.6,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 1.6 weeks"
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "weeks": 2.7,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 2.7 weeks"
+  },
+  {
+   "code": "RRV",
+   "name": "University College London Hospitals NHS Foundation Trust",
+   "weeks": 3.2,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.2 weeks"
+  },
+  {
+   "code": "RTD",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "weeks": 0.9,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 0.9 weeks"
+  },
+  {
+   "code": "RTG",
+   "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+   "weeks": 3.7,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.7 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 3.0,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.0 weeks"
+  },
+  {
+   "code": "RTR",
+   "name": "South Tees Hospitals NHS Foundation Trust",
+   "weeks": 1.2,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 1.2 weeks"
+  },
+  {
+   "code": "RXF",
+   "name": "Mid Yorkshire Teaching NHS Trust",
+   "weeks": 3.9,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.9 weeks"
+  },
+  {
+   "code": "RXK",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+   "weeks": 4.7,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 4.7 weeks"
+  },
+  {
+   "code": "RXL",
+   "name": "Blackpool Teaching Hospitals NHS Foundation Trust",
+   "weeks": 3.9,
+   "treatment": "Other medical",
+   "reason": "typical operation wait 3.9 weeks"
+  },
+  {
+   "code": "RBN",
+   "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+   "weeks": 0.9,
+   "treatment": "Other paediatric",
+   "reason": "typical operation wait 0.9 weeks"
+  },
+  {
+   "code": "RC9",
+   "name": "Bedfordshire Hospitals NHS Foundation Trust",
+   "weeks": 1.7,
+   "treatment": "Other paediatric",
+   "reason": "typical operation wait 1.7 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 4.2,
+   "treatment": "Other paediatric",
+   "reason": "typical operation wait 4.2 weeks"
+  },
+  {
+   "code": "RXK",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+   "weeks": 2.3,
+   "treatment": "Other paediatric",
+   "reason": "typical operation wait 2.3 weeks"
+  },
+  {
+   "code": "RD8",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust",
+   "weeks": 3.6,
+   "treatment": "Other surgical",
+   "reason": "typical operation wait 3.6 weeks"
+  },
+  {
+   "code": "RGT",
+   "name": "Cambridge University Hospitals NHS Foundation Trust",
+   "weeks": 4.8,
+   "treatment": "Other surgical",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RN5",
+   "name": "Hampshire Hospitals NHS Foundation Trust",
+   "weeks": 4.0,
+   "treatment": "Other surgical",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "RWP",
+   "name": "Worcestershire Acute Hospitals NHS Trust",
+   "weeks": 4.9,
+   "treatment": "Other surgical",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "R0D",
+   "name": "University Hospitals Dorset NHS Foundation Trust",
+   "weeks": 0.7,
+   "treatment": "Other",
+   "reason": "typical operation wait 0.7 weeks"
+  },
+  {
+   "code": "RA7",
+   "name": "Bristol NHS Foundation Trust",
+   "weeks": 4.1,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.1 weeks"
+  },
+  {
+   "code": "RBN",
+   "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+   "weeks": 1.9,
+   "treatment": "Other",
+   "reason": "typical operation wait 1.9 weeks"
+  },
+  {
+   "code": "RHU",
+   "name": "Portsmouth Hospitals University NHS Trust",
+   "weeks": 4.8,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.8 weeks"
+  },
+  {
+   "code": "RJ7",
+   "name": "St George's University Hospitals NHS Foundation Trust",
+   "weeks": 4.9,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "RJE",
+   "name": "University Hospitals of North Midlands NHS Trust",
+   "weeks": 4.9,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.9 weeks"
+  },
+  {
+   "code": "RNS",
+   "name": "Northampton General Hospital NHS Trust",
+   "weeks": 3.0,
+   "treatment": "Other",
+   "reason": "typical operation wait 3.0 weeks"
+  },
+  {
+   "code": "RPY",
+   "name": "The Royal Marsden NHS Foundation Trust",
+   "weeks": 4.0,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "weeks": 3.8,
+   "treatment": "Other",
+   "reason": "typical operation wait 3.8 weeks"
+  },
+  {
+   "code": "RR8",
+   "name": "Leeds Teaching Hospitals NHS Trust",
+   "weeks": 5.0,
+   "treatment": "Other",
+   "reason": null
+  },
+  {
+   "code": "RTD",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "weeks": 4.1,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.1 weeks"
+  },
+  {
+   "code": "RTF",
+   "name": "Northumbria Healthcare NHS Foundation Trust",
+   "weeks": 4.0,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.0 weeks"
+  },
+  {
+   "code": "RTP",
+   "name": "Surrey and Sussex Healthcare NHS Trust",
+   "weeks": 1.8,
+   "treatment": "Other",
+   "reason": "typical operation wait 1.8 weeks"
+  },
+  {
+   "code": "RWY",
+   "name": "Calderdale and Huddersfield NHS Foundation Trust",
+   "weeks": 1.9,
+   "treatment": "Other",
+   "reason": "typical operation wait 1.9 weeks"
+  },
+  {
+   "code": "RXQ",
+   "name": "Buckinghamshire Healthcare NHS Trust",
+   "weeks": 4.2,
+   "treatment": "Other",
+   "reason": "typical operation wait 4.2 weeks"
+  }
+ ],
+ "7_postcode_lottery": [
+  {
+   "code": "C_140",
+   "name": "Oral Surgery",
+   "trusts_compared": 75,
+   "fastest": "Frimley Health NHS Foundation Trust",
+   "fastest_weeks": 6.8,
+   "slowest": "Mid and South Essex NHS Foundation Trust",
+   "slowest_weeks": 71.7,
+   "gap_weeks": 65.0,
+   "left_out_to_check": 0
+  },
+  {
+   "code": "C_502",
+   "name": "Gynaecology",
+   "trusts_compared": 110,
+   "fastest": "King's College Hospital NHS Foundation Trust",
+   "fastest_weeks": 5.2,
+   "slowest": "North Cumbria Integrated Care NHS Foundation Trust",
+   "slowest_weeks": 61.5,
+   "gap_weeks": 56.3,
+   "left_out_to_check": 1
+  },
+  {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "trusts_compared": 117,
+   "fastest": "Liverpool University Hospitals NHS Foundation Trust",
+   "fastest_weeks": 12.8,
+   "slowest": "Nottingham University Hospitals NHS Trust",
+   "slowest_weeks": 66.9,
+   "gap_weeks": 54.1,
+   "left_out_to_check": 1
+  },
+  {
+   "code": "C_120",
+   "name": "Ear Nose and Throat",
+   "trusts_compared": 99,
+   "fastest": "United Lincolnshire Teaching Hospitals NHS Trust",
+   "fastest_weeks": 7.6,
+   "slowest": "Chelsea and Westminster Hospital NHS Foundation Trust",
+   "slowest_weeks": 55.8,
+   "gap_weeks": 48.2,
+   "left_out_to_check": 1
+  },
+  {
+   "code": "X04",
+   "name": "Other paediatric",
+   "trusts_compared": 33,
+   "fastest": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "fastest_weeks": 5.4,
+   "slowest": "Northern Care Alliance NHS Foundation Trust",
+   "slowest_weeks": 51.0,
+   "gap_weeks": 45.6,
+   "left_out_to_check": 4
+  },
+  {
+   "code": "C_100",
+   "name": "General Surgery",
+   "trusts_compared": 97,
+   "fastest": "Salisbury NHS Foundation Trust",
+   "fastest_weeks": 5.4,
+   "slowest": "King's College Hospital NHS Foundation Trust",
+   "slowest_weeks": 50.0,
+   "gap_weeks": 44.6,
+   "left_out_to_check": 4
+  },
+  {
+   "code": "X06",
+   "name": "Other",
+   "trusts_compared": 16,
+   "fastest": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+   "fastest_weeks": 5.2,
+   "slowest": "George Eliot Hospital NHS Trust",
+   "slowest_weeks": 49.7,
+   "gap_weeks": 44.4,
+   "left_out_to_check": 15
+  },
+  {
+   "code": "X02",
+   "name": "Other medical",
+   "trusts_compared": 39,
+   "fastest": "Oxford University Hospitals NHS Foundation Trust",
+   "fastest_weeks": 5.8,
+   "slowest": "The Hillingdon Hospitals NHS Foundation Trust",
+   "slowest_weeks": 47.9,
+   "gap_weeks": 42.1,
+   "left_out_to_check": 27
+  },
+  {
+   "code": "X05",
+   "name": "Other surgical",
+   "trusts_compared": 81,
+   "fastest": "Isle of Wight NHS Trust",
+   "fastest_weeks": 5.2,
+   "slowest": "East Kent Hospitals University NHS Foundation Trust",
+   "slowest_weeks": 45.7,
+   "gap_weeks": 40.5,
+   "left_out_to_check": 4
+  },
+  {
+   "code": "C_130",
+   "name": "Ophthalmology",
+   "trusts_compared": 100,
+   "fastest": "The Dudley Group NHS Foundation Trust",
+   "fastest_weeks": 5.5,
+   "slowest": "West Hertfordshire Teaching Hospitals NHS Trust",
+   "slowest_weeks": 43.0,
+   "gap_weeks": 37.5,
+   "left_out_to_check": 4
+  },
+  {
+   "code": "C_160",
+   "name": "Plastic Surgery",
+   "trusts_compared": 40,
+   "fastest": "Salisbury NHS Foundation Trust",
+   "fastest_weeks": 5.5,
+   "slowest": "Imperial College Healthcare NHS Trust",
+   "slowest_weeks": 38.5,
+   "gap_weeks": 33.0,
+   "left_out_to_check": 9
+  },
+  {
+   "code": "C_320",
+   "name": "Cardiology",
+   "trusts_compared": 45,
+   "fastest": "Calderdale and Huddersfield NHS Foundation Trust",
+   "fastest_weeks": 5.7,
+   "slowest": "Nottingham University Hospitals NHS Trust",
+   "slowest_weeks": 37.5,
+   "gap_weeks": 31.8,
+   "left_out_to_check": 9
+  },
+  {
+   "code": "C_101",
+   "name": "Urology",
+   "trusts_compared": 101,
+   "fastest": "North Bristol NHS Trust",
+   "fastest_weeks": 5.9,
+   "slowest": "East Suffolk and North Essex NHS Foundation Trust",
+   "slowest_weeks": 36.3,
+   "gap_weeks": 30.4,
+   "left_out_to_check": 5
+  },
+  {
+   "code": "C_150",
+   "name": "Neurosurgical",
+   "trusts_compared": 19,
+   "fastest": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "fastest_weeks": 6.4,
+   "slowest": "Northern Care Alliance NHS Foundation Trust",
+   "slowest_weeks": 29.3,
+   "gap_weeks": 22.9,
+   "left_out_to_check": 0
+  },
+  {
+   "code": "C_330",
+   "name": "Dermatology",
+   "trusts_compared": 34,
+   "fastest": "East Kent Hospitals University NHS Foundation Trust",
+   "fastest_weeks": 5.3,
+   "slowest": "Cambridge University Hospitals NHS Foundation Trust",
+   "slowest_weeks": 25.8,
+   "gap_weeks": 20.5,
+   "left_out_to_check": 13
+  },
+  {
+   "code": "C_301",
+   "name": "Gastroenterology",
+   "trusts_compared": 33,
+   "fastest": "Bristol NHS Foundation Trust",
+   "fastest_weeks": 5.1,
+   "slowest": "Nottingham University Hospitals NHS Trust",
+   "slowest_weeks": 21.9,
+   "gap_weeks": 16.8,
+   "left_out_to_check": 35
+  },
+  {
+   "code": "C_410",
+   "name": "Rheumatology",
+   "trusts_compared": 3,
+   "fastest": "Cambridge University Hospitals NHS Foundation Trust",
+   "fastest_weeks": 10.2,
+   "slowest": "Midlands Partnership University NHS Foundation Trust",
+   "slowest_weeks": 23.0,
+   "gap_weeks": 12.7,
+   "left_out_to_check": 2
+  },
+  {
+   "code": "C_170",
+   "name": "Cardiothoracic Surgery",
+   "trusts_compared": 12,
+   "fastest": "Leeds Teaching Hospitals NHS Trust",
+   "fastest_weeks": 5.8,
+   "slowest": "University Hospitals Plymouth NHS Trust",
+   "slowest_weeks": 18.1,
+   "gap_weeks": 12.3,
+   "left_out_to_check": 0
+  },
+  {
+   "code": "C_340",
+   "name": "Respiratory Medicine",
+   "trusts_compared": 2,
+   "fastest": "Royal Papworth Hospital NHS Foundation Trust",
+   "fastest_weeks": 12.7,
+   "slowest": "James Paget University Hospitals NHS Foundation Trust",
+   "slowest_weeks": 18.4,
+   "gap_weeks": 5.7,
+   "left_out_to_check": 4
+  },
+  {
+   "code": "C_400",
+   "name": "Neurology",
+   "trusts_compared": 2,
+   "fastest": "University College London Hospitals NHS Foundation Trust",
+   "fastest_weeks": 8.2,
+   "slowest": "Guy's and St Thomas' NHS Foundation Trust",
+   "slowest_weeks": 12.1,
+   "gap_weeks": 3.8,
+   "left_out_to_check": 2
+  },
+  {
+   "code": "C_300",
+   "name": "General Internal Medicine",
+   "trusts_compared": 2,
+   "fastest": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+   "fastest_weeks": 12.5,
+   "slowest": "The Robert Jones and Agnes Hunt Orthopaedic Hospital NHS Foundation Trust",
+   "slowest_weeks": 15.4,
+   "gap_weeks": 2.9,
+   "left_out_to_check": 2
+  }
+ ],
+ "8_private_share": [
+  {
+   "code": "C_999",
+   "name": "All treatments",
+   "operations_now": 923908,
+   "private_pct_then": 17.6,
+   "private_pct_now": 17.1,
+   "change_points": -0.5
+  },
+  {
+   "code": "C_130",
+   "name": "Ophthalmology",
+   "operations_now": 169576,
+   "private_pct_then": 44.1,
+   "private_pct_now": 43.5,
+   "change_points": -0.6
+  },
+  {
+   "code": "C_110",
+   "name": "Trauma and Orthopaedic",
+   "operations_now": 139854,
+   "private_pct_then": 30.3,
+   "private_pct_now": 30.2,
+   "change_points": -0.1
+  },
+  {
+   "code": "C_100",
+   "name": "General Surgery",
+   "operations_now": 77687,
+   "private_pct_then": 17.1,
+   "private_pct_now": 15.8,
+   "change_points": -1.3
+  },
+  {
+   "code": "C_301",
+   "name": "Gastroenterology",
+   "operations_now": 52424,
+   "private_pct_then": 15.4,
+   "private_pct_now": 15.5,
+   "change_points": 0.1
+  },
+  {
+   "code": "C_150",
+   "name": "Neurosurgical",
+   "operations_now": 7630,
+   "private_pct_then": 9.4,
+   "private_pct_now": 11.7,
+   "change_points": 2.3
+  },
+  {
+   "code": "C_140",
+   "name": "Oral Surgery",
+   "operations_now": 42309,
+   "private_pct_then": 9.8,
+   "private_pct_now": 11.1,
+   "change_points": 1.3
+  },
+  {
+   "code": "C_330",
+   "name": "Dermatology",
+   "operations_now": 35380,
+   "private_pct_then": 7.1,
+   "private_pct_now": 6.7,
+   "change_points": -0.4
+  },
+  {
+   "code": "C_101",
+   "name": "Urology",
+   "operations_now": 58389,
+   "private_pct_then": 5.9,
+   "private_pct_now": 5.8,
+   "change_points": -0.1
+  },
+  {
+   "code": "C_502",
+   "name": "Gynaecology",
+   "operations_now": 48641,
+   "private_pct_then": 6.4,
+   "private_pct_now": 5.7,
+   "change_points": -0.7
+  },
+  {
+   "code": "X06",
+   "name": "Other",
+   "operations_now": 15127,
+   "private_pct_then": 4.6,
+   "private_pct_now": 4.1,
+   "change_points": -0.5
+  },
+  {
+   "code": "C_160",
+   "name": "Plastic Surgery",
+   "operations_now": 39333,
+   "private_pct_then": 4.1,
+   "private_pct_now": 3.9,
+   "change_points": -0.2
+  },
+  {
+   "code": "X02",
+   "name": "Other medical",
+   "operations_now": 47192,
+   "private_pct_then": 4.9,
+   "private_pct_now": 3.8,
+   "change_points": -1.1
+  },
+  {
+   "code": "C_320",
+   "name": "Cardiology",
+   "operations_now": 30231,
+   "private_pct_then": 2.1,
+   "private_pct_now": 3.2,
+   "change_points": 1.1
+  },
+  {
+   "code": "C_120",
+   "name": "Ear Nose and Throat",
+   "operations_now": 39255,
+   "private_pct_then": 2.4,
+   "private_pct_now": 2.4,
+   "change_points": 0.0
+  },
+  {
+   "code": "X05",
+   "name": "Other surgical",
+   "operations_now": 69303,
+   "private_pct_then": 2.1,
+   "private_pct_now": 1.8,
+   "change_points": -0.3
+  },
+  {
+   "code": "C_410",
+   "name": "Rheumatology",
+   "operations_now": 4088,
+   "private_pct_then": 0.5,
+   "private_pct_now": 0.1,
+   "change_points": -0.4
+  },
+  {
+   "code": "C_300",
+   "name": "General Internal Medicine",
+   "operations_now": 3433,
+   "private_pct_then": 0.1,
+   "private_pct_now": 0.0,
+   "change_points": -0.1
+  },
+  {
+   "code": "C_170",
+   "name": "Cardiothoracic Surgery",
+   "operations_now": 4262,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  },
+  {
+   "code": "C_340",
+   "name": "Respiratory Medicine",
+   "operations_now": 7092,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  },
+  {
+   "code": "C_430",
+   "name": "Elderly Medicine",
+   "operations_now": 1491,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  },
+  {
+   "code": "X03",
+   "name": "Other mental health",
+   "operations_now": 38,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  },
+  {
+   "code": "X04",
+   "name": "Other paediatric",
+   "operations_now": 29336,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  },
+  {
+   "code": "C_400",
+   "name": "Neurology",
+   "operations_now": 1837,
+   "private_pct_then": 0.0,
+   "private_pct_now": 0.0,
+   "change_points": 0.0
+  }
+ ],
+ "9_turnarounds": [
+  {
+   "code": "RBT",
+   "name": "Mid Cheshire Hospitals NHS Foundation Trust",
+   "waiting_then": 44351,
+   "waiting_now": 30270,
+   "pct_18_then": 54.8,
+   "pct_18_now": 70.6,
+   "change_points": 15.7,
+   "median_then": 15.7,
+   "median_now": 10.6,
+   "over_52_then": 2051,
+   "over_52_now": 247,
+   "pct_over_52_then": 4.6,
+   "pct_over_52_now": 0.8,
+   "check_before_using": false,
+   "rank_now": 17,
+   "meets_aim": false
+  },
+  {
+   "code": "RJR",
+   "name": "Countess of Chester Hospital NHS Foundation Trust",
+   "waiting_then": 38056,
+   "waiting_now": 31910,
+   "pct_18_then": 48.8,
+   "pct_18_now": 68.4,
+   "change_points": 19.5,
+   "median_then": 18.8,
+   "median_now": 11.4,
+   "over_52_then": 3366,
+   "over_52_now": 205,
+   "pct_over_52_then": 8.8,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 31,
+   "meets_aim": false
+  },
+  {
+   "code": "RQW",
+   "name": "The Princess Alexandra Hospital NHS Trust",
+   "waiting_then": 44367,
+   "waiting_now": 40233,
+   "pct_18_then": 52.8,
+   "pct_18_now": 67.1,
+   "change_points": 14.4,
+   "median_then": 16.8,
+   "median_now": 12.3,
+   "over_52_then": 2449,
+   "over_52_now": 411,
+   "pct_over_52_then": 5.5,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 42,
+   "meets_aim": false
+  },
+  {
+   "code": "RRK",
+   "name": "University Hospitals Birmingham NHS Foundation Trust",
+   "waiting_then": 98099,
+   "waiting_now": 96303,
+   "pct_18_then": 55.7,
+   "pct_18_now": 66.6,
+   "change_points": 10.9,
+   "median_then": 15.1,
+   "median_now": 11.7,
+   "over_52_then": 4236,
+   "over_52_now": 175,
+   "pct_over_52_then": 4.3,
+   "pct_over_52_now": 0.2,
+   "check_before_using": false,
+   "rank_now": 44,
+   "meets_aim": false
+  },
+  {
+   "code": "RQ3",
+   "name": "Birmingham Women's and Children's NHS Foundation Trust",
+   "waiting_then": 25197,
+   "waiting_now": 23360,
+   "pct_18_then": 56.3,
+   "pct_18_now": 65.6,
+   "change_points": 9.3,
+   "median_then": 15.6,
+   "median_now": 12.2,
+   "over_52_then": 293,
+   "over_52_now": 142,
+   "pct_over_52_then": 1.2,
+   "pct_over_52_now": 0.6,
+   "check_before_using": false,
+   "rank_now": 54,
+   "meets_aim": false
+  },
+  {
+   "code": "RNN",
+   "name": "North Cumbria Integrated Care NHS Foundation Trust",
+   "waiting_then": 35253,
+   "waiting_now": 35297,
+   "pct_18_then": 53.8,
+   "pct_18_now": 65.4,
+   "change_points": 11.6,
+   "median_then": 16.1,
+   "median_now": 12.3,
+   "over_52_then": 1376,
+   "over_52_now": 360,
+   "pct_over_52_then": 3.9,
+   "pct_over_52_now": 1.0,
+   "check_before_using": false,
+   "rank_now": 57,
+   "meets_aim": false
+  }
+ ],
+ "9_note": {
+  "trusts_in_league_then": 126,
+  "bottom_quarter_then": 31,
+  "trusts_in_league_now": 122,
+  "top_half_now": 61
+ },
+ "meta": {
+  "three_months_now": "June to August 2026",
+  "three_months_then": "June to August 2025"
+ },
+ "10_whats_new": {
+  "10a_published": [
+   {
+    "source": "rtt",
+    "title": "Referral to treatment (RTT) waiting times",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "ods",
+    "title": "Organisation Data Service: trusts, sites and independent providers",
+    "status": "ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "cqc",
+    "title": "CQC care directory and latest ratings",
+    "status": "ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "fft",
+    "title": "Friends and Family Test: inpatient, outpatient and A&E",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "staff_survey",
+    "title": "NHS Staff Survey: organisational results",
+    "status": "ingested",
+    "last_period": "2025",
+    "sensitive": null
+   },
+   {
+    "source": "dm01",
+    "title": "Diagnostic waiting times and activity (DM01)",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "njr",
+    "title": "National Joint Registry: hip and knee replacements by hospital",
+    "status": "not ingested - no open licence",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "ers",
+    "title": "NHS e-Referral Service (e-RS): referrals and appointment slot issues",
+    "status": "ingested",
+    "last_period": "2026-09",
+    "sensitive": null
+   },
+   {
+    "source": "wlmds",
+    "title": "Waiting List Minimum Data Set (WLMDS): weekly waiting list",
+    "status": "ingested",
+    "last_period": "2026-08-30",
+    "sensitive": null
+   },
+   {
+    "source": "cancer",
+    "title": "Cancer waiting times: 28-day, 31-day and 62-day standards",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": "sensitive: gentle copy required"
+   },
+   {
+    "source": "gpad",
+    "title": "Appointments in General Practice (GPAD)",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "gp_practices",
+    "title": "GP practice lookup (ODS epraccur) with coordinates",
+    "status": "ingested",
+    "last_period": "2026-10-22",
+    "sensitive": null
+   },
+   {
+    "source": "gpps",
+    "title": "GP Patient Survey",
+    "status": "not ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "talking_therapies",
+    "title": "NHS Talking Therapies monthly statistics",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "mhsds",
+    "title": "Mental Health Services Monthly Statistics (MHSDS): referral to first contact",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "community",
+    "title": "Community health services waiting lists",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "ae",
+    "title": "A&E attendances and emergency admissions",
+    "status": "ingested",
+    "last_period": "2026-09",
+    "sensitive": null
+   },
+   {
+    "source": "ambulance",
+    "title": "Ambulance Quality Indicators: response times",
+    "status": "ingested",
+    "last_period": "2026-09",
+    "sensitive": null
+   },
+   {
+    "source": "uec_sitreps",
+    "title": "Urgent and emergency care daily situation reports (winter)",
+    "status": "ingested",
+    "last_period": "2026-03-29",
+    "sensitive": null
+   },
+   {
+    "source": "workforce",
+    "title": "NHS workforce: vacancies / staffing by trust",
+    "status": "ingested",
+    "last_period": "2026-06",
+    "sensitive": null
+   },
+   {
+    "source": "fingertips",
+    "title": "Fingertips (OHID) area indicators",
+    "status": "ingested",
+    "last_period": "2025",
+    "sensitive": null
+   },
+   {
+    "source": "population",
+    "title": "ONS population estimates",
+    "status": "ingested",
+    "last_period": "Mid-2025",
+    "sensitive": null
+   },
+   {
+    "source": "dental",
+    "title": "NHSBSA dental activity",
+    "status": "ingested",
+    "last_period": "2026-07",
+    "sensitive": null
+   },
+   {
+    "source": "phin",
+    "title": "Private Healthcare Information Network (PHIN)",
+    "status": "not ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "uk_nations",
+    "title": "Scotland, Wales and Northern Ireland waiting times (headline)",
+    "status": "ingested",
+    "last_period": "2026-08",
+    "sensitive": null
+   },
+   {
+    "source": "clinicaltrials",
+    "title": "ClinicalTrials.gov (UK sites)",
+    "status": "ingested",
+    "last_period": "2026-10-22",
+    "sensitive": null
+   },
+   {
+    "source": "isrctn",
+    "title": "ISRCTN registry (UK studies)",
+    "status": "ingested",
+    "last_period": "2026-10-22",
+    "sensitive": null
+   },
+   {
+    "source": "trials",
+    "title": "UK clinical studies, de-duplicated, with sites matched to providers",
+    "status": "built",
+    "last_period": "2026-10-22",
+    "sensitive": null
+   },
+   {
+    "source": "nihr_activity",
+    "title": "NIHR research activity league table",
+    "status": "not ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "hra_summaries",
+    "title": "HRA research summaries",
+    "status": "not ingested",
+    "last_period": null,
+    "sensitive": null
+   },
+   {
+    "source": "bepartofresearch",
+    "title": "Be Part of Research (links only)",
+    "status": "links only",
+    "last_period": null,
+    "sensitive": null
+   }
+  ],
+  "10b_asi": {
+   "month": "2026-09",
+   "england_per_100_bookings": 36.6,
+   "providers_compared": 122,
+   "left_out_flagged": 39,
+   "highest": [
+    {
+     "code": "R0A",
+     "name": "Manchester University NHS Foundation Trust",
+     "asis": 6946,
+     "bookings": 2423,
+     "asi_per_100_bookings": 286.7
+    },
+    {
+     "code": "RM1",
+     "name": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+     "asis": 7096,
+     "bookings": 4190,
+     "asi_per_100_bookings": 169.4
+    },
+    {
+     "code": "RAJ",
+     "name": "Mid and South Essex NHS Foundation Trust",
+     "asis": 10127,
+     "bookings": 6075,
+     "asi_per_100_bookings": 166.7
+    },
+    {
+     "code": "RCD",
+     "name": "Harrogate and District NHS Foundation Trust",
+     "asis": 3421,
+     "bookings": 2213,
+     "asi_per_100_bookings": 154.6
+    },
+    {
+     "code": "RQW",
+     "name": "The Princess Alexandra Hospital NHS Trust",
+     "asis": 6154,
+     "bookings": 4719,
+     "asi_per_100_bookings": 130.4
+    },
+    {
+     "code": "RTH",
+     "name": "Oxford University Hospitals NHS Foundation Trust",
+     "asis": 6195,
+     "bookings": 5233,
+     "asi_per_100_bookings": 118.4
+    },
+    {
+     "code": "RPA",
+     "name": "Medway NHS Foundation Trust",
+     "asis": 4020,
+     "bookings": 3656,
+     "asi_per_100_bookings": 110.0
+    },
+    {
+     "code": "RP5",
+     "name": "Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust",
+     "asis": 4548,
+     "bookings": 4746,
+     "asi_per_100_bookings": 95.8
+    },
+    {
+     "code": "RTG",
+     "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+     "asis": 13005,
+     "bookings": 14521,
+     "asi_per_100_bookings": 89.6
+    },
+    {
+     "code": "RJE",
+     "name": "University Hospitals of North Midlands NHS Trust",
+     "asis": 7284,
+     "bookings": 8768,
+     "asi_per_100_bookings": 83.1
+    }
+   ]
+  },
+  "10c_cancer": {
+   "month": "2026-08",
+   "sensitive": "gentle copy required",
+   "standards": [
+    {
+     "standard": "FDS",
+     "meaning": "Faster Diagnosis Standard: told within 28 days",
+     "target_pct": 75,
+     "england_pct": 78.6,
+     "trusts_meeting": 79,
+     "trusts_listed": 99,
+     "closest_to_or_above": [
+      {
+       "code": "RPY",
+       "name": "The Royal Marsden NHS Foundation Trust",
+       "patients": 604,
+       "pct_within": 91.9
+      },
+      {
+       "code": "RVR",
+       "name": "Epsom and St Helier University Hospitals NHS Trust",
+       "patients": 1448,
+       "pct_within": 91.7
+      },
+      {
+       "code": "RCD",
+       "name": "Harrogate and District NHS Foundation Trust",
+       "patients": 1365,
+       "pct_within": 89.5
+      },
+      {
+       "code": "RKE",
+       "name": "Whittington Health NHS Trust",
+       "patients": 951,
+       "pct_within": 89.2
+      },
+      {
+       "code": "RCF",
+       "name": "Airedale NHS Foundation Trust",
+       "patients": 629,
+       "pct_within": 89.0
+      }
+     ],
+     "furthest_from": [
+      {
+       "code": "RVV",
+       "name": "East Kent Hospitals University NHS Foundation Trust",
+       "patients": 3746,
+       "pct_within": 64.0
+      },
+      {
+       "code": "RAJ",
+       "name": "Mid and South Essex NHS Foundation Trust",
+       "patients": 4029,
+       "pct_within": 64.3
+      },
+      {
+       "code": "RWH",
+       "name": "East and North Hertfordshire Teaching NHS Trust",
+       "patients": 1414,
+       "pct_within": 65.6
+      },
+      {
+       "code": "RBN",
+       "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+       "patients": 3471,
+       "pct_within": 66.3
+      },
+      {
+       "code": "REM",
+       "name": "Liverpool University Hospitals NHS Foundation Trust",
+       "patients": 4035,
+       "pct_within": 68.8
+      }
+     ]
+    },
+    {
+     "standard": "31D",
+     "meaning": "31 days from decision to treat to treatment",
+     "target_pct": 96,
+     "england_pct": 92.1,
+     "trusts_meeting": 49,
+     "trusts_listed": 104,
+     "closest_to_or_above": [
+      {
+       "code": "RJN",
+       "name": "East Cheshire NHS Trust",
+       "patients": 73,
+       "pct_within": 100.0
+      },
+      {
+       "code": "RKE",
+       "name": "Whittington Health NHS Trust",
+       "patients": 39,
+       "pct_within": 100.0
+      },
+      {
+       "code": "RP6",
+       "name": "Moorfields Eye Hospital NHS Foundation Trust",
+       "patients": 22,
+       "pct_within": 100.0
+      },
+      {
+       "code": "RAN",
+       "name": "Royal National Orthopaedic Hospital NHS Trust",
+       "patients": 27,
+       "pct_within": 100.0
+      },
+      {
+       "code": "RQX",
+       "name": "Homerton Healthcare NHS Foundation Trust",
+       "patients": 57,
+       "pct_within": 100.0
+      }
+     ],
+     "furthest_from": [
+      {
+       "code": "RTH",
+       "name": "Oxford University Hospitals NHS Foundation Trust",
+       "patients": 1034,
+       "pct_within": 74.3
+      },
+      {
+       "code": "RYR",
+       "name": "University Hospitals Sussex NHS Foundation Trust",
+       "patients": 914,
+       "pct_within": 75.6
+      },
+      {
+       "code": "RWP",
+       "name": "Worcestershire Acute Hospitals NHS Trust",
+       "patients": 558,
+       "pct_within": 77.8
+      },
+      {
+       "code": "RAJ",
+       "name": "Mid and South Essex NHS Foundation Trust",
+       "patients": 796,
+       "pct_within": 83.0
+      },
+      {
+       "code": "RTR",
+       "name": "South Tees Hospitals NHS Foundation Trust",
+       "patients": 715,
+       "pct_within": 84.1
+      }
+     ]
+    },
+    {
+     "standard": "62D",
+     "meaning": "62 days from urgent referral to first treatment",
+     "target_pct": 85,
+     "england_pct": 71.9,
+     "trusts_meeting": 10,
+     "trusts_listed": 101,
+     "closest_to_or_above": [
+      {
+       "code": "RAN",
+       "name": "Royal National Orthopaedic Hospital NHS Trust",
+       "patients": 26,
+       "pct_within": 96.2
+      },
+      {
+       "code": "RQM",
+       "name": "Chelsea and Westminster Hospital NHS Foundation Trust",
+       "patients": 164,
+       "pct_within": 90.6
+      },
+      {
+       "code": "RWY",
+       "name": "Calderdale and Huddersfield NHS Foundation Trust",
+       "patients": 199,
+       "pct_within": 89.2
+      },
+      {
+       "code": "RCF",
+       "name": "Airedale NHS Foundation Trust",
+       "patients": 81,
+       "pct_within": 89.0
+      },
+      {
+       "code": "RVR",
+       "name": "Epsom and St Helier University Hospitals NHS Trust",
+       "patients": 130,
+       "pct_within": 88.9
+      }
+     ],
+     "furthest_from": [
+      {
+       "code": "RHQ",
+       "name": "Sheffield Teaching Hospitals NHS Foundation Trust",
+       "patients": 350,
+       "pct_within": 52.1
+      },
+      {
+       "code": "RAJ",
+       "name": "Mid and South Essex NHS Foundation Trust",
+       "patients": 437,
+       "pct_within": 55.1
+      },
+      {
+       "code": "RWP",
+       "name": "Worcestershire Acute Hospitals NHS Trust",
+       "patients": 357,
+       "pct_within": 55.7
+      },
+      {
+       "code": "RWE",
+       "name": "University Hospitals of Leicester NHS Trust",
+       "patients": 459,
+       "pct_within": 57.7
+      },
+      {
+       "code": "RJN",
+       "name": "East Cheshire NHS Trust",
+       "patients": 73,
+       "pct_within": 59.2
+      }
+     ]
+    }
+   ]
+  },
+  "10d_gp_access": {
+   "month": "2026-08",
+   "measure": "share of appointments with a known booking time that were more than 28 days after booking (lower is better)",
+   "icb_best": [
+    {
+     "name": "North East London",
+     "pct_over_28_days": 2.0,
+     "pct_same_day": 46.5,
+     "appointments": 888279
+    },
+    {
+     "name": "West and North London",
+     "pct_over_28_days": 2.3,
+     "pct_same_day": 48.0,
+     "appointments": 1868579
+    },
+    {
+     "name": "Coventry and Warwickshire",
+     "pct_over_28_days": 2.4,
+     "pct_same_day": 53.3,
+     "appointments": 432892
+    },
+    {
+     "name": "South East London",
+     "pct_over_28_days": 2.4,
+     "pct_same_day": 45.5,
+     "appointments": 668695
+    },
+    {
+     "name": "Birmingham and Solihull",
+     "pct_over_28_days": 3.0,
+     "pct_same_day": 50.7,
+     "appointments": 736175
+    }
+   ],
+   "icb_worst": [
+    {
+     "name": "Gloucestershire",
+     "pct_over_28_days": 11.1,
+     "pct_same_day": 41.6,
+     "appointments": 354265
+    },
+    {
+     "name": "Dorset",
+     "pct_over_28_days": 10.0,
+     "pct_same_day": 42.5,
+     "appointments": 421277
+    },
+    {
+     "name": "Derby and Derbyshire",
+     "pct_over_28_days": 9.8,
+     "pct_same_day": 38.8,
+     "appointments": 491692
+    },
+    {
+     "name": "Norfolk and Suffolk",
+     "pct_over_28_days": 9.1,
+     "pct_same_day": 41.5,
+     "appointments": 855834
+    },
+    {
+     "name": "Nottingham and Nottinghamshire",
+     "pct_over_28_days": 8.5,
+     "pct_same_day": 45.7,
+     "appointments": 553678
+    }
+   ],
+   "local_authorities_compared": 216,
+   "la_best": [
+    {
+     "name": "Islington",
+     "pct_over_28_days": 0.9,
+     "pct_same_day": 51.6,
+     "appointments": 106768
+    },
+    {
+     "name": "Haringey",
+     "pct_over_28_days": 1.1,
+     "pct_same_day": 53.9,
+     "appointments": 115775
+    },
+    {
+     "name": "Slough",
+     "pct_over_28_days": 1.2,
+     "pct_same_day": 46.1,
+     "appointments": 58406
+    },
+    {
+     "name": "Greenwich",
+     "pct_over_28_days": 1.2,
+     "pct_same_day": 46.2,
+     "appointments": 104744
+    },
+    {
+     "name": "Barnet",
+     "pct_over_28_days": 1.2,
+     "pct_same_day": 59.9,
+     "appointments": 178837
+    }
+   ],
+   "la_worst": [
+    {
+     "name": "Broadland",
+     "pct_over_28_days": 20.2,
+     "pct_same_day": 38.5,
+     "appointments": 72445
+    },
+    {
+     "name": "Chesterfield",
+     "pct_over_28_days": 17.1,
+     "pct_same_day": 42.3,
+     "appointments": 57948
+    },
+    {
+     "name": "Isle of Wight",
+     "pct_over_28_days": 16.0,
+     "pct_same_day": 32.5,
+     "appointments": 87804
+    },
+    {
+     "name": "Gloucester",
+     "pct_over_28_days": 14.5,
+     "pct_same_day": 37.3,
+     "appointments": 73631
+    },
+    {
+     "name": "South Norfolk",
+     "pct_over_28_days": 11.9,
+     "pct_same_day": 35.3,
+     "appointments": 72963
+    }
+   ],
+   "practices_left_out_flagged": 396
+  },
+  "10e_ae": {
+   "month": "2026-09",
+   "england_pct_within_4_hours": 74.4,
+   "england_type1_pct": 60.6,
+   "trusts_compared": 113,
+   "furthest_from_four_hours": [
+    {
+     "code": "RK9",
+     "name": "University Hospitals Plymouth NHS Trust",
+     "type1_attendances": 9089,
+     "type1_pct_within_4_hours": 36.2,
+     "dta_over_12_hours": 588
+    },
+    {
+     "code": "RVW",
+     "name": "North Tees and Hartlepool NHS Foundation Trust",
+     "type1_attendances": 5103,
+     "type1_pct_within_4_hours": 40.1,
+     "dta_over_12_hours": 25
+    },
+    {
+     "code": "RAX",
+     "name": "Kingston and Richmond NHS Foundation Trust",
+     "type1_attendances": 7544,
+     "type1_pct_within_4_hours": 41.5,
+     "dta_over_12_hours": 516
+    },
+    {
+     "code": "RWA",
+     "name": "Hull University Teaching Hospitals NHS Trust",
+     "type1_attendances": 10218,
+     "type1_pct_within_4_hours": 42.4,
+     "dta_over_12_hours": 612
+    },
+    {
+     "code": "RXW",
+     "name": "The Shrewsbury and Telford Hospital NHS Trust",
+     "type1_attendances": 11747,
+     "type1_pct_within_4_hours": 43.2,
+     "dta_over_12_hours": 1373
+    },
+    {
+     "code": "RBL",
+     "name": "Wirral University Teaching Hospital NHS Foundation Trust",
+     "type1_attendances": 8046,
+     "type1_pct_within_4_hours": 43.4,
+     "dta_over_12_hours": 498
+    },
+    {
+     "code": "RJ2",
+     "name": "Lewisham and Greenwich NHS Trust",
+     "type1_attendances": 16492,
+     "type1_pct_within_4_hours": 44.1,
+     "dta_over_12_hours": 713
+    },
+    {
+     "code": "RX1",
+     "name": "Nottingham University Hospitals NHS Trust",
+     "type1_attendances": 13656,
+     "type1_pct_within_4_hours": 44.6,
+     "dta_over_12_hours": 979
+    },
+    {
+     "code": "RJE",
+     "name": "University Hospitals of North Midlands NHS Trust",
+     "type1_attendances": 15769,
+     "type1_pct_within_4_hours": 45.2,
+     "dta_over_12_hours": 640
+    },
+    {
+     "code": "RWH",
+     "name": "East and North Hertfordshire Teaching NHS Trust",
+     "type1_attendances": 9588,
+     "type1_pct_within_4_hours": 47.1,
+     "dta_over_12_hours": 89
+    }
+   ],
+   "most_12_hour_waits": [
+    {
+     "code": "RRK",
+     "name": "University Hospitals Birmingham NHS Foundation Trust",
+     "type1_attendances": 34437,
+     "type1_pct_within_4_hours": 57.3,
+     "dta_over_12_hours": 2085
+    },
+    {
+     "code": "RAL",
+     "name": "Royal Free London NHS Foundation Trust",
+     "type1_attendances": 27627,
+     "type1_pct_within_4_hours": 70.2,
+     "dta_over_12_hours": 2031
+    },
+    {
+     "code": "RXW",
+     "name": "The Shrewsbury and Telford Hospital NHS Trust",
+     "type1_attendances": 11747,
+     "type1_pct_within_4_hours": 43.2,
+     "dta_over_12_hours": 1373
+    },
+    {
+     "code": "RAJ",
+     "name": "Mid and South Essex NHS Foundation Trust",
+     "type1_attendances": 28628,
+     "type1_pct_within_4_hours": 61.8,
+     "dta_over_12_hours": 1371
+    },
+    {
+     "code": "RWD",
+     "name": "United Lincolnshire Teaching Hospitals NHS Trust",
+     "type1_attendances": 17584,
+     "type1_pct_within_4_hours": 63.6,
+     "dta_over_12_hours": 1347
+    }
+   ]
+  },
+  "10f_workforce_picture": {
+   "note": "A picture, not a cause: staffing and waits move together for many reasons (size, case mix, deprivation, estate). Vacancy rates aren't published by trust.",
+   "sickness_month": "2026-06",
+   "rtt_month": "2026-08",
+   "trusts": 122,
+   "correlation_sickness_vs_pct_18": 0.06,
+   "by_sickness_quarter": [
+    {
+     "quarter": "lowest",
+     "trusts": 31,
+     "sickness_range": "3.1-4.5%",
+     "median_pct_within_18_weeks": 64.0
+    },
+    {
+     "quarter": "second",
+     "trusts": 30,
+     "sickness_range": "4.5-5.1%",
+     "median_pct_within_18_weeks": 66.0
+    },
+    {
+     "quarter": "third",
+     "trusts": 31,
+     "sickness_range": "5.2-5.6%",
+     "median_pct_within_18_weeks": 64.3
+    },
+    {
+     "quarter": "highest",
+     "trusts": 30,
+     "sickness_range": "5.7-7.2%",
+     "median_pct_within_18_weeks": 65.9
+    }
+   ],
+   "vacancy_quarter": "2026-06",
+   "regions": [
+    {
+     "region": "North East and Yorkshire",
+     "acute_vacancy_rate_pct": 5.5,
+     "pct_within_18_weeks": 67.1,
+     "waiting": 930431
+    },
+    {
+     "region": "South East",
+     "acute_vacancy_rate_pct": 5.7,
+     "pct_within_18_weeks": 61.9,
+     "waiting": 959937
+    },
+    {
+     "region": "North West",
+     "acute_vacancy_rate_pct": 5.9,
+     "pct_within_18_weeks": 63.5,
+     "waiting": 986171
+    },
+    {
+     "region": "East of England",
+     "acute_vacancy_rate_pct": 6.6,
+     "pct_within_18_weeks": 60.5,
+     "waiting": 824139
+    },
+    {
+     "region": "South West",
+     "acute_vacancy_rate_pct": 7.0,
+     "pct_within_18_weeks": 66.6,
+     "waiting": 545155
+    },
+    {
+     "region": "London",
+     "acute_vacancy_rate_pct": 7.5,
+     "pct_within_18_weeks": 67.4,
+     "waiting": 1245628
+    },
+    {
+     "region": "Midlands",
+     "acute_vacancy_rate_pct": 7.8,
+     "pct_within_18_weeks": 62.7,
+     "waiting": 1154994
+    }
+   ]
+  }
+ },
+ "11_research": {
+  "note": "A picture, not a cause: where studies run depends on hospital size, university links, specialist services and how sites are registered. Counts are studies with at least one site there; one study can count in many places.",
+  "registries": {
+   "studies": 42795,
+   "recruiting": 4083,
+   "in_both": 1284
+  },
+  "11a_per_100k": {
+   "local_authorities": 293,
+   "highest": [
+    {
+     "area": "Camden",
+     "recruiting_studies": 687,
+     "population": 216658,
+     "per_100k": 317.1
+    },
+    {
+     "area": "Oxford",
+     "recruiting_studies": 469,
+     "population": 165940,
+     "per_100k": 282.6
+    },
+    {
+     "area": "Cambridge",
+     "recruiting_studies": 368,
+     "population": 149872,
+     "per_100k": 245.5
+    },
+    {
+     "area": "Kensington and Chelsea",
+     "recruiting_studies": 317,
+     "population": 145734,
+     "per_100k": 217.5
+    },
+    {
+     "area": "Lambeth",
+     "recruiting_studies": 399,
+     "population": 314298,
+     "per_100k": 126.9
+    },
+    {
+     "area": "Hammersmith and Fulham",
+     "recruiting_studies": 228,
+     "population": 190216,
+     "per_100k": 119.9
+    },
+    {
+     "area": "Newcastle upon Tyne",
+     "recruiting_studies": 367,
+     "population": 320838,
+     "per_100k": 114.4
+    },
+    {
+     "area": "Exeter",
+     "recruiting_studies": 150,
+     "population": 137894,
+     "per_100k": 108.8
+    },
+    {
+     "area": "Southampton",
+     "recruiting_studies": 268,
+     "population": 259230,
+     "per_100k": 103.4
+    },
+    {
+     "area": "Sutton",
+     "recruiting_studies": 218,
+     "population": 213972,
+     "per_100k": 101.9
+    }
+   ],
+   "lowest": [
+    {
+     "area": "Rochford",
+     "recruiting_studies": 0,
+     "population": 90760,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Castle Point",
+     "recruiting_studies": 0,
+     "population": 90613,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Horsham",
+     "recruiting_studies": 0,
+     "population": 152016,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Brentwood",
+     "recruiting_studies": 0,
+     "population": 80104,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Braintree",
+     "recruiting_studies": 0,
+     "population": 166471,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Hart",
+     "recruiting_studies": 0,
+     "population": 103335,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Adur",
+     "recruiting_studies": 0,
+     "population": 64802,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Woking",
+     "recruiting_studies": 0,
+     "population": 106197,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Waverley",
+     "recruiting_studies": 0,
+     "population": 137218,
+     "per_100k": 0.0
+    },
+    {
+     "area": "Fenland",
+     "recruiting_studies": 0,
+     "population": 105930,
+     "per_100k": 0.0
+    }
+   ],
+   "england_per_100k": 5.4
+  },
+  "11b_trusts": {
+   "top": [
+    {
+     "code": "R0A",
+     "name": "Manchester University NHS Foundation Trust",
+     "recruiting_studies": 389,
+     "all_studies": 2274
+    },
+    {
+     "code": "RJ1",
+     "name": "Guy's and St Thomas' NHS Foundation Trust",
+     "recruiting_studies": 385,
+     "all_studies": 2619
+    },
+    {
+     "code": "RTH",
+     "name": "Oxford University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 368,
+     "all_studies": 2041
+    },
+    {
+     "code": "RGT",
+     "name": "Cambridge University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 312,
+     "all_studies": 1696
+    },
+    {
+     "code": "RRV",
+     "name": "University College London Hospitals NHS Foundation Trust",
+     "recruiting_studies": 297,
+     "all_studies": 1502
+    },
+    {
+     "code": "RBV",
+     "name": "The Christie NHS Foundation Trust",
+     "recruiting_studies": 297,
+     "all_studies": 1626
+    },
+    {
+     "code": "RHM",
+     "name": "University Hospital Southampton NHS Foundation Trust",
+     "recruiting_studies": 263,
+     "all_studies": 1893
+    },
+    {
+     "code": "RR8",
+     "name": "Leeds Teaching Hospitals NHS Trust",
+     "recruiting_studies": 245,
+     "all_studies": 1683
+    },
+    {
+     "code": "RHQ",
+     "name": "Sheffield Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 238,
+     "all_studies": 1483
+    },
+    {
+     "code": "R1H",
+     "name": "Barts Health NHS Trust",
+     "recruiting_studies": 235,
+     "all_studies": 1075
+    },
+    {
+     "code": "RRK",
+     "name": "University Hospitals Birmingham NHS Foundation Trust",
+     "recruiting_studies": 234,
+     "all_studies": 1430
+    },
+    {
+     "code": "RPY",
+     "name": "The Royal Marsden NHS Foundation Trust",
+     "recruiting_studies": 226,
+     "all_studies": 1272
+    },
+    {
+     "code": "RTD",
+     "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+     "recruiting_studies": 225,
+     "all_studies": 1448
+    },
+    {
+     "code": "RAE",
+     "name": "Bradford Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 224,
+     "all_studies": 1455
+    },
+    {
+     "code": "RH8",
+     "name": "Royal Devon University Healthcare NHS Foundation Trust",
+     "recruiting_studies": 198,
+     "all_studies": 1316
+    }
+   ],
+   "trusts_with_recruiting_studies": 135,
+   "nihr_participants": "NIHR doesn't openly publish recruitment by trust"
+  },
+  "11c_departments": [
+   {
+    "code": "C_140",
+    "name": "Oral Surgery",
+    "recruiting_studies": 29,
+    "all_studies": 428,
+    "waiting_now": 316357,
+    "median_wait_weeks": 16.4,
+    "recruiting_per_10k_waiting": 0.9,
+    "industry_pct": 17.1,
+    "industry_pct_recruiting": 24.1
+   },
+   {
+    "code": "C_120",
+    "name": "Ear Nose and Throat",
+    "recruiting_studies": 69,
+    "all_studies": 588,
+    "waiting_now": 590233,
+    "median_wait_weeks": 15.4,
+    "recruiting_per_10k_waiting": 1.2,
+    "industry_pct": 34.7,
+    "industry_pct_recruiting": 43.5
+   },
+   {
+    "code": "C_502",
+    "name": "Gynaecology",
+    "recruiting_studies": 109,
+    "all_studies": 800,
+    "waiting_now": 586582,
+    "median_wait_weeks": 14.2,
+    "recruiting_per_10k_waiting": 1.9,
+    "industry_pct": 40.1,
+    "industry_pct_recruiting": 51.4
+   },
+   {
+    "code": "C_160",
+    "name": "Plastic Surgery",
+    "recruiting_studies": 4,
+    "all_studies": 129,
+    "waiting_now": 109605,
+    "median_wait_weeks": 14.0,
+    "recruiting_per_10k_waiting": 0.4,
+    "industry_pct": 19.4,
+    "industry_pct_recruiting": 25.0
+   },
+   {
+    "code": "C_110",
+    "name": "Trauma and Orthopaedic",
+    "recruiting_studies": 127,
+    "all_studies": 1716,
+    "waiting_now": 851183,
+    "median_wait_weeks": 13.9,
+    "recruiting_per_10k_waiting": 1.5,
+    "industry_pct": 23.1,
+    "industry_pct_recruiting": 33.9
+   },
+   {
+    "code": "C_150",
+    "name": "Neurosurgical",
+    "recruiting_studies": 89,
+    "all_studies": 547,
+    "waiting_now": 54748,
+    "median_wait_weeks": 13.4,
+    "recruiting_per_10k_waiting": 16.3,
+    "industry_pct": 24.7,
+    "industry_pct_recruiting": 22.5
+   },
+   {
+    "code": "C_400",
+    "name": "Neurology",
+    "recruiting_studies": 384,
+    "all_studies": 3178,
+    "waiting_now": 208030,
+    "median_wait_weeks": 13.2,
+    "recruiting_per_10k_waiting": 18.5,
+    "industry_pct": 43.3,
+    "industry_pct_recruiting": 41.9
+   },
+   {
+    "code": "C_100",
+    "name": "General Surgery",
+    "recruiting_studies": 11,
+    "all_studies": 145,
+    "waiting_now": 384914,
+    "median_wait_weeks": 12.8,
+    "recruiting_per_10k_waiting": 0.3,
+    "industry_pct": 15.2,
+    "industry_pct_recruiting": 9.1
+   },
+   {
+    "code": "C_101",
+    "name": "Urology",
+    "recruiting_studies": 191,
+    "all_studies": 1553,
+    "waiting_now": 367027,
+    "median_wait_weeks": 12.2,
+    "recruiting_per_10k_waiting": 5.2,
+    "industry_pct": 44.2,
+    "industry_pct_recruiting": 50.8
+   },
+   {
+    "code": "C_320",
+    "name": "Cardiology",
+    "recruiting_studies": 476,
+    "all_studies": 4277,
+    "waiting_now": 362143,
+    "median_wait_weeks": 11.9,
+    "recruiting_per_10k_waiting": 13.1,
+    "industry_pct": 34.9,
+    "industry_pct_recruiting": 32.6
+   },
+   {
+    "code": "X05",
+    "name": "Other surgical",
+    "recruiting_studies": 118,
+    "all_studies": 1083,
+    "waiting_now": 474806,
+    "median_wait_weeks": 11.4,
+    "recruiting_per_10k_waiting": 2.5,
+    "industry_pct": 46.4,
+    "industry_pct_recruiting": 55.1
+   },
+   {
+    "code": "C_301",
+    "name": "Gastroenterology",
+    "recruiting_studies": 343,
+    "all_studies": 2993,
+    "waiting_now": 358127,
+    "median_wait_weeks": 11.0,
+    "recruiting_per_10k_waiting": 9.6,
+    "industry_pct": 46.5,
+    "industry_pct_recruiting": 49.9
+   },
+   {
+    "code": "C_410",
+    "name": "Rheumatology",
+    "recruiting_studies": 91,
+    "all_studies": 981,
+    "waiting_now": 118397,
+    "median_wait_weeks": 10.9,
+    "recruiting_per_10k_waiting": 7.7,
+    "industry_pct": 60.8,
+    "industry_pct_recruiting": 53.8
+   },
+   {
+    "code": "X02",
+    "name": "Other medical",
+    "recruiting_studies": 436,
+    "all_studies": 4162,
+    "waiting_now": 622434,
+    "median_wait_weeks": 10.7,
+    "recruiting_per_10k_waiting": 7.0,
+    "industry_pct": 51.3,
+    "industry_pct_recruiting": 54.6
+   },
+   {
+    "code": "C_330",
+    "name": "Dermatology",
+    "recruiting_studies": 115,
+    "all_studies": 1275,
+    "waiting_now": 423217,
+    "median_wait_weeks": 10.5,
+    "recruiting_per_10k_waiting": 2.7,
+    "industry_pct": 65.8,
+    "industry_pct_recruiting": 60.0
+   },
+   {
+    "code": "C_130",
+    "name": "Ophthalmology",
+    "recruiting_studies": 104,
+    "all_studies": 1091,
+    "waiting_now": 625063,
+    "median_wait_weeks": 10.4,
+    "recruiting_per_10k_waiting": 1.7,
+    "industry_pct": 48.2,
+    "industry_pct_recruiting": 47.1
+   },
+   {
+    "code": "C_340",
+    "name": "Respiratory Medicine",
+    "recruiting_studies": 428,
+    "all_studies": 4380,
+    "waiting_now": 182914,
+    "median_wait_weeks": 10.4,
+    "recruiting_per_10k_waiting": 23.4,
+    "industry_pct": 45.7,
+    "industry_pct_recruiting": 46.3
+   },
+   {
+    "code": "C_170",
+    "name": "Cardiothoracic Surgery",
+    "recruiting_studies": 26,
+    "all_studies": 179,
+    "waiting_now": 8798,
+    "median_wait_weeks": 9.6,
+    "recruiting_per_10k_waiting": 29.6,
+    "industry_pct": 24.6,
+    "industry_pct_recruiting": 34.6
+   },
+   {
+    "code": "X03",
+    "name": "Other mental health",
+    "recruiting_studies": 250,
+    "all_studies": 3081,
+    "waiting_now": 3361,
+    "median_wait_weeks": 8.4,
+    "recruiting_per_10k_waiting": null,
+    "industry_pct": 13.3,
+    "industry_pct_recruiting": 16.0
+   },
+   {
+    "code": "C_430",
+    "name": "Elderly Medicine",
+    "recruiting_studies": 20,
+    "all_studies": 205,
+    "waiting_now": 27431,
+    "median_wait_weeks": 7.6,
+    "recruiting_per_10k_waiting": 7.3,
+    "industry_pct": 4.9,
+    "industry_pct_recruiting": 0.0
+   }
+  ],
+  "11d_industry_share": [
+   {
+    "code": "C_330",
+    "name": "Dermatology",
+    "recruiting_studies": 115,
+    "all_studies": 1275,
+    "waiting_now": 423217,
+    "median_wait_weeks": 10.5,
+    "recruiting_per_10k_waiting": 2.7,
+    "industry_pct": 65.8,
+    "industry_pct_recruiting": 60.0
+   },
+   {
+    "code": "C_410",
+    "name": "Rheumatology",
+    "recruiting_studies": 91,
+    "all_studies": 981,
+    "waiting_now": 118397,
+    "median_wait_weeks": 10.9,
+    "recruiting_per_10k_waiting": 7.7,
+    "industry_pct": 60.8,
+    "industry_pct_recruiting": 53.8
+   },
+   {
+    "code": "X02",
+    "name": "Other medical",
+    "recruiting_studies": 436,
+    "all_studies": 4162,
+    "waiting_now": 622434,
+    "median_wait_weeks": 10.7,
+    "recruiting_per_10k_waiting": 7.0,
+    "industry_pct": 51.3,
+    "industry_pct_recruiting": 54.6
+   },
+   {
+    "code": "C_130",
+    "name": "Ophthalmology",
+    "recruiting_studies": 104,
+    "all_studies": 1091,
+    "waiting_now": 625063,
+    "median_wait_weeks": 10.4,
+    "recruiting_per_10k_waiting": 1.7,
+    "industry_pct": 48.2,
+    "industry_pct_recruiting": 47.1
+   },
+   {
+    "code": "C_301",
+    "name": "Gastroenterology",
+    "recruiting_studies": 343,
+    "all_studies": 2993,
+    "waiting_now": 358127,
+    "median_wait_weeks": 11.0,
+    "recruiting_per_10k_waiting": 9.6,
+    "industry_pct": 46.5,
+    "industry_pct_recruiting": 49.9
+   },
+   {
+    "code": "X05",
+    "name": "Other surgical",
+    "recruiting_studies": 118,
+    "all_studies": 1083,
+    "waiting_now": 474806,
+    "median_wait_weeks": 11.4,
+    "recruiting_per_10k_waiting": 2.5,
+    "industry_pct": 46.4,
+    "industry_pct_recruiting": 55.1
+   },
+   {
+    "code": "C_340",
+    "name": "Respiratory Medicine",
+    "recruiting_studies": 428,
+    "all_studies": 4380,
+    "waiting_now": 182914,
+    "median_wait_weeks": 10.4,
+    "recruiting_per_10k_waiting": 23.4,
+    "industry_pct": 45.7,
+    "industry_pct_recruiting": 46.3
+   },
+   {
+    "code": "C_101",
+    "name": "Urology",
+    "recruiting_studies": 191,
+    "all_studies": 1553,
+    "waiting_now": 367027,
+    "median_wait_weeks": 12.2,
+    "recruiting_per_10k_waiting": 5.2,
+    "industry_pct": 44.2,
+    "industry_pct_recruiting": 50.8
+   },
+   {
+    "code": "C_400",
+    "name": "Neurology",
+    "recruiting_studies": 384,
+    "all_studies": 3178,
+    "waiting_now": 208030,
+    "median_wait_weeks": 13.2,
+    "recruiting_per_10k_waiting": 18.5,
+    "industry_pct": 43.3,
+    "industry_pct_recruiting": 41.9
+   },
+   {
+    "code": "C_502",
+    "name": "Gynaecology",
+    "recruiting_studies": 109,
+    "all_studies": 800,
+    "waiting_now": 586582,
+    "median_wait_weeks": 14.2,
+    "recruiting_per_10k_waiting": 1.9,
+    "industry_pct": 40.1,
+    "industry_pct_recruiting": 51.4
+   },
+   {
+    "code": "C_320",
+    "name": "Cardiology",
+    "recruiting_studies": 476,
+    "all_studies": 4277,
+    "waiting_now": 362143,
+    "median_wait_weeks": 11.9,
+    "recruiting_per_10k_waiting": 13.1,
+    "industry_pct": 34.9,
+    "industry_pct_recruiting": 32.6
+   },
+   {
+    "code": "C_120",
+    "name": "Ear Nose and Throat",
+    "recruiting_studies": 69,
+    "all_studies": 588,
+    "waiting_now": 590233,
+    "median_wait_weeks": 15.4,
+    "recruiting_per_10k_waiting": 1.2,
+    "industry_pct": 34.7,
+    "industry_pct_recruiting": 43.5
+   },
+   {
+    "code": "C_150",
+    "name": "Neurosurgical",
+    "recruiting_studies": 89,
+    "all_studies": 547,
+    "waiting_now": 54748,
+    "median_wait_weeks": 13.4,
+    "recruiting_per_10k_waiting": 16.3,
+    "industry_pct": 24.7,
+    "industry_pct_recruiting": 22.5
+   },
+   {
+    "code": "C_170",
+    "name": "Cardiothoracic Surgery",
+    "recruiting_studies": 26,
+    "all_studies": 179,
+    "waiting_now": 8798,
+    "median_wait_weeks": 9.6,
+    "recruiting_per_10k_waiting": 29.6,
+    "industry_pct": 24.6,
+    "industry_pct_recruiting": 34.6
+   },
+   {
+    "code": "C_110",
+    "name": "Trauma and Orthopaedic",
+    "recruiting_studies": 127,
+    "all_studies": 1716,
+    "waiting_now": 851183,
+    "median_wait_weeks": 13.9,
+    "recruiting_per_10k_waiting": 1.5,
+    "industry_pct": 23.1,
+    "industry_pct_recruiting": 33.9
+   },
+   {
+    "code": "C_160",
+    "name": "Plastic Surgery",
+    "recruiting_studies": 4,
+    "all_studies": 129,
+    "waiting_now": 109605,
+    "median_wait_weeks": 14.0,
+    "recruiting_per_10k_waiting": 0.4,
+    "industry_pct": 19.4,
+    "industry_pct_recruiting": 25.0
+   },
+   {
+    "code": "C_140",
+    "name": "Oral Surgery",
+    "recruiting_studies": 29,
+    "all_studies": 428,
+    "waiting_now": 316357,
+    "median_wait_weeks": 16.4,
+    "recruiting_per_10k_waiting": 0.9,
+    "industry_pct": 17.1,
+    "industry_pct_recruiting": 24.1
+   },
+   {
+    "code": "C_100",
+    "name": "General Surgery",
+    "recruiting_studies": 11,
+    "all_studies": 145,
+    "waiting_now": 384914,
+    "median_wait_weeks": 12.8,
+    "recruiting_per_10k_waiting": 0.3,
+    "industry_pct": 15.2,
+    "industry_pct_recruiting": 9.1
+   },
+   {
+    "code": "X03",
+    "name": "Other mental health",
+    "recruiting_studies": 250,
+    "all_studies": 3081,
+    "waiting_now": 3361,
+    "median_wait_weeks": 8.4,
+    "recruiting_per_10k_waiting": null,
+    "industry_pct": 13.3,
+    "industry_pct_recruiting": 16.0
+   },
+   {
+    "code": "C_430",
+    "name": "Elderly Medicine",
+    "recruiting_studies": 20,
+    "all_studies": 205,
+    "waiting_now": 27431,
+    "median_wait_weeks": 7.6,
+    "recruiting_per_10k_waiting": 7.3,
+    "industry_pct": 4.9,
+    "industry_pct_recruiting": 0.0
+   }
+  ],
+  "11e_scatter": {
+   "trusts": 113,
+   "rtt_month": "2026-08",
+   "correlation": -0.06,
+   "points": [
+    {
+     "code": "R0A",
+     "name": "Manchester University NHS Foundation Trust",
+     "recruiting_studies": 389,
+     "pct_within_18_weeks": 63.9
+    },
+    {
+     "code": "R0B",
+     "name": "South Tyneside and Sunderland NHS Foundation Trust",
+     "recruiting_studies": 69,
+     "pct_within_18_weeks": 74.9
+    },
+    {
+     "code": "R0D",
+     "name": "University Hospitals Dorset NHS Foundation Trust",
+     "recruiting_studies": 61,
+     "pct_within_18_weeks": 66.0
+    },
+    {
+     "code": "R1F",
+     "name": "Isle of Wight NHS Trust",
+     "recruiting_studies": 9,
+     "pct_within_18_weeks": 65.8
+    },
+    {
+     "code": "R1H",
+     "name": "Barts Health NHS Trust",
+     "recruiting_studies": 235,
+     "pct_within_18_weeks": 64.1
+    },
+    {
+     "code": "R1K",
+     "name": "London North West University Healthcare NHS Trust",
+     "recruiting_studies": 88,
+     "pct_within_18_weeks": 67.2
+    },
+    {
+     "code": "RA2",
+     "name": "Royal Surrey NHS Foundation Trust",
+     "recruiting_studies": 85,
+     "pct_within_18_weeks": 64.7
+    },
+    {
+     "code": "RA7",
+     "name": "Bristol NHS Foundation Trust",
+     "recruiting_studies": 132,
+     "pct_within_18_weeks": 69.1
+    },
+    {
+     "code": "RAE",
+     "name": "Bradford Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 224,
+     "pct_within_18_weeks": 68.9
+    },
+    {
+     "code": "RAJ",
+     "name": "Mid and South Essex NHS Foundation Trust",
+     "recruiting_studies": 102,
+     "pct_within_18_weeks": 50.4
+    },
+    {
+     "code": "RAL",
+     "name": "Royal Free London NHS Foundation Trust",
+     "recruiting_studies": 195,
+     "pct_within_18_weeks": 62.7
+    },
+    {
+     "code": "RAS",
+     "name": "The Hillingdon Hospitals NHS Foundation Trust",
+     "recruiting_studies": 10,
+     "pct_within_18_weeks": 63.9
+    },
+    {
+     "code": "RAX",
+     "name": "Kingston and Richmond NHS Foundation Trust",
+     "recruiting_studies": 22,
+     "pct_within_18_weeks": 68.1
+    },
+    {
+     "code": "RBD",
+     "name": "Dorset County Hospital NHS Foundation Trust",
+     "recruiting_studies": 24,
+     "pct_within_18_weeks": 60.3
+    },
+    {
+     "code": "RBK",
+     "name": "Walsall Healthcare NHS Trust",
+     "recruiting_studies": 11,
+     "pct_within_18_weeks": 72.8
+    },
+    {
+     "code": "RBL",
+     "name": "Wirral University Teaching Hospital NHS Foundation Trust",
+     "recruiting_studies": 20,
+     "pct_within_18_weeks": 65.4
+    },
+    {
+     "code": "RBN",
+     "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust",
+     "recruiting_studies": 52,
+     "pct_within_18_weeks": 64.9
+    },
+    {
+     "code": "RBT",
+     "name": "Mid Cheshire Hospitals NHS Foundation Trust",
+     "recruiting_studies": 19,
+     "pct_within_18_weeks": 70.6
+    },
+    {
+     "code": "RC9",
+     "name": "Bedfordshire Hospitals NHS Foundation Trust",
+     "recruiting_studies": 17,
+     "pct_within_18_weeks": 59.7
+    },
+    {
+     "code": "RCB",
+     "name": "York and Scarborough Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 37,
+     "pct_within_18_weeks": 58.6
+    },
+    {
+     "code": "RCD",
+     "name": "Harrogate and District NHS Foundation Trust",
+     "recruiting_studies": 20,
+     "pct_within_18_weeks": 70.8
+    },
+    {
+     "code": "RCF",
+     "name": "Airedale NHS Foundation Trust",
+     "recruiting_studies": 10,
+     "pct_within_18_weeks": 71.0
+    },
+    {
+     "code": "RCX",
+     "name": "The Queen Elizabeth Hospital, King's Lynn, NHS Foundation Trust",
+     "recruiting_studies": 40,
+     "pct_within_18_weeks": 64.7
+    },
+    {
+     "code": "RD1",
+     "name": "Royal United Hospitals Bath NHS Foundation Trust",
+     "recruiting_studies": 75,
+     "pct_within_18_weeks": 70.1
+    },
+    {
+     "code": "RD8",
+     "name": "Milton Keynes University Hospital NHS Foundation Trust",
+     "recruiting_studies": 30,
+     "pct_within_18_weeks": 59.3
+    },
+    {
+     "code": "RDE",
+     "name": "East Suffolk and North Essex NHS Foundation Trust",
+     "recruiting_studies": 55,
+     "pct_within_18_weeks": 60.5
+    },
+    {
+     "code": "RDU",
+     "name": "Frimley Health NHS Foundation Trust",
+     "recruiting_studies": 135,
+     "pct_within_18_weeks": 61.1
+    },
+    {
+     "code": "REF",
+     "name": "Royal Cornwall Hospitals NHS Trust",
+     "recruiting_studies": 88,
+     "pct_within_18_weeks": 73.1
+    },
+    {
+     "code": "REM",
+     "name": "Liverpool University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 119,
+     "pct_within_18_weeks": 62.7
+    },
+    {
+     "code": "RF4",
+     "name": "Barking, Havering and Redbridge University Hospitals NHS Trust",
+     "recruiting_studies": 21,
+     "pct_within_18_weeks": 68.2
+    },
+    {
+     "code": "RFF",
+     "name": "Barnsley Hospital NHS Foundation Trust",
+     "recruiting_studies": 13,
+     "pct_within_18_weeks": 69.5
+    },
+    {
+     "code": "RFR",
+     "name": "The Rotherham NHS Foundation Trust",
+     "recruiting_studies": 75,
+     "pct_within_18_weeks": 68.3
+    },
+    {
+     "code": "RFS",
+     "name": "Chesterfield Royal Hospital NHS Foundation Trust",
+     "recruiting_studies": 10,
+     "pct_within_18_weeks": 63.5
+    },
+    {
+     "code": "RGN",
+     "name": "North West Anglia NHS Foundation Trust",
+     "recruiting_studies": 28,
+     "pct_within_18_weeks": 60.2
+    },
+    {
+     "code": "RGP",
+     "name": "James Paget University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 22,
+     "pct_within_18_weeks": 61.5
+    },
+    {
+     "code": "RGR",
+     "name": "West Suffolk NHS Foundation Trust",
+     "recruiting_studies": 17,
+     "pct_within_18_weeks": 64.6
+    },
+    {
+     "code": "RGT",
+     "name": "Cambridge University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 312,
+     "pct_within_18_weeks": 65.6
+    },
+    {
+     "code": "RH5",
+     "name": "Somerset NHS Foundation Trust",
+     "recruiting_studies": 58,
+     "pct_within_18_weeks": 64.1
+    },
+    {
+     "code": "RH8",
+     "name": "Royal Devon University Healthcare NHS Foundation Trust",
+     "recruiting_studies": 198,
+     "pct_within_18_weeks": 62.8
+    },
+    {
+     "code": "RHM",
+     "name": "University Hospital Southampton NHS Foundation Trust",
+     "recruiting_studies": 263,
+     "pct_within_18_weeks": 64.0
+    },
+    {
+     "code": "RHU",
+     "name": "Portsmouth Hospitals University NHS Trust",
+     "recruiting_studies": 97,
+     "pct_within_18_weeks": 60.6
+    },
+    {
+     "code": "RHW",
+     "name": "Royal Berkshire NHS Foundation Trust",
+     "recruiting_studies": 26,
+     "pct_within_18_weeks": 80.7
+    },
+    {
+     "code": "RJ1",
+     "name": "Guy's and St Thomas' NHS Foundation Trust",
+     "recruiting_studies": 385,
+     "pct_within_18_weeks": 67.7
+    },
+    {
+     "code": "RJ2",
+     "name": "Lewisham and Greenwich NHS Trust",
+     "recruiting_studies": 11,
+     "pct_within_18_weeks": 65.9
+    },
+    {
+     "code": "RJ6",
+     "name": "Croydon Health Services NHS Trust",
+     "recruiting_studies": 17,
+     "pct_within_18_weeks": 72.8
+    },
+    {
+     "code": "RJ7",
+     "name": "St George's University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 97,
+     "pct_within_18_weeks": 63.9
+    },
+    {
+     "code": "RJC",
+     "name": "South Warwickshire University NHS Foundation Trust",
+     "recruiting_studies": 15,
+     "pct_within_18_weeks": 67.3
+    },
+    {
+     "code": "RJE",
+     "name": "University Hospitals of North Midlands NHS Trust",
+     "recruiting_studies": 122,
+     "pct_within_18_weeks": 60.0
+    },
+    {
+     "code": "RJL",
+     "name": "Northern Lincolnshire and Goole NHS Foundation Trust",
+     "recruiting_studies": 40,
+     "pct_within_18_weeks": 58.6
+    },
+    {
+     "code": "RJN",
+     "name": "East Cheshire NHS Trust",
+     "recruiting_studies": 6,
+     "pct_within_18_weeks": 61.7
+    },
+    {
+     "code": "RJR",
+     "name": "Countess of Chester Hospital NHS Foundation Trust",
+     "recruiting_studies": 28,
+     "pct_within_18_weeks": 68.4
+    },
+    {
+     "code": "RJZ",
+     "name": "King's College Hospital NHS Foundation Trust",
+     "recruiting_studies": 179,
+     "pct_within_18_weeks": 66.2
+    },
+    {
+     "code": "RK5",
+     "name": "Sherwood Forest Hospitals NHS Foundation Trust",
+     "recruiting_studies": 13,
+     "pct_within_18_weeks": 63.8
+    },
+    {
+     "code": "RKB",
+     "name": "University Hospitals Coventry and Warwickshire NHS Trust",
+     "recruiting_studies": 113,
+     "pct_within_18_weeks": 58.8
+    },
+    {
+     "code": "RKE",
+     "name": "Whittington Health NHS Trust",
+     "recruiting_studies": 16,
+     "pct_within_18_weeks": 67.5
+    },
+    {
+     "code": "RL4",
+     "name": "The Royal Wolverhampton NHS Trust",
+     "recruiting_studies": 99,
+     "pct_within_18_weeks": 63.9
+    },
+    {
+     "code": "RLQ",
+     "name": "Wye Valley NHS Trust",
+     "recruiting_studies": 38,
+     "pct_within_18_weeks": 63.1
+    },
+    {
+     "code": "RLT",
+     "name": "George Eliot Hospital NHS Trust",
+     "recruiting_studies": 2,
+     "pct_within_18_weeks": 64.3
+    },
+    {
+     "code": "RM1",
+     "name": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 90,
+     "pct_within_18_weeks": 63.5
+    },
+    {
+     "code": "RM3",
+     "name": "Northern Care Alliance NHS Foundation Trust",
+     "recruiting_studies": 105,
+     "pct_within_18_weeks": 55.8
+    },
+    {
+     "code": "RMC",
+     "name": "Bolton NHS Foundation Trust",
+     "recruiting_studies": 12,
+     "pct_within_18_weeks": 61.6
+    },
+    {
+     "code": "RMP",
+     "name": "Tameside and Glossop Integrated Care NHS Foundation Trust",
+     "recruiting_studies": 3,
+     "pct_within_18_weeks": 78.5
+    },
+    {
+     "code": "RN3",
+     "name": "Great Western Hospitals NHS Foundation Trust",
+     "recruiting_studies": 15,
+     "pct_within_18_weeks": 57.7
+    },
+    {
+     "code": "RN5",
+     "name": "Hampshire Hospitals NHS Foundation Trust",
+     "recruiting_studies": 21,
+     "pct_within_18_weeks": 63.5
+    },
+    {
+     "code": "RN7",
+     "name": "Dartford and Gravesham NHS Trust",
+     "recruiting_studies": 24,
+     "pct_within_18_weeks": 61.0
+    },
+    {
+     "code": "RNA",
+     "name": "The Dudley Group NHS Foundation Trust",
+     "recruiting_studies": 17,
+     "pct_within_18_weeks": 63.0
+    },
+    {
+     "code": "RNN",
+     "name": "North Cumbria Integrated Care NHS Foundation Trust",
+     "recruiting_studies": 30,
+     "pct_within_18_weeks": 65.4
+    },
+    {
+     "code": "RNQ",
+     "name": "Kettering General Hospital NHS Foundation Trust",
+     "recruiting_studies": 26,
+     "pct_within_18_weeks": 68.2
+    },
+    {
+     "code": "RNZ",
+     "name": "Salisbury NHS Foundation Trust",
+     "recruiting_studies": 14,
+     "pct_within_18_weeks": 69.5
+    },
+    {
+     "code": "RP5",
+     "name": "Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 16,
+     "pct_within_18_weeks": 63.5
+    },
+    {
+     "code": "RPA",
+     "name": "Medway NHS Foundation Trust",
+     "recruiting_studies": 17,
+     "pct_within_18_weeks": 58.2
+    },
+    {
+     "code": "RQM",
+     "name": "Chelsea and Westminster Hospital NHS Foundation Trust",
+     "recruiting_studies": 71,
+     "pct_within_18_weeks": 69.3
+    },
+    {
+     "code": "RQW",
+     "name": "The Princess Alexandra Hospital NHS Trust",
+     "recruiting_studies": 6,
+     "pct_within_18_weeks": 67.1
+    },
+    {
+     "code": "RQX",
+     "name": "Homerton Healthcare NHS Foundation Trust",
+     "recruiting_studies": 25,
+     "pct_within_18_weeks": 73.2
+    },
+    {
+     "code": "RR7",
+     "name": "Gateshead Health NHS Foundation Trust",
+     "recruiting_studies": 33,
+     "pct_within_18_weeks": 75.5
+    },
+    {
+     "code": "RR8",
+     "name": "Leeds Teaching Hospitals NHS Trust",
+     "recruiting_studies": 245,
+     "pct_within_18_weeks": 67.5
+    },
+    {
+     "code": "RRF",
+     "name": "Wrightington, Wigan and Leigh Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 16,
+     "pct_within_18_weeks": 60.5
+    },
+    {
+     "code": "RRK",
+     "name": "University Hospitals Birmingham NHS Foundation Trust",
+     "recruiting_studies": 234,
+     "pct_within_18_weeks": 66.6
+    },
+    {
+     "code": "RRV",
+     "name": "University College London Hospitals NHS Foundation Trust",
+     "recruiting_studies": 297,
+     "pct_within_18_weeks": 65.5
+    },
+    {
+     "code": "RTD",
+     "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust",
+     "recruiting_studies": 225,
+     "pct_within_18_weeks": 72.6
+    },
+    {
+     "code": "RTE",
+     "name": "Gloucestershire Hospitals NHS Foundation Trust",
+     "recruiting_studies": 50,
+     "pct_within_18_weeks": 70.0
+    },
+    {
+     "code": "RTF",
+     "name": "Northumbria Healthcare NHS Foundation Trust",
+     "recruiting_studies": 89,
+     "pct_within_18_weeks": 83.6
+    },
+    {
+     "code": "RTG",
+     "name": "University Hospitals of Derby and Burton NHS Foundation Trust",
+     "recruiting_studies": 103,
+     "pct_within_18_weeks": 60.8
+    },
+    {
+     "code": "RTH",
+     "name": "Oxford University Hospitals NHS Foundation Trust",
+     "recruiting_studies": 368,
+     "pct_within_18_weeks": 62.2
+    },
+    {
+     "code": "RTK",
+     "name": "Ashford and St Peter's Hospitals NHS Foundation Trust",
+     "recruiting_studies": 13,
+     "pct_within_18_weeks": 61.2
+    },
+    {
+     "code": "RTP",
+     "name": "Surrey and Sussex Healthcare NHS Trust",
+     "recruiting_studies": 16,
+     "pct_within_18_weeks": 64.0
+    },
+    {
+     "code": "RTR",
+     "name": "South Tees Hospitals NHS Foundation Trust",
+     "recruiting_studies": 99,
+     "pct_within_18_weeks": 66.1
+    },
+    {
+     "code": "RTX",
+     "name": "University Hospitals of Morecambe Bay NHS Foundation Trust",
+     "recruiting_studies": 14,
+     "pct_within_18_weeks": 68.5
+    },
+    {
+     "code": "RVR",
+     "name": "Epsom and St Helier University Hospitals NHS Trust",
+     "recruiting_studies": 151,
+     "pct_within_18_weeks": 66.9
+    },
+    {
+     "code": "RVV",
+     "name": "East Kent Hospitals University NHS Foundation Trust",
+     "recruiting_studies": 44,
+     "pct_within_18_weeks": 55.4
+    },
+    {
+     "code": "RVW",
+     "name": "North Tees and Hartlepool NHS Foundation Trust",
+     "recruiting_studies": 19,
+     "pct_within_18_weeks": 69.6
+    },
+    {
+     "code": "RWA",
+     "name": "Hull University Teaching Hospitals NHS Trust",
+     "recruiting_studies": 82,
+     "pct_within_18_weeks": 55.4
+    },
+    {
+     "code": "RWD",
+     "name": "United Lincolnshire Teaching Hospitals NHS Trust",
+     "recruiting_studies": 18,
+     "pct_within_18_weeks": 63.0
+    },
+    {
+     "code": "RWE",
+     "name": "University Hospitals of Leicester NHS Trust",
+     "recruiting_studies": 167,
+     "pct_within_18_weeks": 60.3
+    },
+    {
+     "code": "RWF",
+     "name": "Maidstone and Tunbridge Wells NHS Trust",
+     "recruiting_studies": 42,
+     "pct_within_18_weeks": 70.0
+    },
+    {
+     "code": "RWG",
+     "name": "West Hertfordshire Teaching Hospitals NHS Trust",
+     "recruiting_studies": 8,
+     "pct_within_18_weeks": 69.1
+    },
+    {
+     "code": "RWH",
+     "name": "East and North Hertfordshire Teaching NHS Trust",
+     "recruiting_studies": 39,
+     "pct_within_18_weeks": 65.2
+    },
+    {
+     "code": "RWJ",
+     "name": "Stockport NHS Foundation Trust",
+     "recruiting_studies": 8,
+     "pct_within_18_weeks": 62.3
+    },
+    {
+     "code": "RWP",
+     "name": "Worcestershire Acute Hospitals NHS Trust",
+     "recruiting_studies": 16,
+     "pct_within_18_weeks": 60.6
+    },
+    {
+     "code": "RWW",
+     "name": "North Cheshire and Mersey NHS Foundation Trust",
+     "recruiting_studies": 7,
+     "pct_within_18_weeks": 65.3
+    },
+    {
+     "code": "RWY",
+     "name": "Calderdale and Huddersfield NHS Foundation Trust",
+     "recruiting_studies": 30,
+     "pct_within_18_weeks": 76.3
+    },
+    {
+     "code": "RX1",
+     "name": "Nottingham University Hospitals NHS Trust",
+     "recruiting_studies": 190,
+     "pct_within_18_weeks": 62.1
+    },
+    {
+     "code": "RXC",
+     "name": "East Sussex Healthcare NHS Trust",
+     "recruiting_studies": 5,
+     "pct_within_18_weeks": 69.0
+    },
+    {
+     "code": "RXF",
+     "name": "Mid Yorkshire Teaching NHS Trust",
+     "recruiting_studies": 28,
+     "pct_within_18_weeks": 65.7
+    },
+    {
+     "code": "RXK",
+     "name": "Sandwell and West Birmingham Hospitals NHS Trust",
+     "recruiting_studies": 20,
+     "pct_within_18_weeks": 60.1
+    },
+    {
+     "code": "RXL",
+     "name": "Blackpool Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 39,
+     "pct_within_18_weeks": 58.6
+    },
+    {
+     "code": "RXN",
+     "name": "Lancashire Teaching Hospitals NHS Foundation Trust",
+     "recruiting_studies": 46,
+     "pct_within_18_weeks": 60.0
+    },
+    {
+     "code": "RXP",
+     "name": "County Durham and Darlington NHS Foundation Trust",
+     "recruiting_studies": 18,
+     "pct_within_18_weeks": 64.2
+    },
+    {
+     "code": "RXQ",
+     "name": "Buckinghamshire Healthcare NHS Trust",
+     "recruiting_studies": 23,
+     "pct_within_18_weeks": 63.5
+    },
+    {
+     "code": "RXR",
+     "name": "East Lancashire Hospitals NHS Trust",
+     "recruiting_studies": 20,
+     "pct_within_18_weeks": 72.1
+    },
+    {
+     "code": "RXW",
+     "name": "The Shrewsbury and Telford Hospital NHS Trust",
+     "recruiting_studies": 11,
+     "pct_within_18_weeks": 68.2
+    },
+    {
+     "code": "RYJ",
+     "name": "Imperial College Healthcare NHS Trust",
+     "recruiting_studies": 181,
+     "pct_within_18_weeks": 70.4
+    },
+    {
+     "code": "RYR",
+     "name": "University Hospitals Sussex NHS Foundation Trust",
+     "recruiting_studies": 135,
+     "pct_within_18_weeks": 52.6
+    }
+   ],
+   "by_quarter": [
+    {
+     "quarter": "fewest",
+     "trusts": 29,
+     "studies": "2-17",
+     "median_pct_within_18_weeks": 65.3
+    },
+    {
+     "quarter": "second",
+     "trusts": 28,
+     "studies": "17-30",
+     "median_pct_within_18_weeks": 65.4
+    },
+    {
+     "quarter": "third",
+     "trusts": 28,
+     "studies": "33-99",
+     "median_pct_within_18_weeks": 64.7
+    },
+    {
+     "quarter": "most",
+     "trusts": 28,
+     "studies": "99-389",
+     "median_pct_within_18_weeks": 64.0
+    }
+   ],
+   "instead_of": "NIHR research activity (not openly published by trust)"
+  }
+ }
+}

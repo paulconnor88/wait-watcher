@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wait Watcher Lab</title>
+<meta name="description" content="Wait Watcher Lab: explore public NHS England waiting-time, diagnostics, inspection, patient and staff data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* ==================================================================
+   Wait Watcher Lab - the same identity as Wait Watcher, denser.
+   Each colour has one job:
+     --ink      text, structure, and YOUR selection on a chart
+     --muted    supporting text; comparators on a chart (paler)
+     --paper    page background
+     --rule     hairlines and borders
+     --quicker  faster / improved (always with a + sign or a word too)
+     --warn     the NHS aim line (dashed), never text
+   ================================================================== */
+:root {
+  --ink: #1F2A33; --muted: #4A5863; --paper: #F6F7F5; --rule: #D5D9D6;
+  --quicker: #0E7A6A; --warn: #B5680A; --card: #FFFFFF; --on-ink: #F6F7F5;
+  --grey-line: #A9B2B9;
+  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F6F7F5; --muted: #C3CCD3; --paper: #1A232B; --rule: #3A4752; --quicker: #4FC2AE;
+    --warn: #F2A93B; --card: #222D36; --on-ink: #1A232B; --grey-line: #5C6B77; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px;
+  line-height: 1.5; font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3, h4 { font-weight: 500; line-height: 1.25; margin: 0 0 10px; }
+h1 { font-size: 30px; } h2 { font-size: 22px; } h3 { font-size: 18px; } h4 { font-size: 16px; color: var(--muted); }
+p { margin: 0 0 12px; max-width: 72ch; }
+a, .link-button { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.link-button { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.muted { color: var(--muted); }
+.small { font-size: 14px; color: var(--muted); }
+.source { font-size: 13px; color: var(--muted); margin: 4px 0 14px; }
+.note { border-left: 3px solid var(--rule); padding: 4px 0 4px 12px; font-size: 15px; color: var(--muted); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+
+/* Header and footer */
+header.top { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between;
+  padding: 16px 0 10px; border-bottom: 1px solid var(--rule); margin-bottom: 18px; }
+.brand { font-size: 22px; font-weight: 500; margin: 0; text-decoration: none; }
+.brand span { font-weight: 400; color: var(--muted); }
+nav.main { display: flex; gap: 4px 18px; flex-wrap: wrap; align-items: center; }
+nav.main a { min-height: 44px; display: inline-flex; align-items: center; }
+nav.main a[aria-current="page"] { font-weight: 500; text-decoration-thickness: 2px; }
+.trust-search { display: flex; gap: 6px; align-items: center; }
+footer { margin-top: 40px; padding: 16px 0 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+
+/* Sections and question cards */
+section.part { border-top: 1px solid var(--rule); padding: 18px 0 8px; }
+section.part:first-of-type { border-top: 0; }
+ul.plain { padding-left: 1.2em; margin: 0 0 12px; }
+ul.plain li { margin-bottom: 6px; max-width: 80ch; }
+.questions { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 6px 0 14px; }
+.question { display: flex; flex-direction: column; justify-content: space-between; gap: 8px; min-height: 104px;
+  padding: 14px; border: 1px solid var(--muted); border-radius: 8px; color: var(--ink); text-decoration: none;
+  background: var(--card); font-weight: 500; }
+.question:hover { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.question small { font-weight: 400; color: var(--muted); }
+details { border-top: 1px solid var(--rule); padding: 4px 0; }
+details summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 6px; }
+details ul.plain li .small { display: block; margin-top: 2px; }
+
+/* Form controls */
+label, .label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+select, input[type="text"], input[type="search"], input[type="number"] {
+  font: inherit; font-size: 15px; color: var(--ink); background: var(--paper); border: 1px solid var(--muted);
+  border-radius: 8px; padding: 6px 10px; min-height: 44px; max-width: 100%; }
+.button { font: inherit; font-size: 15px; font-weight: 500; border-radius: 8px; padding: 8px 14px; min-height: 44px;
+  cursor: pointer; background: var(--ink); color: var(--on-ink); border: 2px solid var(--ink); }
+.button.secondary { background: transparent; color: var(--ink); }
+.filters { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px 14px;
+  padding: 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); margin-bottom: 14px; }
+.filters .wide { grid-column: span 2; }
+.check { display: flex; gap: 8px; align-items: center; min-height: 44px; font-size: 15px; color: var(--ink); }
+.check input { width: 20px; height: 20px; }
+.segmented { display: inline-flex; border: 1px solid var(--muted); border-radius: 8px; overflow: hidden; }
+.segmented button { font: inherit; font-size: 14px; border: 0; background: transparent; color: var(--ink);
+  padding: 6px 10px; min-height: 44px; cursor: pointer; }
+.segmented button + button { border-left: 1px solid var(--muted); }
+.segmented button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); font-weight: 500; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 10px 0 18px; }
+.status { font-size: 14px; color: var(--muted); }
+
+/* Charts: the FT-style grammar from Wait Watcher's Explore page */
+.chart { margin: 6px 0 2px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--font); font-size: 12px; fill: var(--muted); }
+.chart .label { fill: var(--ink); }
+.chart .label.strong, .chart .value.strong { font-weight: 500; fill: var(--ink); }
+.chart .value { fill: var(--ink); }
+.chart .grid { stroke: var(--rule); stroke-width: 1; }
+.chart .zero { stroke: var(--muted); stroke-width: 1; }
+.chart .bar { fill: var(--grey-line); }
+.chart .bar.selected { fill: var(--ink); }
+.chart .bar.better { fill: var(--quicker); }
+.chart .aim { stroke: var(--warn); stroke-width: 2; stroke-dasharray: 5 4; }
+.chart .aim-label { fill: var(--ink); font-weight: 500; }
+.chart .line { fill: none; stroke: var(--grey-line); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart .line.selected { stroke: var(--ink); stroke-width: 2.5; }
+.chart .dot { fill: var(--grey-line); }
+.chart .dot.selected { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.chart .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+.chart-caption { font-size: 14px; color: var(--muted); margin: 0 0 6px; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 8px 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 500; color: var(--muted); white-space: nowrap; }
+th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr.selected td { font-weight: 500; background: color-mix(in srgb, var(--rule) 45%, transparent); }
+.flag { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.spark svg { display: block; width: 90px; height: 24px; }
+.spark .line { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.spark .aim { stroke: var(--warn); stroke-width: 1; stroke-dasharray: 3 2; }
+
+/* Trust page */
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 8px 0 18px; }
+.fact { border: 1px solid var(--rule); border-radius: 8px; padding: 12px; background: var(--card); }
+.fact dt { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.fact dd { margin: 0; font-weight: 500; }
+.fact dd .small { font-weight: 400; display: block; margin-top: 2px; }
+dl.source-list dt { font-weight: 500; margin-top: 14px; }
+dl.source-list dd { margin: 4px 0 0; max-width: 80ch; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 25px; }
+  .filters .wide { grid-column: span 1; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#/">Wait Watcher <span>Lab</span></a>
+    <nav class="main" aria-label="Lab pages">
+      <a href="#/" data-nav="home">Home</a>
+      <a href="#/explore" data-nav="explore">Explore</a>
+      <a href="#/about" data-nav="about">About the data</a>
+      <form class="trust-search" id="trust-search" role="search">
+        <label class="visually-hidden" for="trust-search-input">Find a trust or provider</label>
+        <input type="search" id="trust-search-input" list="provider-names" placeholder="Find a trust…" autocomplete="off">
+        <datalist id="provider-names"></datalist>
+        <button class="button secondary" type="submit">Go</button>
+      </form>
+    </nav>
+  </header>
+
+  <main id="page" tabindex="-1"><p class="muted">Loading…</p></main>
+
+  <footer>
+    <p><strong>Not affiliated with or endorsed by the NHS.</strong> Built on public NHS data, refreshed monthly.
+      Contains CQC information. No cookies, no tracking, no sign-in.</p>
+    <p id="footer-month"></p>
+  </footer>
+</div>
+
+<script>
+/* ==================================================================
+   Wait Watcher Lab - everything the page does.
+
+   The data lives in data/ (built by kitchen/lab_data.py). Files are loaded
+   only when a page needs them, and remembered.
+
+   Pages, chosen by the part of the address after "#":
+     #/                    home
+     #/explore?...         explore; every filter is in the address, so a
+                           view can be shared by copying the link
+     #/trust/<code>        one trust or provider
+     #/about               about the data
+   ================================================================== */
+
+const FOR_NAME = "Macarena";
+const NHS_AIM = 92;              // % within 18 weeks the NHS aims for
+const DM01_AIM = 1;              // diagnostics: under 1% should wait 6+ weeks
+const BAR_ROWS = 25;             // bars shown on a ranked chart (the table has them all)
+const TREND_LINES = 8;           // comparator lines on an "over time" chart
+
+const $ = (s, root = document) => root.querySelector(s);
+const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const count = (n) => (n == null ? "–" : Math.round(n).toLocaleString("en-GB"));
+const one = (n) => (n == null ? "–" : (Math.round(n * 10) / 10).toFixed(1));
+const signed = (n) => (n == null ? "–" : `${n > 0 ? "+" : n < 0 ? "−" : ""}${one(Math.abs(n))}`);
+
+// "2026-08" -> "Aug 2026" (or "August 2026" when long).
+function monthName(m, long = false) {
+  if (!m) return "";
+  const [y, n] = m.split("-").map(Number);
+  return new Date(y, n - 1, 1).toLocaleString("en-GB", { month: long ? "long" : "short", year: "numeric" });
+}
+
+// Trial phases in one spelling: "PHASE2; PHASE3" -> "Phase 2/3", "Phase IV" stays, "NA" / "Not Applicable" -> "–".
+function phaseName(phase) {
+  const parts = String(phase || "").split(";").map((p) => p.trim()).filter((p) => p && !/^(NA|N\/A|Not Applicable)$/i.test(p));
+  if (!parts.length) return "–";
+  const numbers = parts.map((p) => p.replace(/^EARLY_PHASE1$/i, "Early 1").replace(/^phase\s*/i, ""));
+  return `Phase ${numbers.join("/")}`;
+}
+
+// "2026-10-21" -> "21 October 2026".
+const longDate = (d) => (d ? new Date(`${d}T12:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "");
+
+// Straight-line distance in miles.
+function miles(a, b) {
+  const r = (d) => (d * Math.PI) / 180;
+  const h = Math.sin(r(b[0] - a[0]) / 2) ** 2 + Math.cos(r(a[0])) * Math.cos(r(b[0])) * Math.sin(r(b[1] - a[1]) / 2) ** 2;
+  return 2 * 3958.8 * Math.asin(Math.sqrt(h));
+}
+
+
+// ---- Loading data ---------------------------------------------------------------------
+
+const cache = {};
+function load(path) {
+  if (!cache[path]) {
+    cache[path] = fetch(`data/${path}`, { cache: "no-cache" }).then((r) => {
+      if (!r.ok) throw new Error(`${path}: ${r.status}`);
+      return r.json();
+    });
+  }
+  return cache[path];
+}
+let meta;   // data/meta.json, loaded first
+
+const TYPE_NAMES = { acute: "Acute trust", specialist: "Specialist trust", community: "Community trust",
+                     "mental health": "Mental health trust", independent: "Independent (private) provider", unknown: "Type not known" };
+const SHORT_TYPES = { acute: "Acute", specialist: "Specialist", community: "Community", "mental health": "Mental health",
+                      independent: "Independent", unknown: "–" };
+const SMALL_NUMBERS = 30;        // fewer people than this: "small numbers - treat with care"
+const isLeagueType = (code) => ["acute", "specialist"].includes(meta.providers[code]?.type);
+const providerName = (code) => meta.providers[code]?.name || meta.names?.[code] || code;
+
+
+// ---- What can be explored ---------------------------------------------------------------
+
+// What the research views say about themselves, and where the data comes from (the registries' terms ask for this).
+const RESEARCH_NOTE = "A picture, not a cause: where studies run depends on hospital size, university links and specialist services. " +
+  "A study counts at every trust or area where it has a site.";
+
+// The datasets, their measures, and which way is "better" for each measure
+// (so "most improved" and "fastest" mean the right thing).
+const DATASETS = {
+  rtt:     { label: "Waiting times by hospital trust", entity: "provider" },
+  areas:   { label: "Waiting times by area (where patients live)", entity: "area" },
+  dm01:    { label: "Diagnostic test waits by hospital", entity: "provider" },
+  fft:     { label: "Friends and Family Test by hospital", entity: "provider" },
+  staff:   { label: "NHS Staff Survey by trust", entity: "provider" },
+  scatter: { label: "Staff views compared with waits (each trust a dot)", entity: "provider" },
+  lottery: { label: "Postcode lottery: gap between fastest and slowest trust, by treatment", entity: "treatment" },
+  private: { label: "Private clinics' share of NHS operations, by treatment", entity: "treatment" },
+  // The newer sources (lab/data/more/). "variant" is the extra menu (cancer standard, community service);
+  // "acute" is whether "acute and specialist trusts only" starts ticked.
+  cancer:    { label: "Cancer waiting times by trust", entity: "provider", more: true, acute: "1",
+               variant: { label: "Standard", fallback: "FDS" }, peopleLabel: "Patients",
+               aims: { FDS: 75, "31D": 96, "62D": 85 },
+               note: "These are people waiting to find out whether they have cancer, or to start treatment. Behind every figure is someone frightened. Please write about it gently.",
+               source: (s) => `NHS England cancer waiting times, ${meta.more.cancer.variants[s.v]}. Latest months are provisional.` },
+  ae:        { label: "A&E four-hour waits by trust", entity: "provider", more: true, acute: "1", peopleLabel: "Attendances",
+               source: () => "NHS England A&E attendances and emergency admissions. Major A&E = type 1 departments." },
+  asi:       { label: "Referrals with no appointment to book (e-RS) by provider", entity: "provider", more: true, acute: "1", peopleLabel: "Bookings",
+               source: () => "NHS Digital e-Referral Service appointment slot issue reports (management information). The rate is per booking, so it can be over 100." },
+  tt:        { label: "Talking therapies (anxiety, depression) by provider", entity: "provider", more: true, acute: "0", peopleLabel: "Finished a course",
+               source: () => "NHS England NHS Talking Therapies monthly statistics. Waits are for people who finished a course of treatment that month." },
+  mh:        { label: "Mental health waits by provider", entity: "provider", more: true, acute: "0", peopleLabel: "Children seen (3 months)",
+               source: () => "NHS England Mental Health Services Monthly Statistics. 3-month rolling. Adults: referral to second contact (first contact isn't published by provider)." },
+  community: { label: "Community services waits (e.g. children's therapies, wheelchairs) by provider", entity: "provider", more: true, acute: "0",
+               variant: { label: "Service", fallback: "" }, peopleLabel: "Waiting",
+               source: (s) => `NHS England community health services waiting lists, ${meta.more.community.variants[s.v]}. Unvalidated management information; a gap means no submission.` },
+  gp:        { label: "GP appointments: how soon, by area (ICB)", entity: "area", more: true, peopleLabel: "Appointments",
+               source: () => "NHS England Appointments in General Practice, practices added up to the ICB (practices flagged \"check before using\" left out). Time is from booking to the appointment." },
+  gp_la:     { label: "GP appointments: how soon, by council area", entity: "area", more: true, peopleLabel: "Appointments",
+               source: () => "NHS England Appointments in General Practice, practices added up to the local authority their postcode is in. Time is from booking to the appointment." },
+  ambulance: { label: "Ambulance response times by ambulance service", entity: "area", more: true, peopleLabel: "Category 2 calls",
+               source: () => "NHS England Ambulance Quality Indicators (AmbSYS). Standards: category 2 mean 18 minutes, 90th centile 40; category 1 mean 7 minutes." },
+  dental:    { label: "NHS dentistry: people seen, by area (ICB)", entity: "area", more: true, peopleLabel: "Contracts",
+               source: () => "NHSBSA English contractor monthly general dental activity. Adults seen in the last 24 months, children in the last 12." },
+  // UK clinical research: a snapshot of the trial registries, not a monthly series.
+  research_trusts:      { label: "Research: studies recruiting at each hospital trust", entity: "provider", more: true, snapshot: true,
+                          acute: "1", peopleLabel: "All studies (any status)", note: RESEARCH_NOTE, source: researchSource },
+  research_areas:       { label: "Research: recruiting studies per 100,000 people, by council area", entity: "area", more: true,
+                          snapshot: true, peopleLabel: "Population", noun: "council areas",
+                          note: RESEARCH_NOTE + " Per head only for areas of 50,000+ people.", source: researchSource },
+  research_departments: { label: "Research: recruiting studies and waits, by department", entity: "area", more: true, snapshot: true,
+                          peopleLabel: "People waiting", noun: "departments", note: RESEARCH_NOTE + " Departments come from each study's conditions - a sensible guess, not a fact.",
+                          source: researchSource },
+  research_scatter:     { label: "Research compared with waits (each trust a dot)", entity: "provider" },
+};
+
+function researchSource() {
+  const asOf = meta.more?.research_trusts?.as_of;
+  return `ClinicalTrials.gov${asOf ? ` (data processed ${longDate(asOf)})` : ""} and the ISRCTN registry - contains information from the ISRCTN registry, ` +
+    "licensed CC BY. Changed by Wait Watcher: UK sites only, contact details removed, the two registries merged, " +
+    "sites matched to NHS trusts and conditions to departments. Studies recruiting now.";
+}
+
+const RTT_MEASURES = {
+  median: { label: "Typical wait (half of people), weeks", field: "median_weeks", better: "low", unit: " wks" },
+  p80:    { label: "8-in-10 wait, weeks", field: "p80_weeks", better: "low", unit: " wks" },
+  pct18:  { label: "% within 18 weeks", field: "pct_within_18_weeks", better: "high", unit: "%", aim: NHS_AIM },
+  people: { label: "People", field: "people", better: null, unit: "" },
+  over52: { label: "People waiting over a year", field: "over_52_weeks", better: "low", unit: "" },
+};
+const MEASURES = {
+  rtt: RTT_MEASURES,
+  areas: RTT_MEASURES,
+  dm01: {
+    pct6:   { label: "% waiting 6 weeks or more", field: "pct_6_weeks_plus", better: "low", unit: "%", aim: DM01_AIM },
+    pct13:  { label: "% waiting 13 weeks or more", field: "pct_13_weeks_plus", better: "low", unit: "%" },
+    people: { label: "People waiting for a test", field: "people", better: null, unit: "" },
+  },
+  fft: {
+    pct:       { label: "% who rated their care good or very good", field: "pct_good_or_very_good", better: "high", unit: "%" },
+    responses: { label: "Responses", field: "responses", better: null, unit: "" },
+  },
+  staff: {
+    treatment: { label: "% of staff happy with the standard of care for a friend or relative", field: "treatment_pct", better: "high", unit: "%" },
+    work:      { label: "% of staff who'd recommend it as a place to work", field: "work_pct", better: "high", unit: "%" },
+  },
+  cancer: {
+    pct:    { label: "% within the standard", field: "pct_within", better: "high", unit: "%" },
+    people: { label: "Patients", field: "people", better: null, unit: "" },
+  },
+  ae: {
+    type1:  { label: "% seen within 4 hours, major A&E", field: "type1_pct_within_4_hours", better: "high", unit: "%", aim: 95 },
+    all:    { label: "% seen within 4 hours, all A&E types", field: "pct_within_4_hours", better: "high", unit: "%", aim: 95 },
+    dta12:  { label: "Waited 12+ hours from decision to admit", field: "dta_over_12_hours", better: "low", unit: "" },
+    people: { label: "Attendances", field: "people", better: null, unit: "" },
+  },
+  asi: {
+    rate:   { label: "Slot issues per 100 bookings", field: "asi_rate_pct", better: "low", unit: "" },
+    asis:   { label: "Slot issues", field: "total_asis", better: "low", unit: "" },
+  },
+  tt: {
+    six:      { label: "% who'd started within 6 weeks", field: "pct_within_6_weeks", better: "high", unit: "%", aim: 75 },
+    eighteen: { label: "% who'd started within 18 weeks", field: "pct_within_18_weeks", better: "high", unit: "%", aim: 95 },
+    recovery: { label: "% recovered", field: "pct_recovery", better: "high", unit: "%", aim: 50 },
+  },
+  mh: {
+    cyp:     { label: "Children and young people: typical days to first contact", field: "cyp_median_days_to_first", better: "low", unit: " days" },
+    adult:   { label: "Adults (serious mental illness): typical days to second contact", field: "adult_median_days_to_second", better: "low", unit: " days" },
+    cyp4:    { label: "Children and young people: % seen within 4 weeks", field: "cyp_pct_within_4_weeks", better: "high", unit: "%" },
+  },
+  community: {
+    over18: { label: "% waiting over 18 weeks", field: "pct_over_18_weeks", better: "low", unit: "%" },
+    over52: { label: "People waiting over a year", field: "over_52_weeks", better: "low", unit: "" },
+    people: { label: "People waiting", field: "people", better: null, unit: "" },
+  },
+  gp: {
+    over28:  { label: "% of appointments more than 28 days after booking", field: "pct_over_28_days", better: "low", unit: "%" },
+    sameday: { label: "% of appointments on the day they were booked", field: "pct_same_day", better: null, unit: "%" },
+    dna:     { label: "% of appointments missed (did not attend)", field: "pct_dna", better: "low", unit: "%" },
+  },
+  ambulance: {
+    cat2:    { label: "Category 2 (e.g. stroke): average response, minutes", field: "cat2_mean_minutes", better: "low", unit: " min" },
+    cat2p90: { label: "Category 2: 9-in-10 response, minutes", field: "cat2_p90_minutes", better: "low", unit: " min" },
+    cat1:    { label: "Category 1 (life-threatening): average response, minutes", field: "cat1_mean_minutes", better: "low", unit: " min" },
+  },
+  dental: {
+    adults:   { label: "Adults seen by an NHS dentist in the last 24 months", field: "adults_seen_24m", better: null, unit: "" },
+    children: { label: "Children seen in the last 12 months", field: "children_seen_12m", better: null, unit: "" },
+  },
+};
+MEASURES.gp_la = MEASURES.gp;
+MEASURES.research_trusts = {
+  recruiting: { label: "Studies recruiting now", field: "recruiting_studies", better: null, unit: "" },
+  industry:   { label: "% of recruiting studies sponsored by industry", field: "industry_pct_recruiting", better: null, unit: "%" },
+  all:        { label: "All studies (any status)", field: "people", better: null, unit: "" },
+};
+MEASURES.research_areas = {
+  per100k:    { label: "Studies recruiting per 100,000 people", field: "per_100k", better: null, unit: "", decimals: true },
+  recruiting: { label: "Studies recruiting now", field: "recruiting_studies", better: null, unit: "" },
+};
+MEASURES.research_departments = {
+  per10k:     { label: "Studies recruiting per 10,000 people waiting", field: "recruiting_per_10k_waiting", better: null, unit: "", decimals: true },
+  recruiting: { label: "Studies recruiting now", field: "recruiting_studies", better: null, unit: "" },
+  wait:       { label: "Typical wait (half of people), weeks", field: "median_wait_weeks", better: "low", unit: " wks" },
+  industry:   { label: "% of studies sponsored by industry", field: "industry_pct", better: null, unit: "%" },
+};
+
+// A dataset's months, and the names to pick from when highlighting an area.
+const monthsOf = (ds) => meta.more?.[ds]?.months || (ds === "dm01" ? meta.dm01_months : ds === "fft" ? meta.fft_months : meta.months);
+const areaNames = (ds) => meta.more?.[ds]?.keys || meta.areas;
+// The extra menu's default: cancer starts on the 28-day standard, community services on community paediatrics.
+function defaultVariant(ds) {
+  const variants = meta.more?.[ds]?.variants || {};
+  if (ds === "community") return Object.keys(variants).find((k) => /Community paediatric/.test(variants[k])) || Object.keys(variants)[0];
+  return DATASETS[ds]?.variant?.fallback || Object.keys(variants)[0];
+}
+const PARTS = { waiting: "People still waiting", operation: "People treated: operation or hospital stay", clinic: "People treated: in clinic" };
+const FFT_SERVICES = { inpatient: "Inpatient (hospital stay)", outpatient: "Outpatient (clinic)", a_and_e: "A&E" };
+
+// Defaults for Explore; anything in the address overrides these.
+function defaults() {
+  return {
+    ds: "rtt", tf: "C_999", part: "waiting", test: "TOTAL", svc: "inpatient",
+    m: "pct18", view: "rank", from: meta.months[meta.months.length - 13] || meta.months[0], to: meta.latest_month,
+    type: "nhs", acute: "1", min: "0", order: "best", hl: "", near: "", r: "25", v: "",
+  };
+}
+
+
+// ---- The router -------------------------------------------------------------------------
+
+function parseHash() {
+  const [path, query = ""] = location.hash.replace(/^#/, "").split("?");
+  return { path: path || "/", params: Object.fromEntries(new URLSearchParams(query)) };
+}
+
+async function route() {
+  const { path, params } = parseHash();
+  const page = $("#page");
+  const section = path.startsWith("/explore") ? "explore" : path.startsWith("/about") ? "about" : path.startsWith("/trust") ? "trust" : "home";
+  $$("nav.main a[data-nav]").forEach((a) => a.toggleAttribute("aria-current", a.dataset.nav === section));
+  if (a11yAnnounce) page.focus({ preventScroll: true });
+  try {
+    if (section === "explore") await renderExplore(params);
+    else if (section === "about") renderAbout();
+    else if (section === "trust") await renderTrust(decodeURIComponent(path.split("/")[2] || ""));
+    else await renderHome();
+  } catch (error) {
+    console.error(error);
+    page.innerHTML = `<p>Sorry, something went wrong loading this page. (${esc(error.message)})</p>`;
+  }
+  document.title = `${section === "home" ? "" : section[0].toUpperCase() + section.slice(1) + " - "}Wait Watcher Lab`;
+}
+let a11yAnnounce = false;
+window.addEventListener("hashchange", () => { a11yAnnounce = true; route(); window.scrollTo(0, 0); });
+
+// "Find a trust" in the header.
+$("#trust-search").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const typed = $("#trust-search-input").value.trim().toLowerCase();
+  const code = Object.keys(meta.providers).find((c) => c.toLowerCase() === typed || providerName(c).toLowerCase() === typed)
+    || Object.keys(meta.providers).find((c) => providerName(c).toLowerCase().includes(typed));
+  if (code) location.hash = `#/trust/${code}`;
+});
+
+
+// ---- Home -------------------------------------------------------------------------------
+
+function exploreLink(params) {
+  // The newer sources open on their own latest month (some are a month ahead of the waiting times).
+  const own = DATASETS[params.ds]?.more ? monthsOf(params.ds) : null;
+  const months = own ? { to: own.at(-1), from: own[Math.max(0, own.length - 13)] } : {};
+  return `#/explore?${new URLSearchParams({ ...defaults(), ...months, ...params })}`;
+}
+
+// Which Explore dataset answers a question, from the source named in brackets in questions.json.
+const SOURCE_TO_DATASET = { trials: "research_trusts", rtt: "rtt", dm01: "dm01", cancer: "cancer", gpad: "gp", ae: "ae", ers: "asi", talking_therapies: "tt",
+                            mhsds: "mh", community: "community", ambulance: "ambulance", dental: "dental", fft: "fft", staff_survey: "staff" };
+const AUDIENCES = [["patient", "If you're a patient"], ["GP", "If you're a GP"], ["NHS insider", "If you work in the NHS"], ["journalist", "If you're a journalist"],
+                   ["research", "If you're interested in research"]];
+
+async function renderHome() {
+  const asked = await load("questions.json").catch(() => []);
+  const first = monthName(meta.months[0], true), last = monthName(meta.latest_month, true);
+  const more = meta.more || {};
+  const span = (ds) => more[ds] ? `${monthName(more[ds].months[0], true)} to ${monthName(more[ds].months.at(-1), true)}` : "";
+  const yearAgo = meta.months[meta.months.length - 13];
+  const questions = [
+    ["Which trusts improved most this year, and which got worse?", "Change in % within 18 weeks, acute and specialist trusts",
+     { ds: "rtt", m: "pct18", view: "change", from: yearAgo, min: "10000", order: "best" }],
+    ["Where are the longest waits for an MRI?", "% waiting 6+ weeks for an MRI, by hospital",
+     { ds: "dm01", test: "MRI", m: "pct6", view: "rank", type: "all", acute: "0", min: "200", order: "worst" }],
+    ["Which treatment has the biggest postcode lottery?", "Fastest vs slowest trust, by treatment", { ds: "lottery" }],
+    ["How much NHS surgery do private clinics now do, and for what?", "Share of NHS operations at independent providers", { ds: "private" }],
+    ["Do hospitals with happier staff have shorter waits?", "Staff Survey vs % within 18 weeks, each trust a dot", { ds: "scatter" }],
+    ["Where near you could a patient be seen sooner for a treatment?", "Pick a hospital and a treatment",
+     { ds: "rtt", tf: "C_110", part: "operation", m: "median", view: "rank", type: "all", acute: "0", near: "choose", order: "best" }],
+    ["Which areas have the most people waiting over a year?", "People waiting 52+ weeks, by area where they live",
+     { ds: "areas", m: "over52", view: "rank", order: "worst" }],
+    ["Is anywhere close to the 18-week aim?", "% within 18 weeks, acute and specialist trusts",
+     { ds: "rtt", m: "pct18", view: "rank", min: "10000", order: "best" }],
+    ["Where is it hardest to get a GP appointment soon?", "% of GP appointments more than 28 days after booking, by council area",
+     { ds: "gp_la", m: "over28", view: "rank", order: "worst" }],
+    ["Which A&Es are furthest from four hours?", "% seen within 4 hours in major A&E, by trust",
+     { ds: "ae", m: "type1", view: "rank", min: "3000", order: "worst" }],
+    ["Where can't GPs book a first hospital appointment?", "Appointment slot issues per 100 bookings, by trust",
+     { ds: "asi", m: "rate", view: "rank", min: "1000", order: "worst" }],
+    ["How long do children wait for community paediatrics?", "% waiting over 18 weeks, by provider",
+     { ds: "community", m: "over18", view: "rank", min: "100", order: "worst" }],
+    ["How quickly are people told whether they have cancer?", "The 28-day Faster Diagnosis Standard, by trust (please handle with care)",
+     { ds: "cancer", v: "FDS", m: "pct", view: "rank", min: "100", order: "best" }],
+    ["How fast do ambulances reach a stroke or heart attack?", "Category 2 average response, by ambulance service, over time",
+     { ds: "ambulance", m: "cat2", view: "trend", hl: "England", order: "best" }],
+    ...(meta.more?.research_trusts ? [
+      ["Which hospitals run the most clinical research?", "Studies recruiting now, by trust (ClinicalTrials.gov and ISRCTN)",
+       { ds: "research_trusts", m: "recruiting", order: "best", acute: "1" }],
+      ["Where is a clinical trial most within reach?", "Studies recruiting per 100,000 people, by council area",
+       { ds: "research_areas", m: "per100k", order: "best" }],
+      ["Do departments with the longest waits get the least research?", "Recruiting studies per 10,000 waiting, by department",
+       { ds: "research_departments", m: "per10k", order: "worst" }],
+      ["Do hospitals that do more research have shorter waits?", "Recruiting studies vs % within 18 weeks, each trust a dot", { ds: "research_scatter" }],
+    ] : []),
+  ];
+  $("#page").innerHTML = `
+    <h1>Built for ${esc(FOR_NAME)}. Have a play.</h1>
+
+    <section class="part" aria-labelledby="h-database">
+      <h2 id="h-database">I've built a database containing</h2>
+      <ul class="plain">
+        <li>Waiting times for every NHS hospital trust and treatment type in England, every month from ${first} to ${last} - both people still waiting and people treated, in weekly bands.</li>
+        <li>The same by area (where patients live), for ${meta.areas.length} areas.</li>
+        <li>Waits for ${Object.keys(meta.tests).length - 1} diagnostic tests (MRI, CT, ultrasound, endoscopy and more), by hospital, ${monthName(meta.dm01_months[0], true)} to ${monthName(meta.dm01_months.at(-1), true)}.</li>
+        <li>Care Quality Commission inspection ratings, with dates.</li>
+        <li>Friends and Family Test: the share of patients who rated their care good or very good, by hospital and service, monthly from ${monthName(meta.fft_months[0], true)} to ${monthName(meta.fft_months.at(-1), true)}.</li>
+        <li>NHS Staff Survey ${meta.staff_year}: whether staff would be happy with the standard of care for a friend or relative, and whether they'd recommend it as a place to work.</li>
+        <li>Where every hospital and clinic is.</li>
+        ${more.cancer ? `<li>Cancer waiting times by trust - the 28-day, 31-day and 62-day standards, ${span("cancer")}.</li>` : ""}
+        ${more.ae ? `<li>A&E: the share seen within four hours, and 12-hour waits for a bed, by trust, ${span("ae")}.</li>` : ""}
+        ${more.asi ? `<li>Referrals where a GP couldn't book a first hospital appointment (e-Referral Service), by provider, ${span("asi")}.</li>` : ""}
+        ${more.gp ? `<li>GP appointments: how soon after booking, how (face to face, phone) and how many were missed - for every practice, added up by area and council, ${span("gp")}.</li>` : ""}
+        ${more.tt ? `<li>Talking therapies, children's and adults' mental health waits, and ${Object.keys(more.community?.variants || {}).length} community services such as children's speech therapy and wheelchairs, by provider.</li>` : ""}
+        ${more.ambulance ? `<li>Ambulance response times by ambulance service, and NHS dentistry (people seen) by area.</li>` : ""}
+        ${more.research_trusts ? `<li>UK clinical research: every study recruiting in the UK on ClinicalTrials.gov and ISRCTN (merged where a study is on both),
+          with its sites matched to hospital trusts and its conditions to departments - as of ${esc(longDate(more.research_trusts.as_of))}.</li>` : ""}
+        <li>Behind the scenes, for the monthly findings: the weekly waiting list, winter bed pressures, staff sickness and vacancies, deprivation, population, and headline waits in Scotland, Wales and Northern Ireland (which count differently, so aren't compared).</li>
+      </ul>
+      <p><strong>All of it is public NHS data, refreshed monthly. None of it is about individual patients.</strong></p>
+    </section>
+
+    <section class="part" aria-labelledby="h-questions">
+      <h2 id="h-questions">Here are some things you can answer with it</h2>
+      <div class="questions">
+        ${questions.map(([q, sub, params]) => `<a class="question" href="${exploreLink(params)}">${esc(q)}<small>${esc(sub)}</small></a>`).join("")}
+      </div>
+    </section>
+
+    ${asked.length ? `<section class="part" aria-labelledby="h-asked">
+      <h2 id="h-asked">Questions it can answer, by who's asking</h2>
+      <p class="small">Each with an example answer from the latest data. Patient examples use Walthamstow.</p>
+      ${AUDIENCES.map(([key, title], i) => {
+        const items = asked.filter((q) => q.audience === key);
+        return items.length ? `<details ${i === 0 ? "open" : ""}><summary><strong>${esc(title)}</strong> (${items.length})</summary>
+          <ul class="plain">${items.map((q) => {
+            const ds = SOURCE_TO_DATASET[(q.source.match(/\(([a-z0-9_]+)/) || [])[1]];
+            return `<li><strong>${esc(q.question)}</strong><br>${esc(q.example)}
+              <span class="small">${esc(q.source)} · ${esc(q.grain)}${ds && DATASETS[ds] ? ` · <a href="${exploreLink({ ds, m: Object.keys(MEASURES[ds] || { x: 0 })[0], acute: DATASETS[ds].acute ?? "1", v: DATASETS[ds].variant ? defaultVariant(ds) : "" })}">Explore</a>` : ""}</span></li>`;
+          }).join("")}</ul></details>` : "";
+      }).join("")}
+    </section>` : ""}
+
+    <section class="part" aria-labelledby="h-variables">
+      <h2 id="h-variables">The variables to play with</h2>
+      <ul class="plain">
+        <li><strong>Dataset</strong>: waiting times by trust or by area, diagnostic tests, Friends and Family Test, Staff Survey, cancer waits, A&E,
+          appointment slot issues, talking therapies, mental health, community services, GP appointments, ambulances and dentistry.</li>
+        <li><strong>Treatment or test</strong>: ${Object.keys(meta.treatments).length - 1} treatment types (plus all treatments), or ${Object.keys(meta.tests).length - 1} diagnostic tests.</li>
+        <li><strong>Trust or area</strong>: pick any to highlight, or compare hospitals near one.</li>
+        <li><strong>Month range</strong>: one month, the change between two months, or every month in between.</li>
+        <li><strong>NHS / independent</strong>, and <strong>acute and specialist trusts only</strong> (on by default).</li>
+        <li><strong>Measures</strong>: typical wait (half of people), 8-in-10 wait, % within 18 weeks, people waiting, people waiting over a year.</li>
+      </ul>
+    </section>
+
+    <section class="part" aria-labelledby="h-limits">
+      <h2 id="h-limits">What it can't tell you</h2>
+      <ul class="plain">
+        <li>Anyone's place in the queue, or whether a referral arrived.</li>
+        <li>Waits for a specific operation - the data is by department (e.g. trauma and orthopaedics, not hip replacement).</li>
+        <li>Private-pay prices or waits.</li>
+        <li>Individual outcomes.</li>
+        <li>The National Joint Registry and PHIN (private hospitals) aren't included: neither has an open licence. The GP Patient Survey is
+          waiting on confirmation of its licence.</li>
+        <li>NHS vacancy rates by trust: they're only published by region.</li>
+        <li>How long someone waited for a GP appointment from first asking - only from when it was booked.</li>
+      </ul>
+      <p><a href="#/about">About the data</a></p>
+    </section>`;
+}
+
+
+// ---- Explore: working out the rows ------------------------------------------------------
+
+// The value of one field at one month for one entity, from a series file.
+function valueAt(rows, fields, field, monthIndex) {
+  const row = rows && rows[monthIndex];
+  return row ? row[fields.indexOf(field)] : null;
+}
+
+// Loads what a view needs and returns { entities, months, fields, rowsOf, caption, source }.
+async function dataFor(s) {
+  if (s.ds === "rtt" || s.ds === "areas") {
+    const file = await load(`${s.ds}/${s.tf}.json`);
+    const part = s.ds === "areas" ? "waiting" : s.part;
+    const rows = file.parts[part] || {};
+    return { months: file.months, fields: file.fields, rows,
+      source: `NHS England referral to treatment (RTT) statistics. ${PARTS[part]}, ${meta.treatments[s.tf]}.` };
+  }
+  if (s.ds === "dm01") {
+    const file = await load(`dm01/${s.test}.json`);
+    return { months: file.months, fields: file.fields, rows: file.rows,
+      source: `NHS England diagnostic waiting times (DM01). ${meta.tests[s.test]}.` };
+  }
+  if (s.ds === "fft") {
+    const file = await load(`fft/${s.svc}.json`);
+    return { months: file.months, fields: file.fields, rows: file.rows,
+      source: `NHS England Friends and Family Test, ${FFT_SERVICES[s.svc]}. Share who rated their care good or very good.` };
+  }
+  if (s.ds === "staff") {
+    const file = await load("staff.json");
+    const rows = Object.fromEntries(Object.entries(file.rows).map(([c, r]) => [c, [[r.treatment_pct, r.work_pct, r.responses]]]));
+    return { months: [String(file.year)], fields: ["treatment_pct", "work_pct", "responses"], rows,
+      source: `NHS Staff Survey ${file.year}, questions Q25d and Q25c.` };
+  }
+  if (DATASETS[s.ds].more) {
+    const file = await load(`more/${s.ds}${DATASETS[s.ds].variant ? `/${s.v}` : ""}.json`);
+    return { months: file.months, fields: file.fields, rows: file.rows, flags: file.flags, source: DATASETS[s.ds].source(s) };
+  }
+  return null;
+}
+
+// Which providers pass the type and size filters.
+function passesFilters(code, s, people) {
+  if (DATASETS[s.ds].entity !== "provider") return true;
+  const type = meta.providers[code]?.type || "unknown";
+  if (s.type === "nhs" && type === "independent") return false;
+  if (s.type === "independent" && type !== "independent") return false;
+  if (s.acute === "1" && type !== "independent" && !["acute", "specialist"].includes(type)) return false;
+  if (people != null && people < Number(s.min || 0)) return false;
+  return true;
+}
+
+// Distance from the "near" hospital to each provider's nearest treatment site.
+function distanceFrom(nearCode, code) {
+  const from = meta.providers[nearCode]?.sites || [], to = meta.providers[code]?.sites || [];
+  let best = Infinity;
+  for (const a of from) for (const b of to) best = Math.min(best, miles(a, b));
+  return best;
+}
+
+// The rows of the table (and chart) for a provider / area dataset.
+function buildRows(s, d) {
+  const measure = MEASURES[s.ds][s.m];
+  const toIndex = Math.max(0, d.months.indexOf(s.to) >= 0 ? d.months.indexOf(s.to) : d.months.length - 1);
+  const fromIndex = d.months.indexOf(s.from) >= 0 ? d.months.indexOf(s.from) : 0;
+  const peopleField = d.fields.includes("people") ? "people" : d.fields.includes("responses") ? "responses" : null;
+  const rows = [];
+  for (const [code, series] of Object.entries(d.rows)) {
+    const now = valueAt(series, d.fields, measure.field, toIndex);
+    const people = peopleField ? valueAt(series, d.fields, peopleField, toIndex) : null;
+    if (now == null || !passesFilters(code, s, people)) continue;
+    const row = { code, name: DATASETS[s.ds].entity === "area" ? code : providerName(code),
+                  type: meta.providers[code]?.type, now, people, series };
+    if (s.view === "change") {
+      row.then = valueAt(series, d.fields, measure.field, fromIndex);
+      if (row.then == null) continue;
+      row.change = now - row.then;
+    }
+    if (s.near && s.near !== "choose") {
+      row.miles = code === s.near ? 0 : distanceFrom(s.near, code);
+      if (row.miles > Number(s.r)) continue;
+    }
+    row.flag = (d.flags ? d.flags[code] : meta.check_before_using[code]) || "";
+    row.selected = selectedCodes(s).includes(code) || code === s.near;
+    rows.push(row);
+  }
+  // Sort: "best" first or "worst" first, for the measure's direction.
+  const key = s.view === "change" ? "change" : "now";
+  const sign = measure.better === "low" ? 1 : -1;               // low is better: ascending is best-first
+  rows.sort((a, b) => (s.order === "worst" ? -1 : 1) * sign * (a[key] - b[key]));
+  return rows;
+}
+
+function selectedCodes(s) { return (s.hl || "").split(",").filter(Boolean); }
+
+// "Fastest" and "most improved" views leave out providers flagged "check
+// before using" in this month's findings, and say so.
+function isBestFirstView(s) {
+  const measure = MEASURES[s.ds]?.[s.m];
+  return DATASETS[s.ds].entity === "provider" && measure && measure.better && s.order === "best";
+}
+
+
+// ---- Explore: the page ------------------------------------------------------------------
+
+async function renderExplore(params) {
+  const s = { ...defaults(), ...params };
+  if (!MEASURES[s.ds] && !["scatter", "lottery", "private", "research_scatter"].includes(s.ds)) s.ds = "rtt";
+  if (DATASETS[s.ds]?.snapshot) s.view = "rank";
+  if (MEASURES[s.ds] && !MEASURES[s.ds][s.m]) s.m = Object.keys(MEASURES[s.ds])[0];
+  if (DATASETS[s.ds].variant && !meta.more[s.ds].variants[s.v]) s.v = defaultVariant(s.ds);
+  // The newer sources have their own months: a link made with the waiting-time months starts on their latest.
+  const ownMonths = monthsOf(s.ds);
+  if (DATASETS[s.ds].more && !ownMonths.includes(s.to)) { s.to = ownMonths.at(-1); s.from = ownMonths[Math.max(0, ownMonths.length - 13)]; }
+  const page = $("#page");
+  page.innerHTML = `
+    <h1>Explore</h1>
+    <form class="filters" id="filters" aria-label="Filters">${filterControls(s)}</form>
+    <div id="explore-out"><p class="muted">Loading…</p></div>`;
+  wireFilters(s);
+
+  const out = $("#explore-out");
+  if (s.ds === "lottery") return renderLottery(out);
+  if (s.ds === "private") return renderPrivate(out);
+  if (s.ds === "scatter") return renderScatter(out, s);
+  if (s.ds === "research_scatter") return renderResearchScatter(out, s);
+  if (s.near === "choose") {
+    out.innerHTML = `<p class="note">Choose a hospital in <strong>Near a hospital</strong> above to compare hospitals within ${esc(s.r)} miles of it.</p>`;
+    return;
+  }
+
+  const d = await dataFor(s);
+  let measure = MEASURES[s.ds][s.m];
+  if (DATASETS[s.ds].aims && measure.unit === "%") measure = { ...measure, aim: DATASETS[s.ds].aims[s.v] };
+  let rows = buildRows(s, d);
+  let excluded = [];
+  if (isBestFirstView(s)) {
+    excluded = rows.filter((r) => r.flag);
+    rows = rows.filter((r) => !r.flag);
+  }
+  const monthLabel = s.ds === "staff" ? d.months[0]
+    : DATASETS[s.ds].snapshot ? `as of ${longDate(meta.more[s.ds].as_of)}`
+    : monthName(d.months.includes(s.to) ? s.to : d.months.at(-1), true);
+  const variant = DATASETS[s.ds].variant ? `${meta.more[s.ds].variants[s.v]}: ` : "";
+  const lowerFirst = (t) => (/^[A-Z][a-z]/.test(t) ? t[0].toLowerCase() + t.slice(1) : t);
+  const what = s.view === "change" ? `${variant}${variant ? "change" : "Change"} in ${lowerFirst(measure.label)}, ${monthName(s.from, true)} to ${monthName(s.to, true)}`
+             : s.view === "trend" ? `${variant}${measure.label}, ${monthName(s.from, true)} to ${monthName(s.to, true)}`
+             : `${variant}${measure.label}, ${monthLabel}`;
+  const order = !measure.better ? (s.order === "best" ? "highest first" : "lowest first")
+    : s.order === "best" ? (s.view === "change" ? "most improved first" : "best first") : (s.view === "change" ? "least improved first" : "worst first");
+
+  out.innerHTML = `
+    <h2>${esc(what)}</h2>
+    ${DATASETS[s.ds].note ? `<p class="note">${esc(DATASETS[s.ds].note)}</p>` : ""}
+    <p class="chart-caption">${rows.length} ${DATASETS[s.ds].noun || (DATASETS[s.ds].entity === "area" ? "areas" : "providers")}, ${order}.
+      ${s.view === "trend" ? "Dark lines: your selection. Grey lines: comparators." : "Dark bars: your selection."}
+      ${measure.aim && s.view !== "change" ? `Dashed line: the NHS ${s.ds === "rtt" || s.ds === "areas" ? "aim" : "standard"} (${measure.aim}%).` : ""}
+      ${s.view === "change" && rows.length > BAR_ROWS ? `The chart shows the top and bottom ${BAR_ROWS / 2 | 0}; the table has all of them.` : ""}</p>
+    ${isBestFirstView(s) ? `<p class="note">${excluded.length ? `${excluded.length} provider${excluded.length === 1 ? " is" : "s are"} left out of this
+      ${s.view === "change" ? "most-improved" : "fastest"} view because this month's findings flag ${excluded.length === 1 ? "it" : "them"}
+      "check before using" - ${esc(summariseFlags(excluded, s))}. They're still in the other views.`
+      : `Providers flagged "check before using" in this month's findings are left out of ${s.view === "change" ? "most-improved" : "fastest"} views. None of these is flagged this month.`}</p>` : ""}
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: ${esc(d.source)} ${s.ds === "fft" ? "" : ""}Wait Watcher Lab analysis.</p>
+    <div class="actions">
+      <button class="button secondary" type="button" id="csv">Download CSV</button>
+      <button class="button secondary" type="button" id="share">Copy a link to this view</button>
+      <span class="status" id="share-status" role="status"></span>
+    </div>
+    <div id="table"></div>`;
+
+  const chartBox = $("#chart");
+  if (s.view === "trend") chartBox.innerHTML = trendChart(rows, d, s, measure, chartBox.clientWidth || 800);
+  else chartBox.innerHTML = barChart(chartRows(rows, s), s, measure, chartBox.clientWidth || 800);
+  renderTable(rows, s, measure, d);
+  $("#csv").addEventListener("click", () => downloadCsv(rows, s, measure));
+  $("#share").addEventListener("click", copyLink);
+}
+
+// The rows drawn as bars: the top ones, or for a change, the top and bottom
+// (so "which got worse" is on the chart too), with a gap between.
+function chartRows(rows, s) {
+  if (s.view !== "change" || rows.length <= BAR_ROWS) return rows.slice(0, BAR_ROWS);
+  const half = BAR_ROWS / 2 | 0;
+  return [...rows.slice(0, half), { gap: true }, ...rows.slice(-half)];
+}
+
+function summariseFlags(rows, s) {
+  if (DATASETS[s.ds].more) return "their figures moved sharply in a single month in the last year, or NHS England lists them with data issues";
+  const jumps = rows.filter((r) => /moved/.test(r.flag)).length;
+  return jumps === rows.length ? "their % within 18 weeks jumped by more than 15 points in a single month in the last year"
+       : "their figures jumped by more than 15 points in a month, or look implausibly short";
+}
+
+// The filter controls for the current dataset.
+function filterControls(s) {
+  const option = (value, label, current) => `<option value="${esc(value)}" ${value === current ? "selected" : ""}>${esc(label)}</option>`;
+  const monthOptions = (current, months = meta.months) => months.map((m) => option(m, monthName(m), current)).join("");
+  const isRates = MEASURES[s.ds];
+  let html = `<div class="wide"><label for="f-ds">Dataset</label><select id="f-ds" name="ds">
+    ${Object.entries(DATASETS).map(([k, v]) => option(k, v.label, s.ds)).join("")}</select></div>`;
+  if (s.ds === "rtt" || s.ds === "areas") {
+    html += `<div><label for="f-tf">Treatment</label><select id="f-tf" name="tf">
+      ${Object.entries(meta.treatments).sort((a, b) => (a[0] === "C_999" ? -1 : b[0] === "C_999" ? 1 : a[1].localeCompare(b[1])))
+        .map(([k, v]) => option(k, v, s.tf)).join("")}</select></div>`;
+  }
+  if (s.ds === "rtt") {
+    html += `<div><label for="f-part">Who</label><select id="f-part" name="part">
+      ${Object.entries(PARTS).map(([k, v]) => option(k, v, s.part)).join("")}</select></div>`;
+  }
+  if (s.ds === "dm01") {
+    html += `<div><label for="f-test">Test</label><select id="f-test" name="test">
+      ${Object.entries(meta.tests).map(([k, v]) => option(k, v, s.test)).join("")}</select></div>`;
+  }
+  if (s.ds === "fft") {
+    html += `<div><label for="f-svc">Service</label><select id="f-svc" name="svc">
+      ${Object.entries(FFT_SERVICES).map(([k, v]) => option(k, v, s.svc)).join("")}</select></div>`;
+  }
+  if (DATASETS[s.ds].variant) {
+    html += `<div class="wide"><label for="f-v">${esc(DATASETS[s.ds].variant.label)}</label><select id="f-v" name="v">
+      ${Object.entries(meta.more[s.ds].variants).map(([k, v]) => option(k, v, s.v)).join("")}</select></div>`;
+  }
+  if (isRates) {
+    html += `<div class="wide"><label for="f-m">Measure</label><select id="f-m" name="m">
+      ${Object.entries(MEASURES[s.ds]).map(([k, v]) => option(k, v.label, s.m)).join("")}</select></div>`;
+    if (s.ds !== "staff" && !DATASETS[s.ds].snapshot) {
+      const months = monthsOf(s.ds);
+      html += `<div><span class="label" id="l-view">Show</span><div class="segmented" role="group" aria-labelledby="l-view" id="f-view">
+          ${[["rank", "One month"], ["change", "Change"], ["trend", "Over time"]].map(([k, v]) =>
+            `<button type="button" data-view="${k}" aria-pressed="${s.view === k}">${v}</button>`).join("")}</div></div>
+        <div ${s.view === "rank" ? "hidden" : ""}><label for="f-from">From</label><select id="f-from" name="from">${monthOptions(s.from, months)}</select></div>
+        <div><label for="f-to">${s.view === "rank" ? "Month" : "To"}</label><select id="f-to" name="to">${monthOptions(s.to, months)}</select></div>`;
+    }
+    // Measures with no better or worse (e.g. how much research there is) are ordered highest or lowest first.
+    const neutral = !MEASURES[s.ds][s.m]?.better;
+    html += `<div><label for="f-order">Order</label><select id="f-order" name="order">
+      ${option("best", neutral ? "Highest first" : s.view === "change" ? "Most improved first" : "Best first", s.order)}
+      ${option("worst", neutral ? "Lowest first" : s.view === "change" ? "Least improved first" : "Worst first", s.order)}</select></div>`;
+  }
+  if (DATASETS[s.ds].entity === "provider" && !["scatter", "research_scatter"].includes(s.ds)) {
+    html += `<div><label for="f-type">Providers</label><select id="f-type" name="type">
+        ${option("all", "NHS and independent", s.type)}${option("nhs", "NHS only", s.type)}${option("independent", "Independent only", s.type)}</select></div>
+      <div><label class="check"><input type="checkbox" id="f-acute" ${s.acute === "1" ? "checked" : ""}> NHS: acute and specialist trusts only</label></div>
+      <div><label for="f-min">At least this many people</label><input type="number" id="f-min" name="min" min="0" step="100" value="${esc(s.min)}"></div>`;
+  }
+  if (s.ds === "rtt") {
+    html += `<div class="wide"><label for="f-near">Near a hospital</label><input type="search" id="f-near" list="provider-names"
+        value="${s.near && s.near !== "choose" ? esc(providerName(s.near)) : ""}" placeholder="Type a trust or hospital…">
+      </div>
+      <div><label for="f-r">Within</label><select id="f-r" name="r">${["10", "25", "50"].map((r) => option(r, `${r} miles`, s.r)).join("")}</select></div>`;
+  }
+  if (DATASETS[s.ds].entity !== "treatment") {
+    const isArea = DATASETS[s.ds].entity === "area";
+    html += `<div class="wide"><label for="f-hl">Highlight</label><input type="search" id="f-hl" list="${isArea ? "area-names" : "provider-names"}"
+      placeholder="${isArea ? "Type an area…" : "Type a trust…"}" value="">
+      <datalist id="area-names">${areaNames(s.ds).map((a) => `<option value="${esc(a)}">`).join("")}</datalist>
+      <span class="small">${selectedCodes(s).map((c) => `${esc(isArea ? c : providerName(c))} <button type="button" class="link-button" data-unhl="${esc(c)}">remove</button>`).join(" · ")}</span></div>`;
+  }
+  return html;
+}
+
+// Any change to a filter rewrites the address, which redraws the page.
+function wireFilters(s) {
+  const go = (changes) => { location.hash = `#/explore?${new URLSearchParams({ ...s, ...changes })}`; };
+  const form = $("#filters");
+  form.addEventListener("submit", (e) => e.preventDefault());
+  $$("select[name], input[type=number][name]", form).forEach((el) => el.addEventListener("change", () => {
+    const changes = { [el.name]: el.value };
+    if (el.name === "ds") {
+      const ds = DATASETS[el.value];
+      const months = monthsOf(el.value);
+      Object.assign(changes, { m: Object.keys(MEASURES[el.value] || { x: 0 })[0], hl: "", near: "",
+        acute: ds.acute ?? s.acute, v: ds.variant ? defaultVariant(el.value) : "",
+        to: months.at(-1), from: months[Math.max(0, months.length - 13)] });
+    }
+    go(changes);
+  }));
+  $$("#f-view button", form).forEach((b) => b.addEventListener("click", () => go({ view: b.dataset.view })));
+  const acute = $("#f-acute");
+  if (acute) acute.addEventListener("change", () => go({ acute: acute.checked ? "1" : "0" }));
+  const findCode = (text) => [...Object.keys(meta.providers), ...Object.keys(meta.names || {})]
+    .find((c) => providerName(c) === text || c === text.toUpperCase());
+  const near = $("#f-near");
+  if (near) near.addEventListener("change", () => {
+    const code = findCode(near.value.trim());
+    if (code) go({ near: code, view: "rank", type: "all", acute: "0" });
+    else if (!near.value.trim()) go({ near: "" });
+  });
+  const hl = $("#f-hl");
+  if (hl) hl.addEventListener("change", () => {
+    const text = hl.value.trim();
+    const code = DATASETS[s.ds].entity === "area" ? areaNames(s.ds).find((a) => a.toLowerCase() === text.toLowerCase()) : findCode(text);
+    if (code) go({ hl: [...new Set([...selectedCodes(s), code])].join(",") });
+  });
+  $$("[data-unhl]", form).forEach((b) => b.addEventListener("click", () =>
+    go({ hl: selectedCodes(s).filter((c) => c !== b.dataset.unhl).join(",") })));
+}
+
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(location.href);
+    $("#share-status").textContent = "Link copied.";
+  } catch (error) {
+    $("#share-status").textContent = location.href;
+  }
+}
+
+
+// ---- Charts -----------------------------------------------------------------------------
+// The house grammar: your selection dark, comparators grey, the NHS aim as a
+// dashed amber line, labels written on the chart, a source line underneath.
+
+// A change, with its sign: points for percentages, whole numbers for counts.
+function changeLabel(v, measure) {
+  if (v == null) return "–";
+  if (measure.unit === "%") return `${signed(v)} pts`;
+  if (measure.unit === "" && measure.field !== "asi_rate_pct") return `${v > 0 ? "+" : v < 0 ? "−" : ""}${count(Math.abs(v))}`;
+  return `${signed(v)}${measure.unit}`;
+}
+
+function format(value, measure) {
+  if (value == null) return "–";
+  if (measure.unit === "%") return `${one(value)}%`;
+  if (measure.unit === " wks" || measure.unit === " days") return `${Math.round(value)}${measure.unit}`;
+  if (measure.unit === " min") return `${one(value)} min`;
+  return measure.field === "asi_rate_pct" || measure.decimals ? one(value) : count(value);
+}
+
+// Ranked horizontal bars (or bars either side of zero for a change).
+function barChart(rows, s, measure, width) {
+  if (!rows.length) return `<p>Nothing matches these filters.</p>`;
+  const isChange = s.view === "change";
+  const values = rows.map((r) => (r.gap ? 0 : isChange ? r.change : r.now));
+  const labelWidth = Math.min(300, Math.max(150, width * 0.36)), valueWidth = 70;
+  const plot = Math.max(120, width - labelWidth - valueWidth);
+  let lo = Math.min(0, ...values), hi = Math.max(0, ...values);
+  if (measure.aim && !isChange) hi = Math.max(hi, measure.aim);
+  if (measure.unit === "%" && !isChange) hi = Math.max(hi, Math.min(100, hi));
+  const x = (v) => labelWidth + ((v - lo) / (hi - lo || 1)) * plot;
+  const rowH = 22, top = 18, height = top + rows.length * rowH + 8;
+  let svg = `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 4}" y2="${height - 4}"/>`;
+  rows.forEach((r, i) => {
+    const v = values[i], y = top + i * rowH;
+    if (r.gap) {     // the break between the top and the bottom of a change chart
+      svg += `<text class="label" x="${labelWidth - 8}" y="${y + 14}" text-anchor="end">⋯</text>`;
+      return;
+    }
+    const better = isChange && measure.better && ((measure.better === "high") === (v > 0)) && v !== 0;
+    const x0 = Math.min(x(0), x(v)), w = Math.max(1, Math.abs(x(v) - x(0)));
+    const name = r.name.length > 42 ? `${r.name.slice(0, 41)}…` : r.name;
+    svg += `<text class="label ${r.selected ? "strong" : ""}" x="${labelWidth - 8}" y="${y + 14}" text-anchor="end">${esc(name)}</text>`;
+    svg += `<rect class="bar ${r.selected ? "selected" : better ? "better" : ""}" x="${x0}" y="${y + 3}" width="${w}" height="${rowH - 7}" rx="2"/>`;
+    const label = isChange ? changeLabel(v, measure) : format(v, measure);
+    svg += `<text class="value ${r.selected ? "strong" : ""}" x="${Math.max(x(0), x(v)) + 5}" y="${y + 14}">${esc(label)}</text>`;
+  });
+  if (measure.aim && !isChange) {
+    svg += `<line class="aim" x1="${x(measure.aim)}" x2="${x(measure.aim)}" y1="${top - 6}" y2="${height - 4}"/>`;
+    svg += `<text class="aim-label halo" x="${x(measure.aim)}" y="${top - 8}" text-anchor="middle">NHS aim ${measure.aim}%</text>`;
+  }
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(`${measure.label}, ranked`)}">${svg}</svg>
+    ${isChange && measure.better ? `<p class="small">Green bars improved; grey bars got worse. The sign on each label says which.</p>` : ""}`;
+}
+
+// Lines over time: your selection dark with a label at the end; the top
+// comparators grey.
+function trendChart(rows, d, s, measure, width) {
+  const fromIndex = Math.max(0, d.months.indexOf(s.from)), toIndex = d.months.indexOf(s.to) >= 0 ? d.months.indexOf(s.to) : d.months.length - 1;
+  const months = d.months.slice(fromIndex, toIndex + 1);
+  if (months.length < 2) return `<p>Choose a "From" month before the "To" month to see a line over time.</p>`;
+  const chosen = rows.filter((r) => r.selected);
+  const lines = [...chosen, ...rows.filter((r) => !r.selected).slice(0, chosen.length ? TREND_LINES - chosen.length : TREND_LINES)];
+  const points = lines.map((r) => months.map((m, i) => valueAt(r.series, d.fields, measure.field, fromIndex + i)));
+  const all = points.flat().filter((v) => v != null);
+  let lo = Math.min(...all), hi = Math.max(...all);
+  if (measure.aim) hi = Math.max(hi, measure.aim);
+  if (measure.unit === "%") { lo = Math.max(0, Math.floor(lo / 10) * 10); hi = Math.min(100, Math.ceil(hi / 10) * 10); }
+  const left = 44, right = 190, top = 14, height = 300, bottom = 26;
+  const xs = (i) => left + (i / (months.length - 1)) * (width - left - right);
+  const ys = (v) => top + (1 - (v - lo) / (hi - lo || 1)) * (height - top - bottom);
+  let svg = "";
+  for (let k = 0; k <= 4; k++) {
+    const v = lo + ((hi - lo) * k) / 4;
+    svg += `<line class="grid" x1="${left}" x2="${width - right}" y1="${ys(v)}" y2="${ys(v)}"/>`;
+    svg += `<text x="${left - 6}" y="${ys(v) + 4}" text-anchor="end">${measure.unit === "%" ? Math.round(v) : Math.round(v)}</text>`;
+  }
+  svg += `<text x="${left}" y="${height - 6}">${esc(monthName(months[0]))}</text>`;
+  svg += `<text x="${width - right}" y="${height - 6}" text-anchor="end">${esc(monthName(months.at(-1)))}</text>`;
+  if (measure.aim) {
+    svg += `<line class="aim" x1="${left}" x2="${width - right}" y1="${ys(measure.aim)}" y2="${ys(measure.aim)}"/>`;
+    svg += `<text class="aim-label halo" x="${left + 4}" y="${ys(measure.aim) - 5}">NHS aim ${measure.aim}%</text>`;
+  }
+  // Grey comparators first, then the selection on top.
+  const order = lines.map((r, i) => i).sort((a, b) => Number(lines[a].selected) - Number(lines[b].selected));
+  const labels = [];
+  for (const i of order) {
+    const r = lines[i];
+    const path = points[i].map((v, j) => (v == null ? null : `${xs(j)},${ys(v)}`)).filter(Boolean);
+    if (path.length < 2) continue;
+    svg += `<polyline class="line ${r.selected ? "selected" : ""}" points="${path.join(" ")}"><title>${esc(r.name)}</title></polyline>`;
+    const lastIndex = points[i].map((v, j) => (v == null ? -1 : j)).filter((j) => j >= 0).at(-1);
+    labels.push({ y: ys(points[i][lastIndex]), text: `${r.name.slice(0, 26)} ${format(points[i][lastIndex], measure)}`, selected: r.selected });
+  }
+  // End labels, nudged apart so they don't overlap.
+  labels.sort((a, b) => a.y - b.y);
+  for (let k = 1; k < labels.length; k++) labels[k].y = Math.max(labels[k].y, labels[k - 1].y + 13);
+  for (const l of labels) svg += `<text class="label ${l.selected ? "strong" : ""} halo" x="${width - right + 6}" y="${l.y + 4}">${esc(l.text)}</text>`;
+  return `<svg viewBox="0 0 ${width} ${Math.max(height, (labels.at(-1)?.y || 0) + 16)}" role="img" aria-label="${esc(measure.label)} over time">${svg}</svg>
+    <p class="small">${chosen.length ? "" : `No selection yet: showing the top ${lines.length} in the current order. Use Highlight to add your own.`}</p>`;
+}
+
+// Each trust a dot. No trend line - this shows the pattern, not a cause.
+function scatterChart(points, xLabel, yLabel, width, aim, xUnit = "%") {
+  const left = 48, right = 20, top = 16, bottom = 44, height = 420;
+  const xsAll = points.map((p) => p.x), ysAll = points.map((p) => p.y);
+  // x ticks every 10 for percentages; a round step giving about 6 ticks for counts.
+  const xStep = xUnit === "%" ? 10 : [10, 20, 25, 50, 100, 200, 250, 500].find((st) => Math.max(...xsAll) / st <= 6) || 1000;
+  const xlo = Math.floor(Math.min(...xsAll) / xStep) * xStep, xhi = Math.ceil(Math.max(...xsAll) / xStep) * xStep;
+  const ylo = Math.floor(Math.min(...ysAll) / 10) * 10, yhi = Math.max(Math.ceil(Math.max(...ysAll) / 10) * 10, aim || 0);
+  const X = (v) => left + ((v - xlo) / (xhi - xlo || 1)) * (width - left - right);
+  const Y = (v) => top + (1 - (v - ylo) / (yhi - ylo || 1)) * (height - top - bottom);
+  let svg = "";
+  for (let v = ylo; v <= yhi; v += 10) {
+    svg += `<line class="grid" x1="${left}" x2="${width - right}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${left - 6}" y="${Y(v) + 4}" text-anchor="end">${v}%</text>`;
+  }
+  for (let v = xlo; v <= xhi; v += xStep) svg += `<text x="${X(v)}" y="${height - bottom + 16}" text-anchor="middle">${v}${xUnit}</text>`;
+  svg += `<text x="${(left + width - right) / 2}" y="${height - 6}" text-anchor="middle">${esc(xLabel)}</text>`;
+  svg += `<text x="${left}" y="${top - 4}">${esc(yLabel)}</text>`;
+  if (aim) {
+    svg += `<line class="aim" x1="${left}" x2="${width - right}" y1="${Y(aim)}" y2="${Y(aim)}"/>`;
+    svg += `<text class="aim-label halo" x="${width - right}" y="${Y(aim) - 5}" text-anchor="end">NHS aim ${aim}%</text>`;
+  }
+  for (const p of points.filter((p) => !p.selected)) svg += `<circle class="dot" cx="${X(p.x)}" cy="${Y(p.y)}" r="4"><title>${esc(p.label)}: ${xUnit === "%" ? one(p.x) + "%" : count(p.x)}, ${one(p.y)}%</title></circle>`;
+  for (const p of points.filter((p) => p.selected)) {
+    svg += `<circle class="dot selected" cx="${X(p.x)}" cy="${Y(p.y)}" r="6"><title>${esc(p.label)}</title></circle>`;
+    svg += `<text class="label strong halo" x="${X(p.x) + 9}" y="${Y(p.y) + 4}">${esc(p.label)}</text>`;
+  }
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(`${yLabel} against ${xLabel}, one dot per trust`)}">${svg}</svg>`;
+}
+
+
+// ---- Explore: the special views ---------------------------------------------------------
+
+async function renderScatter(out, s) {
+  const [staff, rtt] = await Promise.all([load("staff.json"), load("rtt/C_999.json")]);
+  const last = rtt.months.length - 1, fields = rtt.fields;
+  const points = [];
+  for (const [code, series] of Object.entries(rtt.parts.waiting)) {
+    if (meta.providers[code]?.type !== "acute") continue;
+    const y = valueAt(series, fields, "pct_within_18_weeks", last);
+    const x = staff.rows[code]?.treatment_pct;
+    if (x == null || y == null) continue;
+    points.push({ code, x, y, label: providerName(code), selected: selectedCodes(s).includes(code) });
+  }
+  out.innerHTML = `
+    <h2>Staff views and waits: ${points.length} acute trusts</h2>
+    <p class="chart-caption">Across: % of staff happy with the standard of care for a friend or relative (Staff Survey ${staff.year}).
+      Up: % of people waiting who had waited 18 weeks or less (${monthName(meta.latest_month, true)}). Each dot is an acute trust; dark dots are your selection.</p>
+    <p class="note">No line is drawn on purpose. This shows the pattern only - it can't tell you that one thing causes the other.</p>
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: NHS Staff Survey ${staff.year} (Q25d); NHS England RTT statistics, ${monthName(meta.latest_month, true)}. Acute trusts only. Wait Watcher Lab analysis.</p>
+    <div class="actions"><button class="button secondary" type="button" id="csv">Download CSV</button>
+      <button class="button secondary" type="button" id="share">Copy a link to this view</button><span class="status" id="share-status" role="status"></span></div>
+    <div id="table"></div>`;
+  $("#chart").innerHTML = scatterChart(points, "% of staff happy with the standard of care", "% within 18 weeks", $("#chart").clientWidth || 800, NHS_AIM);
+  const columns = [["label", "Trust"], ["x", "Staff: happy with care %"], ["y", "% within 18 weeks"]];
+  simpleTable(points.sort((a, b) => b.y - a.y), columns, s);
+  $("#csv").addEventListener("click", () => csvFile(points, columns, "staff-vs-waits"));
+  $("#share").addEventListener("click", copyLink);
+}
+
+async function renderResearchScatter(out, s) {
+  const [research, rtt] = await Promise.all([load("more/research_trusts.json"), load("rtt/C_999.json")]);
+  const last = rtt.months.length - 1;
+  const points = [];
+  for (const [code, series] of Object.entries(rtt.parts.waiting)) {
+    if (meta.providers[code]?.type !== "acute") continue;
+    const y = valueAt(series, rtt.fields, "pct_within_18_weeks", last);
+    const waiting = valueAt(series, rtt.fields, "people", last);
+    if (y == null || waiting < 10000) continue;
+    const x = valueAt(research.rows[code], research.fields, "recruiting_studies", 0) || 0;
+    points.push({ code, x, y, label: providerName(code), selected: selectedCodes(s).includes(code) });
+  }
+  out.innerHTML = `
+    <h2>Research and waits: ${points.length} acute trusts</h2>
+    <p class="chart-caption">Across: studies recruiting now with a site at the trust (as of ${esc(longDate(meta.more.research_trusts.as_of))}).
+      Up: % of people waiting who had waited 18 weeks or less (${monthName(meta.latest_month, true)}). Acute trusts with 10,000+ waiting; dark dots are your selection.</p>
+    <p class="note">No line is drawn on purpose. ${esc(RESEARCH_NOTE)} NIHR's own research activity figures aren't openly published by trust, so this uses the trial registries instead.</p>
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: ${esc(researchSource())} NHS England RTT statistics, ${monthName(meta.latest_month, true)}. Wait Watcher Lab analysis.</p>
+    <div class="actions"><button class="button secondary" type="button" id="csv">Download CSV</button>
+      <button class="button secondary" type="button" id="share">Copy a link to this view</button><span class="status" id="share-status" role="status"></span></div>
+    <div id="table"></div>`;
+  $("#chart").innerHTML = scatterChart(points, "Studies recruiting now", "% within 18 weeks", $("#chart").clientWidth || 800, NHS_AIM, "");
+  const columns = [["label", "Trust"], ["x", "Studies recruiting"], ["y", "% within 18 weeks"]];
+  simpleTable(points.sort((a, b) => b.x - a.x), columns, s);
+  $("#csv").addEventListener("click", () => csvFile(points, columns, "research-vs-waits"));
+  $("#share").addEventListener("click", copyLink);
+}
+
+async function renderLottery(out) {
+  const findings = await load("findings.json");
+  const rows = findings["7_postcode_lottery"];
+  const measure = { label: "Gap in weeks", unit: " wks", better: null };
+  const meta3 = findings.meta;
+  out.innerHTML = `
+    <h2>Postcode lottery: the gap between the fastest and slowest NHS trust, by treatment</h2>
+    <p class="chart-caption">Typical wait for an operation or hospital stay (half of people), ${esc(meta3.three_months_now)}.
+      Trusts with at least 150 operations. Bar: the gap in weeks.</p>
+    <p class="note">Left out of "fastest" and "slowest": trusts flagged "check before using" this month, and any trust whose
+      typical operation wait for that treatment is under 5 weeks (${findings.check_before_using_by_treatment?.length || 0} trust and treatment pairs) -
+      such short figures are worth checking before they're quoted.</p>
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: NHS England RTT statistics, ${esc(meta3.three_months_now)}. Wait Watcher findings (make_findings.py).</p>
+    <div class="actions"><button class="button secondary" type="button" id="csv">Download CSV</button>
+      <button class="button secondary" type="button" id="share">Copy a link to this view</button><span class="status" id="share-status" role="status"></span></div>
+    <div id="table"></div>`;
+  $("#chart").innerHTML = barChart(rows.map((r) => ({ name: r.name, now: r.gap_weeks })), { view: "rank" }, measure, $("#chart").clientWidth || 800);
+  const columns = [["name", "Treatment"], ["gap_weeks", "Gap (weeks)"], ["fastest", "Fastest trust"], ["fastest_weeks", "Weeks"],
+                   ["slowest", "Slowest trust"], ["slowest_weeks", "Weeks"], ["trusts_compared", "Trusts compared"]];
+  simpleTable(rows, columns, {});
+  $("#csv").addEventListener("click", () => csvFile(rows, columns, "postcode-lottery"));
+  $("#share").addEventListener("click", copyLink);
+}
+
+async function renderPrivate(out) {
+  const findings = await load("findings.json");
+  const rows = findings["8_private_share"].filter((r) => r.operations_now >= 1000);
+  const meta3 = findings.meta;
+  out.innerHTML = `
+    <h2>How much NHS surgery private clinics do, by treatment</h2>
+    <p class="chart-caption">Share of NHS-funded operations and hospital stays (completed admitted pathways) done at independent providers,
+      ${esc(meta3.three_months_now)}. Treatments with at least 1,000 operations.</p>
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: NHS England RTT statistics, ${esc(meta3.three_months_then)} and ${esc(meta3.three_months_now)}.
+      Independent = provider codes not starting with R. Wait Watcher findings.</p>
+    <div class="actions"><button class="button secondary" type="button" id="csv">Download CSV</button>
+      <button class="button secondary" type="button" id="share">Copy a link to this view</button><span class="status" id="share-status" role="status"></span></div>
+    <div id="table"></div>`;
+  $("#chart").innerHTML = barChart(rows.map((r) => ({ name: r.name, now: r.private_pct_now, selected: r.code === "C_999" })),
+    { view: "rank" }, { label: "% private", unit: "%", better: null }, $("#chart").clientWidth || 800);
+  const columns = [["name", "Treatment"], ["operations_now", "Operations (3 months)"], ["private_pct_then", "% private a year ago"],
+                   ["private_pct_now", "% private now"], ["change_points", "Change (points)"]];
+  simpleTable(rows, columns, {});
+  $("#csv").addEventListener("click", () => csvFile(rows, columns, "private-share"));
+  $("#share").addEventListener("click", copyLink);
+}
+
+
+// ---- Tables and CSV ---------------------------------------------------------------------
+
+// The main Explore table: sortable by clicking a heading.
+function renderTable(rows, s, measure, d) {
+  const isChange = s.view === "change";
+  const entity = DATASETS[s.ds].entity === "area" ? "Area" : "Provider";
+  const columns = [["name", entity]];
+  if (entity === "Provider") columns.push(["type", "Type"]);
+  if (s.near && s.near !== "choose") columns.push(["miles", "Miles"]);
+  if (isChange) columns.push(["then", monthName(s.from)], ["now", monthName(s.to)], ["change", "Change"]);
+  else columns.push(["now", measure.label]);
+  if (s.m !== "people" && rows.some((r) => r.people != null)) columns.push(["people", s.ds === "fft" ? "Responses" : DATASETS[s.ds].peopleLabel || "People"]);
+  columns.push(["flag", "Check before using"]);
+  const shown = rows.map((r) => ({ ...r, type: SHORT_TYPES[r.type] || r.type, miles: r.miles != null ? Math.round(r.miles) : null,
+    small: r.people != null && !["fft", "staff", "dental"].includes(s.ds) && r.people < SMALL_NUMBERS }));
+  simpleTable(shown, columns, s, (r, key) => {
+    if (key === "name") return entity === "Provider" && meta.providers[r.code] ? `<a href="#/trust/${esc(r.code)}">${esc(r.name)}</a>` : esc(r.name);
+    if (key === "now" || key === "then") return format(r[key], measure);
+    if (key === "change") return changeLabel(r.change, measure);
+    if (key === "people") return count(r.people);
+    if (key === "flag") return [r.flag, r.small ? "small numbers - treat with care" : ""].filter(Boolean)
+      .map((text) => `<span class="flag">${esc(text)}</span>`).join("<br>");
+    return esc(r[key] ?? "–");
+  });
+}
+
+function simpleTable(rows, columns, s, cell = (r, key) => esc(typeof r[key] === "number" ? (Number.isInteger(r[key]) ? count(r[key]) : one(r[key])) : r[key] ?? "–")) {
+  const box = $("#table");
+  let sortKey = null, descending = false;
+  const draw = () => {
+    const sorted = sortKey ? [...rows].sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (av == null) return 1; if (bv == null) return -1;
+      const order = typeof av === "string" ? av.localeCompare(bv) : av - bv;
+      return descending ? -order : order;
+    }) : rows;
+    box.innerHTML = `<div class="table-wrap"><table>
+      <thead><tr>${columns.map(([key, label]) => `<th class="${typeof rows[0]?.[key] === "number" ? "num" : ""}"
+        aria-sort="${sortKey === key ? (descending ? "descending" : "ascending") : "none"}">
+        <button type="button" data-sort="${key}">${esc(label)}${sortKey === key ? (descending ? " ↓" : " ↑") : ""}</button></th>`).join("")}</tr></thead>
+      <tbody>${sorted.map((r) => `<tr class="${r.selected ? "selected" : ""}">${columns.map(([key]) =>
+        `<td class="${typeof r[key] === "number" ? "num" : ""}">${cell(r, key)}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table></div>`;
+    $$("[data-sort]", box).forEach((b) => b.addEventListener("click", () => {
+      descending = sortKey === b.dataset.sort ? !descending : typeof rows[0]?.[b.dataset.sort] === "number";
+      sortKey = b.dataset.sort;
+      draw();
+    }));
+  };
+  draw();
+}
+
+function downloadCsv(rows, s, measure) {
+  const columns = [["code", "code"], ["name", "name"], ["type", "type"], ["then", `value_${s.from}`], ["now", `value_${s.to}`],
+                   ["change", "change"], ["people", "people"], ["miles", "miles"], ["flag", "check_before_using"]]
+    .filter(([key]) => rows.some((r) => r[key] != null && r[key] !== ""));
+  csvFile(rows, columns, `wait-watcher-lab-${s.ds}-${s.m}-${s.to}`, `# ${measure.label}; filters: ${new URLSearchParams(s)}`);
+}
+
+function csvFile(rows, columns, name, comment = "") {
+  const quote = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+  const lines = [...(comment ? [comment] : []), columns.map(([, label]) => quote(label)).join(","),
+                 ...rows.map((r) => columns.map(([key]) => quote(r[key])).join(","))];
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" }));
+  link.download = `${name}.csv`;
+  document.body.append(link); link.click(); link.remove();
+}
+
+
+// ---- Trust page -------------------------------------------------------------------------
+
+async function renderTrust(code) {
+  const provider = meta.providers[code];
+  if (!provider) { $("#page").innerHTML = `<p>We couldn't find a provider with the code ${esc(code)}.</p>`; return; }
+  const [trusts, cqc, staff, ...fft] = await Promise.all([load("trusts.json"), load("cqc.json"), load("staff.json"),
+    ...Object.keys(FFT_SERVICES).map((s) => load(`fft/${s}.json`))]);
+  // The newer sources: the latest month each has for this trust.
+  const optional = (path) => (meta.more ? load(path).catch(() => null) : Promise.resolve(null));
+  const [ae, asi, ...cancer] = await Promise.all([optional("more/ae.json"), optional("more/asi.json"),
+    ...["FDS", "31D", "62D"].map((std) => optional(`more/cancer/${std}.json`))]);
+  const latestOf = (file) => {
+    const series = file?.rows[code];
+    if (!series) return null;
+    const i = series.map((r, j) => (r ? j : -1)).filter((j) => j >= 0).at(-1);
+    return i == null ? null : { month: file.months[i], value: (field) => series[i][file.fields.indexOf(field)], flag: file.flags?.[code] };
+  };
+  const aeNow = latestOf(ae), asiNow = latestOf(asi);
+  // Clinical research: the studies recruiting now with a site at this trust.
+  const [researchStudies, researchByTrust] = await Promise.all([optional("research/studies.json"), optional("research/by_trust.json")]);
+  const trialIds = researchByTrust?.rows[code] || [];
+  const studyField = (id, f) => researchStudies.rows[id]?.[researchStudies.fields.indexOf(f)];
+  const registryLink = (id) => (id.startsWith("NCT") ? `https://clinicaltrials.gov/study/${id}` : `https://www.isrctn.com/${id}`);
+  const trials = trialIds.filter((id) => researchStudies?.rows[id])
+    .sort((a, b) => String(studyField(b, "start_date") || "").localeCompare(String(studyField(a, "start_date") || "")));
+  const cancerNow = cancer.map((file, i) => ({ std: ["FDS", "31D", "62D"][i], now: latestOf(file) })).filter((c) => c.now && c.now.value("people") >= 5);
+  const t = trusts.rows[code] || { rtt: {}, dm01: {} };
+  const rating = cqc[code];
+  const surveyed = staff.rows[code];
+  const flag = meta.check_before_using[code];
+
+  // Friends and Family: the latest three months combined, per service.
+  const fftFacts = Object.keys(FFT_SERVICES).map((service, i) => {
+    const file = fft[i], series = file.rows[code];
+    if (!series) return null;
+    let responses = 0, positive = 0;
+    for (const row of series.slice(-3)) if (row) { responses += row[0]; positive += row[0] * row[1] / 100; }
+    return responses ? { service, responses, pct: (positive / responses) * 100 } : null;
+  }).filter(Boolean);
+  const fftMonths = `${monthName(fft[0].months.at(-3))} to ${monthName(fft[0].months.at(-1))}`;
+
+  const treatments = Object.entries(t.rtt).sort((a, b) => (a[0] === "C_999" ? -1 : b[0] === "C_999" ? 1 : (b[1][0] || 0) - (a[1][0] || 0)));
+  const spark = (values) => {
+    const v = values.filter((x) => x != null);
+    if (v.length < 2) return "";
+    const pts = values.map((x, i) => (x == null ? null : `${(i / (values.length - 1)) * 88 + 1},${23 - (x / 100) * 22}`)).filter(Boolean);
+    return `<svg viewBox="0 0 90 24" aria-hidden="true"><line class="aim" x1="0" x2="90" y1="${23 - 0.92 * 22}" y2="${23 - 0.92 * 22}"/>
+      <polyline class="line" points="${pts.join(" ")}"/></svg>`;
+  };
+
+  $("#page").innerHTML = `
+    <p class="small"><a href="#/explore">Explore</a> › Trust</p>
+    <h1>${esc(provider.name)}</h1>
+    <p class="muted">${esc(TYPE_NAMES[provider.type] || provider.type)}${provider.town ? ` · ${esc(provider.town)}` : ""} · code ${esc(code)}</p>
+    ${flag ? `<p class="note"><strong>Check before using:</strong> ${esc(flag)}. Left out of "fastest" and "most improved" views.</p>` : ""}
+
+    <dl class="facts">
+      <div class="fact"><dt>What inspectors say (CQC)</dt><dd>${rating ? `${esc(rating.rating)}
+        <span class="small">${rating.date ? `Report ${esc(monthName(rating.date.slice(0, 7), true))}` : ""}${rating.scope === "hospital" ? ` · for ${esc(rating.site)}` : " · whole trust"}
+        · <a href="${esc(rating.url)}" target="_blank" rel="noopener">CQC page</a></span>` : "No rating found"}</dd></div>
+      ${fftFacts.length ? fftFacts.map((f) => `<div class="fact"><dt>Friends and Family Test: ${esc(FFT_SERVICES[f.service])}</dt>
+        <dd>${one(f.pct)}% rated their care good or very good<span class="small">${count(f.responses)} responses, ${esc(fftMonths)}</span></dd></div>`).join("")
+        : `<div class="fact"><dt>Friends and Family Test</dt><dd>No responses reported</dd></div>`}
+      <div class="fact"><dt>NHS Staff Survey ${staff.year}</dt><dd>${surveyed ? `${one(surveyed.treatment_pct)}% of staff would be happy with the standard of care for a friend or relative
+        <span class="small">${one(surveyed.work_pct)}% would recommend it as a place to work · ${count(surveyed.responses)} responses</span>` : "Not surveyed"}</dd></div>
+      ${aeNow && aeNow.value("type1_pct_within_4_hours") != null ? `<div class="fact"><dt>A&E, ${esc(monthName(aeNow.month, true))}</dt>
+        <dd>${one(aeNow.value("type1_pct_within_4_hours"))}% seen within 4 hours in major A&E
+        <span class="small">${one(aeNow.value("pct_within_4_hours"))}% across all its A&E services · ${count(aeNow.value("people"))} attendances ·
+        ${count(aeNow.value("dta_over_12_hours"))} waited 12+ hours for a bed after the decision to admit. The standard is 95%.</span></dd></div>` : ""}
+      ${asiNow && asiNow.value("people") ? `<div class="fact"><dt>First appointments booked by GPs, ${esc(monthName(asiNow.month, true))}</dt>
+        <dd>${one(asiNow.value("asi_rate_pct"))} times per 100 bookings, there was no slot to book
+        <span class="small">${count(asiNow.value("total_asis"))} slot issues, ${count(asiNow.value("people"))} bookings (e-Referral Service)${asiNow.flag ? ` · check before using: ${esc(asiNow.flag)}` : ""}</span></dd></div>` : ""}
+    </dl>
+
+    ${researchByTrust ? `<h2>Clinical research</h2>
+    <p class="chart-caption">${trials.length ? `${count(trials.length)} UK ${trials.length === 1 ? "study is" : "studies are"} recruiting now with a site at this trust
+      (as of ${esc(longDate(researchByTrust.as_of))}), newest first.` : "No UK studies recruiting now are matched to this trust."}
+      Sites are matched to trusts carefully, so some studies here may be missing - never wrongly added.</p>
+    ${trials.length ? `<div class="table-wrap"><table>
+      <thead><tr><th>Study</th><th>Phase</th><th>Sponsor</th><th>Started</th><th>Find out more</th></tr></thead>
+      <tbody>${trials.slice(0, 25).map((id) => `<tr><td>${esc(studyField(id, "title"))}</td>
+        <td>${esc(phaseName(studyField(id, "phase")))}</td>
+        <td>${esc(studyField(id, "industry_or_academic") || "–")}</td><td>${esc(String(studyField(id, "start_date") || "–").slice(0, 7))}</td>
+        <td class="small"><a href="${registryLink(id)}" target="_blank" rel="noopener">${esc(id)}</a> ·
+          <a href="https://bepartofresearch.nihr.ac.uk/results/search-results?query=${encodeURIComponent(id)}" target="_blank" rel="noopener">Be Part of Research</a></td></tr>`).join("")}</tbody></table></div>
+      ${trials.length > 25 ? `<p class="small">Showing 25 of ${count(trials.length)}. <a href="${exploreLink({ ds: "research_trusts", m: "recruiting", hl: code, acute: "0" })}">Compare trusts</a></p>` : ""}` : ""}
+    <p class="source">Source: ${esc(researchSource())}</p>` : ""}
+
+    ${cancerNow.length ? `<h2>Cancer waiting times</h2>
+    <p class="note">These figures are about people waiting to find out whether they have cancer, or to start treatment. Please handle them with care.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Standard</th><th class="num">Within the standard</th><th class="num">The standard</th><th class="num">Patients</th><th>Month</th></tr></thead>
+      <tbody>${cancerNow.map((c) => `<tr><td><a href="${exploreLink({ ds: "cancer", v: c.std, m: "pct", view: "trend", hl: code, acute: "1", min: "0" })}">${esc(meta.more.cancer.variants[c.std])}</a></td>
+        <td class="num">${one(c.now.value("pct_within"))}%</td><td class="num">${{ FDS: 75, "31D": 96, "62D": 85 }[c.std]}%</td>
+        <td class="num">${count(c.now.value("people"))}</td><td>${esc(monthName(c.now.month))}${c.now.flag ? ` <span class="flag">check before using</span>` : ""}</td></tr>`).join("")}</tbody></table></div>
+    <p class="source">Source: NHS England cancer waiting times. Latest months are provisional.</p>` : ""}
+
+    <h2>Waits by treatment</h2>
+    <p class="chart-caption">People still waiting, ${monthName(trusts.months.at(-1), true)}, compared with ${monthName(trusts.year_ago, true)}.
+      The small line shows the % within 18 weeks each month since ${monthName(trusts.months[0])}, with the 92% aim dashed.</p>
+    ${treatments.length ? `<div class="table-wrap"><table>
+      <thead><tr><th>Treatment</th><th class="num">Waiting</th><th class="num">Typical wait</th><th class="num">% within 18 wks</th>
+        <th class="num">A year ago</th><th class="num">Change</th><th class="num">Over a year</th><th>Trend</th></tr></thead>
+      <tbody>${treatments.map(([tf, r]) => `<tr>
+        <td><a href="${exploreLink({ ds: "rtt", tf, m: "pct18", view: "rank", hl: code, type: "all", acute: "0", min: "0" })}">${esc(meta.treatments[tf] || tf)}</a></td>
+        <td class="num">${count(r[0])}</td><td class="num">${r[1] == null ? "–" : `${r[1]} wks`}</td><td class="num">${r[2] == null ? "–" : `${one(r[2])}%`}</td>
+        <td class="num">${r[4] == null ? "–" : `${one(r[4])}%`}</td><td class="num">${r[2] != null && r[4] != null ? `${signed(r[2] - r[4])} pts` : "–"}</td>
+        <td class="num">${count(r[3])}</td><td class="spark">${spark(r[5])}</td></tr>`).join("")}</tbody></table></div>`
+      : `<p>No people waiting in ${monthName(trusts.months.at(-1), true)}.</p>`}
+    <p class="source">Source: NHS England RTT statistics. Typical wait = half of people had waited this long or less (rounded up to the week).</p>
+
+    <h2>Scans and tests</h2>
+    ${Object.keys(t.dm01).length ? `<div class="table-wrap"><table>
+      <thead><tr><th>Test</th><th class="num">People waiting</th><th class="num">% waiting 6+ weeks</th><th class="num">% waiting 13+ weeks</th></tr></thead>
+      <tbody>${Object.entries(t.dm01).sort((a, b) => (a[0] === "TOTAL" ? 1 : b[0] === "TOTAL" ? -1 : b[1][0] - a[1][0])).map(([test, r]) => `<tr>
+        <td>${esc(meta.tests[test] || test)}</td><td class="num">${count(r[0])}</td><td class="num">${r[1] == null ? "–" : `${one(r[1])}%`}</td>
+        <td class="num">${r[2] == null ? "–" : `${one(r[2])}%`}</td></tr>`).join("")}</tbody></table></div>
+      <p class="source">Source: NHS England diagnostic waiting times (DM01), ${monthName(trusts.dm01_month, true)}. The standard is that under 1% wait 6 weeks or more.</p>`
+      : `<p>No diagnostic test waits reported.</p>`}`;
+}
+
+
+// ---- About the data ---------------------------------------------------------------------
+
+function renderAbout() {
+  const what = {
+    rtt: "Every month, each NHS-funded provider reports how long people have been waiting since referral (still waiting), and how long people waited who were treated that month - by treatment type, in weekly bands. "
+       + "Typical wait = the week by which half of people are counted (rounded up to the week). % within 18 weeks = share waiting 18 weeks or less; the NHS aims for 92%. Limits: it's by department, not by operation; it can't say anything about one person's place in the queue.",
+    ods: "NHS England's register of organisations and sites: where each trust, hospital and clinic is. Used for distances and towns. Limits: distances are straight lines to a provider's likely treatment sites.",
+    cqc: "The Care Quality Commission's latest overall rating for each trust (or its hospital, where there's no trust-wide rating), with the report date. Limits: ratings can be several years old. Contains CQC information.",
+    fft: "Patients are asked \"Overall, how was your experience of our service?\". The figure is the share who answered good or very good - not whether they'd recommend it. Limits: response rates vary a lot, and most hospitals score over 9 in 10.",
+    staff_survey: "Each autumn NHS staff answer the NHS Staff Survey. Q25d: \"If a friend or relative needed treatment I would be happy with the standard of care provided by this organisation.\" Q25c: \"I would recommend my organisation as a place to work.\" Share agreeing or strongly agreeing. Limits: NHS organisations only; private providers aren't surveyed.",
+    dm01: "Waits for 15 diagnostic tests (and the total), by provider and month: people waiting in weekly bands up to 13+ weeks. The standard is that under 1% wait 6 weeks or more.",
+    njr: "The National Joint Registry records hip, knee and other joint replacements. Not included: there's no open re-use licence.",
+    ers: "When a GP tries to book a first hospital appointment through the e-Referral Service and there's no slot, that's an appointment slot issue (ASI). Shown per 100 bookings, so it can be over 100. Management information.",
+    wlmds: "A weekly count of the waiting list from patient-level data. Quicker than the monthly RTT figures but rougher; RTT stays the official count. Used in the monthly findings.",
+    cancer: "How quickly people are told whether they have cancer (28 days, standard 75%), and treated (31 days from deciding to treat, standard 96%; 62 days from urgent referral, standard 85%). Sensitive: these are frightened people.",
+    gpad: "Every GP appointment, by practice: how long after booking it took place, how (face to face, phone, video) and whether the patient came. It can't show how long someone tried before getting a booking.",
+    gp_practices: "Every GP practice and its postcode, located with postcodes.io, so practices can be added up by area and council.",
+    gpps: "The GP Patient Survey (getting through on the phone, overall experience). Not included yet: its site doesn't state an open licence, so we've asked.",
+    talking_therapies: "NHS Talking Therapies for anxiety and depression: referrals, how many started within 6 and 18 weeks (standards 75% and 95%), recovery, and the wait between first and second sessions.",
+    mhsds: "Mental health services: how long children and young people wait for a first contact, and adults with serious mental illness for a second contact (when care has really begun). 3-month rolling.",
+    community: "Community health services waiting lists - things like children's speech therapy, community paediatrics, wheelchairs and podiatry - in wait bands, by provider. Unvalidated; a gap means no submission.",
+    ae: "A&E attendances and the share seen within four hours (standard 95%), plus waits of 12+ hours for a bed after the decision to admit.",
+    ambulance: "Ambulance response times by ambulance service: category 1 (life-threatening) and category 2 (e.g. stroke, heart attack), average and 9-in-10.",
+    uec_sitreps: "Winter daily situation reports: bed occupancy and ambulance handover delays, by trust and day. Published in winter only.",
+    workforce: "NHS vacancy rates (only by region and sector) and sickness absence by trust. Shown alongside waits as a picture only - no causal claim.",
+    fingertips: "Area context from OHID: deprivation, share of people aged 65+, and healthy life expectancy, by ICB and council.",
+    population: "ONS mid-year population estimates by council and ICB.",
+    dental: "NHS dentistry by contract: how many adults (last 24 months) and children (last 12 months) were seen. There's no NHS dental waiting list.",
+    phin: "The Private Healthcare Information Network. Not included: its terms don't allow re-publishing without written consent.",
+    uk_nations: "Headline waits in Scotland, Wales and Northern Ireland. They use different standards and count differently, so they aren't compared with England.",
+    clinicaltrials: "Every study on ClinicalTrials.gov with a site in the UK, and those UK sites. Contact names, emails and phone numbers are never stored. Used under ClinicalTrials.gov's terms: attributed, kept current (refreshed weekly), with the processing date shown and our changes stated.",
+    isrctn: "Every study on the ISRCTN registry recruiting, or that recruited, in the UK, with its UK centres. Contains information from the ISRCTN registry, licensed CC BY. Contact details are never stored.",
+    trials: "The two registries merged (a study on both is counted once, linked by its ISRCTN, IRAS or NCT number), each site matched to an NHS trust only where the match is certain, and conditions mapped to departments by rules that are a sensible guess, not a fact.",
+    nihr_activity: "NIHR's research activity by trust. Not included: it hasn't been published as a table since 2018/19 and has no open licence.",
+    hra_summaries: "The Health Research Authority's research summaries. Not included: they're licensed for research or private study only.",
+    bepartofresearch: "NIHR's site for finding a study to join. We only link to its search - nothing is copied from it.",
+  };
+  $("#page").innerHTML = `
+    <h1>About the data</h1>
+    <p>Everything here is published NHS data, reshaped by the Wait Watcher kitchen and refreshed monthly. None of it is about individual patients.
+      "Check before using" marks providers whose % within 18 weeks jumped more than 15 points in a single month in the last year; they're left out of "fastest" and "most improved" views.
+      The newer sources have their own check: a figure moving more than 15 points in a month (50 for slot issues), or NHS England listing the provider with data issues.</p>
+    <p class="note">Areas are today's ${meta.areas.length} integrated care boards (ICBs). Earlier months are grouped under today's ICBs by local commissioner,
+      so mergers compare like with like. One exception: Frimley ICB was abolished in March 2026 and its local commissioner codes don't
+      appear in later data, so its patients up to March 2026 are shown as "Frimley" rather than under today's ICBs.</p>
+    <dl class="source-list">${meta.sources.map((src) => `
+      <dt>${esc(src.title)}</dt>
+      <dd>${esc(what[src.name] || "")}</dd>
+      <dd class="small">Publisher: ${esc(src.publisher)} · Updates: ${esc(src.cadence)} · ${src.latest_month ? `Latest: ${esc(monthName(src.latest_month, true))} · ` : src.last_period ? `Latest: ${esc(/^\d{4}-\d{2}$/.test(src.last_period) ? monthName(src.last_period, true) : src.last_period)} · ` : ""}${src.latest_year ? `Latest: ${esc(src.latest_year)} · ` : ""}Licence: ${esc(src.licence)}
+        · <a href="${esc(src.url)}" target="_blank" rel="noopener">Publisher's page</a></dd>
+      ${src.reason ? `<dd class="small">${esc(src.reason)}</dd>` : ""}`).join("")}
+    </dl>
+    <p class="small" style="margin-top:18px">Contains CQC information, used under the Open Government Licence v3.0. NHS England data used under the Open Government Licence v3.0.
+      Not affiliated with or endorsed by the NHS.</p>`;
+}
+
+
+// ---- Go! --------------------------------------------------------------------------------
+
+load("meta.json").then((m) => {
+  meta = m;
+  $("#provider-names").innerHTML = Object.entries(meta.providers)
+    .sort((a, b) => a[1].name.localeCompare(b[1].name)).map(([, p]) => `<option value="${esc(p.name)}">`).join("");
+  $("#footer-month").textContent = `Latest data: ${monthName(meta.latest_month, true)}.`;
+  route();
+}).catch((error) => {
+  console.error(error);
+  $("#page").innerHTML = `<p>Sorry, the data couldn't be loaded. Please try again in a moment.</p>`;
+});
+</script>
+</body>
+</html>

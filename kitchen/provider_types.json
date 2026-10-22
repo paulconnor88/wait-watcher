@@ -1,0 +1,566 @@
+{
+ "_about": "Provider types checked by hand. Covers every NHS trust with 10,000+ people waiting (August 2026), plus mental health and community trusts the name patterns in kitchen/sources/ods.py miss (checked against the NHS Staff Survey 2025 benchmarking groups). These always override the patterns. Midlands Partnership runs community and mental health services; its RTT waits are community services. Alder Hey, Birmingham Women's and Children's and Sheffield Children's are benchmarked as acute in the Staff Survey but are specialist children's trusts.",
+ "checked_on": "2026-10-20",
+ "types": {
+  "RCF": {
+   "type": "acute",
+   "name": "Airedale NHS Foundation Trust"
+  },
+  "RBS": {
+   "type": "specialist",
+   "name": "Alder Hey Children's NHS Foundation Trust"
+  },
+  "RTK": {
+   "type": "acute",
+   "name": "Ashford and St Peter's Hospitals NHS Foundation Trust"
+  },
+  "RF4": {
+   "type": "acute",
+   "name": "Barking, Havering and Redbridge University Hospitals NHS Trust"
+  },
+  "RFF": {
+   "type": "acute",
+   "name": "Barnsley Hospital NHS Foundation Trust"
+  },
+  "R1H": {
+   "type": "acute",
+   "name": "Barts Health NHS Trust"
+  },
+  "RC9": {
+   "type": "acute",
+   "name": "Bedfordshire Hospitals NHS Foundation Trust"
+  },
+  "RWX": {
+   "type": "mental health",
+   "name": "Berkshire Healthcare NHS Foundation Trust"
+  },
+  "RYW": {
+   "type": "community",
+   "name": "Birmingham Community Healthcare NHS Foundation Trust"
+  },
+  "RQ3": {
+   "type": "specialist",
+   "name": "Birmingham Women's and Children's NHS Foundation Trust"
+  },
+  "RXL": {
+   "type": "acute",
+   "name": "Blackpool Teaching Hospitals NHS Foundation Trust"
+  },
+  "RMC": {
+   "type": "acute",
+   "name": "Bolton NHS Foundation Trust"
+  },
+  "RAE": {
+   "type": "acute",
+   "name": "Bradford Teaching Hospitals NHS Foundation Trust"
+  },
+  "RA7": {
+   "type": "acute",
+   "name": "Bristol NHS Foundation Trust"
+  },
+  "RXQ": {
+   "type": "acute",
+   "name": "Buckinghamshire Healthcare NHS Trust"
+  },
+  "RWY": {
+   "type": "acute",
+   "name": "Calderdale and Huddersfield NHS Foundation Trust"
+  },
+  "RGT": {
+   "type": "acute",
+   "name": "Cambridge University Hospitals NHS Foundation Trust"
+  },
+  "RT1": {
+   "type": "mental health",
+   "name": "Cambridgeshire And Peterborough NHS Foundation Trust"
+  },
+  "RV3": {
+   "type": "mental health",
+   "name": "Central And North West London NHS Foundation Trust"
+  },
+  "RQM": {
+   "type": "acute",
+   "name": "Chelsea and Westminster Hospital NHS Foundation Trust"
+  },
+  "RFS": {
+   "type": "acute",
+   "name": "Chesterfield Royal Hospital NHS Foundation Trust"
+  },
+  "RJ8": {
+   "type": "mental health",
+   "name": "Cornwall Partnership NHS Foundation Trust"
+  },
+  "RJR": {
+   "type": "acute",
+   "name": "Countess of Chester Hospital NHS Foundation Trust"
+  },
+  "RXP": {
+   "type": "acute",
+   "name": "County Durham and Darlington NHS Foundation Trust"
+  },
+  "RJ6": {
+   "type": "acute",
+   "name": "Croydon Health Services NHS Trust"
+  },
+  "RX4": {
+   "type": "mental health",
+   "name": "Cumbria, Northumberland, Tyne And Wear NHS Foundation Trust"
+  },
+  "RN7": {
+   "type": "acute",
+   "name": "Dartford and Gravesham NHS Trust"
+  },
+  "RP5": {
+   "type": "acute",
+   "name": "Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust"
+  },
+  "RBD": {
+   "type": "acute",
+   "name": "Dorset County Hospital NHS Foundation Trust"
+  },
+  "RJN": {
+   "type": "acute",
+   "name": "East Cheshire NHS Trust"
+  },
+  "RVV": {
+   "type": "acute",
+   "name": "East Kent Hospitals University NHS Foundation Trust"
+  },
+  "RXR": {
+   "type": "acute",
+   "name": "East Lancashire Hospitals NHS Trust"
+  },
+  "RDE": {
+   "type": "acute",
+   "name": "East Suffolk and North Essex NHS Foundation Trust"
+  },
+  "RXC": {
+   "type": "acute",
+   "name": "East Sussex Healthcare NHS Trust"
+  },
+  "RWH": {
+   "type": "acute",
+   "name": "East and North Hertfordshire Teaching NHS Trust"
+  },
+  "RVR": {
+   "type": "acute",
+   "name": "Epsom and St Helier University Hospitals NHS Trust"
+  },
+  "R1L": {
+   "type": "mental health",
+   "name": "Essex Partnership University NHS Foundation Trust"
+  },
+  "RDU": {
+   "type": "acute",
+   "name": "Frimley Health NHS Foundation Trust"
+  },
+  "RR7": {
+   "type": "acute",
+   "name": "Gateshead Health NHS Foundation Trust"
+  },
+  "RLT": {
+   "type": "acute",
+   "name": "George Eliot Hospital NHS Trust"
+  },
+  "RTE": {
+   "type": "acute",
+   "name": "Gloucestershire Hospitals NHS Foundation Trust"
+  },
+  "RN3": {
+   "type": "acute",
+   "name": "Great Western Hospitals NHS Foundation Trust"
+  },
+  "RJ1": {
+   "type": "acute",
+   "name": "Guy's and St Thomas' NHS Foundation Trust"
+  },
+  "RW1": {
+   "type": "mental health",
+   "name": "Hampshire And Isle Of Wight Healthcare NHS Foundation Trust"
+  },
+  "RN5": {
+   "type": "acute",
+   "name": "Hampshire Hospitals NHS Foundation Trust"
+  },
+  "RCD": {
+   "type": "acute",
+   "name": "Harrogate and District NHS Foundation Trust"
+  },
+  "R1A": {
+   "type": "mental health",
+   "name": "Herefordshire And Worcestershire Health And Care NHS Trust"
+  },
+  "RQX": {
+   "type": "acute",
+   "name": "Homerton Healthcare NHS Foundation Trust"
+  },
+  "RWA": {
+   "type": "acute",
+   "name": "Hull University Teaching Hospitals NHS Trust"
+  },
+  "RYJ": {
+   "type": "acute",
+   "name": "Imperial College Healthcare NHS Trust"
+  },
+  "R1F": {
+   "type": "acute",
+   "name": "Isle of Wight NHS Trust"
+  },
+  "RGP": {
+   "type": "acute",
+   "name": "James Paget University Hospitals NHS Foundation Trust"
+  },
+  "RNQ": {
+   "type": "acute",
+   "name": "Kettering General Hospital NHS Foundation Trust"
+  },
+  "RJZ": {
+   "type": "acute",
+   "name": "King's College Hospital NHS Foundation Trust"
+  },
+  "RAX": {
+   "type": "acute",
+   "name": "Kingston and Richmond NHS Foundation Trust"
+  },
+  "RW5": {
+   "type": "mental health",
+   "name": "Lancashire & South Cumbria NHS Foundation Trust"
+  },
+  "RXN": {
+   "type": "acute",
+   "name": "Lancashire Teaching Hospitals NHS Foundation Trust"
+  },
+  "RR8": {
+   "type": "acute",
+   "name": "Leeds Teaching Hospitals NHS Trust"
+  },
+  "RJ2": {
+   "type": "acute",
+   "name": "Lewisham and Greenwich NHS Trust"
+  },
+  "RP7": {
+   "type": "mental health",
+   "name": "Lincolnshire Partnership NHS Foundation Trust"
+  },
+  "REM": {
+   "type": "acute",
+   "name": "Liverpool University Hospitals NHS Foundation Trust"
+  },
+  "REP": {
+   "type": "specialist",
+   "name": "Liverpool Women's NHS Foundation Trust"
+  },
+  "R1K": {
+   "type": "acute",
+   "name": "London North West University Healthcare NHS Trust"
+  },
+  "RWF": {
+   "type": "acute",
+   "name": "Maidstone and Tunbridge Wells NHS Trust"
+  },
+  "R0A": {
+   "type": "acute",
+   "name": "Manchester University NHS Foundation Trust"
+  },
+  "RPA": {
+   "type": "acute",
+   "name": "Medway NHS Foundation Trust"
+  },
+  "RW4": {
+   "type": "mental health",
+   "name": "Mersey Care NHS Foundation Trust"
+  },
+  "RBN": {
+   "type": "acute",
+   "name": "Mersey and West Lancashire Teaching Hospitals NHS Trust"
+  },
+  "RBT": {
+   "type": "acute",
+   "name": "Mid Cheshire Hospitals NHS Foundation Trust"
+  },
+  "RXF": {
+   "type": "acute",
+   "name": "Mid Yorkshire Teaching NHS Trust"
+  },
+  "RAJ": {
+   "type": "acute",
+   "name": "Mid and South Essex NHS Foundation Trust"
+  },
+  "RRE": {
+   "type": "community",
+   "name": "Midlands Partnership University NHS Foundation Trust"
+  },
+  "RD8": {
+   "type": "acute",
+   "name": "Milton Keynes University Hospital NHS Foundation Trust"
+  },
+  "RP6": {
+   "type": "specialist",
+   "name": "Moorfields Eye Hospital NHS Foundation Trust"
+  },
+  "RM1": {
+   "type": "acute",
+   "name": "Norfolk and Norwich University Hospitals NHS Foundation Trust"
+  },
+  "RWW": {
+   "type": "acute",
+   "name": "North Cheshire and Mersey NHS Foundation Trust"
+  },
+  "RNN": {
+   "type": "acute",
+   "name": "North Cumbria Integrated Care NHS Foundation Trust"
+  },
+  "RVW": {
+   "type": "acute",
+   "name": "North Tees and Hartlepool NHS Foundation Trust"
+  },
+  "RGN": {
+   "type": "acute",
+   "name": "North West Anglia NHS Foundation Trust"
+  },
+  "RM3": {
+   "type": "acute",
+   "name": "Northern Care Alliance NHS Foundation Trust"
+  },
+  "RJL": {
+   "type": "acute",
+   "name": "Northern Lincolnshire and Goole NHS Foundation Trust"
+  },
+  "RTF": {
+   "type": "acute",
+   "name": "Northumbria Healthcare NHS Foundation Trust"
+  },
+  "RX1": {
+   "type": "acute",
+   "name": "Nottingham University Hospitals NHS Trust"
+  },
+  "RTH": {
+   "type": "acute",
+   "name": "Oxford University Hospitals NHS Foundation Trust"
+  },
+  "RPG": {
+   "type": "mental health",
+   "name": "Oxleas NHS Foundation Trust"
+  },
+  "RHU": {
+   "type": "acute",
+   "name": "Portsmouth Hospitals University NHS Trust"
+  },
+  "RPC": {
+   "type": "specialist",
+   "name": "Queen Victoria Hospital NHS Foundation Trust"
+  },
+  "RHW": {
+   "type": "acute",
+   "name": "Royal Berkshire NHS Foundation Trust"
+  },
+  "REF": {
+   "type": "acute",
+   "name": "Royal Cornwall Hospitals NHS Trust"
+  },
+  "RH8": {
+   "type": "acute",
+   "name": "Royal Devon University Healthcare NHS Foundation Trust"
+  },
+  "RAL": {
+   "type": "acute",
+   "name": "Royal Free London NHS Foundation Trust"
+  },
+  "RA2": {
+   "type": "acute",
+   "name": "Royal Surrey NHS Foundation Trust"
+  },
+  "RD1": {
+   "type": "acute",
+   "name": "Royal United Hospitals Bath NHS Foundation Trust"
+  },
+  "RNZ": {
+   "type": "acute",
+   "name": "Salisbury NHS Foundation Trust"
+  },
+  "RXK": {
+   "type": "acute",
+   "name": "Sandwell and West Birmingham Hospitals NHS Trust"
+  },
+  "RCU": {
+   "type": "specialist",
+   "name": "Sheffield Children's NHS Foundation Trust"
+  },
+  "RK5": {
+   "type": "acute",
+   "name": "Sherwood Forest Hospitals NHS Foundation Trust"
+  },
+  "R1C": {
+   "type": "community",
+   "name": "Solent NHS Trust"
+  },
+  "RH5": {
+   "type": "acute",
+   "name": "Somerset NHS Foundation Trust"
+  },
+  "RTR": {
+   "type": "acute",
+   "name": "South Tees Hospitals NHS Foundation Trust"
+  },
+  "R0B": {
+   "type": "acute",
+   "name": "South Tyneside and Sunderland NHS Foundation Trust"
+  },
+  "RJC": {
+   "type": "acute",
+   "name": "South Warwickshire University NHS Foundation Trust"
+  },
+  "RXG": {
+   "type": "mental health",
+   "name": "South West Yorkshire Partnership Teaching NHS Foundation Trust"
+  },
+  "RJ7": {
+   "type": "acute",
+   "name": "St George's University Hospitals NHS Foundation Trust"
+  },
+  "RWJ": {
+   "type": "acute",
+   "name": "Stockport NHS Foundation Trust"
+  },
+  "RTP": {
+   "type": "acute",
+   "name": "Surrey and Sussex Healthcare NHS Trust"
+  },
+  "RDR": {
+   "type": "community",
+   "name": "Sussex Community NHS Foundation Trust"
+  },
+  "RMP": {
+   "type": "acute",
+   "name": "Tameside and Glossop Integrated Care NHS Foundation Trust"
+  },
+  "RNA": {
+   "type": "acute",
+   "name": "The Dudley Group NHS Foundation Trust"
+  },
+  "RAS": {
+   "type": "acute",
+   "name": "The Hillingdon Hospitals NHS Foundation Trust"
+  },
+  "RTD": {
+   "type": "acute",
+   "name": "The Newcastle upon Tyne Hospitals NHS Foundation Trust"
+  },
+  "RQW": {
+   "type": "acute",
+   "name": "The Princess Alexandra Hospital NHS Trust"
+  },
+  "RCX": {
+   "type": "acute",
+   "name": "The Queen Elizabeth Hospital, King's Lynn, NHS Foundation Trust"
+  },
+  "RL1": {
+   "type": "specialist",
+   "name": "The Robert Jones and Agnes Hunt Orthopaedic Hospital NHS Foundation Trust"
+  },
+  "RFR": {
+   "type": "acute",
+   "name": "The Rotherham NHS Foundation Trust"
+  },
+  "RRJ": {
+   "type": "specialist",
+   "name": "The Royal Orthopaedic Hospital NHS Foundation Trust"
+  },
+  "RL4": {
+   "type": "acute",
+   "name": "The Royal Wolverhampton NHS Trust"
+  },
+  "RXW": {
+   "type": "acute",
+   "name": "The Shrewsbury and Telford Hospital NHS Trust"
+  },
+  "RET": {
+   "type": "specialist",
+   "name": "The Walton Centre NHS Foundation Trust"
+  },
+  "RWD": {
+   "type": "acute",
+   "name": "United Lincolnshire Teaching Hospitals NHS Trust"
+  },
+  "RRV": {
+   "type": "acute",
+   "name": "University College London Hospitals NHS Foundation Trust"
+  },
+  "RHM": {
+   "type": "acute",
+   "name": "University Hospital Southampton NHS Foundation Trust"
+  },
+  "RRK": {
+   "type": "acute",
+   "name": "University Hospitals Birmingham NHS Foundation Trust"
+  },
+  "RKB": {
+   "type": "acute",
+   "name": "University Hospitals Coventry and Warwickshire NHS Trust"
+  },
+  "R0D": {
+   "type": "acute",
+   "name": "University Hospitals Dorset NHS Foundation Trust"
+  },
+  "RYR": {
+   "type": "acute",
+   "name": "University Hospitals Sussex NHS Foundation Trust"
+  },
+  "RTG": {
+   "type": "acute",
+   "name": "University Hospitals of Derby and Burton NHS Foundation Trust"
+  },
+  "RWE": {
+   "type": "acute",
+   "name": "University Hospitals of Leicester NHS Trust"
+  },
+  "RTX": {
+   "type": "acute",
+   "name": "University Hospitals of Morecambe Bay NHS Foundation Trust"
+  },
+  "RJE": {
+   "type": "acute",
+   "name": "University Hospitals of North Midlands NHS Trust"
+  },
+  "RBK": {
+   "type": "acute",
+   "name": "Walsall Healthcare NHS Trust"
+  },
+  "RWG": {
+   "type": "acute",
+   "name": "West Hertfordshire Teaching Hospitals NHS Trust"
+  },
+  "RKL": {
+   "type": "mental health",
+   "name": "West London NHS Trust"
+  },
+  "RGR": {
+   "type": "acute",
+   "name": "West Suffolk NHS Foundation Trust"
+  },
+  "RKE": {
+   "type": "acute",
+   "name": "Whittington Health NHS Trust"
+  },
+  "RBL": {
+   "type": "acute",
+   "name": "Wirral University Teaching Hospital NHS Foundation Trust"
+  },
+  "RWP": {
+   "type": "acute",
+   "name": "Worcestershire Acute Hospitals NHS Trust"
+  },
+  "RRF": {
+   "type": "acute",
+   "name": "Wrightington, Wigan and Leigh Teaching Hospitals NHS Foundation Trust"
+  },
+  "RLQ": {
+   "type": "acute",
+   "name": "Wye Valley NHS Trust"
+  },
+  "RCB": {
+   "type": "acute",
+   "name": "York and Scarborough Teaching Hospitals NHS Foundation Trust"
+  }
+ }
+}

@@ -1,0 +1,114 @@
+# Weekly refresh for Wait Watcher: the clinical trial registries only.
+#
+# ClinicalTrials.gov and ISRCTN change daily (everything else is published monthly and refreshed by
+# refresh.yml). Every Thursday at 08:00 UK time this fetches studies updated since the last run (a
+# full fetch every 28 days), rebuilds the merged trials data and the Lab's data, and commits it.
+#
+# Needs the processed data from a monthly run (kept in the GitHub Actions cache), so run the monthly
+# action at least once first. Contact names, emails and phone numbers are never stored.
+#
+# GitHub's schedule runs on UTC, so this fires at 07:00 and 08:00 UTC every Thursday and the first
+# step only carries on when it's 08:00 in London. "Run workflow" runs it straight away.
+
+name: Weekly trial registries refresh
+
+on:
+  schedule:
+    - cron: "0 7 * * 4"
+    - cron: "0 8 * * 4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kitchen          # shared with the monthly action, so they never run at once
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Is it 08:00 on Thursday in London?
+        id: when
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"; echo "Manual run - going ahead."; exit 0
+          fi
+          hour=$(TZ=Europe/London date +%-H)
+          if [ "$hour" -eq 8 ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"; echo "08:00 London time - going ahead."
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"; echo "Not 08:00 London time (hour $hour) - nothing to do."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.when.outputs.go == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.when.outputs.go == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Restore downloads and processed data
+        if: steps.when.outputs.go == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw
+            data/processed
+          key: kitchen-${{ github.run_id }}
+          restore-keys: kitchen-
+
+      - name: Check a monthly run has happened
+        if: steps.when.outputs.go == 'true'
+        run: |
+          if [ ! -f data/processed/rtt/lookup.json ]; then
+            echo "::error::No processed data in the cache yet - run the monthly action first."; exit 1
+          fi
+
+      - name: Install
+        if: steps.when.outputs.go == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Refresh the trial registries
+        if: steps.when.outputs.go == 'true'
+        run: |
+          python kitchen/sources/clinicaltrials.py
+          python kitchen/sources/isrctn.py
+          python kitchen/sources/trials.py
+          python kitchen/lab_data.py
+
+      - name: Save downloads and processed data
+        if: always() && steps.when.outputs.go == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/raw
+            data/processed
+          key: kitchen-${{ github.run_id }}
+
+      - name: Commit refreshed data
+        if: steps.when.outputs.go == 'true'
+        id: commit
+        run: |
+          git config user.name "wait-watcher-bot"
+          git config user.email "wait-watcher-bot@users.noreply.github.com"
+          git add data/processed lab/data kitchen/registry.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "No data changed."
+          else
+            git commit -m "Weekly trial registries refresh $(date +%Y-%m-%d)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # DEPLOY PAUSED - site IDs to be added. See refresh.yml for how to switch on.
+      - name: Deploy Wait Watcher Lab (paused)
+        if: false   # switch on: steps.when.outputs.go == 'true' && steps.commit.outputs.changed == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ""   # site ID to be added
+        run: npx --yes netlify-cli@17 deploy --prod --dir lab --site "$NETLIFY_SITE_ID"

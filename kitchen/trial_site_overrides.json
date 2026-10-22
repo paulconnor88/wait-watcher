@@ -1,0 +1,4 @@
+{
+  "_about": "Hand-mapped trial sites. Key: the facility name as printed by kitchen/sources/trials.py (upper case, punctuation removed), optionally followed by ' | ' and the postcode (no spaces) to pin one site. Value: an ODS code - a trust (e.g. RTH) or a trust site (e.g. RTH08). Use null to mark a name as checked and deliberately unmatched (e.g. a university or a GP network). Overrides are applied first, with method 'override' and confidence 1.0.",
+  "overrides": {}
+}

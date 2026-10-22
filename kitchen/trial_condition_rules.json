@@ -1,0 +1,171 @@
+{
+  "_about": "Rules mapping study conditions to our RTT treatment functions. Each rule is a case-insensitive regular expression tried against MeSH terms first, then MeSH ancestors (ClinicalTrials.gov), then the condition text and disease class (ISRCTN). The first rule that matches wins for that term; a study gets every treatment function any of its terms map to. Cancers are mapped by site to the department most patients would be referred to - a sensible guess, not a fact. Edit freely; kitchen/sources/trials.py writes the result to data/processed/trials/condition_mapping.json for review.",
+  "rules": [
+    {
+      "pattern": "pulmonary disease, chronic obstructive|non-small-cell lung|carcinoma, small cell|small cell lung carcinoma|hypertension, pulmonary|lung neoplasm",
+      "tf": "C_340",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "carcinoma, renal cell|urinary bladder neoplasm|kidney neoplasm",
+      "tf": "C_101",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "carcinoma, hepatocellular|liver neoplasm|pancreatic neoplasm|stomach neoplasm|esophageal neoplasm",
+      "tf": "C_301",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "arthritis, (rheumatoid|psoriatic|juvenile)|spondylitis, ankylosing|lupus erythematosus",
+      "tf": "C_410",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "carcinoma, squamous cell of head and neck|head and neck neoplasm|thyroid neoplasm",
+      "tf": "C_120",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "ovarian neoplasm|uterine cervical neoplasm|endometrial neoplasm",
+      "tf": "C_502",
+      "note": "MeSH word order"
+    },
+    {
+      "pattern": "breast (neoplasm|cancer|carcinoma|tumou?r)",
+      "tf": "X05",
+      "note": "breast surgery is in 'Other - Surgical'"
+    },
+    {
+      "pattern": "(prostat|bladder|urothelial|renal cell|kidney|testicular|penile)\\w* (neoplasm|cancer|carcinoma|tumou?r)",
+      "tf": "C_101"
+    },
+    {
+      "pattern": "(lung|bronch|mesothelioma|pleural)\\w* (neoplasm|cancer|carcinoma|tumou?r)|mesothelioma|small cell lung",
+      "tf": "C_340"
+    },
+    {
+      "pattern": "(colorectal|colonic|colon|rectal|anal|oesophag|esophag|stomach|gastric|pancrea|liver|hepatocellular|biliary|bile duct|cholangio)\\w* (neoplasm|cancer|carcinoma|tumou?r|adenocarcinoma)|hepatocellular carcinoma|cholangiocarcinoma",
+      "tf": "C_301"
+    },
+    {
+      "pattern": "melanoma|(skin|basal cell|squamous cell carcinoma of (the )?skin)\\w* (neoplasm|cancer|carcinoma)|basal cell carcinoma|keratinocyte",
+      "tf": "C_330"
+    },
+    {
+      "pattern": "(brain|glioma|glioblastoma|meningioma|central nervous system)\\w* (neoplasm|cancer|tumou?r)|glioma|glioblastoma|meningioma",
+      "tf": "C_150"
+    },
+    {
+      "pattern": "(head and neck|laryn|oropharyn|pharyn|oral|mouth|thyroid|salivary|nasopharyn)\\w* (neoplasm|cancer|carcinoma|tumou?r)",
+      "tf": "C_120"
+    },
+    {
+      "pattern": "(ovarian|ovary|uterine|endometrial|cervical|cervix|vulvar|vaginal)\\w* (neoplasm|cancer|carcinoma|tumou?r)",
+      "tf": "C_502"
+    },
+    {
+      "pattern": "(eye|uveal|retinoblastoma|ocular)\\w* (neoplasm|cancer|melanoma|tumou?r)|retinoblastoma|uveal melanoma",
+      "tf": "C_130"
+    },
+    {
+      "pattern": "sarcoma|bone (neoplasm|cancer)",
+      "tf": "C_110"
+    },
+    {
+      "pattern": "leuka?emia|lymphoma|myeloma|myelodysplastic|myeloproliferative",
+      "tf": "X02",
+      "note": "clinical haematology is in 'Other - Medical'"
+    },
+    {
+      "pattern": "osteoarthritis|arthroplasty|joint replacement|hip fracture|femoral fracture|fracture|carpal tunnel|rotator cuff|anterior cruciate|scoliosis|low back pain|back pain|spinal stenosis|tendinopathy|frozen shoulder|bunion|hallux",
+      "tf": "C_110"
+    },
+    {
+      "pattern": "rheumatoid arthritis|psoriatic arthritis|ankylosing spondylitis|axial spondyloarthritis|lupus|gout|vasculitis|polymyalgia|giant cell arteritis|sjogren|sjögren|systemic sclerosis|scleroderma|fibromyalgia",
+      "tf": "C_410"
+    },
+    {
+      "pattern": "cataract|glaucoma|macular|retinopathy|retinal|uveitis|keratoconus|amblyopia|strabismus|myopia|dry eye|eye disease|corneal|ocular hypertension",
+      "tf": "C_130"
+    },
+    {
+      "pattern": "hearing loss|deafness|otitis|tinnitus|sinusitis|rhinosinusitis|tonsil|vestibular|meniere|cochlear|otosclerosis|nasal polyp",
+      "tf": "C_120"
+    },
+    {
+      "pattern": "heart failure|atrial fibrillation|coronary|myocardial infarction|angina|arrhythmia|cardiomyopathy|hypertension(?!.*pulmonary)|aortic stenosis|heart valve|tachycardia|cardiovascular disease|heart disease|hypercholesterol|dyslipid",
+      "tf": "C_320"
+    },
+    {
+      "pattern": "coronary artery bypass|cardiac surgery|thoracic surgery|aortic aneurysm",
+      "tf": "C_170"
+    },
+    {
+      "pattern": "asthma|copd|chronic obstructive pulmonary|pulmonary fibrosis|interstitial lung|cystic fibrosis|bronchiectasis|pneumonia|sleep apnoea|sleep apnea|pulmonary hypertension|sarcoidosis|respiratory tract disease|lung disease",
+      "tf": "C_340"
+    },
+    {
+      "pattern": "crohn|colitis|inflammatory bowel|irritable bowel|cirrhosis|hepatitis|fatty liver|nafld|nash|liver disease|coeliac|celiac|gastro-?oesophageal reflux|gastroesophageal reflux|barrett|dyspepsia|pancreatitis|constipation|diverticul",
+      "tf": "C_301"
+    },
+    {
+      "pattern": "psoriasis(?!.*arthritis)|eczema|atopic dermatitis|acne|hidradenitis|urticaria|vitiligo|alopecia|rosacea|pemphig|dermatitis|skin disease",
+      "tf": "C_330"
+    },
+    {
+      "pattern": "stroke|epilep|seizure|multiple sclerosis|parkinson|migraine|headache|dementia|alzheimer|motor neuron|amyotrophic lateral|neuropathy|myasthenia|huntington|ataxia|muscular dystrophy|cerebral palsy|neurodegenerat|spinal muscular atrophy",
+      "tf": "C_400"
+    },
+    {
+      "pattern": "traumatic brain injury|brain injur|hydrocephalus|intracranial aneurysm|subarachnoid|chronic subdural|spinal cord injur",
+      "tf": "C_150"
+    },
+    {
+      "pattern": "depress|anxiety|schizophren|bipolar|psychos|psychotic|post-?traumatic stress|ptsd|eating disorder|anorexia nervosa|bulimia|obsessive|self-harm|suicid|substance use|alcohol use disorder|alcohol dependence|opioid use|personality disorder|mental (health|disorder|illness)|adhd|attention deficit",
+      "tf": "X03"
+    },
+    {
+      "pattern": "urinary incontinence|overactive bladder|kidney stone|urolithiasis|benign prostatic|lower urinary tract|erectile dysfunction|urethral stricture",
+      "tf": "C_101"
+    },
+    {
+      "pattern": "endometriosis|menopaus|polycystic ovary|uterine fibroid|leiomyoma|infertility|heavy menstrual|menorrhagia|pelvic organ prolapse|vulvodynia|adenomyosis",
+      "tf": "C_502"
+    },
+    {
+      "pattern": "inguinal hernia|hernia|gallstone|cholelithiasis|cholecystitis|appendicitis|bariatric|haemorrhoid|hemorrhoid|pilonidal|anal fistula",
+      "tf": "C_100"
+    },
+    {
+      "pattern": "frailty|falls in older|accidental falls|sarcopenia|delirium",
+      "tf": "C_430"
+    },
+    {
+      "pattern": "cleft lip|cleft palate|burns|scar|lymphoedema|lymphedema|breast reconstruction",
+      "tf": "C_160"
+    },
+    {
+      "pattern": "dental caries|tooth|teeth|third molar|periodont|oral surgery|temporomandibular",
+      "tf": "C_140"
+    },
+    {
+      "pattern": "diabetes|chronic kidney disease|renal insufficiency|kidney failure|thyroid disease|hypothyroid|hyperthyroid|adrenal|anaemia|anemia|sickle cell|thalassa|haemophilia|hemophilia",
+      "tf": "X02",
+      "note": "endocrinology, nephrology, haematology are in 'Other - Medical'"
+    }
+  ],
+  "disease_classes": {
+    "_about": "ISRCTN's broad disease class, used only when no rule above matches a study's own terms.",
+    "Mental and Behavioural Disorders": "X03",
+    "Eye Diseases": "C_130",
+    "Ear, Nose and Throat": "C_120",
+    "Skin and Connective Tissue Diseases": "C_330",
+    "Musculoskeletal Diseases": "C_110",
+    "Circulatory System": "C_320",
+    "Respiratory": "C_340",
+    "Digestive System": "C_301",
+    "Urological and Genital Diseases": "C_101",
+    "Oral Health": "C_140"
+  }
+}

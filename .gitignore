@@ -1,0 +1,29 @@
+# Environments and local tooling
+.venv/
+.venv-slides/
+__pycache__/
+.DS_Store
+.netlify/
+.env
+.env.*
+*.pem
+*.key
+
+# Raw downloads (about 3.6 GB): rebuilt by the kitchen, kept between GitHub Action runs in the cache.
+/data/raw/
+
+# Processed data: the big CSVs are rebuilt from data/raw on every run, so only what the sites and
+# reports read is committed (everything in site/data and lab/data is committed too).
+/data/processed/*
+!/data/processed/findings-*.json
+!/data/processed/findings-*.md
+!/data/processed/report-facts-*.json
+!/data/processed/questions.md
+!/data/processed/questions.json
+!/data/processed/coverage.txt
+!/data/processed/reconciliation.md
+!/data/processed/reconciliation.json
+
+# Design-round screenshots (not code, data or docs)
+/restyle-screenshots/
+/v3-screenshots/
